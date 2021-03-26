@@ -24,6 +24,7 @@ namespace Portfolio.Pages
         public async Task OnGet()
         {
             ProjectList = await _adminContext.GetProjects();
+            Console.WriteLine("hello");
         }
     }
 }
