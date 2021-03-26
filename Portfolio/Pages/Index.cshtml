@@ -1,7 +1,34 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Scott Falbo";
 }
 
-<h1>Home Page</h1>
+
+<figure>
+    <img class="selfie" src="~/images/code-selfie.png" />
+    <figcaption class="tag-line">Software Developer | Artist <br /> Cat Enthusiast</figcaption>
+</figure>
+
+<article class="intro">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit euismod in pellentesque massa placerat. Lectus quam id leo in vitae turpis massa sed elementum. Turpis egestas sed tempus urna et pharetra pharetra. Phasellus egestas tellus rutrum tellus pellentesque eu. Potenti nullam ac tortor vitae. Ultrices vitae auctor eu augue ut lectus arcu. Et netus et malesuada fames.
+</article>
+
+<section class="social">
+    <img src="~/images/github-light.png" />
+    <img src="~/images/linkedIn.png" />
+</section>
+
+<section class="projects">
+    <h2>&lt;Projects&gt;</h2>
+    @foreach (var item in Model.ProjectList)
+    {
+    <article class="card">
+        <h3>@item.Title</h3>
+        <figure>
+            <img src="@item.SourceURL" />
+            <figcaption class="project-caption">@item.Description</figcaption>
+        </figure>
+    </article>
+    }
+</section>
