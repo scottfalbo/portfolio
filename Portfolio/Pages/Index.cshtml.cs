@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Portfolio.Models;
+using Portfolio.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +12,18 @@ namespace Portfolio.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        public IAdmin _adminContext;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel (IAdmin context)
         {
-            _logger = logger;
+            _adminContext = context;
         }
 
-        public void OnGet()
-        {
+        public List<Project> ProjectList { get; set; }
 
+        public async Task OnGet()
+        {
+            ProjectList = await _adminContext.GetProjects();
         }
     }
 }

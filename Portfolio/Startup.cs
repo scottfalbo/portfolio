@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Portfolio.Data;
+using Portfolio.Models.Interfaces;
+using Portfolio.Models.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +30,16 @@ namespace Portfolio
             services.AddRazorPages();
 
             services.AddDbContext<PortfolioDbContext>(options =>
-           {
-               string connectionString = Configuration.GetConnectionString("DefaultConnection");
-               options.UseSqlServer(connectionString);
-           });
+            {
+                string connectionString = Configuration.GetConnectionString("DefaultConnection");
+                options.UseSqlServer(connectionString);
+            });
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+
+            services.AddTransient<IAdmin, AdminRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
