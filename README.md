@@ -3,7 +3,7 @@
 ## About the Project
 This is my personal portfolio website.  
 
-Currently a work in progress
+Currently a work in progress as of 03/25/2021
 
 ## Technologies
 <img src = "./assets/cSharp.png" height=50>
