@@ -8,14 +8,14 @@ main {
     width: 90%;
 }
 
-figcaption {
+.tag-line {
     margin: 10px;
     text-align: center;
     color: #93ffa2;
     font-size: 1.3em;
 }
 
-main article {
+.intro {
     text-align: left;
     margin: 8px;
     padding: 12px;
@@ -23,4 +23,46 @@ main article {
     font-family: 'Exo 2', sans-serif;
     background-color: #1c1c1c;
     border-radius: 20px;
+}
+
+.social > img {
+    height: 50px;
+    margin: 8px 10px 8px 10px;
+}
+
+.projects article {
+    background-color: #1c1c1c;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.projects h2 {
+    margin: 7px;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    color: #b2f1bb;
+}
+
+.project-caption {
+    margin: 8px;
+    text-align: left;
+    color: #93ffa2;
+}
+
+.projects  figure  img {
+    margin-top: 10px;
+    width: 90%;
+}
+
+.projects h3 {
+    font-size: 1.2em;
+    margin: 5px;
+    padding: 8px;
+    color: #a9fff3;
+}
+
+.projects figure {
+    background-color: #000000;
+    border-radius: 10px;
+    padding: 5px;
 }
