@@ -10,4 +10,21 @@ body {
     background-color: #000000;
 }
 
+.header {
+    font-family: 'Jura', sans-serif;
+    color: #9ff8bb;
+}
+
+.page-title {
+    font-size: 1.50em;
+    color: #d7fbce;
+}
+
+.green {
+    color: #b4ffa2;
+}
+.green:hover {
+    color: #bcfffa;
+}
+
 
