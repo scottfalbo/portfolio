@@ -21,11 +21,14 @@
 
 <section class="projects">
     <h2>&lt;Projects&gt;</h2>
+    @foreach (var item in Model.ProjectList)
+    {
     <article class="card">
-        <h3>SmallBoi: The Game</h3>
+        <h3>@item.Title</h3>
         <figure>
-            <img src="~/images/smallboi.png" />
-            <figcaption class="project-caption">here is a thing blah blah blah</figcaption>
+            <img src="@item.SourceURL" />
+            <figcaption class="project-caption">@item.Description</figcaption>
         </figure>
     </article>
+    }
 </section>

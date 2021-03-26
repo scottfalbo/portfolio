@@ -23,7 +23,7 @@ namespace Portfolio.Data
                 {
                     Id = -1,
                     Title = "SmallBoi, The Game",
-                    SourceURL = "~/images/smallboi.png",
+                    SourceURL = "images/smallboi.png",
                     Description = "add some words here"
                 }
             );

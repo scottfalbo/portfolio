@@ -15,6 +15,16 @@ namespace Portfolio.Models.Interfaces.Services
             _context = context;
         }
 
+        public Task CreateProject()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Project> GetProject(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<Project>> GetProjects()
         {
             return await _context.Projects
@@ -25,6 +35,16 @@ namespace Portfolio.Models.Interfaces.Services
                     Description = x.Description
                 })
                 .ToListAsync();
+        }
+
+        public Task<Project> UpdateProject(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteProject()
+        {
+            throw new NotImplementedException();
         }
     }
 }
