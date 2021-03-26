@@ -1,4 +1,6 @@
-﻿* {
+﻿@import url("mainpage.css");
+
+* {
     box-sizing: border-box;
 }
 
@@ -20,11 +22,15 @@ body {
     color: #d7fbce;
 }
 
-.green {
-    color: #b4ffa2;
-}
-.green:hover {
-    color: #bcfffa;
+.menu-button {
+    color: #9ff8bb;
 }
 
+main {
+    height: 88vh;
+}
 
+.footer {
+    text-align: center;
+    font-family: 'Jura', sans-serif;
+}
