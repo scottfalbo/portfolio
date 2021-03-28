@@ -24,7 +24,25 @@ namespace Portfolio.Data
                     Id = -1,
                     Title = "SmallBoi, The Game",
                     SourceURL = "images/smallboi.png",
-                    Description = "add some words here"
+                    Description = "add some words here",
+                    RepoLink = "https://github.com/AmeiliaAndTheSmallBois/SmallBoi/tree/main"
+                },
+                new Project
+                {
+                    Id = 2,
+                    Title = "LiteBerry Pi",
+                    SourceURL = "images/liteberrypi.png",
+                    Description = "blah blah blah blah signalR",
+                    RepoLink = "https://github.com/Lite-Berry-pi/Lite-Berry-Pi"
+                },
+                new Project
+                {
+                    Id = 3,
+                    Title = "React Minesweeper",
+                    SourceURL = "images/minesweeper.png",
+                    Description = "it's minesweeper",
+                    RepoLink = "https://github.com/scottfalbo/react-minesweeper-v2",
+                    DeployedLink = "https://scottfalbo.github.io/react-minesweeper-v2/"
                 }
             );
         }
