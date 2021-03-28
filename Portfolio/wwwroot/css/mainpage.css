@@ -30,10 +30,11 @@ main {
     margin: 8px 10px 8px 10px;
 }
 
-.projects article {
+.project-container {
     background-color: #1c1c1c;
-    padding: 7px;
+    padding: 10px;
     border-radius: 10px;
+    margin: 10px;
 }
 
 .projects h2 {
@@ -45,7 +46,7 @@ main {
 
 .project-caption {
     margin: 8px;
-    text-align: left;
+   /* text-align: left;*/
     color: #93ffa2;
 }
 
@@ -65,4 +66,8 @@ main {
     background-color: #000000;
     border-radius: 10px;
     padding: 5px;
+}
+
+.project-link a {
+    color: #73f0ee;
 }

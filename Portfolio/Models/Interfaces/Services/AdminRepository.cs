@@ -32,7 +32,9 @@ namespace Portfolio.Models.Interfaces.Services
                 {
                     Title = x.Title,
                     SourceURL = x.SourceURL,
-                    Description = x.Description
+                    Description = x.Description,
+                    RepoLink = x.RepoLink,
+                    DeployedLink = x.DeployedLink
                 })
                 .ToListAsync();
         }
