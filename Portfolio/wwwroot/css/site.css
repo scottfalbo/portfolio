@@ -1,4 +1,6 @@
 ﻿@import url("mainpage.css");
+@import url("desktop-mainpage.css");
+
 
 * {
     box-sizing: border-box;
@@ -10,7 +12,15 @@ html {
 
 body {
     background-color: #000000;
+    margin: auto;
 }
+
+@media (max-width: 768px) {
+    body {
+        max-width: 540px;
+    }
+}
+
 
 .header {
     font-family: 'Jura', sans-serif;
@@ -28,6 +38,26 @@ body {
 
 main {
 
+}
+
+footer {
+    text-align: center;
+    font-family: 'Jura', sans-serif;
+    color: #526d4b;
+    padding: 5px;
+    margin-bottom: 8px;
+    background-color: #121212;
+    border-radius: 10px;
+}
+
+footer li {
+    display: inline-block;
+    margin: 5px 10px 5px 10px;
+    color: #9ff8bb;
+}
+
+footer a {
+    color: #9ff8bb;
 }
 
 
