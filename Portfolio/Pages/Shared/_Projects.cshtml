@@ -1,0 +1,27 @@
+﻿
+@model Portfolio.Pages.IndexModel
+
+<h2>&lt;Projects&gt;</h2>
+
+<div class="project-inner">
+
+    @foreach (var item in Model.ProjectList)
+    {
+        <article class="project-container">
+            <h3>@item.Title</h3>
+            <figure>
+                <img src="@item.SourceURL" />
+                <figcaption class="project-caption">@item.Description</figcaption>
+                <div class="project-link">
+                    <a href="@item.RepoLink" target="_blank">&lt;GitHub Repo&gt;</a>
+                </div>
+                @if (@item.DeployedLink != null)
+                {
+                    <div class="project-link">
+                        <a href="@item.DeployedLink" target="_blank">&lt;Deployed Site&gt;</a>
+                    </div>
+                }
+            </figure>
+        </article>
+    }
+</div>

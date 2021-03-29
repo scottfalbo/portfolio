@@ -24,7 +24,7 @@ namespace Portfolio.Data
                     Id = -1,
                     Title = "SmallBoi, The Game",
                     SourceURL = "images/smallboi.png",
-                    Description = "add some words here",
+                    Description = "SmallBoi is a two player coop platform puzzle game built in Unity.  It has both local and network multiple player options using Photon.",
                     RepoLink = "https://github.com/AmeiliaAndTheSmallBois/SmallBoi/tree/main"
                 },
                 new Project
@@ -32,7 +32,7 @@ namespace Portfolio.Data
                     Id = 2,
                     Title = "LiteBerry Pi",
                     SourceURL = "images/liteberrypi.png",
-                    Description = "blah blah blah blah signalR",
+                    Description = "LiteBerry Pi allows users to create and send designs to a RaspBerry Pi with a matrix of led lights attached.  The app uses an api to create and save designs.  The api also contains a route to send designs to the Pi using a SignalR server.",
                     RepoLink = "https://github.com/Lite-Berry-pi/Lite-Berry-Pi"
                 },
                 new Project
@@ -40,7 +40,7 @@ namespace Portfolio.Data
                     Id = 3,
                     Title = "React Minesweeper",
                     SourceURL = "images/minesweeper.png",
-                    Description = "it's minesweeper",
+                    Description = "A re-creation of the Window's classic Minesweeper.  I built this to practice components and state within a React App.",
                     RepoLink = "https://github.com/scottfalbo/react-minesweeper-v2",
                     DeployedLink = "https://scottfalbo.github.io/react-minesweeper-v2/"
                 }

@@ -5,40 +5,16 @@
 }
 
 
-<figure>
-    <img class="selfie" src="~/images/code-selfie.png" />
-    <figcaption class="tag-line">Software Developer | Artist <br /> Cat Enthusiast</figcaption>
-</figure>
+<div class="main-container">
+    <section class="intro-container">
+        <partial name="_Intro" />
+    </section>
 
-<article class="intro">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit euismod in pellentesque massa placerat. Lectus quam id leo in vitae turpis massa sed elementum. Turpis egestas sed tempus urna et pharetra pharetra. Phasellus egestas tellus rutrum tellus pellentesque eu. Potenti nullam ac tortor vitae. Ultrices vitae auctor eu augue ut lectus arcu. Et netus et malesuada fames.
-</article>
+    <section class="projects">
+        <partial name="_Projects" />
+    </section>
 
-<section class="social">
-    <img src="~/images/github-light.png" />
-    <img src="~/images/linkedIn.png" />
-</section>
-
-<section class="projects">
-    <h2>&lt;Projects&gt;</h2>
-    @foreach (var item in Model.ProjectList)
-    {
-    <article class="project-container">
-        <h3>@item.Title</h3>
-        <figure>
-            <img src="@item.SourceURL" />
-            <figcaption class="project-caption">@item.Description</figcaption>
-            <div class="project-link">
-                <a href="@item.RepoLink" target="_blank">&lt;GitHub Repo&gt;</a>
-            </div>
-            @if (@item.DeployedLink != null)
-            {
-                <div class="project-link">
-                    <a href="@item.DeployedLink" target="_blank">&lt;Deployed Site&gt;</a>
-                </div>
-            }
-        </figure>
-    </article>
-    <hr />
-    }
-</section>
+    <section class="skills">
+        <partial name="_Skills" />
+    </section>
+</div>
