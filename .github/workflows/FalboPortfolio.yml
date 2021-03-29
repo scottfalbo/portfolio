@@ -6,7 +6,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: FalboPortfolio
   AZURE_WEBAPP_PACKAGE_PATH: Portfolio/publish
-  AZURE_WEBAPP_PUBLISH_PROFILE: ${{secrets.FalboPortfolio_d5f5}}
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{secrets.FalboPortfolio_4571}}
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 5.0.x
   WORKING_DIRECTORY: Portfolio
