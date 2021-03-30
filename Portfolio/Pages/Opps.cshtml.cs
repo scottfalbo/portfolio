@@ -9,8 +9,11 @@ namespace Portfolio.Pages
 {
     public class OppsModel : PageModel
     {
+        [BindProperty(Name = "error", SupportsGet = true)]
+        public Exception E { get; set; }
         public void OnGet()
         {
+
         }
     }
 }

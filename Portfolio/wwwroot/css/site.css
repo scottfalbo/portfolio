@@ -11,8 +11,12 @@ html {
 }
 
 body {
-    background-color: #000000;
+    background-color: #121212;
     margin: auto;
+}
+
+main {
+    background-color: #000;
 }
 
 @media (max-width: 768px) {

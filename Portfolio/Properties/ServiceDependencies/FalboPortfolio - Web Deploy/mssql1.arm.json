@@ -36,7 +36,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('FalboPortfolioVault', subscription().subscriptionId)))]",
+      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('Portfolio_db', subscription().subscriptionId)))]",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "apiVersion": "2019-10-01",
       "dependsOn": [
@@ -49,24 +49,26 @@
           "contentVersion": "1.0.0.0",
           "resources": [
             {
-              "name": "FalboPortfolioVault",
-              "type": "Microsoft.KeyVault/vaults",
+              "kind": "v12.0",
               "location": "[parameters('resourceLocation')]",
-              "properties": {
-                "sku": {
-                  "family": "A",
-                  "name": "Standard"
-                },
-                "tenantId": "56ce1aff-9737-4d6b-b1e6-895852be105b",
-                "accessPolicies": [],
-                "enabledForDeployment": false,
-                "enabledForDiskEncryption": false,
-                "enabledForTemplateDeployment": false,
-                "enableSoftDelete": true,
-                "softDeleteRetentionInDays": 90,
-                "enableRbacAuthorization": false
+              "name": "portfolio-db-server",
+              "type": "Microsoft.Sql/servers",
+              "apiVersion": "2017-10-01-preview"
+            },
+            {
+              "sku": {
+                "name": "Standard",
+                "tier": "Standard",
+                "capacity": 10
               },
-              "apiVersion": "2016-10-01"
+              "kind": "v12.0,user",
+              "location": "[parameters('resourceLocation')]",
+              "name": "portfolio-db-server/Portfolio_db",
+              "type": "Microsoft.Sql/servers/databases",
+              "apiVersion": "2017-10-01-preview",
+              "dependsOn": [
+                "portfolio-db-server"
+              ]
             }
           ]
         }
@@ -74,6 +76,6 @@
     }
   ],
   "metadata": {
-    "_dependencyType": "secrets.keyVault"
+    "_dependencyType": "mssql.azure"
   }
 }
