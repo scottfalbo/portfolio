@@ -23,8 +23,16 @@ namespace Portfolio.Pages
 
         public async Task OnGet()
         {
-            ProjectList = await _adminContext.GetProjects();
-            Console.WriteLine("hello");
+            try
+            {
+                ProjectList = await _adminContext.GetProjects();
+                Console.WriteLine("whatever");
+            }
+            catch (Exception e)
+            {
+                RedirectToPage("Opps", new {error = e});
+            }
+
         }
     }
 }

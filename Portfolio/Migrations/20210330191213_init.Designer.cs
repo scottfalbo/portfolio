@@ -9,7 +9,7 @@ using Portfolio.Data;
 namespace Portfolio.Migrations
 {
     [DbContext(typeof(PortfolioDbContext))]
-    [Migration("20210330000324_init")]
+    [Migration("20210330191213_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
