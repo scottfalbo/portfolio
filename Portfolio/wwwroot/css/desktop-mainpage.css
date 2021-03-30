@@ -10,8 +10,9 @@
         grid-column: 1/2;
         grid-row: 1/2;
         display: grid;
-        grid-template-columns: 60%, 1fr;
+        grid-template-columns: 55%, 40%;
         grid-template-rows: 1fr;
+        padding: 8px 20px 8px 20px;
     }
     .intro-inner {
         grid-column: 1/2;

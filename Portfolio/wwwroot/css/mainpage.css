@@ -23,7 +23,7 @@ main {
 .intro {
     text-align: left;
     margin: 8px;
-    padding: 12px;
+    padding: 20px 10px 20px 10px;
     color: #d2ffd8;
     font-family: 'Exo 2', sans-serif;
     background-color: #121212;
@@ -31,7 +31,7 @@ main {
 }
 
 .social {
-    margin: 30px 0px 20px 0px;
+    margin: 20px 0px 20px 0px;
 }
 
 .social > a > img {
@@ -44,6 +44,11 @@ main {
     margin-bottom: 15px;
     font-size: 1.4em;
     color: #b2f1bb;  
+}
+
+.social a p {
+    font-size: 1.3em;
+    padding-bottom: 5px;
 }
 
 .project-container {
