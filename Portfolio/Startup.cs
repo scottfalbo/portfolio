@@ -1,10 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Portfolio.Auth.Models;
+using Portfolio.Auth.Models.Interfaces;
+using Portfolio.Auth.Models.Interfaces.Services;
 using Portfolio.Data;
 using Portfolio.Models.Interfaces;
 using Portfolio.Models.Interfaces.Services;
@@ -34,6 +38,14 @@ namespace Portfolio
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                //options go here
+            })
+            .AddEntityFrameworkStores<PortfolioDbContext>();
+
+            services.AddTransient<IUserService, IdentityUserService>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

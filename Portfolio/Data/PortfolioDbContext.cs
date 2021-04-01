@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Portfolio.Auth.Models;
 using Portfolio.Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Data
 {
-    public class PortfolioDbContext : DbContext
+    public class PortfolioDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Project> Projects { get; set; }
 
@@ -18,6 +21,36 @@ namespace Portfolio.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            string id = "a18be9c0-aa65-4af8-bd17-00bd9344e575";
+
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = id,
+                Name = "admin",
+                NormalizedName = "admin"
+            });
+
+            var hasher = new PasswordHasher<ApplicationUser>();
+            modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
+            {
+                Id = id,
+                UserName = "admin",
+                NormalizedUserName = "admin",
+                Email = "scottfalboart@gmail.com",
+                NormalizedEmail = "scottfalboart@gmail.com",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "pass!23"),
+                SecurityStamp = string.Empty
+            });
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = id,
+                UserId = id
+            });
+
+
             modelBuilder.Entity<Project>().HasData(
                 new Project
                 {

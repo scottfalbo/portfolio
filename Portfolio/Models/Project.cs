@@ -13,6 +13,7 @@ namespace Portfolio.Models
         public string Title { get; set; }
         [Required]
         public string SourceURL { get; set; }
+        public string AltText { get; set; }
         [Required]
         public string Description { get; set; }
         public string RepoLink { get; set; }
