@@ -6,13 +6,24 @@ This is my personal portfolio website.  It is currently under construction and o
 
 [scottfalbo.com](https://falboportfolio.azurewebsites.net/)  
 
-
+---
 
 ## Technologies
 <img src = "./assets/cSharp.png" height=50>
 <img src = "./assets/visualStudio.png" height=50>
 
+---
+
 ## Getting Started
++ Live deployment here: [scottfalbo.com](https://falboportfolio.azurewebsites.net/)  
+
+---
+
+## Architecture
+
+<img src="assets/erd.png" width="600">
+
+---
 
 ## Change Log
 + 03/25/2021
@@ -33,6 +44,13 @@ This is my personal portfolio website.  It is currently under construction and o
   + Added breakpoints and style for desktop view.
   + deployed on Azure.
     + [FalboPortfolio.azurewebsites.net/](https://falboportfolio.azurewebsites.net/)
+    + Created ERD for upcoming artwork portfolio of the site.
+    + Brought in the following dependencies:
+      + `Microsoft.AspNetCore.Identity.EntityFrameWorkCore`
+      + `Microsoft.AspNet.Identity.Core`
+      + `Microsoft.Extensions.Identity.Core`
+
+
 ---
 
 ## Contact
