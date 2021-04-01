@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Portfolio.Auth.Models;
 using Portfolio.Models;
 using System;
@@ -13,10 +14,11 @@ namespace Portfolio.Data
     public class PortfolioDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Project> Projects { get; set; }
+        public IConfiguration Configuration { get; }
 
-        public PortfolioDbContext(DbContextOptions options) : base(options)
+        public PortfolioDbContext(DbContextOptions options, IConfiguration config) : base(options)
         {
-
+            Configuration = config;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,16 +34,19 @@ namespace Portfolio.Data
                 NormalizedName = "admin"
             });
 
+            var admin = Configuration["Portfolio:AdminName"]; 
+            var adminPass = Configuration["Portfolio:AdminPass"];
+
             var hasher = new PasswordHasher<ApplicationUser>();
             modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
             {
                 Id = id,
-                UserName = "admin",
-                NormalizedUserName = "admin",
+                UserName = admin,
+                NormalizedUserName = admin,
                 Email = "scottfalboart@gmail.com",
                 NormalizedEmail = "scottfalboart@gmail.com",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "pass!23"),
+                PasswordHash = hasher.HashPassword(null, adminPass),
                 SecurityStamp = string.Empty
             });
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
