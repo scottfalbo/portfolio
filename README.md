@@ -21,6 +21,8 @@ This is my personal portfolio website.  It is currently under construction and o
 
 ## Architecture
 
+ERD for portfolio section, currently under construction.
+
 <img src="assets/erd.png" width="600">
 
 ---
