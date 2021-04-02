@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Portfolio.Models.Interfaces
+namespace Portfolio.Models.Interface
 {
     public interface IAdmin
     {

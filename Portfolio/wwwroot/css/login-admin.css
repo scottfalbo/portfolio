@@ -5,12 +5,13 @@ main {
 }
 
 .login-form {
-    margin: 15px auto 10px auto;
+    margin: 0px auto 10px auto;
     padding: 10px;
 }
 
 .login-form figure {
-    margin: 10px auto;
+    margin: auto;
+    padding: 10px;
 }
 
 .login-form figure img {
@@ -30,4 +31,10 @@ main {
     width: 100px;
     border-radius: 5px;
     color: #f19f24
+}
+
+.secret-lair h1 {
+    padding: 10px;
+    font-size: 1.2em;
+    color: #b2f1bb;
 }
