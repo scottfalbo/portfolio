@@ -7,10 +7,13 @@ namespace Portfolio.Models.Interfaces
 {
     public interface IAdmin
     {
-        public Task CreateProject();
-        public Task<Project> GetProject(int Id);
+        /// <summary>
+        /// Projects portfolio CRUD
+        /// </summary>
+        public Task CreateProject(Project project);
+        public Task<Project> GetProject(int id);
         public Task<List<Project>> GetProjects();
-        public Task<Project> UpdateProject(int Id);
-        public Task DeleteProject();
+        public Task UpdateProject(int id, Project project);
+        public Task DeleteProject(int id);
     }
 }

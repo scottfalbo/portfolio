@@ -14,6 +14,7 @@ namespace Portfolio.Data
     public class PortfolioDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Tattoo> Tattoos { get; set; }
         public IConfiguration Configuration { get; }
 
         public PortfolioDbContext(DbContextOptions options, IConfiguration config) : base(options)
@@ -27,7 +28,7 @@ namespace Portfolio.Data
 
             SeedRole(modelBuilder, "admin", "create", "read", "update", "delete");
 
-            string id = "a18be9c0-aa65-4af8-bd17-00bd9344e575";
+            string id = "a18be8c0-aa67-4af8-bd17-00bd6346e575";
 
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
             {

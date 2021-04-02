@@ -15,16 +15,49 @@ namespace Portfolio.Models.Interfaces.Services
             _context = context;
         }
 
-        public Task CreateProject()
+        /// <summary>
+        /// Create a new project entry in the database
+        /// </summary>
+        /// <param name="project"> project object from form input </param>
+        /// <returns> no return </returns>
+        public async Task CreateProject(Project project)
         {
-            throw new NotImplementedException();
+            Project newProject = new Project()
+            {
+                Title = project.Title,
+                SourceURL = project.SourceURL,
+                Description = project.Description,
+                RepoLink = project.RepoLink,
+                DeployedLink = project.DeployedLink
+            };
+            _context.Entry(newProject).State = EntityState.Added;
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Project> GetProject(int Id)
+        /// <summary>
+        /// Read a project by id from the database
+        /// </summary>
+        /// <param name="id"> project id </param>
+        /// <returns> Project object </returns>
+        public async Task<Project> GetProject(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Projects
+                .Where(x => x.Id == id)
+                .Select(y => new Project
+                {
+                    Title = y.Title,
+                    SourceURL = y.SourceURL,
+                    Description = y.Description,
+                    RepoLink = y.RepoLink,
+                    DeployedLink = y.DeployedLink
+                })
+                .FirstOrDefaultAsync();
         }
 
+        /// <summary>
+        /// Read all projects in the database
+        /// </summary>
+        /// <returns> List of Project objects </returns>
         public async Task<List<Project>> GetProjects()
         {
             return await _context.Projects
@@ -39,14 +72,38 @@ namespace Portfolio.Models.Interfaces.Services
                 .ToListAsync();
         }
 
-        public Task<Project> UpdateProject(int Id)
+        /// <summary>
+        /// Update a project in the database
+        /// </summary>
+        /// <param name="id"> project id </param>
+        /// <param name="project"> Project object from form input </param>
+        /// <returns> no return </returns>
+        public async Task UpdateProject(int id, Project project)
         {
-            throw new NotImplementedException();
+            Project newProject = new Project()
+            {
+                Id = id,
+                Title = project.Title,
+                SourceURL = project.SourceURL,
+                Description = project.Description,
+                RepoLink = project.RepoLink,
+                DeployedLink = project.DeployedLink
+            };
+
+            _context.Entry(newProject).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteProject()
+        /// <summary>
+        /// Delete a project from the database
+        /// </summary>
+        /// <param name="id"> project id </param>
+        /// <returns> no return </returns>
+        public async Task DeleteProject(int id)
         {
-            throw new NotImplementedException();
+            Project project = await _context.Projects.FindAsync(id);
+            _context.Entry(project).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
         }
     }
 }

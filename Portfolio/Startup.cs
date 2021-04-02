@@ -33,7 +33,7 @@ namespace Portfolio
         {
             services.AddRazorPages(options =>
             {
-                //options.Conventions.AuthorizePage("/SecretLair", "admin");
+             
             });
 
             services.AddDbContext<PortfolioDbContext>(options =>
