@@ -81,7 +81,9 @@ ERD for portfolio section, currently under construction.
     + Finished it!!! Just fooling.
     + Brought in the following dependencies:
       + `Azure.Extensions.AspNetCore.Configuration.Secrets`
-    
+    + Created a login page and secret lair page for admin purposes.
+    + Set permissions for admin lair.
+    + Wrote CRUD actions for projects in the AdminRepository.
 
 ---
 
@@ -93,4 +95,5 @@ ERD for portfolio section, currently under construction.
 ---
 
 ## Acknowledgements
-+ [Bootstrap nav tutorial](https://www.youtube.com/watch?v=l2dzzuxvmxk)
+
+
