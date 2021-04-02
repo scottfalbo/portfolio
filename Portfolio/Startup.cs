@@ -45,6 +45,16 @@ namespace Portfolio
             })
             .AddEntityFrameworkStores<PortfolioDbContext>();
 
+            services.AddAuthentication();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("create", policy => policy.RequireClaim("permissions", "create"));
+                options.AddPolicy("read", policy => policy.RequireClaim("permissions", "read"));
+                options.AddPolicy("update", policy => policy.RequireClaim("permissions", "update"));
+                options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
+            });
+
             services.AddTransient<IUserService, IdentityUserService>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
@@ -75,6 +85,7 @@ namespace Portfolio
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

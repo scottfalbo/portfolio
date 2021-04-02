@@ -25,6 +25,8 @@ namespace Portfolio.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            SeedRole(modelBuilder, "admin", "create", "read", "update", "delete");
+
             string id = "a18be9c0-aa65-4af8-bd17-00bd9344e575";
 
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
@@ -83,6 +85,29 @@ namespace Portfolio.Data
                     DeployedLink = "https://scottfalbo.github.io/react-minesweeper-v2/"
                 }
             );
+        }
+
+        private int id = 1;
+        private void SeedRole(ModelBuilder modelBuilder, string roleName, params string[] permissions)
+        {
+            var role = new IdentityRole
+            {
+                Id = roleName.ToLower(),
+                Name = roleName,
+                NormalizedName = roleName.ToUpper(),
+                ConcurrencyStamp = Guid.Empty.ToString()
+            };
+            modelBuilder.Entity<IdentityRole>().HasData(role);
+
+            var roleClaims = permissions.Select(permission =>
+               new IdentityRoleClaim<string>
+               {
+                   Id = id++,
+                   RoleId = role.Id,
+                   ClaimType = "permissions",
+                   ClaimValue = permission
+               });
+            modelBuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
         }
     }
 }
