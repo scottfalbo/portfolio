@@ -1,6 +1,6 @@
 ﻿@import url("mainpage.css");
 @import url("desktop-mainpage.css");
-
+@import url("login-admin.css");
 
 * {
     box-sizing: border-box;
@@ -13,6 +13,7 @@ html {
 body {
     background-color: #121212;
     margin: auto;
+    min-width: 380px;
 }
 
 main {

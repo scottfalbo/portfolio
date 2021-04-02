@@ -8,5 +8,6 @@ namespace Portfolio.Auth.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        //intentionally left blank, used for Identity
     }
 }

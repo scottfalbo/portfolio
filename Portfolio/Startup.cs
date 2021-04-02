@@ -31,7 +31,10 @@ namespace Portfolio
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddRazorPages(options =>
+            {
+             
+            });
 
             services.AddDbContext<PortfolioDbContext>(options =>
             {
@@ -44,6 +47,16 @@ namespace Portfolio
                 //options go here
             })
             .AddEntityFrameworkStores<PortfolioDbContext>();
+
+            services.AddAuthentication();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("create", policy => policy.RequireClaim("permissions", "create"));
+                options.AddPolicy("read", policy => policy.RequireClaim("permissions", "read"));
+                options.AddPolicy("update", policy => policy.RequireClaim("permissions", "update"));
+                options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
+            });
 
             services.AddTransient<IUserService, IdentityUserService>();
 
@@ -60,11 +73,9 @@ namespace Portfolio
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                Console.WriteLine();
             }
             else
             {
-                Console.WriteLine();
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -77,6 +88,7 @@ namespace Portfolio
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

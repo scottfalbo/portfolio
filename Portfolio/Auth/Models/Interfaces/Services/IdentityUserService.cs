@@ -23,7 +23,12 @@ namespace Portfolio.Auth.Models.Interfaces.Services
             _context = context;
         }
 
-
+        /// <summary>
+        /// Authenticate a user at login time.
+        /// </summary>
+        /// <param name="userName"> user name </param>
+        /// <param name="password"> user password </param>
+        /// <returns> ApplicationUserDto with user info </returns>
         public async Task<ApplicationUserDto> Authenticate(string userName, string password)
         {
             var result = await signInManager.PasswordSignInAsync(userName, password, true, false);
@@ -31,8 +36,6 @@ namespace Portfolio.Auth.Models.Interfaces.Services
             if (result.Succeeded)
             {
                 var user = await UserManager.FindByNameAsync(userName);
-
-
                 return new ApplicationUserDto
                 {
                     Id = user.Id,
@@ -41,9 +44,15 @@ namespace Portfolio.Auth.Models.Interfaces.Services
                     Roles = await UserManager.GetRolesAsync(user),
                 };
             }
-            throw new Exception($"womp womp");
+            return null;
         }
 
+        /// <summary>
+        /// Register a new user and give them "guest" level persmission.
+        /// </summary>
+        /// <param name="data"> RegisterUser object </param>
+        /// <param name="modelState"> ModelState </param>
+        /// <returns> ApplicationUserDto object </returns>
         public async Task<ApplicationUserDto> Register(RegisterUser data, ModelStateDictionary modelState)
         {
             var user = new ApplicationUser()
@@ -55,13 +64,13 @@ namespace Portfolio.Auth.Models.Interfaces.Services
 
             if (result.Succeeded)
             {
-                await UserManager.AddToRolesAsync(user, new List<string>() { "Guest" });
+                await UserManager.AddToRolesAsync(user, new List<string>() { "guest" });
 
                 return new ApplicationUserDto
                 {
                     UserName = user.UserName,
                     Email = user.Email,
-                    Roles = new List<string>() { "Guest" },
+                    Roles = new List<string>() { "guest" },
                 };
             }
             return new ApplicationUserDto();

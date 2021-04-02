@@ -9,8 +9,33 @@ This is my personal portfolio website.  It is currently under construction and o
 ---
 
 ## Technologies
-<img src = "./assets/cSharp.png" height=50>
-<img src = "./assets/visualStudio.png" height=50>
+<table>
+  <tr>
+    <td>
+      <img src = "./assets/cSharp.png" height=50>
+    </td>
+    <td>
+      <img src = "./assets/visualStudio.png" height=50>
+    </td>
+    <td>
+      <img src = "./assets/html.png" height=50>
+    </td>
+    <td>
+      <img src = "./assets/css.png" height=50>
+    </td>
+    <td>
+      <img src = "./assets/azure.png" height=50>
+    </td>
+    <td>
+      <img src = "./assets/azure_sql.png" height=50>
+    </td>
+    <td>
+      <img src = "./assets/github-light.png" height=50>
+    </td>
+  </tr>
+</table>
+
+
 
 ---
 
@@ -51,7 +76,14 @@ ERD for portfolio section, currently under construction.
       + `Microsoft.AspNetCore.Identity.EntityFrameWorkCore`
       + `Microsoft.AspNet.Identity.Core`
       + `Microsoft.Extensions.Identity.Core`
-
+    + Seeded the data base with an admin user.
+  + 04/01/2021
+    + Finished it!!! Just fooling.
+    + Brought in the following dependencies:
+      + `Azure.Extensions.AspNetCore.Configuration.Secrets`
+    + Created a login page and secret lair page for admin purposes.
+    + Set permissions for admin lair.
+    + Wrote CRUD actions for projects in the AdminRepository.
 
 ---
 
@@ -63,4 +95,5 @@ ERD for portfolio section, currently under construction.
 ---
 
 ## Acknowledgements
-+ [Bootstrap nav tutorial](https://www.youtube.com/watch?v=l2dzzuxvmxk)
+
+
