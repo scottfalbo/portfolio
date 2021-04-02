@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Portfolio.Models;
-using Portfolio.Models.Interfaces;
+using Portfolio.Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +26,6 @@ namespace Portfolio.Pages
             try
             {
                 ProjectList = await _adminContext.GetProjects();
-                Console.WriteLine("whatever");
             }
             catch (Exception e)
             {

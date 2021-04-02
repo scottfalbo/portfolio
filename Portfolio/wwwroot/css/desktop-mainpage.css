@@ -1,6 +1,14 @@
 ﻿
 @media (min-width: 769px){
 
+    body {
+        background-color: #121212;
+    }
+
+    header nav {
+        background-color: #000;
+    }
+
     .main-container {
         display: grid;
         grid-template-columns: 1fr;
@@ -65,5 +73,8 @@
         flex-flow: row wrap;
     }
 
+    footer {
+        background-color: #000;
+    }
 
 }

@@ -10,6 +10,8 @@ using Portfolio.Auth.Models;
 using Portfolio.Auth.Models.Interfaces;
 using Portfolio.Auth.Models.Interfaces.Services;
 using Portfolio.Data;
+using Portfolio.Models.Interface;
+using Portfolio.Models.Interface.Services;
 using Portfolio.Models.Interfaces;
 using Portfolio.Models.Interfaces.Services;
 using System;
@@ -65,6 +67,7 @@ namespace Portfolio
             );
 
             services.AddTransient<IAdmin, AdminRepository>();
+            services.AddTransient<IArtAdmin, ArtAdminRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,9 +11,9 @@ html {
 }
 
 body {
-    background-color: #121212;
     margin: auto;
     min-width: 380px;
+
 }
 
 main {
@@ -23,9 +23,13 @@ main {
 @media (max-width: 768px) {
     body {
         max-width: 540px;
+        background-color: #000;
+    }
+    footer {
+        background-color: #121212;
+        border-radius: 10px;
     }
 }
-
 
 .header {
     font-family: 'Jura', sans-serif;
@@ -51,8 +55,6 @@ footer {
     color: #526d4b;
     padding: 5px;
     margin-bottom: 8px;
-    background-color: #121212;
-    border-radius: 10px;
 }
 
 footer li {
