@@ -36,8 +36,6 @@ namespace Portfolio.Auth.Models.Interfaces.Services
             if (result.Succeeded)
             {
                 var user = await UserManager.FindByNameAsync(userName);
-
-
                 return new ApplicationUserDto
                 {
                     Id = user.Id,
@@ -46,7 +44,7 @@ namespace Portfolio.Auth.Models.Interfaces.Services
                     Roles = await UserManager.GetRolesAsync(user),
                 };
             }
-            throw new Exception($"womp womp");
+            return null;
         }
 
         /// <summary>
