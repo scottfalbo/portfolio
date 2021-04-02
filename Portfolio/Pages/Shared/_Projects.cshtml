@@ -5,20 +5,20 @@
 
 <div class="project-inner">
 
-    @foreach (var item in Model.ProjectList)
+    @foreach (var project in Model.ProjectList)
     {
         <article class="project-container">
-            <h3>@item.Title</h3>
+            <h3>@project.Title</h3>
             <figure>
-                <img src="@item.SourceURL" alt="project photo"/>
-                <figcaption class="project-caption">@item.Description</figcaption>
+                <img src="@project.SourceURL" alt="@project.AltText"/>
+                <figcaption class="project-caption">@project.Description</figcaption>
                 <div class="project-link">
-                    <a href="@item.RepoLink" target="_blank">&lt;GitHub Repo&gt;</a>
+                    <a href="@project.RepoLink" target="_blank">&lt;GitHub Repo&gt;</a>
                 </div>
-                @if (@item.DeployedLink != null)
+                @if (project.DeployedLink != null)
                 {
                     <div class="project-link">
-                        <a href="@item.DeployedLink" target="_blank">&lt;Deployed Site&gt;</a>
+                        <a href="@project.DeployedLink" target="_blank">&lt;Deployed Site&gt;</a>
                     </div>
                 }
             </figure>

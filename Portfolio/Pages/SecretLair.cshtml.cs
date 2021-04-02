@@ -23,6 +23,8 @@ namespace Portfolio.Pages
         }
 
         public List<Project> ProjectList { get; set; }
+
+
         public async Task OnGet()
         {
             try
@@ -33,6 +35,11 @@ namespace Portfolio.Pages
             {
                 RedirectToPage("Opps", new { error = e });
             }
+        }
+
+        public async Task<IActionResult> OnPostAsync(string userName, string password)
+        {
+            return null;
         }
     }
 }

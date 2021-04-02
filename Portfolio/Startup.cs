@@ -35,7 +35,7 @@ namespace Portfolio
         {
             services.AddRazorPages(options =>
             {
-             
+                //options go here
             });
 
             services.AddDbContext<PortfolioDbContext>(options =>
