@@ -37,9 +37,9 @@ namespace Portfolio.Pages
             }
         }
 
-        public async Task<IActionResult> OnPostAsync(string userName, string password)
-        {
-            return null;
-        }
+        //public async Task<IActionResult> OnPostAsync(string userName, string password)
+        //{
+        //    return null;
+        //}
     }
 }

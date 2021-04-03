@@ -26,7 +26,7 @@ namespace Portfolio.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            SeedRole(modelBuilder, "admin", "create", "read", "update", "delete");
+            //SeedRole(modelBuilder, "admin", "create", "read", "update", "delete");
 
             string id = "a18be8c0-aa67-4af8-bd17-00bd6346e575";
 

@@ -14,13 +14,14 @@
                     <input type="text" name="sourceurl" placeholder="@project.SourceURL" />
                     <input type="text" name="alttext" placeholder="@project.AltText" />
                 </div>
-                <div><input type="text" name="description" placeholder="@project.Description" /></div>
+                <div><textarea type="text" name="description" cols="45" rows="5">@project.Description</textarea></div>
                 <div><input type="text" name="repolink" placeholder="@project.RepoLink" /></div>
                 <div><input type="text" name="deployedlink" placeholder="@project.DeployedLink" /></div>
-                <div><input type="submit" value="Update" /></div>
+                <div><input class="admin-button" type="submit" value="Update" /></div>
             </form>
             <form asp-page-handler="delete" asp-route-Id="@project.Id" method="post">
-
+                <input type="hidden" value="@project.Id" />
+                <input class="admin-button" type="submit" value="Remove" />
             </form>
         </div>
     }

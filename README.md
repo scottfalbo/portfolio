@@ -84,6 +84,9 @@ ERD for portfolio section, currently under construction.
     + Created a login page and secret lair page for admin purposes.
     + Set permissions for admin lair.
     + Wrote CRUD actions for projects in the AdminRepository.
+    + Added forms to the admin page to update and delete projects.
+  + 04/02/2021
+    + x
 
 ---
 

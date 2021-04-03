@@ -29,7 +29,9 @@ namespace Portfolio.Models.Interfaces.Services
                 SourceURL = project.SourceURL,
                 Description = project.Description,
                 RepoLink = project.RepoLink,
-                DeployedLink = project.DeployedLink
+                DeployedLink = project.DeployedLink,
+                Order = project.Order,
+                AltText = project.AltText
             };
             _context.Entry(newProject).State = EntityState.Added;
             await _context.SaveChangesAsync();
@@ -50,7 +52,9 @@ namespace Portfolio.Models.Interfaces.Services
                     SourceURL = y.SourceURL,
                     Description = y.Description,
                     RepoLink = y.RepoLink,
-                    DeployedLink = y.DeployedLink
+                    DeployedLink = y.DeployedLink,
+                    AltText = y.AltText,
+                    Order = y.Order
                 })
                 .FirstOrDefaultAsync();
         }
@@ -68,7 +72,9 @@ namespace Portfolio.Models.Interfaces.Services
                     SourceURL = x.SourceURL,
                     Description = x.Description,
                     RepoLink = x.RepoLink,
-                    DeployedLink = x.DeployedLink
+                    DeployedLink = x.DeployedLink,
+                    AltText = x.AltText,
+                    Order = x.Order
                 })
                 .ToListAsync();
         }
@@ -88,7 +94,9 @@ namespace Portfolio.Models.Interfaces.Services
                 SourceURL = project.SourceURL,
                 Description = project.Description,
                 RepoLink = project.RepoLink,
-                DeployedLink = project.DeployedLink
+                DeployedLink = project.DeployedLink,
+                AltText = project.AltText,
+                Order = project.Order
             };
 
             _context.Entry(newProject).State = EntityState.Modified;
