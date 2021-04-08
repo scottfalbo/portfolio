@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Models
 {
-    public class Drawings
+    public class Design
     {
         public int Id { get; set; }
         public string Title { get; set; }
         [Required]
+        public string Description { get; set; }
         public string ImageURL { get; set; }
         public int Order { get; set; }
     }
