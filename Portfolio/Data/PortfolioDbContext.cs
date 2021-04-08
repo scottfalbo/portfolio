@@ -15,6 +15,9 @@ namespace Portfolio.Data
     {
         public DbSet<Project> Projects { get; set; }
         public DbSet<Tattoo> Tattoos { get; set; }
+        public DbSet<Drawing> Drawings { get; set; }
+        public DbSet<Design> Designs { get; set; }
+
         public IConfiguration Configuration { get; }
 
         public PortfolioDbContext(DbContextOptions options, IConfiguration config) : base(options)
