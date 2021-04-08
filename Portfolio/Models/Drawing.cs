@@ -6,19 +6,12 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Models
 {
-    public class Project
+    public class Drawing
     {
         public int Id { get; set; }
-        [Required]
         public string Title { get; set; }
         [Required]
-        public string SourceURL { get; set; }
-        public string AltText { get; set; }
-        [Required]
-        public string Description { get; set; }
-        public string RepoLink { get; set; }
-        public string DeployedLink { get; set; }
-        [Required]
+        public string ImageURL { get; set; }
         public int Order { get; set; }
     }
 }

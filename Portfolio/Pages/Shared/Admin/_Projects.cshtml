@@ -1,19 +1,28 @@
 ﻿
+
 <section>
-    @foreach (var item in Model.ProjectList)
+    @foreach (var project in Model.ProjectList)
     {
-        <article class="project-container">
-            <h3>@item.Title</h3>
-            <figure>
-                <img src="@item.SourceURL" alt="project photo" />
-                <figcaption class="project-caption">@item.Description</figcaption>
-                <div class="project-link">
-                    <a href="@item.RepoLink" target="_blank">&lt;GitHub Repo&gt;</a>
+        <div class="project-admin-card">
+            <form method="post">
+                <div>
+                    <div><input type="text" name="title" placeholder="@project.Title" /></div>
+                    <div><input type="text" name="order" placeholder="@project.Order" /></div>
                 </div>
-                <div class="project-link">
-                    <a href="@item.DeployedLink" target="_blank">&lt;Deployed Site&gt;</a>
+                <div>
+                    <figure><img src="@project.SourceURL" /></figure>
+                    <input type="text" name="sourceurl" placeholder="@project.SourceURL" />
+                    <input type="text" name="alttext" placeholder="@project.AltText" />
                 </div>
-            </figure>
-        </article>
+                <div><textarea type="text" name="description" cols="45" rows="5">@project.Description</textarea></div>
+                <div><input type="text" name="repolink" placeholder="@project.RepoLink" /></div>
+                <div><input type="text" name="deployedlink" placeholder="@project.DeployedLink" /></div>
+                <div><input class="admin-button" type="submit" value="Update" /></div>
+            </form>
+            <form asp-page-handler="delete" asp-route-Id="@project.Id" method="post">
+                <input type="hidden" value="@project.Id" />
+                <input class="admin-button" type="submit" value="Remove" />
+            </form>
+        </div>
     }
 </section>

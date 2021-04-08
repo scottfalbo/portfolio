@@ -38,3 +38,35 @@ main {
     font-size: 1.2em;
     color: #b2f1bb;
 }
+
+.project-admin {
+    padding: 10px;
+}
+
+.project-admin-card {
+    padding: 10px;
+    width: 95%;
+    margin: 10px auto;
+    background-color: #121212;
+    border-radius: 10px;
+}
+
+
+.project-admin-card figure img {
+    width: 50%;
+}
+
+.project-admin-card input {
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+}
+.project-admin-card textarea {
+    width: 80%;
+}
+
+.admin-button {
+    background-color: #000;
+    color: #b6ff00;
+    width: 60%;
+}
