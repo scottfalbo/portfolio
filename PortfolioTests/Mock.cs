@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Portfolio.Models;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace PortfolioTests
 {
@@ -37,6 +40,37 @@ namespace PortfolioTests
             _connection?.Dispose();
         }
 
+        protected async Task CreateProject(Project project)
+        {
+            Project newProject = new Project()
+            {
+                Title = project.Title,
+                SourceURL = project.SourceURL,
+                Description = project.Description,
+                RepoLink = project.RepoLink,
+                DeployedLink = project.DeployedLink,
+                Order = project.Order,
+                AltText = project.AltText
+            };
+            _db.Entry(newProject).State = EntityState.Added;
+            await _db.SaveChangesAsync();
+        }
 
+        protected async Task<Project> GetProject(int id)
+        {
+            return await _db.Projects
+                .Where(x => x.Id == id)
+                .Select(y => new Project
+                {
+                    Title = y.Title,
+                    SourceURL = y.SourceURL,
+                    Description = y.Description,
+                    RepoLink = y.RepoLink,
+                    DeployedLink = y.DeployedLink,
+                    AltText = y.AltText,
+                    Order = y.Order
+                })
+                .FirstOrDefaultAsync();
+        }
     }
 }
