@@ -20,6 +20,8 @@ namespace Portfolio.Data
 
         public IConfiguration Configuration { get; }
 
+        public PortfolioDbContext(DbContextOptions options) : base(options){}
+
         public PortfolioDbContext(DbContextOptions options, IConfiguration config) : base(options)
         {
             Configuration = config;
