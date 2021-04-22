@@ -88,6 +88,8 @@ ERD for portfolio section, currently under construction.
   + 04/09/2021
     + Added Codewars rank to main page.
     + Created models and pages for art portal.
+  + 04/20/21
+    + Created mock sql database for unit testing.
 
 ---
 
