@@ -35,6 +35,15 @@ namespace PortfolioTests
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void Do_You_Even_Previous_Bro()
+        {
+            Gallery<int> testGallery = CreateGallery();
+            int expected = 2;
+            int actual = testGallery.Tail.Prev.Value;
+            Assert.Equal(expected, actual);
+        }
+
         /// <summary>
         /// Helper method to instantiate a Gallary object
         /// </summary>

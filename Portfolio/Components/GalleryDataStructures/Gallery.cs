@@ -52,6 +52,7 @@ namespace Portfolio.Components.GalleryDataStructures
             else
             {
                 image.Next = Head;
+                image.Next.Prev = image;
                 Head = image;
             }
             Counter++;
