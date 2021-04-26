@@ -17,7 +17,7 @@ namespace Portfolio.Components.GalleryDataStructures
         public Image() { }
 
         /// <summary>
-        /// Constructor to create an Image with a value of type T
+        /// Constructor to instantiate an Image with a value of type T
         /// </summary>
         /// <param name="value"> Image value </param>
         public Image(T value)
