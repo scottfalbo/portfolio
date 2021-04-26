@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Components.GalleryDataStructures
 {
-    public class Gallery<T>
+    public class Gallery<T> : IEnumerable<T>
     {
         public Image<T> Head { get; set; }
         public Image<T> Tail { get; set; }
@@ -40,9 +40,28 @@ namespace Portfolio.Components.GalleryDataStructures
             Counter = 1;
         }
 
-        // insert new image in front
+        public void Insert (T value)
+        {
+            Image<T> image = new Image<T>(value);
+
+            if (Head == null)
+            {
+                Head = image;
+                Tail = Head;
+            }
+            else
+            {
+                image.Next = Head;
+                Head = image;
+            }
+            Counter++;
+        }
 
         // delete image
+
+
+        public IEnumerator<T> GetEnumerator() => new GalleryEnumerator<T>(Head);
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     public class  GalleryEnumerator<T> : IEnumerator<T>
