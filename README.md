@@ -92,8 +92,10 @@ ERD for portfolio section, currently under construction.
     + Created mock sql database for unit testing.
   + 04/26/2021
     + Built data structures art gallery component.
-      + `Gallery<T>()` Doubly LinkedList
-      + `Image<T>()` Node
+      + `Gallery<T>()` Doubly LinkedList.
+      + `Image<T>()` Node.
+    + Wrote unit tests for `Gallery<T>()`.
+    + Made `Gallery<T>()` IEnumerable.
 
 ---
 

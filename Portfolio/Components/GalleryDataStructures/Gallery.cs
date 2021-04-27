@@ -62,8 +62,6 @@ namespace Portfolio.Components.GalleryDataStructures
             Counter++;
         }
 
-        // delete image
-
         /// <summary>
         /// Method to make the Gallery enumerable
         /// </summary>
