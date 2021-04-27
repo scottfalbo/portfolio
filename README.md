@@ -107,5 +107,5 @@ ERD for portfolio section, currently under construction.
 ---
 
 ## Acknowledgements
-+ [Reference for Enumerated LinkedList](https://gist.github.com/daramasala/3c1052f189c14759597cf4667670af72)
+
 
