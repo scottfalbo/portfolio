@@ -9,7 +9,7 @@ namespace PortfolioTests
     public class GalleryStructTests
     {
         [Fact]
-        public void Gallery_Can_Add_Images_Objects()
+        public void Can_You_Even_Add_Image_Objects_Bro()
         {
             Gallery<int> testGallery = CreateGallery();
             int expected = 5;
@@ -18,7 +18,7 @@ namespace PortfolioTests
         }
 
         [Fact]
-        public void Gallery_Head_Is_Correct()
+        public void Is_Your_Head_Even_Correct_Bro()
         {
             Gallery<int> testGallery = CreateGallery();
             int expected = 5;
@@ -27,7 +27,7 @@ namespace PortfolioTests
         }
 
         [Fact]
-        public void Gallery_Tail_Is_Correct()
+        public void Is_Your_Tail_Even_Correct_Bro()
         {
             Gallery<int> testGallery = CreateGallery();
             int expected = 1;
@@ -41,6 +41,17 @@ namespace PortfolioTests
             Gallery<int> testGallery = CreateGallery();
             int expected = 2;
             int actual = testGallery.Tail.Prev.Value;
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Do_You_Even_Enumerate_Bro()
+        {
+            Gallery<int> testGallery = CreateGallery();
+            int expected = 15;
+            int actual = 0;
+            foreach (var item in testGallery)
+                actual += item;
             Assert.Equal(expected, actual);
         }
 

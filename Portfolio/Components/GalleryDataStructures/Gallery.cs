@@ -40,6 +40,10 @@ namespace Portfolio.Components.GalleryDataStructures
             Counter = 1;
         }
 
+        /// <summary>
+        /// Instantiate and insert a new Image object into the front of the Gallery
+        /// </summary>
+        /// <param name="value"></param>
         public void Insert (T value)
         {
             Image<T> image = new Image<T>(value);
@@ -60,37 +64,23 @@ namespace Portfolio.Components.GalleryDataStructures
 
         // delete image
 
+        /// <summary>
+        /// Method to make the Gallery enumerable
+        /// </summary>
+        /// <returns> IEnumerator of Gallery </returns>
+        public IEnumerator<T> GetEnumerator()
+        {
+            if (Counter == 0) yield break;
 
-        public IEnumerator<T> GetEnumerator() => new GalleryEnumerator<T>(Head);
+            Image<T> current = Head;
+            while (current != null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
+        }
+
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
-    public class  GalleryEnumerator<T> : IEnumerator<T>
-    {
-        private Image<T> current;
-
-        public GalleryEnumerator(Image<T> current)
-        {
-            this.current = current;
-        }
-
-        public T Current => current.Value;
-        object IEnumerator.Current => Current;
-
-        public bool MoveNext()
-        {
-            if (current == null) return false;
-            current = current.Next;
-            return (current != null);
-        }
-
-        public void Reset()
-        {
-            throw new NotImplementedException();
-        }
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-    }
 }
