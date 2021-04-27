@@ -88,8 +88,14 @@ ERD for portfolio section, currently under construction.
   + 04/09/2021
     + Added Codewars rank to main page.
     + Created models and pages for art portal.
-  + 04/20/21
+  + 04/20/2021
     + Created mock sql database for unit testing.
+  + 04/26/2021
+    + Built data structures art gallery component.
+      + `Gallery<T>()` Doubly LinkedList.
+      + `Image<T>()` Node.
+    + Wrote unit tests for `Gallery<T>()`.
+    + Made `Gallery<T>()` IEnumerable.
 
 ---
 
@@ -101,5 +107,5 @@ ERD for portfolio section, currently under construction.
 ---
 
 ## Acknowledgements
-
++ [Reference for Enumerated LinkedList](https://gist.github.com/daramasala/3c1052f189c14759597cf4667670af72)
 
