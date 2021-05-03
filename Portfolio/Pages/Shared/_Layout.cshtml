@@ -16,7 +16,7 @@
     <header class="header">
         <div class="container">
             <nav class="navbar navbar-expand-sm navbar-dark">
-                <a class="navbar-brand" data-toggle="collapse" data-target="#collapsingMenu">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
                     <h1 class="page-title">Scott Falbo</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsingMenu">
@@ -25,11 +25,11 @@
                 <div class="collapse navbar-collapse" id="collapsingMenu">
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link custom-link" asp-area="" asp-page="/Index"><p class="menu-button">&lt;Code&gt;</p></a>
+                            <a class="nav-link custom-link" asp-area="" asp-page="/Code/ScottFalboCode"><p class="menu-button">&lt;Code&gt;</p></a>
                         </li>
-                        @*<li class="nav-item">
-                            <a class="nav-link custom-link" asp-area="" asp-page="/Art"><p class="menu-button">&lt;Art&gt;</p></a>
-                        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" asp-area="" asp-page="/Art/ScottFalboArt"><p class="menu-button">&lt;Tattoos&gt;</p></a>
+                        </li>
                         <li class="nav-item">
                             <a href="mailto:scottfalboart@gmail.com" class="nav-link custom-link"><p class="menu-button">&lt;Contact&gt;</p></a>
                         </li>
@@ -49,9 +49,10 @@
             <div class="container">
                 <nav>
                     <ul>
-                        <li><a asp-area="" asp-page="/Index">&lt;Code&gt;</a></li>
-                        @*<li><a asp-area="" asp-page="/Art">&lt;Art&gt;</a></li>*@
-                    <li><a href="mailto:scottfalboart@gmail.com">&lt;Contact&gt;</a></li>
+                        <li><a asp-area="" asp-page="/Index">&lt;Home&gt;</a></li>
+                        <li><a asp-area="" asp-page="/Code/ScottFalboCode">&lt;Code&gt;</a></li>
+                        <li><a asp-area="" asp-page="/Art/ScottFalboArt">&lt;Tattoos&gt;</a></li>
+                        <li><a href="mailto:scottfalboart@gmail.com">&lt;Contact&gt;</a></li>
                     </ul>
                 </nav>
                 &copy; 2021 - Scott Falbo

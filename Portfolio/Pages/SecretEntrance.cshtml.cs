@@ -36,7 +36,7 @@ namespace Portfolio.Pages
             var user = await service.Authenticate(newUser.UserName, newUser.Password);
 
             if (user != null)
-                return Redirect("SecretLair");
+                return Redirect("Admin/SecretLair");
             return Redirect("Opps");
         }
     }

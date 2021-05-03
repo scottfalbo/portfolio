@@ -86,7 +86,6 @@ ERD for portfolio section, currently under construction.
     + Wrote CRUD actions for projects in the AdminRepository.
     + Added forms to the admin page to update and delete projects.
   + 04/09/2021
-    + Added Codewars rank to main page.
     + Created models and pages for art portal.
   + 04/20/2021
     + Created mock sql database for unit testing.
@@ -96,6 +95,10 @@ ERD for portfolio section, currently under construction.
       + `Image<T>()` Node.
     + Wrote unit tests for `Gallery<T>()`.
     + Made `Gallery<T>()` IEnumerable.
+  + 05/03/2021
+    + Refactored the front end layout to include secondary drop down menus in the art and admin sections.
+    + Moved the content on the main page to appropriate sections.
+    
 
 ---
 
