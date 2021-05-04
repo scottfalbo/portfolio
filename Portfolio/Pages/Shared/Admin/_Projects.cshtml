@@ -1,4 +1,4 @@
-﻿
+﻿@model Portfolio.Pages.Admin.ProjectLairModel
 
 <section>
     @foreach (var project in Model.ProjectList)
@@ -6,17 +6,29 @@
         <div class="project-admin-card">
             <form method="post">
                 <div>
-                    <div><input type="text" name="title" placeholder="@project.Title" /></div>
-                    <div><input type="text" name="order" placeholder="@project.Order" /></div>
+                    <div>
+                        <input type="text" asp-for="Project.Title" class="form-control" placeholder="@project.Title" value="@project.Title"/>
+                    </div>
+                    <div>
+                        <input type="text" asp-for="Project.Order" class="form-control" placeholder="@project.Order" value="@project.Order"/>
+                    </div>
                 </div>
                 <div>
                     <figure><img src="@project.SourceURL" /></figure>
-                    <input type="text" name="sourceurl" placeholder="@project.SourceURL" />
-                    <input type="text" name="alttext" placeholder="@project.AltText" />
+                    <input type="text" asp-for="Project.SourceURL" class="form-control" placeholder="@project.SourceURL" value="@project.SourceURL"/>
+                    <input type="text" asp-for="Project.AltText" class="form-control" placeholder="@project.AltText" value="@project.AltText" />
                 </div>
-                <div><textarea type="text" name="description" cols="45" rows="5">@project.Description</textarea></div>
-                <div><input type="text" name="repolink" placeholder="@project.RepoLink" /></div>
-                <div><input type="text" name="deployedlink" placeholder="@project.DeployedLink" /></div>
+                <div>
+                    @Html.TextAreaFor(x => x.Project.Description, new {@class="form-control"})
+                    @Html.ValidationMessageFor(x => x.Project.Description)
+                </div>
+                <div>
+                    <input type="text" asp-for="Project.RepoLink" class="form-control" placeholder="@project.RepoLink" value="@project.RepoLink"/>
+                </div>
+                <div>
+                    <input type="text" asp-for="Project.DeployedLink" class="form-control" placeholder="@project.DeployedLink" value="@project.DeployedLink"/>
+                </div>
+                <input type="hidden" asp-for="Project.Id" value="@project.Id" />
                 <div><input class="admin-button" type="submit" value="Update" /></div>
             </form>
             <form asp-page-handler="delete" asp-route-Id="@project.Id" method="post">

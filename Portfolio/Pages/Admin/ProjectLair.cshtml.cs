@@ -22,6 +22,8 @@ namespace Portfolio.Pages.Admin
 
         public List<Project> ProjectList { get; set; }
 
+        [BindProperty]
+        public Project Project { get; set; }
 
         public async Task OnGet()
         {
@@ -35,6 +37,24 @@ namespace Portfolio.Pages.Admin
             }
         }
 
+        public ActionResult OnPost (Project project)
+        {
+            Project updatedProject = new Project()
+            {
+                Id = Project.Id,
+                Title = Project.Title,
+                Order = Project.Order,
+                SourceURL = Project.SourceURL,
+                AltText = Project.AltText,
+                Description = Project.Description,
+                RepoLink = Project.RepoLink,
+                DeployedLink = Project.DeployedLink
+            };
+ 
+            Console.WriteLine("breakpoint");
+
+            return Redirect("/Admin/ProjectLair");
+        }
 
     }
 }
