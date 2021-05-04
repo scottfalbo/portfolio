@@ -86,5 +86,10 @@ namespace Portfolio.Pages.Admin
             return Redirect("/Admin/ProjectLair");
         }
 
+        public async Task<IActionResult> OnPostAddImage()
+        {
+
+        }
+
     }
 }

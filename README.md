@@ -99,6 +99,10 @@ ERD for portfolio section, currently under construction.
     + Refactored the front end layout to include secondary drop down menus in the art and admin sections.
     + Moved the content on the main page to appropriate sections.
     + Made forms and set up CRUD actions for code projects portfolio.
+    + Installed the following packages:
+      + `Azure.Storage.Blobs`
+      + `Azure.Storage.Files.Shares`
+      + `Azure.Storage.Queues`
 
 ---
 
