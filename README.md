@@ -98,7 +98,7 @@ ERD for portfolio section, currently under construction.
   + 05/03/2021
     + Refactored the front end layout to include secondary drop down menus in the art and admin sections.
     + Moved the content on the main page to appropriate sections.
-    
+    + Made forms and set up CRUD actions for code projects portfolio.
 
 ---
 

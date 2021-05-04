@@ -13,7 +13,7 @@ namespace Portfolio.Models.Interface
         public Task CreateProject(Project project);
         public Task<Project> GetProject(int id);
         public Task<List<Project>> GetProjects();
-        public Task UpdateProject(int id, Project project);
+        public Task UpdateProject(Project project);
         public Task DeleteProject(int id);
     }
 }
