@@ -37,8 +37,11 @@ namespace Portfolio.Pages.Admin
             }
         }
 
-        public ActionResult OnPost (Project project)
+        public async Task<IActionResult> OnPost (Project project)
         {
+            if (project.Description == null)
+                Project.Description = (await _adminContext.GetProject(3)).Description;
+
             Project updatedProject = new Project()
             {
                 Id = Project.Id,
@@ -50,8 +53,8 @@ namespace Portfolio.Pages.Admin
                 RepoLink = Project.RepoLink,
                 DeployedLink = Project.DeployedLink
             };
- 
-            Console.WriteLine("breakpoint");
+
+            await _adminContext.UpdateProject(updatedProject);
 
             return Redirect("/Admin/ProjectLair");
         }

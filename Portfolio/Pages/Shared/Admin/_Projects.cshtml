@@ -19,8 +19,7 @@
                     <input type="text" asp-for="Project.AltText" class="form-control" placeholder="@project.AltText" value="@project.AltText" />
                 </div>
                 <div>
-                    @Html.TextAreaFor(x => x.Project.Description, new {@class="form-control"})
-                    @Html.ValidationMessageFor(x => x.Project.Description)
+                    <textarea type="text" cols="45" rows="5" asp-for="Project.Description" class="form-control" placeholder="@project.Description"></textarea>
                 </div>
                 <div>
                     <input type="text" asp-for="Project.RepoLink" class="form-control" placeholder="@project.RepoLink" value="@project.RepoLink"/>
@@ -28,7 +27,7 @@
                 <div>
                     <input type="text" asp-for="Project.DeployedLink" class="form-control" placeholder="@project.DeployedLink" value="@project.DeployedLink"/>
                 </div>
-                <input type="hidden" asp-for="Project.Id" value="@project.Id" />
+                <input type="hidden" asp-for="Project.Id" value="@project.Id"/>
                 <div><input class="admin-button" type="submit" value="Update" /></div>
             </form>
             <form asp-page-handler="delete" asp-route-Id="@project.Id" method="post">

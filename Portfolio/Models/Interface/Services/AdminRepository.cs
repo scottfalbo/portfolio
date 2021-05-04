@@ -48,6 +48,7 @@ namespace Portfolio.Models.Interfaces.Services
                 .Where(x => x.Id == id)
                 .Select(y => new Project
                 {
+                    Id = y.Id,
                     Title = y.Title,
                     SourceURL = y.SourceURL,
                     Description = y.Description,
@@ -68,6 +69,7 @@ namespace Portfolio.Models.Interfaces.Services
             return await _context.Projects
                 .Select(x => new Project
                 {
+                    Id = x.Id,
                     Title = x.Title,
                     SourceURL = x.SourceURL,
                     Description = x.Description,
@@ -85,11 +87,11 @@ namespace Portfolio.Models.Interfaces.Services
         /// <param name="id"> project id </param>
         /// <param name="project"> Project object from form input </param>
         /// <returns> no return </returns>
-        public async Task UpdateProject(int id, Project project)
+        public async Task UpdateProject(Project project)
         {
             Project newProject = new Project()
             {
-                Id = id,
+                Id = project.Id,
                 Title = project.Title,
                 SourceURL = project.SourceURL,
                 Description = project.Description,
