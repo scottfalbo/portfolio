@@ -59,5 +59,11 @@ namespace Portfolio.Pages.Admin
             return Redirect("/Admin/ProjectLair");
         }
 
+        public async Task<IActionResult> OnPostDelete()
+        {
+            await _adminContext.DeleteProject(Project.Id);
+            return Redirect("/Admin/ProjectLair");
+        }
+
     }
 }

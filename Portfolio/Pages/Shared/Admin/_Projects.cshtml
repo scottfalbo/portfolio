@@ -31,7 +31,7 @@
                 <div><input class="admin-button" type="submit" value="Update" /></div>
             </form>
             <form asp-page-handler="delete" asp-route-Id="@project.Id" method="post">
-                <input type="hidden" value="@project.Id" />
+                <input type="hidden" asp-for="Project.Id" value="@project.Id" />
                 <input class="admin-button" type="submit" value="Remove" />
             </form>
         </div>
