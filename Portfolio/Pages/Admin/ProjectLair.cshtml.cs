@@ -12,12 +12,10 @@ namespace Portfolio.Pages.Admin
     public class ProjectLairModel : PageModel
     {
         public IAdmin _adminContext;
-        public IArtAdmin _artAdminContext;
 
-        public ProjectLairModel(IAdmin context, IArtAdmin artAdmin)
+        public ProjectLairModel(IAdmin context)
         {
             _adminContext = context;
-            _artAdminContext = artAdmin;
         }
 
         public List<Project> ProjectList { get; set; }
@@ -39,8 +37,29 @@ namespace Portfolio.Pages.Admin
 
         public async Task<IActionResult> OnPost (Project project)
         {
+            Project newProject = new Project()
+            {
+                Title = Project.Title,
+                Order = Project.Order,
+                SourceURL = Project.SourceURL,
+                AltText = Project.AltText,
+                Description = Project.Description,
+                RepoLink = Project.RepoLink,
+                DeployedLink = Project.DeployedLink
+            };
+            await _adminContext.CreateProject(newProject);
+            return Redirect("/Admin/ProjectLair");
+        }
+
+        /// <summary>
+        /// Update a projects saved data
+        /// </summary>
+        /// <param name="project"> Project object from the form </param>
+        /// <returns> updates DB and redirects in place </returns>
+        public async Task<IActionResult> OnPostEdit (Project project)
+        {
             if (project.Description == null)
-                Project.Description = (await _adminContext.GetProject(3)).Description;
+                Project.Description = (await _adminContext.GetProject(project.Id)).Description;
 
             Project updatedProject = new Project()
             {
@@ -53,12 +72,14 @@ namespace Portfolio.Pages.Admin
                 RepoLink = Project.RepoLink,
                 DeployedLink = Project.DeployedLink
             };
-
             await _adminContext.UpdateProject(updatedProject);
-
             return Redirect("/Admin/ProjectLair");
         }
 
+        /// <summary>
+        /// Delete a project from the database
+        /// </summary>
+        /// <returns> updates DB and redirects in place </returns>
         public async Task<IActionResult> OnPostDelete()
         {
             await _adminContext.DeleteProject(Project.Id);

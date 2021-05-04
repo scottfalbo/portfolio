@@ -4,7 +4,7 @@
     @foreach (var project in Model.ProjectList)
     {
         <div class="project-admin-card">
-            <form method="post">
+            <form asp-page-handler="edit" method="post">
                 <div>
                     <div>
                         <input type="text" asp-for="Project.Title" class="form-control" placeholder="@project.Title" value="@project.Title"/>
