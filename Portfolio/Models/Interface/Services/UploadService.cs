@@ -13,13 +13,14 @@ namespace Portfolio.Models.Interface.Services
     {
         public IConfiguration Configuration { get; }
         public IAdmin _admin;
+
         public UploadService(IConfiguration config, IAdmin admin)
         {
             Configuration = config;
             _admin = admin;
         }
 
-        public async Task<string> UploadImage(IFormFile file)
+        public async Task UploadImage(IFormFile file)
         {
             BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
 
@@ -37,7 +38,14 @@ namespace Portfolio.Models.Interface.Services
             if (!blob.Exists())
                 await blob.UploadAsync(stream, options);
 
-            return blob.Uri.ToString();
+            Project newProject = new Project() 
+            {
+                Title = "new",
+                Description = "new project",
+                SourceURL = blob.Uri.ToString() 
+            };
+
+            await _admin.CreateProject(newProject);
         }
     }
 }

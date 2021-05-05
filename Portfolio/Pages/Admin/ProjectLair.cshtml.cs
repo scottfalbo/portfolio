@@ -94,7 +94,7 @@ namespace Portfolio.Pages.Admin
 
         public async Task<IActionResult> OnPostAddImage(IFormFile file)
         {
-            ImageUri = await _uploadService.UploadImage(file);
+            await _uploadService.UploadImage(file);
             return Redirect("/Admin/ProjectLair");
         }
 

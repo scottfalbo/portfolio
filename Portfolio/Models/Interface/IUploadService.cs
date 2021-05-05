@@ -8,6 +8,6 @@ namespace Portfolio.Models.Interface
 {
     public interface IUploadService
     {
-        Task<string> UploadImage(IFormFile file);
+        Task UploadImage(IFormFile file);
     }
 }
