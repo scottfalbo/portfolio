@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Portfolio.Data;
 using Portfolio.Models.Interface;
 using System;
@@ -11,9 +14,12 @@ namespace Portfolio.Models.Interfaces.Services
     public class AdminRepository : IAdmin
     {
         private readonly PortfolioDbContext _context;
-        public AdminRepository(PortfolioDbContext context)
+        public IConfiguration Configuration { get; }
+
+        public AdminRepository(PortfolioDbContext context, IConfiguration config)
         {
             _context = context;
+            Configuration = config;
         }
 
         /// <summary>
@@ -106,13 +112,20 @@ namespace Portfolio.Models.Interfaces.Services
         }
 
         /// <summary>
-        /// Delete a project from the database
+        /// Delete a project from the database and remove image from azure blob storage
         /// </summary>
         /// <param name="id"> project id </param>
         /// <returns> no return </returns>
         public async Task DeleteProject(int id)
         {
             Project project = await _context.Projects.FindAsync(id);
+
+            var sasToken = Configuration.GetConnectionString("BlobSASToken");
+            Uri uri = new Uri(project.SourceURL);
+            var blobUri = new Uri(uri, project.FileName + sasToken);
+            BlobClient blob = new BlobClient(blobUri);
+            await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots);
+
             _context.Entry(project).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }

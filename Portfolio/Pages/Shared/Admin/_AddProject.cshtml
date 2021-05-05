@@ -1,28 +1,37 @@
 ﻿@model Portfolio.Pages.Admin.ProjectLairModel
 
 <h2> Add New Project</h2>
-
-<form method="post">
-    <div>
+<div>
+    <form asp-page-handler="AddImage" method="post" enctype="multipart/form-data">
+        <label>
+            <input name="file" type="file" />
+            <input type="submit" value="Create Project" />
+        </label>
+    </form>
+</div>
+@*<div>
+    <form method="post">
         <div>
-            <input type="text" asp-for="Project.Title" class="form-control" placeholder="project title" />
+            <div>
+                <input type="text" asp-for="Project.Title" class="form-control" placeholder="project title" />
+            </div>
+            <div>
+                <input type="text" asp-for="Project.Order" class="form-control" placeholder="@Model.ImageUri" value="@Model.ImageUri"/>
+            </div>
         </div>
         <div>
-            <input type="text" asp-for="Project.Order" class="form-control" placeholder="list order" />
+            <input type="text" asp-for="Project.SourceURL" class="form-control" placeholder="image source url" />
+            <input type="text" asp-for="Project.AltText" class="form-control" placeholder="image alt text" />
         </div>
-    </div>
-    <div>
-        <input type="text" asp-for="Project.SourceURL" class="form-control" placeholder="image source url" />
-        <input type="text" asp-for="Project.AltText" class="form-control" placeholder="image alt text" />
-    </div>
-    <div>
-        <textarea type="text" cols="45" rows="5" asp-for="Project.Description" class="form-control" placeholder="description"></textarea>
-    </div>
-    <div>
-        <input type="text" asp-for="Project.RepoLink" class="form-control" placeholder="repo link" />
-    </div>
-    <div>
-        <input type="text" asp-for="Project.DeployedLink" class="form-control" placeholder="deployed link" />
-    </div>
-    <div><input class="admin-button" type="submit" value="Add Project" /></div>
-</form>
+        <div>
+            <textarea type="text" cols="45" rows="5" asp-for="Project.Description" class="form-control" placeholder="description"></textarea>
+        </div>
+        <div>
+            <input type="text" asp-for="Project.RepoLink" class="form-control" placeholder="repo link" />
+        </div>
+        <div>
+            <input type="text" asp-for="Project.DeployedLink" class="form-control" placeholder="deployed link" />
+        </div>
+        <div><input class="admin-button" type="submit" value="Add Project" /></div>
+    </form>
+</div>*@
