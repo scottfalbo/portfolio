@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Models;
@@ -12,16 +13,21 @@ namespace Portfolio.Pages.Admin
     public class ProjectLairModel : PageModel
     {
         public IAdmin _adminContext;
+        public IUploadService _uploadService;
 
-        public ProjectLairModel(IAdmin context)
+        public ProjectLairModel(IAdmin context, IUploadService upload)
         {
             _adminContext = context;
+            _uploadService = upload;
         }
 
         public List<Project> ProjectList { get; set; }
 
         [BindProperty]
         public Project Project { get; set; }
+
+        [BindProperty]
+        public string ImageUri { get; set; }
 
         public async Task OnGet()
         {
@@ -86,9 +92,10 @@ namespace Portfolio.Pages.Admin
             return Redirect("/Admin/ProjectLair");
         }
 
-        public async Task<IActionResult> OnPostAddImage()
+        public async Task<IActionResult> OnPostAddImage(IFormFile file)
         {
-
+            ImageUri = await _uploadService.UploadImage(file);
+            return Redirect("/Admin/ProjectLair");
         }
 
     }

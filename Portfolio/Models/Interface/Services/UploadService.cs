@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +17,27 @@ namespace Portfolio.Models.Interface.Services
         {
             Configuration = config;
             _admin = admin;
+        }
+
+        public async Task<string> UploadImage(IFormFile file)
+        {
+            BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
+
+            await container.CreateIfNotExistsAsync();
+
+            BlobClient blob = container.GetBlobClient(file.FileName);
+
+            using var stream = file.OpenReadStream();
+
+            BlobUploadOptions options = new BlobUploadOptions()
+            { 
+                HttpHeaders = new BlobHttpHeaders() { ContentType = file.ContentType }
+            };
+
+            if (!blob.Exists())
+                await blob.UploadAsync(stream, options);
+
+            return blob.Uri.ToString();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Models.Interface
 {
-    interface IUploadService
+    public interface IUploadService
     {
         Task<string> UploadImage(IFormFile file);
     }

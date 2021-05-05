@@ -72,6 +72,7 @@ namespace Portfolio
 
             services.AddTransient<IAdmin, AdminRepository>();
             services.AddTransient<IArtAdmin, ArtAdminRepository>();
+            services.AddTransient<IUploadService, UploadService>();
 
             services.AddAzureClients(builder =>
             {
