@@ -16,5 +16,6 @@ namespace Portfolio.Models
         public string RepoLink { get; set; }
         public string DeployedLink { get; set; }
         public int Order { get; set; }
+        public string FileName { get; set; }
     }
 }

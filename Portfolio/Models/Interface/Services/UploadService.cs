@@ -20,6 +20,11 @@ namespace Portfolio.Models.Interface.Services
             _admin = admin;
         }
 
+        /// <summary>
+        /// Uploads the image to azure blob storage
+        /// Creates a new project in the database with the new image url as the sourceUrl
+        /// </summary>
+        /// <param name="file"> file to upload </param>
         public async Task UploadImage(IFormFile file)
         {
             BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
@@ -42,10 +47,13 @@ namespace Portfolio.Models.Interface.Services
             {
                 Title = "new",
                 Description = "new project",
-                SourceURL = blob.Uri.ToString() 
+                SourceURL = blob.Uri.ToString() ,
+                FileName = file.FileName
             };
 
             await _admin.CreateProject(newProject);
         }
+
+
     }
 }

@@ -10,7 +10,7 @@ using Portfolio.Data;
 namespace Portfolio.Migrations
 {
     [DbContext(typeof(PortfolioDbContext))]
-    [Migration("20210505022700_init")]
+    [Migration("20210505034334_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,7 +51,7 @@ namespace Portfolio.Migrations
                         new
                         {
                             Id = "a18be8c0-aa67-4af8-bd17-00bd6346e575",
-                            ConcurrencyStamp = "97591166-8639-40e9-aad1-dfd1da95174e",
+                            ConcurrencyStamp = "04ed6929-eb54-455c-b44a-d544597b1ed7",
                             Name = "admin",
                             NormalizedName = "admin"
                         });
@@ -237,13 +237,13 @@ namespace Portfolio.Migrations
                         {
                             Id = "a18be8c0-aa67-4af8-bd17-00bd6346e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8bb0f4a7-471d-4b9a-bce3-ed0196779323",
+                            ConcurrencyStamp = "fa713e44-8ad8-4e18-bf06-689dbd2160f9",
                             Email = "scottfalboart@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "scottfalboart@gmail.com",
                             NormalizedUserName = "Spaceghost",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDvYfZLP7WtTjZsx2miVbFe/Ec28xflSHq5hfr/ehrqxjZ2xeW7uLLMBsXYzcTlEiQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJc53EO4bh+Ng+p46ww1z+uinOQm64qOVCT6DeUxxYXOu6YxF3UOVdUFjyvL6f4uNA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -312,6 +312,9 @@ namespace Portfolio.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Order")

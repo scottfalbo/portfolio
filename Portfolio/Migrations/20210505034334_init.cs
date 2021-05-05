@@ -89,7 +89,8 @@ namespace Portfolio.Migrations
                     Description = table.Column<string>(nullable: true),
                     RepoLink = table.Column<string>(nullable: true),
                     DeployedLink = table.Column<string>(nullable: true),
-                    Order = table.Column<int>(nullable: false)
+                    Order = table.Column<int>(nullable: false),
+                    FileName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -220,17 +221,17 @@ namespace Portfolio.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "a18be8c0-aa67-4af8-bd17-00bd6346e575", "97591166-8639-40e9-aad1-dfd1da95174e", "admin", "admin" });
+                values: new object[] { "a18be8c0-aa67-4af8-bd17-00bd6346e575", "04ed6929-eb54-455c-b44a-d544597b1ed7", "admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be8c0-aa67-4af8-bd17-00bd6346e575", 0, "8bb0f4a7-471d-4b9a-bce3-ed0196779323", "scottfalboart@gmail.com", true, false, null, "scottfalboart@gmail.com", "Spaceghost", "AQAAAAEAACcQAAAAEDvYfZLP7WtTjZsx2miVbFe/Ec28xflSHq5hfr/ehrqxjZ2xeW7uLLMBsXYzcTlEiQ==", null, false, "", false, "Spaceghost" });
+                values: new object[] { "a18be8c0-aa67-4af8-bd17-00bd6346e575", 0, "fa713e44-8ad8-4e18-bf06-689dbd2160f9", "scottfalboart@gmail.com", true, false, null, "scottfalboart@gmail.com", "Spaceghost", "AQAAAAEAACcQAAAAEJc53EO4bh+Ng+p46ww1z+uinOQm64qOVCT6DeUxxYXOu6YxF3UOVdUFjyvL6f4uNA==", null, false, "", false, "Spaceghost" });
 
             migrationBuilder.InsertData(
                 table: "Projects",
-                columns: new[] { "Id", "AltText", "DeployedLink", "Description", "Order", "RepoLink", "SourceURL", "Title" },
-                values: new object[] { -1, "SmallBoi screenshot", null, "SmallBoi is a two player coop platform puzzle game built in Unity.  It has both local and network multiple player options using Photon.", 0, "https://github.com/AmeiliaAndTheSmallBois/SmallBoi/tree/main", "images/smallboi.png", "SmallBoi, The Game" });
+                columns: new[] { "Id", "AltText", "DeployedLink", "Description", "FileName", "Order", "RepoLink", "SourceURL", "Title" },
+                values: new object[] { -1, "SmallBoi screenshot", null, "SmallBoi is a two player coop platform puzzle game built in Unity.  It has both local and network multiple player options using Photon.", null, 0, "https://github.com/AmeiliaAndTheSmallBois/SmallBoi/tree/main", "images/smallboi.png", "SmallBoi, The Game" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
