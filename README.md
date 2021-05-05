@@ -103,6 +103,8 @@ ERD for portfolio section, currently under construction.
       + `Azure.Storage.Blobs`
       + `Azure.Storage.Files.Shares`
       + `Azure.Storage.Queues`
+  + 05/04/2021
+    + Got images uploading to blob storage and saving the image Uri into the project SourceUrl.
 
 ---
 
