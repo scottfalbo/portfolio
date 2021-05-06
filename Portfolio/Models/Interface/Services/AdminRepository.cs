@@ -37,7 +37,8 @@ namespace Portfolio.Models.Interfaces.Services
                 RepoLink = project.RepoLink,
                 DeployedLink = project.DeployedLink,
                 Order = project.Order,
-                AltText = project.AltText
+                AltText = project.AltText,
+                FileName = project.FileName
             };
             _context.Entry(newProject).State = EntityState.Added;
             await _context.SaveChangesAsync();
@@ -61,7 +62,8 @@ namespace Portfolio.Models.Interfaces.Services
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
                     AltText = y.AltText,
-                    Order = y.Order
+                    Order = y.Order,
+                    FileName = y.FileName
                 })
                 .FirstOrDefaultAsync();
         }
@@ -82,7 +84,8 @@ namespace Portfolio.Models.Interfaces.Services
                     RepoLink = x.RepoLink,
                     DeployedLink = x.DeployedLink,
                     AltText = x.AltText,
-                    Order = x.Order
+                    Order = x.Order,
+                    FileName = x.FileName
                 })
                 .ToListAsync();
         }
@@ -104,7 +107,8 @@ namespace Portfolio.Models.Interfaces.Services
                 RepoLink = project.RepoLink,
                 DeployedLink = project.DeployedLink,
                 AltText = project.AltText,
-                Order = project.Order
+                Order = project.Order,
+                FileName = project.FileName
             };
 
             _context.Entry(newProject).State = EntityState.Modified;
@@ -122,12 +126,14 @@ namespace Portfolio.Models.Interfaces.Services
 
             BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
 
-            await container.CreateIfNotExistsAsync();
-
             BlobClient blob = container.GetBlobClient(project.FileName);
 
-            await blob.DeleteIfExistsAsync();
+            //await container.CreateIfNotExistsAsync();
 
+            //BlobClient blob = container.GetBlobClient(project.FileName);
+
+            await blob.DeleteIfExistsAsync();
+            Console.WriteLine("");
             //var sasToken = Configuration.GetConnectionString("BlobSASToken");
             //Uri uri = new Uri(project.SourceURL);
             //var blobUri = new Uri(uri, project.FileName + sasToken);

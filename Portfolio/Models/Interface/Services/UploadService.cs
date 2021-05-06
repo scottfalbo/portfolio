@@ -50,7 +50,7 @@ namespace Portfolio.Models.Interface.Services
                 SourceURL = blob.Uri.ToString() ,
                 FileName = file.FileName
             };
-
+            Console.WriteLine("");
             await _admin.CreateProject(newProject);
         }
 
