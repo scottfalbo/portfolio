@@ -94,7 +94,15 @@ namespace Portfolio.Pages.Admin
 
         public async Task<IActionResult> OnPostAddImage(IFormFile file)
         {
-            await _uploadService.UploadImage(file);
+            await _uploadService.AddProjectImage(file);
+            return Redirect("/Admin/ProjectLair");
+        }
+
+        public async Task<IActionResult> OnPostUpdateImage(IFormFile file)
+        {
+            await _adminContext.DeleteBlobImage(Project.FileName);
+            await _uploadService.UpdateImage(file, Project.Id);
+
             return Redirect("/Admin/ProjectLair");
         }
 
