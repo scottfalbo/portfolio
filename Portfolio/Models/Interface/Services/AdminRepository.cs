@@ -120,11 +120,19 @@ namespace Portfolio.Models.Interfaces.Services
         {
             Project project = await _context.Projects.FindAsync(id);
 
-            var sasToken = Configuration.GetConnectionString("BlobSASToken");
-            Uri uri = new Uri(project.SourceURL);
-            var blobUri = new Uri(uri, project.FileName + sasToken);
-            BlobClient blob = new BlobClient(blobUri);
-            await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots);
+            BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
+
+            await container.CreateIfNotExistsAsync();
+
+            BlobClient blob = container.GetBlobClient(project.FileName);
+
+            await blob.DeleteIfExistsAsync();
+
+            //var sasToken = Configuration.GetConnectionString("BlobSASToken");
+            //Uri uri = new Uri(project.SourceURL);
+            //var blobUri = new Uri(uri, project.FileName + sasToken);
+            //BlobClient blob = new BlobClient(blobUri);
+            //await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots);
 
             _context.Entry(project).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
