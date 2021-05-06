@@ -10,6 +10,7 @@
                 <label>
                     <input name="file" type="file" />
                     <input type="submit" value="Update Image" />
+                    <input type="hidden" asp-for="Project.FileName" value="@project.FileName" />
                     <input type="hidden" asp-for="Project.Id" value="@project.Id" />
                 </label>
             </form>

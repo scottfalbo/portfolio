@@ -110,7 +110,6 @@ namespace Portfolio.Models.Interfaces.Services
             //    Order = project.Order,
             //    FileName = project.FileName
             //};
-
             _context.Entry(project).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
