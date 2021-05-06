@@ -92,12 +92,24 @@ namespace Portfolio.Pages.Admin
             return Redirect("/Admin/ProjectLair");
         }
 
+        /// <summary>
+        /// Uploads image to azure blob
+        /// Instantiates and saves a new project object with image source url
+        /// </summary>
+        /// <param name="file"> input file </param>
+        /// <returns> redirect in place </returns>
         public async Task<IActionResult> OnPostAddImage(IFormFile file)
         {
             await _uploadService.AddProjectImage(file);
             return Redirect("/Admin/ProjectLair");
         }
 
+        /// <summary>
+        /// Uploads the new image, updates the project in the database
+        /// Deletes old image from azure blob storage
+        /// </summary>
+        /// <param name="file"> input file </param>
+        /// <returns> redirects in place </returns>
         public async Task<IActionResult> OnPostUpdateImage(IFormFile file)
         {
             await _adminContext.DeleteBlobImage(Project.FileName);
