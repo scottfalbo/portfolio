@@ -105,6 +105,9 @@ ERD for portfolio section, currently under construction.
       + `Azure.Storage.Queues`
   + 05/04/2021
     + Got images uploading to blob storage and saving the image Uri into the project SourceUrl.
+  + 05/05/2021
+    + Refactored delete project method to also remove the image from azure storage.
+    + Added update image form to the project admin page that uploads the new image, updates the project in the database, and deletes the old image from azure storage.
 
 ---
 

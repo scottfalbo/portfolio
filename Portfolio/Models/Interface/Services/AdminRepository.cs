@@ -37,7 +37,8 @@ namespace Portfolio.Models.Interfaces.Services
                 RepoLink = project.RepoLink,
                 DeployedLink = project.DeployedLink,
                 Order = project.Order,
-                AltText = project.AltText
+                AltText = project.AltText,
+                FileName = project.FileName
             };
             _context.Entry(newProject).State = EntityState.Added;
             await _context.SaveChangesAsync();
@@ -61,7 +62,8 @@ namespace Portfolio.Models.Interfaces.Services
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
                     AltText = y.AltText,
-                    Order = y.Order
+                    Order = y.Order,
+                    FileName = y.FileName
                 })
                 .FirstOrDefaultAsync();
         }
@@ -82,7 +84,8 @@ namespace Portfolio.Models.Interfaces.Services
                     RepoLink = x.RepoLink,
                     DeployedLink = x.DeployedLink,
                     AltText = x.AltText,
-                    Order = x.Order
+                    Order = x.Order,
+                    FileName = x.FileName
                 })
                 .ToListAsync();
         }
@@ -95,19 +98,19 @@ namespace Portfolio.Models.Interfaces.Services
         /// <returns> no return </returns>
         public async Task UpdateProject(Project project)
         {
-            Project newProject = new Project()
-            {
-                Id = project.Id,
-                Title = project.Title,
-                SourceURL = project.SourceURL,
-                Description = project.Description,
-                RepoLink = project.RepoLink,
-                DeployedLink = project.DeployedLink,
-                AltText = project.AltText,
-                Order = project.Order
-            };
-
-            _context.Entry(newProject).State = EntityState.Modified;
+            //Project newProject = new Project()
+            //{
+            //    Id = project.Id,
+            //    Title = project.Title,
+            //    SourceURL = project.SourceURL,
+            //    Description = project.Description,
+            //    RepoLink = project.RepoLink,
+            //    DeployedLink = project.DeployedLink,
+            //    AltText = project.AltText,
+            //    Order = project.Order,
+            //    FileName = project.FileName
+            //};
+            _context.Entry(project).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
@@ -120,14 +123,22 @@ namespace Portfolio.Models.Interfaces.Services
         {
             Project project = await _context.Projects.FindAsync(id);
 
-            var sasToken = Configuration.GetConnectionString("BlobSASToken");
-            Uri uri = new Uri(project.SourceURL);
-            var blobUri = new Uri(uri, project.FileName + sasToken);
-            BlobClient blob = new BlobClient(blobUri);
-            await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots);
+            await DeleteBlobImage(project.FileName);
 
             _context.Entry(project).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Deletes the image from azure storage
+        /// </summary>
+        /// <param name="fileName"> image file name </param>
+        /// <returns> no return </returns>
+        public async Task DeleteBlobImage(string fileName)
+        {
+            BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
+            BlobClient blob = container.GetBlobClient(fileName);
+            await blob.DeleteIfExistsAsync();
         }
     }
 }

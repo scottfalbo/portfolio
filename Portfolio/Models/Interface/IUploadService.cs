@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure.Storage.Blobs;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace Portfolio.Models.Interface
 {
     public interface IUploadService
     {
-        Task UploadImage(IFormFile file);
+        public Task AddProjectImage(IFormFile file);
+        public Task<BlobClient> UploadImage(IFormFile file);
+        public Task UpdateImage(IFormFile file, int id);
     }
 }
