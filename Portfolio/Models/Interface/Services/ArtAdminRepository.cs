@@ -19,42 +19,8 @@ namespace Portfolio.Models.Interface.Services
             _context = context;
             Configuration = config;
         }
-        public Task CreateDrawing()
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task CreateTattoo()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteAllDrawings()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteAllTattoos()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteDrawing(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteTattoo(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Drawing> GetDrawing(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Drawing>> GetDrawings()
+        public Task CreateTattoo(Tattoo tattoo)
         {
             throw new NotImplementedException();
         }
@@ -69,12 +35,47 @@ namespace Portfolio.Models.Interface.Services
             throw new NotImplementedException();
         }
 
-        public Task<Drawing> UpdateDrawing(int id)
+        public Task<Tattoo> UpdateTattoo(Tattoo tattoo)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Tattoo> UpdateTattoo(int id)
+        public Task DeleteTattoo(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAllTattoos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CreateDrawing(Drawing drawing)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Drawing> GetDrawing(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Drawing>> GetDrawings()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Drawing> UpdateDrawing(Drawing drawing)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteDrawing(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAllDrawings()
         {
             throw new NotImplementedException();
         }

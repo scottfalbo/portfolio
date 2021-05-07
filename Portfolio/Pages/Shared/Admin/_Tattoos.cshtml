@@ -16,35 +16,25 @@
                 </form>
             </section>
 
-            <form asp-page-handler="edit" method="post">
-                <div>
+            <div>
+                <form asp-page-handler="Edit" method="post">
                     <div>
-                        <input type="text" asp-for="Project.Title" class="form-control" placeholder="@project.Title" value="@project.Title" />
+                        <input type="text" asp-for="Tattoo.Order" class="form-control" placeholder="@tattoo.Order" value="@tattoo.Order" />
                     </div>
                     <div>
-                        <input type="text" asp-for="Project.Order" class="form-control" placeholder="@project.Order" value="@project.Order" />
+                        <input type="radio" asp-for="Tattoo.Display" class="form-control" value="@tattoo.Display" />
                     </div>
-                </div>
-                <div>
-                    <input type="text" asp-for="Project.SourceURL" class="form-control" placeholder="@project.SourceURL" value="@project.SourceURL" />
-                    <input type="text" asp-for="Project.AltText" class="form-control" placeholder="@project.AltText" value="@project.AltText" />
-                </div>
-                <div>
-                    <textarea type="text" cols="45" rows="5" asp-for="Project.Description" class="form-control" placeholder="@project.Description"></textarea>
-                </div>
-                <div>
-                    <input type="text" asp-for="Project.RepoLink" class="form-control" placeholder="@project.RepoLink" value="@project.RepoLink" />
-                </div>
-                <div>
-                    <input type="text" asp-for="Project.DeployedLink" class="form-control" placeholder="@project.DeployedLink" value="@project.DeployedLink" />
-                </div>
-                <input type="hidden" asp-for="Project.Id" value="@project.Id" />
-                <div><input class="admin-button" type="submit" value="Update" /></div>
-            </form>
-            <form asp-page-handler="delete" asp-route-Id="@project.Id" method="post">
-                <input type="hidden" asp-for="Project.Id" value="@project.Id" />
-                <input class="admin-button" type="submit" value="Remove" />
-            </form>
+                    <input type="hidden" asp-for="Tattoo.Id" value="@tattoo.Id" />
+                    <div><input class="admin-button" type="submit" value="Update" /></div>
+                </form>
+            </div>
+
+            <div>
+                <form asp-page-handler="delete" asp-route-Id="@tattoo.Id" method="post">
+                    <input type="hidden" asp-for="Tattoo.Id" value="@tattoo.Id" />
+                    <input class="admin-button" type="submit" value="Remove" />
+                </form>
+            </div>
         </div>
     }
 </section>
