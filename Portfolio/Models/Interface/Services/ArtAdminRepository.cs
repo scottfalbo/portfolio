@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Portfolio.Data;
 using System;
@@ -30,9 +31,17 @@ namespace Portfolio.Models.Interface.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<Tattoo>> GetTattoos()
+        public async Task<List<Tattoo>> GetTattoos()
         {
-            throw new NotImplementedException();
+            return await _context.Tattoos
+                .Select(x => new Tattoo
+                {
+                    Id = x.Id,
+                    ImageURL = x.ImageURL,
+                    FileName = x.FileName,
+                    Display = x.Display
+                })
+                .ToListAsync();
         }
 
         public Task<Tattoo> UpdateTattoo(Tattoo tattoo)

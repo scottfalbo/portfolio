@@ -32,7 +32,7 @@ namespace Portfolio.Pages.Admin
         {
             try
             {
-                TattooList = await _adminContext.GetTattoos();
+               TattooList = await _adminContext.GetTattoos();
             }
             catch (Exception e)
             {
