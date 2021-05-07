@@ -67,5 +67,10 @@ namespace Portfolio.Models.Interface.Services
         {
             return null;
         }
+
+        public Task DeleteBlobImage(string fileName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

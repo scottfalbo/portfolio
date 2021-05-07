@@ -26,5 +26,7 @@ namespace Portfolio.Models.Interface
         public Task<Project> UpdateDrawing(int id);
         public Task DeleteDrawing(int id);
         public Task DeleteAllDrawings();
+
+        public Task DeleteBlobImage(string fileName);
     }
 }
