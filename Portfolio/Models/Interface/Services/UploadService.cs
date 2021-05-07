@@ -63,7 +63,8 @@ namespace Portfolio.Models.Interface.Services
                 Title = "new",
                 Description = "new project",
                 SourceURL = blob.Uri.ToString(),
-                FileName = file.FileName
+                FileName = file.FileName,
+                Display = false
             };
             await _admin.CreateProject(newProject);
         }
