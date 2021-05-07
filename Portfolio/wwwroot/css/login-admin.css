@@ -46,23 +46,54 @@ main {
 .project-admin-card {
     padding: 10px;
     width: 95%;
+    max-width: 460px;
     margin: 10px auto;
     background-color: #121212;
     border-radius: 10px;
 }
 
+.project-admin-card > section {
+    height: 100px;
+    display: grid;
+    grid-template-columns: 50%, 50%;
+    grid-template-rows: 1fr;
+    width: 80%;
+    border-radius: 5px;
+    margin: auto;
+    background-color: #000000;
+}
+
+.project-admin-card > section > figure {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    padding: 5px;
+}
+
+.project-admin-card > section > form {
+    grid-column: 2/2;
+    grid-row: 1/2;
+}
 
 .project-admin-card figure img {
-    width: 50%;
+    width: 100%;
+}
+
+.project-admin-card > section > form > label > input {
+    background-color: #000;
+    color: #b6ff00;
+    width: 60%;
 }
 
 .project-admin-card input {
     width: 80%;
     height: 30px;
     border-radius: 5px;
+    margin: auto;
 }
+
 .project-admin-card textarea {
     width: 80%;
+    margin: auto;
 }
 
 .admin-button {
