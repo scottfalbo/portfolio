@@ -37,6 +37,30 @@ main {
     color: #9ff8bb;
 }
 
+#collapsingMenu {
+    flex-direction: row-reverse;
+}
+
+#collapsingAdminMenu {
+    flex-direction: row-reverse;
+}
+
+#collapsingArtMenu {
+    flex-direction: row-reverse;
+}
+
+#collapsingMenu > ul > li {
+    text-align: right;
+}
+
+#collapsingAdminMenu {
+    text-align: right;
+}
+
+#collapsingArtMenu {
+    text-align: right;
+}
+
 .page-title {
     font-size: 1.50em;
     color: #d7fbce;
