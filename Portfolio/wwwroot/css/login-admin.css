@@ -55,7 +55,7 @@ main {
 }
 
 .project-admin-card > section {
-    height: 100px;
+
     display: grid;
     grid-template-columns: 1fr, 1fr;
     grid-template-rows: 1fr;
@@ -70,6 +70,9 @@ main {
     grid-column: 1/2;
     grid-row: 1/2;
     padding: 5px;
+}
+.project-admin-card > section > figure > img {
+    object-fit: contain;
 }
 
 .project-admin-card > section > form {
