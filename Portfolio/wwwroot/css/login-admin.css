@@ -46,7 +46,7 @@ main {
 .project-admin-card {
     padding: 10px;
     width: 95%;
-    max-width: 460px;
+    max-width: 420px;
     margin: 10px auto;
     background-color: #121212;
     border-radius: 10px;
@@ -55,12 +55,13 @@ main {
 .project-admin-card > section {
     height: 100px;
     display: grid;
-    grid-template-columns: 50%, 50%;
+    grid-template-columns: 1fr, 1fr;
     grid-template-rows: 1fr;
     width: 80%;
     border-radius: 5px;
     margin: auto;
     background-color: #000000;
+    padding: 5px;
 }
 
 .project-admin-card > section > figure {
@@ -100,4 +101,13 @@ main {
     background-color: #000;
     color: #b6ff00;
     width: 60%;
+}
+
+@media (min-width: 860px) {
+    .project-admin > div > section {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+
 }
