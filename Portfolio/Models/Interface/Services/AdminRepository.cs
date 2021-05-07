@@ -129,7 +129,7 @@ namespace Portfolio.Models.Interfaces.Services
         {
             BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
             BlobClient blob = container.GetBlobClient(fileName);
-            await blob.DeleteIfExistsAsync();
+            await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
         }
     }
 }

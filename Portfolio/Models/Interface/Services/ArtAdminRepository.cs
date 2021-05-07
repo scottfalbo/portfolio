@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Microsoft.Extensions.Configuration;
+using Portfolio.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,70 +11,84 @@ namespace Portfolio.Models.Interface.Services
 {
     public class ArtAdminRepository : IArtAdmin
     {
-        public Task CreateTattoo()
+        private readonly PortfolioDbContext _context;
+        public IConfiguration Configuration { get; }
+
+        public ArtAdminRepository(PortfolioDbContext context, IConfiguration config)
         {
-            return null;
+            _context = context;
+            Configuration = config;
         }
-
-        public Task<Project> GetTattoo(int Id)
-        {
-            return null;
-        }
-
-        public Task<List<Project>> GetTattoos()
-        {
-            return null;
-        }
-
-        public Task<Project> UpdateTattoo(int id)
-        {
-            return null;
-        }
-
-        public Task DeleteTattoo(int id)
-        {
-            return null;
-        }
-        public Task DeleteAllTattoos()
-        {
-            return null;
-        }
-
-
-
         public Task CreateDrawing()
         {
-            return null;
+            throw new NotImplementedException();
         }
 
-        public Task<Project> GetDrawing(int Id)
+        public Task CreateTattoo()
         {
-            return null;
-        }
-
-        public Task<List<Project>> GetDrawings()
-        {
-            return null;
-        }
-
-        public Task<Project> UpdateDrawing(int Id)
-        {
-            return null;
-        }
-
-        public Task DeleteDrawing(int Id)
-        {
-            return null;
+            throw new NotImplementedException();
         }
 
         public Task DeleteAllDrawings()
         {
-            return null;
+            throw new NotImplementedException();
         }
 
-        public Task DeleteBlobImage(string fileName)
+        public Task DeleteAllTattoos()
         {
             throw new NotImplementedException();
+        }
+
+        public Task DeleteDrawing(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteTattoo(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Drawing> GetDrawing(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Drawing>> GetDrawings()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Tattoo> GetTattoo(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Tattoo>> GetTattoos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Drawing> UpdateDrawing(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Tattoo> UpdateTattoo(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Deletes file from azure storage
+        /// </summary>
+        /// <param name="fileName"> file to delete </param>
+        /// <returns> no return </returns>
+        public async Task DeleteBlobImage(string fileName)
+        {
+            BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
+            BlobClient blob = container.GetBlobClient(fileName);
+            await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
         }
     }
 }

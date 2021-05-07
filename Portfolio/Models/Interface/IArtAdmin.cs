@@ -11,9 +11,9 @@ namespace Portfolio.Models.Interface
         /// Tattoo portfolio CRUD
         /// </summary>
         public Task CreateTattoo();
-        public Task<Project> GetTattoo(int id);
-        public Task<List<Project>> GetTattoos();
-        public Task<Project> UpdateTattoo(int id);
+        public Task<Tattoo> GetTattoo(int id);
+        public Task<List<Tattoo>> GetTattoos();
+        public Task<Tattoo> UpdateTattoo(int id);
         public Task DeleteTattoo(int id);
         public Task DeleteAllTattoos();
 
@@ -21,9 +21,9 @@ namespace Portfolio.Models.Interface
         /// Drawing portfolio CRUD
         /// </summary>
         public Task CreateDrawing();
-        public Task<Project> GetDrawing(int id);
-        public Task<List<Project>> GetDrawings();
-        public Task<Project> UpdateDrawing(int id);
+        public Task<Drawing> GetDrawing(int id);
+        public Task<List<Drawing>> GetDrawings();
+        public Task<Drawing> UpdateDrawing(int id);
         public Task DeleteDrawing(int id);
         public Task DeleteAllDrawings();
 
