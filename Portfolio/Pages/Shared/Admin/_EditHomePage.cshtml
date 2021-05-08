@@ -9,8 +9,8 @@
             <label>
                 <input name="file" type="file" />
                 <input type="submit" value="Update Image" />
-                <input type="hidden" asp-for="HomePage.FileName" value="HomePage.FileName" />
-                <input type="hidden" asp-for="HomePage.Id" value="HomePage.Id" />
+                <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
+                <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
             </label>
         </form>
         </section>
@@ -21,6 +21,12 @@
                 </div>
                 <div>
                     <textarea type="text" cols="45" rows="5" asp-for="HomePage.Intro" class="form-control" placeholder="@Model.HomePage.Intro"></textarea>
+                </div>
+                <div>
+                    <input type="hidden" asp-for="HomePage.Id" value="HomePage.Id" />
+                    <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
+                    <input type="hidden" asp-for="HomePage.Selfie" value="@Model.HomePage.Selfie" />
+                    <input class="admin-button" type="submit" value="Update" />
                 </div>
             </form>
         </section>

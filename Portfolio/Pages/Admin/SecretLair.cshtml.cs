@@ -44,15 +44,25 @@ namespace Portfolio.Pages
             if (file != null)
             {
                 if (HomePage.FileName != null)
+                {
                     await _adminContext.DeleteBlobImage(HomePage.FileName);
-                await _uploadService.UpdateSelfie(file, HomePage.Id);
+                }
+                await _uploadService.UpdateSelfie(file, -1);
             }
             return Redirect("/Admin/SecretLair");
         }
 
         public async Task OnPostEdit(HomePage homepage)
         {
-
+            HomePage updatedPage = new HomePage()
+            {
+                Id = -1,
+                Selfie = HomePage.Selfie,
+                FileName = HomePage.FileName,
+                Title = HomePage.Title,
+                Intro = HomePage.Intro
+            };
+            await _adminContext.UpdateHomePage(updatedPage);
             Redirect("/Admin/SecretLair");
         }
 
