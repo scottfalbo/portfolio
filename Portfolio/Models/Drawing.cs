@@ -9,9 +9,9 @@ namespace Portfolio.Models
     public class Drawing
     {
         public int Id { get; set; }
-        public string Title { get; set; }
-        [Required]
         public string ImageURL { get; set; }
+        public string FileName { get; set; }
         public int Order { get; set; }
+        public bool Display { get; set; }
     }
 }

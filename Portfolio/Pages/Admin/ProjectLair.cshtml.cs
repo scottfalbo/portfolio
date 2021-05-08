@@ -41,21 +41,21 @@ namespace Portfolio.Pages.Admin
             }
         }
 
-        public async Task<IActionResult> OnPost (Project project)
-        {
-            Project newProject = new Project()
-            {
-                Title = Project.Title,
-                Order = Project.Order,
-                SourceURL = Project.SourceURL,
-                AltText = Project.AltText,
-                Description = Project.Description,
-                RepoLink = Project.RepoLink,
-                DeployedLink = Project.DeployedLink
-            };
-            await _adminContext.CreateProject(newProject);
-            return Redirect("/Admin/ProjectLair");
-        }
+        //public async Task<IActionResult> OnPost (Project project)
+        //{
+        //    Project newProject = new Project()
+        //    {
+        //        Title = Project.Title,
+        //        Order = Project.Order,
+        //        SourceURL = Project.SourceURL,
+        //        AltText = Project.AltText,
+        //        Description = Project.Description,
+        //        RepoLink = Project.RepoLink,
+        //        DeployedLink = Project.DeployedLink
+        //    };
+        //    await _adminContext.CreateProject(newProject);
+        //    return Redirect("/Admin/ProjectLair");
+        //}
 
         /// <summary>
         /// Update a projects saved data
@@ -100,7 +100,8 @@ namespace Portfolio.Pages.Admin
         /// <returns> redirect in place </returns>
         public async Task<IActionResult> OnPostAddImage(IFormFile file)
         {
-            await _uploadService.AddProjectImage(file);
+            if (file != null)
+                await _uploadService.AddProjectImage(file);
             return Redirect("/Admin/ProjectLair");
         }
 
@@ -112,8 +113,11 @@ namespace Portfolio.Pages.Admin
         /// <returns> redirects in place </returns>
         public async Task<IActionResult> OnPostUpdateImage(IFormFile file)
         {
-            await _adminContext.DeleteBlobImage(Project.FileName);
-            await _uploadService.UpdateImage(file, Project.Id);
+            if (file != null)
+            {
+                await _adminContext.DeleteBlobImage(Project.FileName);
+                await _uploadService.UpdateImage(file, Project.Id);
+            }
 
             return Redirect("/Admin/ProjectLair");
         }

@@ -34,19 +34,19 @@ namespace Portfolio.Models.Interface.Services
 
             await container.CreateIfNotExistsAsync();
 
-            BlobClient blob = container.GetBlobClient(file.FileName);
+                BlobClient blob = container.GetBlobClient(file.FileName);
 
-            using var stream = file.OpenReadStream();
+                using var stream = file.OpenReadStream();
 
-            BlobUploadOptions options = new BlobUploadOptions()
-            { 
-                HttpHeaders = new BlobHttpHeaders() { ContentType = file.ContentType }
-            };
+                BlobUploadOptions options = new BlobUploadOptions()
+                {
+                    HttpHeaders = new BlobHttpHeaders() { ContentType = file.ContentType }
+                };
 
-            if (!blob.Exists())
-                await blob.UploadAsync(stream, options);
+                if (!blob.Exists())
+                    await blob.UploadAsync(stream, options);
 
-            return blob;
+                return blob;
         }
 
         /// <summary>
@@ -63,7 +63,8 @@ namespace Portfolio.Models.Interface.Services
                 Title = "new",
                 Description = "new project",
                 SourceURL = blob.Uri.ToString(),
-                FileName = file.FileName
+                FileName = file.FileName,
+                Display = false
             };
             await _admin.CreateProject(newProject);
         }

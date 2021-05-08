@@ -38,7 +38,8 @@ namespace Portfolio.Models.Interfaces.Services
                 DeployedLink = project.DeployedLink,
                 Order = project.Order,
                 AltText = project.AltText,
-                FileName = project.FileName
+                FileName = project.FileName,
+                Display = project.Display
             };
             _context.Entry(newProject).State = EntityState.Added;
             await _context.SaveChangesAsync();
@@ -63,7 +64,8 @@ namespace Portfolio.Models.Interfaces.Services
                     DeployedLink = y.DeployedLink,
                     AltText = y.AltText,
                     Order = y.Order,
-                    FileName = y.FileName
+                    FileName = y.FileName,
+                    Display = y.Display
                 })
                 .FirstOrDefaultAsync();
         }
@@ -85,7 +87,8 @@ namespace Portfolio.Models.Interfaces.Services
                     DeployedLink = x.DeployedLink,
                     AltText = x.AltText,
                     Order = x.Order,
-                    FileName = x.FileName
+                    FileName = x.FileName,
+                    Display = x.Display
                 })
                 .ToListAsync();
         }
@@ -98,18 +101,6 @@ namespace Portfolio.Models.Interfaces.Services
         /// <returns> no return </returns>
         public async Task UpdateProject(Project project)
         {
-            //Project newProject = new Project()
-            //{
-            //    Id = project.Id,
-            //    Title = project.Title,
-            //    SourceURL = project.SourceURL,
-            //    Description = project.Description,
-            //    RepoLink = project.RepoLink,
-            //    DeployedLink = project.DeployedLink,
-            //    AltText = project.AltText,
-            //    Order = project.Order,
-            //    FileName = project.FileName
-            //};
             _context.Entry(project).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
@@ -138,7 +129,7 @@ namespace Portfolio.Models.Interfaces.Services
         {
             BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
             BlobClient blob = container.GetBlobClient(fileName);
-            await blob.DeleteIfExistsAsync();
+            await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
         }
     }
 }
