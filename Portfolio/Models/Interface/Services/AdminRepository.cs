@@ -131,5 +131,17 @@ namespace Portfolio.Models.Interfaces.Services
             BlobClient blob = container.GetBlobClient(fileName);
             await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
         }
+
+        public async Task<HomePage> GetHomePage()
+        {
+            return await _context.HomePage
+                .Where(x => x.Id == -1)
+                .Select(y => new HomePage
+                {
+                    Id = y.Id,
+                    Title = y.Title,
+                    Intro = y.Intro
+                }).FirstOrDefaultAsync();
+        }
     }
 }

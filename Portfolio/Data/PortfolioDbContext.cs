@@ -17,6 +17,7 @@ namespace Portfolio.Data
         public DbSet<Tattoo> Tattoos { get; set; }
         public DbSet<Drawing> Drawings { get; set; }
         public DbSet<Design> Designs { get; set; }
+        public DbSet<HomePage> HomePage { get; set; }
 
         public IConfiguration Configuration { get; }
 
@@ -84,6 +85,14 @@ namespace Portfolio.Data
                     ImageURL = "https://images.squarespace-cdn.com/content/v1/58e1f54286e6c029f7d2839e/1537484214796-K67DXLCA43KCB2W0I5QA/ke17ZwdGBToddI8pDm48kKc3OAYzt6Uy9caNBxQ7A-oUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2zxJr3ZkhFtf92eHeKaFaP9c8wnx309ehtLA9Btl52YybhuOb0MAcXaQ6whlEkpec/margot_cat.jpg?format=1500w",
                     Display = true,
                     FileName = null
+                });
+
+            modelBuilder.Entity<HomePage>().HasData(
+                new HomePage
+                {
+                    Id = -1,
+                    Title = "hello",
+                    Intro = "test <br /> test"
                 });
         }
 

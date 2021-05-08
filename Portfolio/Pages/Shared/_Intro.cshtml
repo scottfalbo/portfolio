@@ -1,10 +1,10 @@
-﻿
+﻿@model Portfolio.Pages.IndexModel
 
 
 <div class="intro-inner">
     <figure>
         <img class="selfie" src="~/images/code-selfie.png" alt="Photo of Scott Falbo" />
-        <figcaption class="tag-line">Software Developer | Artist <br /> Cat Enthusiast</figcaption>
+        <figcaption class="tag-line">@Model.HomePage.Title</figcaption>
     </figure>
     <section class="social" id="contact">
         <a href="mailto:scottfalboart@gmail.com"><p>scottfalboart@gmail.com</p></a>
@@ -14,14 +14,4 @@
     </section>
 </div>
 
-<article class="intro">
-    Hello, my name is Scott.  I’m a software developer and artist based in Seattle.  I like learning new skills and making things.<br /><br />
-
-    I think coding is awesome.  It's basically writing spells that command electricity and metal configurations to react.  It's puzzles and sorcery mixed into one!<br /><br />
-
-    Before turning my focus to software development I spent over 20 years as a professional tattoo artist.  My career centered around creating custom products that not only met the clients input and vision, but also appealed visually to a larger audience.<br /><br />
-
-    I'm excited to bring that experience to developing innovative, appealing, and accessable solutions to complex real world problems.
-    <br /><br />
-    If you are interested you can view my art portfolio here: <a href="https://scottfalboart.com/" target="_blank">scottfalboart.com</a>
-</article>
+<article class="intro">@Model.HomePage.Intro</article>
