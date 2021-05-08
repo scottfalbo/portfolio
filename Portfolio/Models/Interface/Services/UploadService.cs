@@ -71,6 +71,20 @@ namespace Portfolio.Models.Interface.Services
             await _admin.CreateProject(newProject);
         }
 
+        public async Task AddTattooImage(IFormFile file)
+        {
+            BlobClient blob = await UploadImage(file);
+
+            Tattoo newTattoo = new Tattoo()
+            {
+                ImageURL = blob.Uri.ToString(),
+                FileName = file.FileName,
+                Order = 0,
+                Display = false
+            };
+            await _artAdmin.CreateTattoo(newTattoo);
+        }
+
         /// <summary>
         /// Updates a projects sourceURL to newly uploaded image
         /// </summary>

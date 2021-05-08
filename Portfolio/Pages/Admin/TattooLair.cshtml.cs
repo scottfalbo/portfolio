@@ -40,6 +40,13 @@ namespace Portfolio.Pages.Admin
             }
         }
 
+        public async Task<IActionResult> OnPostAddTattoo(IFormFile file)
+        {
+            if (file != null)
+                await _uploadService.AddTattooImage(file);
+            return Redirect("/Admin/TattooLair");
+        }
+
         public async Task<IActionResult> OnPostEdit(Tattoo tattoo)
         {
 
@@ -64,6 +71,12 @@ namespace Portfolio.Pages.Admin
                 await _uploadService.UpdateTattooImage(file, Tattoo.Id);
             }
 
+            return Redirect("/Admin/TattooLair");
+        }
+
+        public async Task<IActionResult> OnPostDelete()
+        {
+            await _adminContext.DeleteTattoo(Tattoo.Id);
             return Redirect("/Admin/TattooLair");
         }
     }
