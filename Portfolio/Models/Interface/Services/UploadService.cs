@@ -71,6 +71,11 @@ namespace Portfolio.Models.Interface.Services
             await _admin.CreateProject(newProject);
         }
 
+        /// <summary>
+        /// Upload and image to azure storage
+        /// Create a new Tattoo object with new image and save to database
+        /// </summary>
+        /// <param name="file"> input file </param>
         public async Task AddTattooImage(IFormFile file)
         {
             BlobClient blob = await UploadImage(file);
@@ -100,6 +105,11 @@ namespace Portfolio.Models.Interface.Services
             await _admin.UpdateProject(project);
         }
 
+        /// <summary>
+        /// Updates a tattoos ImageUrl to newly uploaded image
+        /// </summary>
+        /// <param name="file"> input file </param>
+        /// <param name="id"> tattoo id </param>
         public async Task UpdateTattooImage(IFormFile file, int id)
         {
             Tattoo tattoo = await _context.Tattoos.FindAsync(id);
@@ -109,6 +119,11 @@ namespace Portfolio.Models.Interface.Services
             await _artAdmin.UpdateTattoo(tattoo);
         }
 
+        /// <summary>
+        /// Updates the HomePage selfie to new image
+        /// </summary>
+        /// <param name="file"> input file </param>
+        /// <param name="id"> homepage id </param>
         public async Task UpdateSelfie(IFormFile file, int id)
         {
             HomePage homepage = await _context.HomePage.FindAsync(id);

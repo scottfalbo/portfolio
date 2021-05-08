@@ -133,6 +133,10 @@ namespace Portfolio.Models.Interfaces.Services
             await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
         }
 
+        /// <summary>
+        /// Get HomePage data from the database
+        /// </summary>
+        /// <returns> HomePage object </returns>
         public async Task<HomePage> GetHomePage()
         {
             return await _context.HomePage
@@ -147,6 +151,10 @@ namespace Portfolio.Models.Interfaces.Services
                 }).FirstOrDefaultAsync();
         }
 
+        /// <summary>
+        /// Update HomePage Title and Intro data and save to database
+        /// </summary>
+        /// <param name="homepage"> HomePage object </param>
         public async Task UpdateHomePage(HomePage homepage)
         {
             _context.Entry(homepage).State = EntityState.Modified;

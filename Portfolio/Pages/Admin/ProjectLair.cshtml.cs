@@ -29,6 +29,9 @@ namespace Portfolio.Pages.Admin
         [BindProperty]
         public string ImageUri { get; set; }
 
+        /// <summary>
+        /// Gets a list of all Project objects in the database
+        /// </summary>
         public async Task OnGet()
         {
             try

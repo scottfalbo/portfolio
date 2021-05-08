@@ -26,8 +26,9 @@ namespace Portfolio.Pages.Admin
         [BindProperty]
         public Tattoo Tattoo { get; set; }
 
-        [BindProperty]
-        public string ImageUri { get; set; }
+        /// <summary>
+        /// Gets a list of all Tattoo objects in the database
+        /// </summary>
         public async Task OnGet()
         {
             try
@@ -40,6 +41,12 @@ namespace Portfolio.Pages.Admin
             }
         }
 
+        /// <summary>
+        /// Upload a new image to azure storage
+        /// Instatiate a new tattoo object and save to database
+        /// </summary>
+        /// <param name="file"> inut file </param>
+        /// <returns> redirects in place </returns>
         public async Task<IActionResult> OnPostAddTattoo(IFormFile file)
         {
             if (file != null)
@@ -47,6 +54,11 @@ namespace Portfolio.Pages.Admin
             return Redirect("/Admin/TattooLair");
         }
 
+        /// <summary>
+        /// Update tattoo Order and Display data and save to database
+        /// </summary>
+        /// <param name="tattoo"> Tattoo object </param>
+        /// <returns> redirect in place </returns>
         public async Task<IActionResult> OnPostEdit(Tattoo tattoo)
         {
 
@@ -63,6 +75,12 @@ namespace Portfolio.Pages.Admin
             return Redirect("/Admin/ProjectLair");
         }
 
+        /// <summary>
+        /// Upload a new image and save the new path to object in database
+        /// Delete the old image from azure storage
+        /// </summary>
+        /// <param name="file"> input file </param>
+        /// <returns> redirect in place </returns>
         public async Task<IActionResult> OnPostUpdateImage(IFormFile file)
         {
             if (file != null)
@@ -74,6 +92,11 @@ namespace Portfolio.Pages.Admin
             return Redirect("/Admin/TattooLair");
         }
 
+        /// <summary>
+        /// Delete a tattoo object from the database
+        /// Remove the associated image from azure storage
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostDelete()
         {
             await _adminContext.DeleteTattoo(Tattoo.Id);
