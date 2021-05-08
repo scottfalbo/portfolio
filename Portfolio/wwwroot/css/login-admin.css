@@ -45,6 +45,12 @@ main {
     padding: 10px;
 }
 
+.project-admin h1 {
+    padding: 10px;
+    font-size: 1.2em;
+    color: #b2f1bb;
+}
+
 .project-admin-card {
     padding: 10px;
     width: 95%;
