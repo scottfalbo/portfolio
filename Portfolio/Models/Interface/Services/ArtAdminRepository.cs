@@ -21,14 +21,30 @@ namespace Portfolio.Models.Interface.Services
             Configuration = config;
         }
 
-        public Task CreateTattoo(Tattoo tattoo)
+        public async Task CreateTattoo(Tattoo tattoo)
         {
-            throw new NotImplementedException();
+            Tattoo newTattoo = new Tattoo()
+            {
+                ImageURL = tattoo.ImageURL,
+                FileName = tattoo.FileName,
+                Display = false
+            };
+            _context.Entry(newTattoo).State = EntityState.Added;
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Tattoo> GetTattoo(int id)
+        public async Task<Tattoo> GetTattoo(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Tattoos
+                .Where(x => x.Id == id)
+                .Select(y => new Tattoo
+                {
+                    Id = y.Id,
+                    ImageURL = y.ImageURL,
+                    FileName = y.FileName,
+                    Order = y.Order,
+                    Display = y.Display
+                }).FirstOrDefaultAsync();
         }
 
         public async Task<List<Tattoo>> GetTattoos()
@@ -44,14 +60,20 @@ namespace Portfolio.Models.Interface.Services
                 .ToListAsync();
         }
 
-        public Task<Tattoo> UpdateTattoo(Tattoo tattoo)
+        public async Task UpdateTattoo(Tattoo tattoo)
         {
-            throw new NotImplementedException();
+            _context.Entry(tattoo).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteTattoo(int id)
+        public async Task DeleteTattoo(int id)
         {
-            throw new NotImplementedException();
+            Tattoo tattoo = await _context.Tattoos.FindAsync(id);
+
+            await DeleteBlobImage(tattoo.FileName);
+
+            _context.Entry(tattoo).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
         }
 
         public Task DeleteAllTattoos()
@@ -74,7 +96,7 @@ namespace Portfolio.Models.Interface.Services
             throw new NotImplementedException();
         }
 
-        public Task<Drawing> UpdateDrawing(Drawing drawing)
+        public Task UpdateDrawing(Drawing drawing)
         {
             throw new NotImplementedException();
         }

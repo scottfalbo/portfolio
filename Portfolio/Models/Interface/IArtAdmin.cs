@@ -13,7 +13,7 @@ namespace Portfolio.Models.Interface
         public Task CreateTattoo(Tattoo tattoo);
         public Task<Tattoo> GetTattoo(int id);
         public Task<List<Tattoo>> GetTattoos();
-        public Task<Tattoo> UpdateTattoo(Tattoo tattoo);
+        public Task UpdateTattoo(Tattoo tattoo);
         public Task DeleteTattoo(int id);
         public Task DeleteAllTattoos();
 
@@ -23,7 +23,7 @@ namespace Portfolio.Models.Interface
         public Task CreateDrawing(Drawing drawing);
         public Task<Drawing> GetDrawing(int id);
         public Task<List<Drawing>> GetDrawings();
-        public Task<Drawing> UpdateDrawing(Drawing drawing);
+        public Task UpdateDrawing(Drawing drawing);
         public Task DeleteDrawing(int id);
         public Task DeleteAllDrawings();
 
