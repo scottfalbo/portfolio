@@ -40,12 +40,16 @@ namespace Portfolio.Pages.Admin
             }
         }
 
-        public async Task<IActionResult> OnPostEdit(Project project)
+        public async Task<IActionResult> OnPostEdit(Tattoo tattoo)
         {
 
             Tattoo updatedTattoo = new Tattoo()
             {
-
+                Id = tattoo.Id,
+                ImageURL = tattoo.ImageURL,
+                FileName = tattoo.FileName,
+                Order = tattoo.Order,
+                Display = tattoo.Display
             };
 
             await _adminContext.UpdateTattoo(updatedTattoo);
@@ -54,10 +58,13 @@ namespace Portfolio.Pages.Admin
 
         public async Task<IActionResult> OnPostUpdateImage(IFormFile file)
         {
-            await _adminContext.DeleteBlobImage(Tattoo.FileName);
-            await _uploadService.UpdateImage(file, Tattoo.Id);
+            if (file != null)
+            {
+                await _adminContext.DeleteBlobImage(Tattoo.FileName);
+                await _uploadService.UpdateTattooImage(file, Tattoo.Id);
+            }
 
-            return Redirect("/Admin/ProjectLair");
+            return Redirect("/Admin/TattooLair");
         }
     }
 }

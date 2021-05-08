@@ -12,5 +12,6 @@ namespace Portfolio.Models.Interface
         public Task AddProjectImage(IFormFile file);
         public Task<BlobClient> UploadImage(IFormFile file);
         public Task UpdateImage(IFormFile file, int id);
+        public Task UpdateTattooImage(IFormFile file, int id);
     }
 }

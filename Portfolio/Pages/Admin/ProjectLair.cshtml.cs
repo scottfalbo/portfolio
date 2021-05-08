@@ -41,22 +41,6 @@ namespace Portfolio.Pages.Admin
             }
         }
 
-        //public async Task<IActionResult> OnPost (Project project)
-        //{
-        //    Project newProject = new Project()
-        //    {
-        //        Title = Project.Title,
-        //        Order = Project.Order,
-        //        SourceURL = Project.SourceURL,
-        //        AltText = Project.AltText,
-        //        Description = Project.Description,
-        //        RepoLink = Project.RepoLink,
-        //        DeployedLink = Project.DeployedLink
-        //    };
-        //    await _adminContext.CreateProject(newProject);
-        //    return Redirect("/Admin/ProjectLair");
-        //}
-
         /// <summary>
         /// Update a projects saved data
         /// </summary>

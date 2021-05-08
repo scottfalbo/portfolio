@@ -14,13 +14,15 @@ namespace Portfolio.Models.Interface.Services
     {
         public IConfiguration Configuration { get; }
         public IAdmin _admin;
+        public IArtAdmin _artAdmin;
         private readonly PortfolioDbContext _context;
 
-        public UploadService(IConfiguration config, IAdmin admin, PortfolioDbContext context)
+        public UploadService(IConfiguration config, IAdmin admin, PortfolioDbContext context, IArtAdmin art)
         {
             Configuration = config;
             _admin = admin;
             _context = context;
+            _artAdmin = art;
         }
 
         /// <summary>
@@ -82,6 +84,15 @@ namespace Portfolio.Models.Interface.Services
             project.SourceURL = blob.Uri.ToString();
             project.FileName = file.FileName;
             await _admin.UpdateProject(project);
+        }
+
+        public async Task UpdateTattooImage(IFormFile file, int id)
+        {
+            Tattoo tattoo = await _context.Tattoos.FindAsync(id);
+            BlobClient blob = await UploadImage(file);
+            tattoo.ImageURL = blob.Uri.ToString();
+            tattoo.FileName = file.FileName;
+            await _artAdmin.UpdateTattoo(tattoo);
         }
     }
 }
