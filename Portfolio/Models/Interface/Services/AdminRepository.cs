@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Portfolio.Data;
@@ -141,8 +142,15 @@ namespace Portfolio.Models.Interfaces.Services
                     Id = y.Id,
                     Title = y.Title,
                     Intro = y.Intro,
-                    Selfie = y.Selfie
+                    Selfie = y.Selfie,
+                    FileName = y.FileName
                 }).FirstOrDefaultAsync();
+        }
+
+        public async Task UpdateHomePage(HomePage homepage)
+        {
+            _context.Entry(homepage).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
     }
 }

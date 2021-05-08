@@ -11,5 +11,6 @@ namespace Portfolio.Models
         public string Title { get; set; }
         public string Intro { get; set; }
         public string Selfie { get; set; }
+        public string FileName { get; set; }
     }
 }

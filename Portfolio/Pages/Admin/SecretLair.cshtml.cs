@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Models;
@@ -15,10 +16,12 @@ namespace Portfolio.Pages
     {
 
         public IAdmin _adminContext;
+        public IUploadService _uploadService;
 
-        public SecretLairModel(IAdmin context)
+        public SecretLairModel(IAdmin context, IUploadService service)
         {
             _adminContext = context;
+            _uploadService = service;
         }
 
         [BindProperty]
@@ -36,7 +39,22 @@ namespace Portfolio.Pages
             }
         }
 
+        public async Task<IActionResult> OnPostUpdateSelfie(IFormFile file)
+        {
+            if (file != null)
+            {
+                if (HomePage.FileName != null)
+                    await _adminContext.DeleteBlobImage(HomePage.FileName);
+                await _uploadService.UpdateSelfie(file, HomePage.Id);
+            }
+            return Redirect("/Admin/SecretLair");
+        }
 
+        public async Task OnPostEdit(HomePage homepage)
+        {
+
+            Redirect("/Admin/SecretLair");
+        }
 
     }
 }

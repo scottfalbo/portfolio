@@ -93,7 +93,8 @@ namespace Portfolio.Data
                     Id = -1,
                     Title = "hello",
                     Intro = "test <br /> test",
-                    Selfie = "~/images/code-selfie.png"
+                    Selfie = "~/images/code-selfie.png",
+                    FileName = null
                 });
         }
 

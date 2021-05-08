@@ -94,5 +94,14 @@ namespace Portfolio.Models.Interface.Services
             tattoo.FileName = file.FileName;
             await _artAdmin.UpdateTattoo(tattoo);
         }
+
+        public async Task UpdateSelfie(IFormFile file, int id)
+        {
+            HomePage homepage = await _context.HomePage.FindAsync(id);
+            BlobClient blob = await UploadImage(file);
+            homepage.Selfie = blob.Uri.ToString();
+            homepage.FileName = file.FileName;
+            await _admin.UpdateHomePage(homepage);
+        }
     }
 }

@@ -1,6 +1,29 @@
 ﻿@model Portfolio.Pages.SecretLairModel
 
-edit home page here
 
-@Model.HomePage.Title
+<section class="project-admin">
+    <div class="project-admin-card">
+        <section>
+        <figure><img src="HomePage.Selfie" /></figure>
+        <form asp-page-handler="UpdateSelfie" method="post" enctype="multipart/form-data">
+            <label>
+                <input name="file" type="file" />
+                <input type="submit" value="Update Image" />
+                <input type="hidden" asp-for="HomePage.FileName" value="HomePage.FileName" />
+                <input type="hidden" asp-for="HomePage.Id" value="HomePage.Id" />
+            </label>
+        </form>
+        </section>
+        <section>
+            <form asp-page-handler="Edit" method="post">
+                <div>
+                    <input type="text" asp-for="HomePage.Title" class="form-control" placeholder="@Model.HomePage.Title" value="@Model.HomePage.Title" />
+                </div>
+                <div>
+                    <textarea type="text" cols="45" rows="5" asp-for="HomePage.Intro" class="form-control" placeholder="@Model.HomePage.Intro"></textarea>
+                </div>
+            </form>
+        </section>
+    </div>
+</section>
 
