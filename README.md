@@ -1,10 +1,10 @@
 # My Portfolio Website
 
 ## About the Project
-This is my personal portfolio website.  It is currently under construction and only has a main landing page.  More to come!
+For almost 10 years I've used a Squarespace site for my art portfolio.  I figured now that I've jumped into software development it's high time I rebuilt the site myself.
 
+This is an in progress project to build a site with similar functionality and ease of use that my current template site offers.
 
-[scottfalbo.com](https://falboportfolio.azurewebsites.net/)  
 
 ---
 
@@ -40,19 +40,17 @@ This is my personal portfolio website.  It is currently under construction and o
 ---
 
 ## Getting Started
+I have a basic place holder site deployed while the full site is under developement.
 + Live deployment here: [scottfalbo.com](https://falboportfolio.azurewebsites.net/)  
 
 ---
 
-## Architecture
+<!-- ## Architecture -->
 
-ERD for portfolio section, currently under construction.
-
-<img src="assets/erd.png" width="600">
 
 ---
 
-## Change Log
+## Development Log Log
 + 03/25/2021
   + Started initial scaffolding and view layouts.
   + `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`
@@ -108,6 +106,13 @@ ERD for portfolio section, currently under construction.
   + 05/05/2021
     + Refactored delete project method to also remove the image from azure storage.
     + Added update image form to the project admin page that uploads the new image, updates the project in the database, and deletes the old image from azure storage.
+  + 05/06/2021
+    + Worked on admin page style for mobile and desktop.  Cleaned up menu styles a bit.
+  + 05/08/2021
+    + Updated all database models and added a `HomePage` model for dynamic data rendering and updating.
+    + Finished crud full CRUD actions for Projects, Tattoos, and the HomePage.
+    + Added forms for Tattoo and HomePage admin.
+
 
 ---
 
