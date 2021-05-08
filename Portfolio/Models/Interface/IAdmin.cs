@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,5 +17,7 @@ namespace Portfolio.Models.Interface
         public Task UpdateProject(Project project);
         public Task DeleteProject(int id);
         public Task DeleteBlobImage(string fileName);
+        public Task<HomePage> GetHomePage();
+        public Task UpdateHomePage(HomePage homepage);
     }
 }

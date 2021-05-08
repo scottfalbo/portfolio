@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Portfolio.Data;
@@ -130,6 +131,34 @@ namespace Portfolio.Models.Interfaces.Services
             BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
             BlobClient blob = container.GetBlobClient(fileName);
             await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
+        }
+
+        /// <summary>
+        /// Get HomePage data from the database
+        /// </summary>
+        /// <returns> HomePage object </returns>
+        public async Task<HomePage> GetHomePage()
+        {
+            return await _context.HomePage
+                .Where(x => x.Id == -1)
+                .Select(y => new HomePage
+                {
+                    Id = y.Id,
+                    Title = y.Title,
+                    Intro = y.Intro,
+                    Selfie = y.Selfie,
+                    FileName = y.FileName
+                }).FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// Update HomePage Title and Intro data and save to database
+        /// </summary>
+        /// <param name="homepage"> HomePage object </param>
+        public async Task UpdateHomePage(HomePage homepage)
+        {
+            _context.Entry(homepage).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
     }
 }

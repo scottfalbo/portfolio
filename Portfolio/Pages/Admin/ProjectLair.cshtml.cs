@@ -29,6 +29,9 @@ namespace Portfolio.Pages.Admin
         [BindProperty]
         public string ImageUri { get; set; }
 
+        /// <summary>
+        /// Gets a list of all Project objects in the database
+        /// </summary>
         public async Task OnGet()
         {
             try
@@ -40,22 +43,6 @@ namespace Portfolio.Pages.Admin
                 RedirectToPage("Opps", new { error = e });
             }
         }
-
-        //public async Task<IActionResult> OnPost (Project project)
-        //{
-        //    Project newProject = new Project()
-        //    {
-        //        Title = Project.Title,
-        //        Order = Project.Order,
-        //        SourceURL = Project.SourceURL,
-        //        AltText = Project.AltText,
-        //        Description = Project.Description,
-        //        RepoLink = Project.RepoLink,
-        //        DeployedLink = Project.DeployedLink
-        //    };
-        //    await _adminContext.CreateProject(newProject);
-        //    return Redirect("/Admin/ProjectLair");
-        //}
 
         /// <summary>
         /// Update a projects saved data
