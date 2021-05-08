@@ -140,7 +140,8 @@ namespace Portfolio.Models.Interfaces.Services
                 {
                     Id = y.Id,
                     Title = y.Title,
-                    Intro = y.Intro
+                    Intro = y.Intro,
+                    Selfie = y.Selfie
                 }).FirstOrDefaultAsync();
         }
     }

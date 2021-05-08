@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
+using Portfolio.Models;
+using Portfolio.Models.Interface;
 
 namespace Portfolio.Pages
 {
@@ -13,10 +14,29 @@ namespace Portfolio.Pages
     public class SecretLairModel : PageModel
     {
 
-        public void OnGet()
-        {
+        public IAdmin _adminContext;
 
+        public SecretLairModel(IAdmin context)
+        {
+            _adminContext = context;
         }
+
+        [BindProperty]
+        public HomePage HomePage { get; set; }
+
+        public async Task OnGet()
+        {
+            try
+            {
+                HomePage = await _adminContext.GetHomePage();
+            }
+            catch (Exception e)
+            {
+                RedirectToPage("Opps", new { error = e });
+            }
+        }
+
+
 
     }
 }

@@ -92,7 +92,8 @@ namespace Portfolio.Data
                 {
                     Id = -1,
                     Title = "hello",
-                    Intro = "test <br /> test"
+                    Intro = "test <br /> test",
+                    Selfie = "~/images/code-selfie.png"
                 });
         }
 
