@@ -99,10 +99,14 @@ namespace Portfolio.Models.Interface.Services
             await _context.SaveChangesAsync();
         }
 
-
-        public Task DeleteAllTattoos()
+        /// <summary>
+        /// Delete all of the saved tattoos
+        /// </summary>
+        public async Task DeleteAllTattoos()
         {
-            throw new NotImplementedException();
+            List<Tattoo> tattoos = await GetTattoos();
+            foreach (Tattoo tattoo in tattoos)
+                await DeleteTattoo(tattoo.Id);
         }
 
         public Task CreateDrawing(Drawing drawing)
