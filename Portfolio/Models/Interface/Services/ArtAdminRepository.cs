@@ -174,14 +174,28 @@ namespace Portfolio.Models.Interface.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task DeleteDrawing(int id)
+        /// <summary>
+        /// Delete a drawing from the database by id
+        /// </summary>
+        /// <param name="id"> drawing id </param>
+        public async Task DeleteDrawing(int id)
         {
-            throw new NotImplementedException();
+            Drawing drawing = await _context.Drawings.FindAsync(id);
+
+            await DeleteBlobImage(drawing.FileName);
+
+            _context.Entry(drawing).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAllDrawings()
+        /// <summary>
+        /// Delete all of the drawings from the database
+        /// </summary>
+        public async Task DeleteAllDrawings()
         {
-            throw new NotImplementedException();
+            List<Drawing> drawings = await GetDrawings();
+            foreach (Drawing drawing in drawings)
+                await DeleteTattoo(drawing.Id);
         }
 
         //------------------------------- Shared ------------------------------
