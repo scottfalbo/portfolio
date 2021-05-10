@@ -21,6 +21,7 @@ namespace Portfolio.Models.Interface.Services
             Configuration = config;
         }
 
+        //-------------------------------Tattoo CRUD ------------------------------
         /// <summary>
         /// Instantiate a new Tattoo() object and save it to the database
         /// </summary>
@@ -109,14 +110,41 @@ namespace Portfolio.Models.Interface.Services
                 await DeleteTattoo(tattoo.Id);
         }
 
-        public Task CreateDrawing(Drawing drawing)
+        //-------------------------------Drawing CRUD ------------------------------
+        /// <summary>
+        /// Instantiate a new Drawing object with image data and save to database
+        /// </summary>
+        /// <param name="drawing"> drawing Object </param>
+        public async Task CreateDrawing(Drawing drawing)
         {
-            throw new NotImplementedException();
+            Drawing newDrawing = new Drawing()
+            {
+                ImageURL = drawing.ImageURL,
+                FileName = drawing.FileName,
+                Order = 0,
+                Display = false
+            };
+            _context.Entry(newDrawing).State = EntityState.Added;
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Drawing> GetDrawing(int id)
+        /// <summary>
+        /// Get a drawing by Id from the database
+        /// </summary>
+        /// <param name="id"> drawing id </param>
+        /// <returns> Drawing object </returns>
+        public async Task<Drawing> GetDrawing(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Drawings
+                .Where(x => x.Id == id)
+                .Select(y => new Drawing
+                {
+                    Id = y.Id,
+                    ImageURL = y.ImageURL,
+                    FileName = y.FileName,
+                    Order = y.Order,
+                    Display = y.Display
+                }).FirstOrDefaultAsync();
         }
 
         public Task<List<Drawing>> GetDrawings()
@@ -139,6 +167,7 @@ namespace Portfolio.Models.Interface.Services
             throw new NotImplementedException();
         }
 
+        //------------------------------- Shared ------------------------------
         /// <summary>
         /// Deletes file from azure storage
         /// </summary>
