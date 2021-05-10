@@ -147,14 +147,31 @@ namespace Portfolio.Models.Interface.Services
                 }).FirstOrDefaultAsync();
         }
 
-        public Task<List<Drawing>> GetDrawings()
+        /// <summary>
+        /// Get and return a list of all of the drawings in the database
+        /// </summary>
+        /// <returns> List<Drawing> drawings </returns>
+        public async Task<List<Drawing>> GetDrawings()
         {
-            throw new NotImplementedException();
+            return await _context.Drawings
+                .Select(y => new Drawing
+                {
+                    Id = y.Id,
+                    ImageURL = y.ImageURL,
+                    FileName = y.FileName,
+                    Order = y.Order,
+                    Display = y.Display
+                }).ToListAsync();
         }
 
-        public Task UpdateDrawing(Drawing drawing)
+        /// <summary>
+        /// Save updated drawing object to the database
+        /// </summary>
+        /// <param name="drawing"> updated Drawing object </param>
+        public async Task UpdateDrawing(Drawing drawing)
         {
-            throw new NotImplementedException();
+            _context.Entry(drawing).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
         public Task DeleteDrawing(int id)
