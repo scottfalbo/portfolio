@@ -102,5 +102,6 @@ namespace Portfolio.Pages.Admin
             await _adminContext.DeleteTattoo(Tattoo.Id);
             return Redirect("/Admin/TattooLair");
         }
+
     }
 }

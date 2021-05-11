@@ -21,6 +21,7 @@ namespace Portfolio.Models.Interface.Services
             Configuration = config;
         }
 
+        //-------------------------------Tattoo CRUD ------------------------------
         /// <summary>
         /// Instantiate a new Tattoo() object and save it to the database
         /// </summary>
@@ -99,42 +100,105 @@ namespace Portfolio.Models.Interface.Services
             await _context.SaveChangesAsync();
         }
 
-
-        public Task DeleteAllTattoos()
+        /// <summary>
+        /// Delete all of the saved tattoos
+        /// </summary>
+        public async Task DeleteAllTattoos()
         {
-            throw new NotImplementedException();
+            List<Tattoo> tattoos = await GetTattoos();
+            foreach (Tattoo tattoo in tattoos)
+                await DeleteTattoo(tattoo.Id);
         }
 
-        public Task CreateDrawing(Drawing drawing)
+        //-------------------------------Drawing CRUD ------------------------------
+        /// <summary>
+        /// Instantiate a new Drawing object with image data and save to database
+        /// </summary>
+        /// <param name="drawing"> drawing Object </param>
+        public async Task CreateDrawing(Drawing drawing)
         {
-            throw new NotImplementedException();
+            Drawing newDrawing = new Drawing()
+            {
+                ImageURL = drawing.ImageURL,
+                FileName = drawing.FileName,
+                Order = 0,
+                Display = false
+            };
+            _context.Entry(newDrawing).State = EntityState.Added;
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Drawing> GetDrawing(int id)
+        /// <summary>
+        /// Get a drawing by Id from the database
+        /// </summary>
+        /// <param name="id"> drawing id </param>
+        /// <returns> Drawing object </returns>
+        public async Task<Drawing> GetDrawing(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Drawings
+                .Where(x => x.Id == id)
+                .Select(y => new Drawing
+                {
+                    Id = y.Id,
+                    ImageURL = y.ImageURL,
+                    FileName = y.FileName,
+                    Order = y.Order,
+                    Display = y.Display
+                }).FirstOrDefaultAsync();
         }
 
-        public Task<List<Drawing>> GetDrawings()
+        /// <summary>
+        /// Get and return a list of all of the drawings in the database
+        /// </summary>
+        /// <returns> List<Drawing> drawings </returns>
+        public async Task<List<Drawing>> GetDrawings()
         {
-            throw new NotImplementedException();
+            return await _context.Drawings
+                .Select(y => new Drawing
+                {
+                    Id = y.Id,
+                    ImageURL = y.ImageURL,
+                    FileName = y.FileName,
+                    Order = y.Order,
+                    Display = y.Display
+                }).ToListAsync();
         }
 
-        public Task UpdateDrawing(Drawing drawing)
+        /// <summary>
+        /// Save updated drawing object to the database
+        /// </summary>
+        /// <param name="drawing"> updated Drawing object </param>
+        public async Task UpdateDrawing(Drawing drawing)
         {
-            throw new NotImplementedException();
+            _context.Entry(drawing).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteDrawing(int id)
+        /// <summary>
+        /// Delete a drawing from the database by id
+        /// </summary>
+        /// <param name="id"> drawing id </param>
+        public async Task DeleteDrawing(int id)
         {
-            throw new NotImplementedException();
+            Drawing drawing = await _context.Drawings.FindAsync(id);
+
+            await DeleteBlobImage(drawing.FileName);
+
+            _context.Entry(drawing).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAllDrawings()
+        /// <summary>
+        /// Delete all of the drawings from the database
+        /// </summary>
+        public async Task DeleteAllDrawings()
         {
-            throw new NotImplementedException();
+            List<Drawing> drawings = await GetDrawings();
+            foreach (Drawing drawing in drawings)
+                await DeleteTattoo(drawing.Id);
         }
 
+        //------------------------------- Shared ------------------------------
         /// <summary>
         /// Deletes file from azure storage
         /// </summary>
