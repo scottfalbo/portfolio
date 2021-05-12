@@ -1,3 +1,32 @@
 ﻿@model Portfolio.Pages.Admin.DrawingLairModel
 
-Drawings
+<section>
+    @foreach (var drawing in Model.DrawingList)
+    {
+        <div class="project-admin-card">
+            <section>
+                <figure><img src="@drawing.ImageURL" /></figure>
+            </section>
+
+            <div>
+                <form asp-page-handler="Edit" method="post">
+                    <div>
+                        <input type="text" asp-for="Drawing.Order" class="form-control" placeholder="@drawing.Order" value="@drawing.Order" />
+                    </div>
+                    <div>
+                        <input type="checkbox" asp-for="Drawing.Display" class="form-control" value="@drawing.Display" />
+                    </div>
+                    <input type="hidden" asp-for="Drawing.Id" value="@drawing.Id" />
+                    <div><input class="admin-button" type="submit" value="Update" /></div>
+                </form>
+            </div>
+
+            <div>
+                <form asp-page-handler="Delete" asp-route-Id="@drawing.Id" method="post">
+                    <input type="hidden" asp-for="Drawing.Id" value="@drawing.Id" />
+                    <input class="admin-button" type="submit" value="Remove" />
+                </form>
+            </div>
+        </div>
+    }
+</section>
