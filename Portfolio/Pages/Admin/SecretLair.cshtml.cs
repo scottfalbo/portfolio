@@ -26,12 +26,18 @@ namespace Portfolio.Pages
 
         [BindProperty]
         public HomePage HomePage { get; set; }
+        [BindProperty]
+        public HomePage TattooPage { get; set; }
+        [BindProperty]
+        public HomePage CodePage { get; set; }
 
         public async Task OnGet()
         {
             try
             {
                 HomePage = await _adminContext.GetHomePage("Home");
+                TattooPage = await _adminContext.GetHomePage("Tattoo");
+                CodePage = await _adminContext.GetHomePage("Code");
             }
             catch (Exception e)
             {
@@ -56,7 +62,8 @@ namespace Portfolio.Pages
         {
             HomePage updatedPage = new HomePage()
             {
-                Id = -1,
+                Id = HomePage.Id,
+                Page = HomePage.Page,
                 Selfie = HomePage.Selfie,
                 FileName = HomePage.FileName,
                 Title = HomePage.Title,
