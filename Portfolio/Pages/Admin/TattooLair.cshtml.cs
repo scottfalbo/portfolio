@@ -45,7 +45,7 @@ namespace Portfolio.Pages.Admin
         /// Upload a new image to azure storage
         /// Instatiate a new tattoo object and save to database
         /// </summary>
-        /// <param name="file"> inut file </param>
+        /// <param name="file"> input file </param>
         /// <returns> redirects in place </returns>
         public async Task<IActionResult> OnPostAddTattoo(IFormFile file)
         {
@@ -72,7 +72,7 @@ namespace Portfolio.Pages.Admin
             };
 
             await _adminContext.UpdateTattoo(updatedTattoo);
-            return Redirect("/Admin/ProjectLair");
+            return Redirect("/Admin/TattooLair");
         }
 
         /// <summary>
