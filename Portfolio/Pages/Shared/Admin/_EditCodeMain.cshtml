@@ -1,0 +1,33 @@
+﻿@model Portfolio.Pages.SecretLairModel
+
+<section class="project-admin">
+    <div class="project-admin-card">
+        <section>
+            <figure><img src="@Model.CodePage.Selfie" /></figure>
+            <form asp-page-handler="UpdateSelfie" method="post" enctype="multipart/form-data">
+                <label>
+                    <input name="file" type="file" />
+                    <input type="submit" value="Update Image" />
+                    <input type="hidden" asp-for="CodePage.Id" value="@Model.CodePage.Id" />
+                    <input type="hidden" asp-for="CodePage.FileName" value="@Model.CodePage.FileName" />
+                </label>
+            </form>
+        </section>
+        <section>
+            <form asp-page-handler="Edit" method="post">
+                <div>
+                    <input type="text" asp-for="CodePage.Title" class="form-control" placeholder="@Model.CodePage.Title" value="@Model.CodePage.Title" />
+                </div>
+                <div>
+                    <textarea type="text" cols="45" rows="5" asp-for="CodePage.Intro" class="form-control" placeholder="@Model.CodePage.Intro"></textarea>
+                </div>
+                <div>
+                    <input type="hidden" asp-for="CodePage.Id" value="HomePage.Id" />
+                    <input type="hidden" asp-for="CodePage.FileName" value="@Model.CodePage.FileName" />
+                    <input type="hidden" asp-for="CodePage.Selfie" value="@Model.CodePage.Selfie" />
+                    <input class="admin-button" type="submit" value="Update" />
+                </div>
+            </form>
+        </section>
+    </div>
+</section>

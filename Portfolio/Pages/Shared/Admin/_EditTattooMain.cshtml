@@ -1,0 +1,33 @@
+﻿@model Portfolio.Pages.SecretLairModel
+
+<section class="project-admin">
+    <div class="project-admin-card">
+        <section>
+            <figure><img src="@Model.TattooPage.Selfie" /></figure>
+            <form asp-page-handler="UpdateSelfie" method="post" enctype="multipart/form-data">
+                <label>
+                    <input name="file" type="file" />
+                    <input type="submit" value="Update Image" />
+                    <input type="hidden" asp-for="TattooPage.Id" value="@Model.TattooPage.Id" />
+                    <input type="hidden" asp-for="TattooPage.FileName" value="@Model.TattooPage.FileName" />
+                </label>
+            </form>
+        </section>
+        <section>
+            <form asp-page-handler="Edit" method="post">
+                <div>
+                    <input type="text" asp-for="TattooPage.Title" class="form-control" placeholder="@Model.TattooPage.Title" value="@Model.TattooPage.Title" />
+                </div>
+                <div>
+                    <textarea type="text" cols="45" rows="5" asp-for="TattooPage.Intro" class="form-control" placeholder="@Model.TattooPage.Intro"></textarea>
+                </div>
+                <div>
+                    <input type="hidden" asp-for="TattooPage.Id" value="HomePage.Id" />
+                    <input type="hidden" asp-for="TattooPage.FileName" value="@Model.TattooPage.FileName" />
+                    <input type="hidden" asp-for="TattooPage.Selfie" value="@Model.TattooPage.Selfie" />
+                    <input class="admin-button" type="submit" value="Update" />
+                </div>
+            </form>
+        </section>
+    </div>
+</section>

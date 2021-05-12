@@ -8,6 +8,7 @@ namespace Portfolio.Models
     public class HomePage
     {
         public int Id { get; set; }
+        public string Page { get; set; }
         public string Title { get; set; }
         public string Intro { get; set; }
         public string Selfie { get; set; }
