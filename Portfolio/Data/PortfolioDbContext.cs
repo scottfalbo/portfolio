@@ -78,32 +78,37 @@ namespace Portfolio.Data
                 }
             );
 
-            modelBuilder.Entity<Tattoo>().HasData(
-                new Tattoo
-                {
-                    Id = -1,
-                    ImageURL = "https://images.squarespace-cdn.com/content/v1/58e1f54286e6c029f7d2839e/1537484214796-K67DXLCA43KCB2W0I5QA/ke17ZwdGBToddI8pDm48kKc3OAYzt6Uy9caNBxQ7A-oUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2zxJr3ZkhFtf92eHeKaFaP9c8wnx309ehtLA9Btl52YybhuOb0MAcXaQ6whlEkpec/margot_cat.jpg?format=1500w",
-                    Display = true,
-                    FileName = null
-                });
-
-            modelBuilder.Entity<Drawing>().HasData(
-                new Drawing
-                {
-                    Id = -1,
-                    ImageURL = "https://images.squarespace-cdn.com/content/v1/58e1f54286e6c029f7d2839e/1537484214796-K67DXLCA43KCB2W0I5QA/ke17ZwdGBToddI8pDm48kKc3OAYzt6Uy9caNBxQ7A-oUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2zxJr3ZkhFtf92eHeKaFaP9c8wnx309ehtLA9Btl52YybhuOb0MAcXaQ6whlEkpec/margot_cat.jpg?format=1500w",
-                    Display = true,
-                    FileName = null
-                });
-
             modelBuilder.Entity<HomePage>().HasData(
                 new HomePage
                 {
-                    Id = -1,
+                    Id = 1,
+                    Page = "Home",
                     Title = "hello",
                     Intro = "test <br /> test",
-                    Selfie = "~/images/code-selfie.png",
-                    FileName = null
+                    Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
+                    FileName = "code-selfie.png"
+                });
+            
+            modelBuilder.Entity<HomePage>().HasData(
+                new HomePage
+                {
+                    Id = 2,
+                    Page = "Tattoo",
+                    Title = "flesh renderer",
+                    Intro = "tattoo blah blah blah",
+                    Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
+                    FileName = "code-selfie.png"
+                });
+            
+            modelBuilder.Entity<HomePage>().HasData(
+                new HomePage
+                {
+                    Id = 3,
+                    Page = "Code",
+                    Title = "byte bender",
+                    Intro = "code blah blah blah",
+                    Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
+                    FileName = "code-selfie.png"
                 });
         }
 

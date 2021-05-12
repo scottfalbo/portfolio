@@ -31,7 +31,7 @@ namespace Portfolio.Pages
         {
             try
             {
-                HomePage = await _adminContext.GetHomePage();
+                HomePage = await _adminContext.GetHomePage("Home");
             }
             catch (Exception e)
             {

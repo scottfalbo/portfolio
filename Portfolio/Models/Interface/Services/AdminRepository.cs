@@ -137,13 +137,14 @@ namespace Portfolio.Models.Interfaces.Services
         /// Get HomePage data from the database
         /// </summary>
         /// <returns> HomePage object </returns>
-        public async Task<HomePage> GetHomePage()
+        public async Task<HomePage> GetHomePage(string page)
         {
             return await _context.HomePage
-                .Where(x => x.Id == -1)
+                .Where(x => x.Page == page)
                 .Select(y => new HomePage
                 {
                     Id = y.Id,
+                    Page = y.Page,
                     Title = y.Title,
                     Intro = y.Intro,
                     Selfie = y.Selfie,
