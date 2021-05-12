@@ -82,7 +82,7 @@ namespace Portfolio.Pages.Admin
         /// <returns></returns>
         public async Task<IActionResult> OnPostDelete()
         {
-            await _adminContext.DeleteTattoo(Drawing.Id);
+            await _adminContext.DeleteDrawing(Drawing.Id);
             return Redirect("/Admin/DrawingLair");
         }
     }
