@@ -91,6 +91,25 @@ namespace Portfolio.Models.Interface.Services
         }
 
         /// <summary>
+        /// Upload and image to azure storage
+        /// Create a new Drawing object with new image and save to database
+        /// </summary>
+        /// <param name="file"> input file </param>
+        public async Task AddDrawingImage(IFormFile file)
+        {
+            BlobClient blob = await UploadImage(file);
+
+            Drawing newDrawing = new Drawing()
+            {
+                ImageURL = blob.Uri.ToString(),
+                FileName = file.FileName,
+                Order = 0,
+                Display = false
+            };
+            await _artAdmin.CreateDrawing(newDrawing);
+        }
+
+        /// <summary>
         /// Updates a projects sourceURL to newly uploaded image
         /// </summary>
         /// <param name="file"> input file </param>

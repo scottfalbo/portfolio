@@ -1,3 +1,11 @@
 ﻿@model Portfolio.Pages.Admin.DrawingLairModel
 
-Add Drawings
+<h2> Add New Drawing</h2>
+<div>
+    <form asp-page-handler="AddDrawing" method="post" enctype="multipart/form-data">
+        <label>
+            <input name="file" type="file" />
+            <input type="submit" value="Create Project" />
+        </label>
+    </form>
+</div>
