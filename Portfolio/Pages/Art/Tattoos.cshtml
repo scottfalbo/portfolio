@@ -7,8 +7,5 @@
     <partial name="Art/_ArtMenu" />
 </div>
 <div>
-    <partial name="Art/_TattooPortfolio" />
-</div>
-<div>
-    <partial name="Art/_TattooGalleryViewer" />
+    @await Component.InvokeAsync("TattooGallery")
 </div>

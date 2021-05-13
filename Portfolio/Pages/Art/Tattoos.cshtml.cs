@@ -11,19 +11,10 @@ namespace Portfolio.Pages.Art
 {
     public class TattoosModel : PageModel
     {
-        public IArtAdmin _adminContext;
-
-        public TattoosModel(IArtAdmin admin)
-        {
-            _adminContext = admin;
-        }
-
-        [BindProperty]
-        public List<Tattoo> Tattoos { get; set; }
 
         public async Task OnGet()
         {
-            Tattoos = await _adminContext.GetTattoos();
+
         }
     }
 }
