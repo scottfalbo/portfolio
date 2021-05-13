@@ -24,7 +24,7 @@ namespace Portfolio.ViewComponents
         public Gallery<Tattoo> Gallery { get; set; }
         public Image<Tattoo> Current { get; set; }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(Tattoo tattoo)
         {
             Tattoos = await _adminContext.GetTattoos();
             MakeGallery();
