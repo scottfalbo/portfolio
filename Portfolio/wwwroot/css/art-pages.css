@@ -1,0 +1,30 @@
+﻿
+
+
+.gallery-thumbs{
+    width: 90%;
+    min-width: 360px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #151515;
+    border-radius: 10px;
+}
+
+.thumb-container {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 5px;
+}
+
+.gallery-thumbs figure {
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+}
+
+.gallery-thumbs img {
+    image-rendering: -moz-crisp-edges;
+    height: 100%;
+    box-shadow: 0px 5px 5px black;
+}
+
