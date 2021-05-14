@@ -65,6 +65,7 @@ namespace Portfolio.Pages.Admin
             Drawing updatedDrawing = new Drawing()
             {
                 Id = drawing.Id,
+                Title = drawing.Title,
                 ImageURL = drawing.ImageURL,
                 FileName = drawing.FileName,
                 Order = drawing.Order,

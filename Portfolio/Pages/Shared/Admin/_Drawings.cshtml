@@ -11,6 +11,9 @@
             <div>
                 <form asp-page-handler="Edit" method="post">
                     <div>
+                        <input type="text" asp-for="Drawing.Title" class="form-control" placeholder="@drawing.Title" value="@drawing.Title" />
+                    </div>
+                    <div>
                         <input type="text" asp-for="Drawing.Order" class="form-control" placeholder="@drawing.Order" value="@drawing.Order" />
                     </div>
                     <div>

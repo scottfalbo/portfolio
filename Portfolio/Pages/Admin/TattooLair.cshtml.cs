@@ -65,6 +65,7 @@ namespace Portfolio.Pages.Admin
             Tattoo updatedTattoo = new Tattoo()
             {
                 Id = tattoo.Id,
+                Title = tattoo.Title,
                 ImageURL = tattoo.ImageURL,
                 FileName = tattoo.FileName,
                 Order = tattoo.Order,

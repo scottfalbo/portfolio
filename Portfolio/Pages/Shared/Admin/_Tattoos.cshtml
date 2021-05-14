@@ -4,20 +4,11 @@
     @foreach (var tattoo in Model.TattooList)
     {
         <div class="project-admin-card">
-            <section>
-                <figure><img src="@tattoo.ImageURL" /></figure>
-                @*<form asp-page-handler="UpdateImage" method="post" enctype="multipart/form-data">
-                    <label>
-                        <input name="file" type="file" />
-                        <input type="submit" value="Update Image" />
-                        <input type="hidden" asp-for="Tattoo.FileName" value="@tattoo.FileName" />
-                        <input type="hidden" asp-for="Tattoo.Id" value="@tattoo.Id" />
-                    </label>
-                </form>*@
-            </section>
-
             <div>
                 <form asp-page-handler="Edit" method="post">
+                    <div>
+                        <input type="text" asp-for="Tattoo.Title" class="form-control" placeholder="@tattoo.Title" value="@tattoo.Title" />
+                    </div>
                     <div>
                         <input type="text" asp-for="Tattoo.Order" class="form-control" placeholder="@tattoo.Order" value="@tattoo.Order" />
                     </div>
