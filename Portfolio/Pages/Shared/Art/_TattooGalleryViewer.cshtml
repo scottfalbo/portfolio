@@ -9,7 +9,7 @@
             @foreach (var tattoo in Model.Tattoos)
             {
                 <figure class="carousel-item @(tattoo == Model.Tattoos.First() ? "active" : "")">
-                    <img class="d-block w-100" src="@tattoo.ImageURL" />
+                    <img class="d-block w-100" src="@tattoo.ImageURL" alt="@tattoo.Title" />
                 </figure>
             }
         </div>
