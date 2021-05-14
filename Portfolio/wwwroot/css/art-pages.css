@@ -1,6 +1,4 @@
 ﻿
-
-
 .gallery-thumbs{
     width: 90%;
     min-width: 360px;
@@ -26,5 +24,24 @@
     image-rendering: -moz-crisp-edges;
     height: 100%;
     box-shadow: 0px 5px 5px black;
+}
+
+.show-gallery {
+    visibility: hidden;
+}
+
+#tattoo-gallery {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vh;
+}
+
+.close-gallery {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
 }
 

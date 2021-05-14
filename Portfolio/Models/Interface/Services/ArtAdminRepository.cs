@@ -30,6 +30,7 @@ namespace Portfolio.Models.Interface.Services
         {
             Tattoo newTattoo = new Tattoo()
             {
+                Title = tattoo.FileName,
                 ImageURL = tattoo.ImageURL,
                 FileName = tattoo.FileName,
                 Order = 0,
@@ -51,6 +52,7 @@ namespace Portfolio.Models.Interface.Services
                 .Select(y => new Tattoo
                 {
                     Id = y.Id,
+                    Title = y.Title,
                     ImageURL = y.ImageURL,
                     FileName = y.FileName,
                     Order = y.Order,
@@ -68,9 +70,11 @@ namespace Portfolio.Models.Interface.Services
                 .Select(x => new Tattoo
                 {
                     Id = x.Id,
+                    Title = x.Title,
                     ImageURL = x.ImageURL,
                     FileName = x.FileName,
-                    Display = x.Display
+                    Display = x.Display,
+                    Order = x.Order
                 })
                 .ToListAsync();
         }
@@ -119,6 +123,7 @@ namespace Portfolio.Models.Interface.Services
         {
             Drawing newDrawing = new Drawing()
             {
+                Title = drawing.FileName,
                 ImageURL = drawing.ImageURL,
                 FileName = drawing.FileName,
                 Order = 0,
@@ -140,6 +145,7 @@ namespace Portfolio.Models.Interface.Services
                 .Select(y => new Drawing
                 {
                     Id = y.Id,
+                    Title = y.Title,
                     ImageURL = y.ImageURL,
                     FileName = y.FileName,
                     Order = y.Order,
@@ -157,6 +163,7 @@ namespace Portfolio.Models.Interface.Services
                 .Select(y => new Drawing
                 {
                     Id = y.Id,
+                    Title = y.Title,
                     ImageURL = y.ImageURL,
                     FileName = y.FileName,
                     Order = y.Order,

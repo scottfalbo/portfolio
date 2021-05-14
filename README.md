@@ -112,7 +112,10 @@ I have a basic place holder site deployed while the full site is under developem
     + Updated all database models and added a `HomePage` model for dynamic data rendering and updating.
     + Finished crud full CRUD actions for Projects, Tattoos, and the HomePage.
     + Added forms for Tattoo and HomePage admin.
-
+  + 05/11/2021
+    + Finished all admin pages and CRUD actions site wide.
+  + 05/13/2021
+    + Started building Razer Pages View Components for the gallery viewers.
 
 ---
 

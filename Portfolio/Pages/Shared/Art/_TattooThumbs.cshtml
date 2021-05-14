@@ -1,0 +1,14 @@
+﻿@model Portfolio.Pages.Art.TattoosModel
+
+<section class="gallery-thumbs">
+    <div class="thumb-container">
+        @foreach (var tattoo in Model.Tattoos)
+        {
+            <a href="#Gallery-Control" role="button" data-slide-to="@Model.Tattoos.IndexOf(tattoo)" class="gallery-toggle">
+                <figure>
+                    <img src="@tattoo.ImageURL" />
+                </figure>
+            </a>
+        }
+    </div>
+</section>
