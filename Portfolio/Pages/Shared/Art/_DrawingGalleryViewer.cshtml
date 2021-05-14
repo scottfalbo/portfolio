@@ -1,15 +1,15 @@
-﻿@model Portfolio.Pages.Art.TattoosModel
+﻿@model Portfolio.Pages.Art.DrawingsModel
 
 <section id="Gallery-Control" class="carousel slide" data-ride="carousel" data-interval="0">
     <div>
-        <partial name="Art/_TattooThumbs" />
+        <partial name="Art/_DrawingThumbs" />
     </div>
     <div class="show-gallery" id="gallery-switch">
         <div class="carousel-inner">
-            @foreach (var tattoo in Model.Tattoos)
+            @foreach (var drawing in Model.Drawings)
             {
-                <figure class="carousel-item @(tattoo == Model.Tattoos.First() ? "active" : "")">
-                    <img class="d-block w-100" src="@tattoo.ImageURL" alt="@tattoo.Title" />
+                <figure class="carousel-item @(drawing == Model.Drawings.First() ? "active" : "")">
+                    <img class="d-block w-100" src="@drawing.ImageURL" alt="@drawing.Title" />
                 </figure>
             }
         </div>

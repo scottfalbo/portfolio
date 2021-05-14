@@ -2,13 +2,13 @@
 
 $(function () {
     $('.gallery-toggle').click(function () {
-        $('#tattoo-gallery').removeClass('show-gallery');
+        $('#gallery-switch').removeClass('show-gallery');
     });
 });
 
 $(function () {
     $('.close-gallery').click(function () {
-        $('#tattoo-gallery').addClass('show-gallery');
+        $('#gallery-switch').addClass('show-gallery');
     });
 });
 
