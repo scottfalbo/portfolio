@@ -20,6 +20,8 @@
                         <input type="checkbox" asp-for="Drawing.Display" class="form-control" value="@drawing.Display" />
                     </div>
                     <input type="hidden" asp-for="Drawing.Id" value="@drawing.Id" />
+                    <input type="hidden" asp-for="Drawing.FileName" value="@drawing.FileName" />
+                    <input type="hidden" asp-for="Drawing.ImageURL" value="@drawing.ImageURL" />
                     <div><input class="admin-button" type="submit" value="Update" /></div>
                 </form>
             </div>
