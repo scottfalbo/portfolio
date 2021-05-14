@@ -26,3 +26,12 @@
     box-shadow: 0px 5px 5px black;
 }
 
+.show-gallery {
+    visibility: hidden;
+}
+
+.close-gallery {
+    cursor: pointer;
+    position: relative;
+}
+

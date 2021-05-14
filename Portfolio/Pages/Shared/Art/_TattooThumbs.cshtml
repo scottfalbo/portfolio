@@ -2,17 +2,12 @@
 
 <section class="gallery-thumbs">
     <div class="thumb-container">
-        @foreach(var tattoo in Model.Tattoos)
+        @foreach (var tattoo in Model.Tattoos)
         {
-            <a href="#Gallery-Control" role="button" data-slide-to="@tattoo.Order">
-                <figure >
+            <a href="#Gallery-Control" role="button" data-slide-to="@tattoo.Order" class="gallery-toggle">
+                <figure>
                     <img src="@tattoo.ImageURL" />
                 </figure>
-                @*<script>
-                    $('.link').on('click', function () {
-                        $('.carousel').carousel($(this).index());
-                    });
-                </script>*@
             </a>
         }
     </div>
