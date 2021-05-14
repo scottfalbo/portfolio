@@ -30,8 +30,18 @@
     visibility: hidden;
 }
 
+#tattoo-gallery {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vh;
+}
+
 .close-gallery {
     cursor: pointer;
-    position: relative;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
 }
 

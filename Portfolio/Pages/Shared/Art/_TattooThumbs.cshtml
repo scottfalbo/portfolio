@@ -4,7 +4,7 @@
     <div class="thumb-container">
         @foreach (var tattoo in Model.Tattoos)
         {
-            <a href="#Gallery-Control" role="button" data-slide-to="@tattoo.Order" class="gallery-toggle">
+            <a href="#Gallery-Control" role="button" data-slide-to="@Model.Tattoos.IndexOf(tattoo)" class="gallery-toggle">
                 <figure>
                     <img src="@tattoo.ImageURL" />
                 </figure>
