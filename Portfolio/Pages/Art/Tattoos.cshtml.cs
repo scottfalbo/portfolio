@@ -24,6 +24,20 @@ namespace Portfolio.Pages.Art
         public async Task OnGet()
         {
             Tattoos = await _artAdmin.GetTattoos();
+            AssignOrder();
+        }
+
+        /// <summary>
+        /// Assigns display order to be used as index for thumbnail links to gallery view
+        /// </summary>
+        public void AssignOrder()
+        {
+            int order = 0;
+            foreach(Tattoo tattoo in Tattoos)
+            {
+                tattoo.Order = order;
+                order++;
+            }
         }
     }
 }

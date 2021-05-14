@@ -4,18 +4,16 @@
     <div class="thumb-container">
         @foreach(var tattoo in Model.Tattoos)
         {
-            <button type="button" id="@tattoo.Title">
-                <figure>
+            <a href="#Gallery-Control" role="button" data-slide-to="@tattoo.Order">
+                <figure >
                     <img src="@tattoo.ImageURL" />
                 </figure>
-             </button>
-             <script>
-                 $(function () {
-                     $("#@tattoo.Title").click(function () {
-                         $(".@tattoo.Title").addClass("active");
-                     });
-                 });
-             </script>
+                @*<script>
+                    $('.link').on('click', function () {
+                        $('.carousel').carousel($(this).index());
+                    });
+                </script>*@
+            </a>
         }
     </div>
 </section>
