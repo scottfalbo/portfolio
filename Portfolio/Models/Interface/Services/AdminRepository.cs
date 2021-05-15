@@ -153,6 +153,24 @@ namespace Portfolio.Models.Interfaces.Services
         }
 
         /// <summary>
+        /// Return a list of all homepages
+        /// </summary>
+        /// <returns> List<HomePage> </returns>
+        public async Task<List<HomePage>> GetHomePages()
+        {
+            return await _context.HomePage
+                .Select(x => new HomePage
+                {
+                    Id = x.Id,
+                    Page = x.Page,
+                    Title = x.Title,
+                    Intro = x.Intro,
+                    Selfie = x.Selfie,
+                    FileName = x.FileName
+                }).ToListAsync();
+        }
+
+        /// <summary>
         /// Update HomePage Title and Intro data and save to database
         /// </summary>
         /// <param name="homepage"> HomePage object </param>

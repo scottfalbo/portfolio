@@ -24,20 +24,16 @@ namespace Portfolio.Pages
             _uploadService = service;
         }
 
+        public List<HomePage> HomePages { get; set; } 
+
         [BindProperty]
         public HomePage HomePage { get; set; }
-        [BindProperty]
-        public HomePage TattooPage { get; set; }
-        [BindProperty]
-        public HomePage CodePage { get; set; }
 
         public async Task OnGet()
         {
             try
             {
-                HomePage = await _adminContext.GetHomePage("Home");
-                TattooPage = await _adminContext.GetHomePage("Tattoo");
-                CodePage = await _adminContext.GetHomePage("Code");
+                HomePages = await _adminContext.GetHomePages();
             }
             catch (Exception e)
             {
@@ -45,32 +41,35 @@ namespace Portfolio.Pages
             }
         }
 
-        public async Task<IActionResult> OnPostUpdateSelfie(IFormFile file)
+        public async Task<IActionResult> OnPostUpdateSelfie(IFormFile file, HomePage homepage)
         {
             if (file != null)
             {
-                if (HomePage.FileName != null)
+                if (homepage.FileName != null)
                 {
-                    await _adminContext.DeleteBlobImage(HomePage.FileName);
+                    await _adminContext.DeleteBlobImage(homepage.FileName);
                 }
-                await _uploadService.UpdateSelfie(file, -1);
+                await _uploadService.UpdateSelfie(file, homepage.Id);
             }
             return Redirect("/Admin/SecretLair");
         }
 
-        public async Task OnPostEdit(HomePage homepage)
+        public async Task<IActionResult> OnPostEdit(HomePage homepage)
         {
+            if (homepage.Intro == null)
+                homepage.Intro = (await _adminContext.GetHomePage(homepage.Page)).Intro;
+
             HomePage updatedPage = new HomePage()
             {
-                Id = HomePage.Id,
-                Page = HomePage.Page,
-                Selfie = HomePage.Selfie,
-                FileName = HomePage.FileName,
-                Title = HomePage.Title,
-                Intro = HomePage.Intro
+                Id = homepage.Id,
+                Page = homepage.Page,
+                Selfie = homepage.Selfie,
+                FileName = homepage.FileName,
+                Title = homepage.Title,
+                Intro = homepage.Intro
             };
             await _adminContext.UpdateHomePage(updatedPage);
-            Redirect("/Admin/SecretLair");
+            return Redirect("/Admin/SecretLair");
         }
 
     }
