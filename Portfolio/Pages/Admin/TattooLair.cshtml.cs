@@ -61,7 +61,7 @@ namespace Portfolio.Pages.Admin
         /// <returns> redirect in place </returns>
         public async Task<IActionResult> OnPostEdit(Tattoo tattoo)
         {
-
+            Console.WriteLine("");
             Tattoo updatedTattoo = new Tattoo()
             {
                 Id = tattoo.Id,

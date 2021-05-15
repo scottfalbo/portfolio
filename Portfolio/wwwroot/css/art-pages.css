@@ -33,8 +33,7 @@
 #tattoo-gallery {
     position: absolute;
     top: 0;
-    height: 100vh;
-    width: 100vh;
+    width: 100%;
 }
 
 .close-gallery {
@@ -43,5 +42,13 @@
     top: 0;
     right: 0;
     z-index: 10;
+}
+
+#tattoo-gallery figure {
+
+}
+
+#tattoo-gallery figure img {
+    max-height: 80vh;
 }
 
