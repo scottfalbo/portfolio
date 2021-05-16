@@ -82,3 +82,19 @@
         height: 100%;
     }
 }
+
+/*Scott Falbo Art Home page style*/
+
+/*Mobile*/
+@media (max-width: 576px){
+
+}
+
+/*Tablet and Desktop style*/
+@media (min-width: 577px){
+    .art-intro-container{
+        display: grid;
+        grid-template-columns: 1fr, 1fr;
+        grid-template-rows: 1fr;
+    }
+}
