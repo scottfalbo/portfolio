@@ -9,17 +9,19 @@
             <p>@Model.HomePage.Title</p>
         </section>
         <div class="gallery-links">
-            <a href="#"><img src="https://via.placeholder.com/50x50" /></a>
-            <a href="#"><img src="https://via.placeholder.com/50x50" /></a>
+            <a asp-page="/Art/Tattoos"><img src="https://via.placeholder.com/50x50" /></a>
+            <a asp-page="/Art/Drawings"><img src="https://via.placeholder.com/50x50" /></a>
             <a href="#"><img src="https://via.placeholder.com/50x50" /></a>
         </div>
     </div>
     <div>
+        <div><img src="https://via.placeholder.com/400x50" /></div>
         <article>
             @Model.HomePage.Intro
         </article>
         <section class="insta-gallery">
-            instagram gallery
+            <h2>Instagram Feed</h2>
+            <partial name="Art/_InstagramGallery" />
         </section>
     </div>
 </section>

@@ -92,10 +92,12 @@
 
 /*Tablet and Desktop style*/
 @media (min-width: 577px){
-    .art-intro-container{
+    .art-intro-container {
         display: grid;
-        grid-template-columns: 35%, 65%;
+        grid-template-columns: 1fr, 1fr;
         grid-template-rows: 1fr;
+        color: #f19f24;
+        height: 100%;
     }
 
     .art-intro-container > div:first-child{
@@ -103,7 +105,7 @@
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-rows: 400px, 1fr, 1fr;
     }
 
     .art-intro-container > div:last-child {
@@ -111,7 +113,8 @@
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr;
+        grid-template-rows: 50px, 1fr, 1fr;
+        width: 100%;
     }
 
     .art-intro-container figure {
@@ -120,12 +123,13 @@
     }
 
     .art-intro-container figure > img {
-        width: 400px;
+        max-width: 100%;
     }
 
     .title {
         grid-column: 1/2;
         grid-row: 2/3;
+        padding: 10px;
     }
 
     .gallery-links{
@@ -135,11 +139,20 @@
 
     .art-intro-container > div:last-child > article {
         grid-column: 1/2;
-        grid-row: 1/2;
+        grid-row: 2/3;
+        text-align: left;
+        width: 100%;
+        padding: 10px;
     }
 
     .insta-gallery{
         grid-column: 1/2;
-        grid-row: 2/3;
+        grid-row: 3/4;
+        padding: 10px;
+    }
+
+    .art-intro-container > div:last-child > div{
+        grid-column: 1/2;
+        grid-row: 1/2;
     }
 }
