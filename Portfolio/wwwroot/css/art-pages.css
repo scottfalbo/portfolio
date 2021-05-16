@@ -30,18 +30,16 @@
     visibility: hidden;
 }
 
-#tattoo-gallery {
-    position: absolute;
+.tattoo-gallery {
+    position: fixed;
     top: 0;
-    width: 100%;
+    z-index: 100;
 }
 
 .close-gallery {
     cursor: pointer;
     position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 10;
+    z-index: 1000;
     width: 40px;
     height: 40px;
     border: 2px #d2ffd8 solid;
@@ -56,10 +54,10 @@
 }
 
 
-#tattoo-gallery figure {
-
+.tattoo-gallery figure {
+    max-height: 100vh;
 }
 
-#tattoo-gallery figure img {
-    max-height: 80vh;
+.tattoo-gallery figure img {
+    height: inherit;
 }
