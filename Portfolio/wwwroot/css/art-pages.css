@@ -94,7 +94,52 @@
 @media (min-width: 577px){
     .art-intro-container{
         display: grid;
-        grid-template-columns: 1fr, 1fr;
+        grid-template-columns: 35%, 65%;
         grid-template-rows: 1fr;
+    }
+
+    .art-intro-container > div:first-child{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .art-intro-container > div:last-child {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr, 1fr;
+    }
+
+    .art-intro-container figure {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .art-intro-container figure > img {
+        width: 400px;
+    }
+
+    .title {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .gallery-links{
+        grid-column: 1/2;
+        grid-row: 3/4;
+    }
+
+    .art-intro-container > div:last-child > article {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .insta-gallery{
+        grid-column: 1/2;
+        grid-row: 2/3;
     }
 }
