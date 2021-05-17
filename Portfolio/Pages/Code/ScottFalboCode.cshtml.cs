@@ -19,12 +19,14 @@ namespace Portfolio.Pages.Code
         }
 
         public List<Project> ProjectList { get; set; }
+        public HomePage HomePage { get; set; }
 
         public async Task OnGet()
         {
             try
             {
                 ProjectList = await _adminContext.GetProjects();
+                HomePage = await _adminContext.GetHomePage("Code");
             }
             catch (Exception e)
             {

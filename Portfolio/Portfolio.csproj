@@ -35,7 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Shared\Code\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
