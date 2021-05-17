@@ -85,18 +85,71 @@
 
 /*Scott Falbo Art Home page style*/
 
-/*Mobile*/
-@media (max-width: 576px){
+.art-intro-container {
+    color: #f19f24;
+}
 
+/*Mobile*/
+@media (max-width: 775px){
+    .art-intro-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr, 1fr;
+    }
+
+    .art-intro-container > div:first-child {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 200px, 1fr, 1fr;
+    }
+
+    .art-intro-container > div:last-child {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px, 1fr, 1fr;
+    }
+
+    .art-intro-container figure {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .art-intro-container figure > img {
+        max-width: 100%;
+    }
+
+    .title {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        padding: 10px;
+    }
+
+    .gallery-links {
+        grid-column: 1/2;
+        grid-row: 3/4;
+        padding: 10px;
+    }
+
+    .gallery-links a {
+        display: inline-block;
+    }
+
+    .art-intro-container > div:last-child article {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 /*Tablet and Desktop style*/
-@media (min-width: 577px){
+@media (min-width: 776px){
     .art-intro-container {
         display: grid;
         grid-template-columns: 1fr, 1fr;
         grid-template-rows: 1fr;
-        color: #f19f24;
         height: 100%;
     }
 
@@ -151,8 +204,27 @@
         padding: 10px;
     }
 
+    .insta-gallery h2{
+        padding: 10px;
+    }
+
     .art-intro-container > div:last-child > div{
         grid-column: 1/2;
         grid-row: 1/2;
     }
+}
+
+/*Homepage shared*/
+
+.insta-gallery-viewer {
+    padding: 10px;
+}
+
+.insta-thumb-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.insta-thumb-container img{
+    margin: 5px;
 }
