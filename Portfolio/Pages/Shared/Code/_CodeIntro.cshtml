@@ -1,0 +1,24 @@
+﻿@model Portfolio.Pages.Code.ScottFalboCodeModel
+
+<section class="art-intro-container">
+    <div>
+        <figure>
+            <img src="@Model.HomePage.Selfie" alt="Scott Falbo" />
+        </figure>
+        <section class="title">
+            <p>@Model.HomePage.Title</p>
+        </section>
+        <div class="gallery-links">
+            <a asp-page="/Art/Tattoos"><img src="https://via.placeholder.com/50x50" /></a>
+            <a asp-page="/Art/Drawings"><img src="https://via.placeholder.com/50x50" /></a>
+            <a href="#"><img src="https://via.placeholder.com/50x50" /></a>
+        </div>
+    </div>
+    <div>
+        <div><img src="https://via.placeholder.com/400x50" /></div>
+        <article>
+            @Model.HomePage.Intro
+        </article>
+
+    </div>
+</section>

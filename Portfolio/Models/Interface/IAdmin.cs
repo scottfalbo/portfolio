@@ -24,5 +24,10 @@ namespace Portfolio.Models.Interface
         public Task<HomePage> GetHomePage(string page);
         public Task<List<HomePage>> GetHomePages();
         public Task UpdateHomePage(HomePage homepage);
+
+        /// <summary>
+        /// Instagram API call
+        /// </summary>
+        public Task<List<Instagram>> GetInstagram();
     }
 }

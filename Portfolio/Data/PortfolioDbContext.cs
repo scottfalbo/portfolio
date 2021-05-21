@@ -18,6 +18,7 @@ namespace Portfolio.Data
         public DbSet<Drawing> Drawings { get; set; }
         public DbSet<Design> Designs { get; set; }
         public DbSet<HomePage> HomePage { get; set; }
+        public DbSet<Instagram> Instragrams { get; set; }
 
         public IConfiguration Configuration { get; }
 

@@ -30,25 +30,201 @@
     visibility: hidden;
 }
 
-#tattoo-gallery {
-    position: absolute;
+.tattoo-gallery {
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    max-height: 100%;
     width: 100%;
 }
 
 .close-gallery {
     cursor: pointer;
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
+    border: 2px #d2ffd8 solid;
+    border-radius: 20px;
+    background-color: #121212;
+    text-align: center;
+    box-shadow: 0px 5px 5px black;
+    line-height: 20px;
+    color: #d2ffd8;
+    font-size: 30px;
+    padding: 7px 5px;
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 10;
+    margin: 10px;
 }
 
-#tattoo-gallery figure {
 
+.tattoo-gallery figure {
+    background-color: rgba(0, 0, 0, .8);
+    max-height: inherit;
+    width: inherit;
 }
 
-#tattoo-gallery figure img {
-    max-height: 80vh;
+.tattoo-gallery figure img {
+    max-height: 100vh;
+    object-fit: contain;
 }
 
+@media (max-width: 500px) {
+    .tattoo-gallery {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .tattoo-gallery figure {
+        height: 100%;
+    }
+}
+
+/*Scott Falbo Art Home page style*/
+
+.art-intro-container {
+    color: #f19f24;
+}
+
+/*Mobile*/
+@media (max-width: 775px){
+    .art-intro-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr, 1fr;
+    }
+
+    .art-intro-container > div:first-child {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 200px, 1fr, 1fr;
+    }
+
+    .art-intro-container > div:last-child {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px, 1fr, 1fr;
+    }
+
+    .art-intro-container figure {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .art-intro-container figure > img {
+        max-width: 100%;
+    }
+
+    .title {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        padding: 10px;
+    }
+
+    .gallery-links {
+        grid-column: 1/2;
+        grid-row: 3/4;
+        padding: 10px;
+    }
+
+    .gallery-links a {
+        display: inline-block;
+    }
+
+    .art-intro-container > div:last-child article {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+/*Tablet and Desktop style*/
+@media (min-width: 776px){
+    .art-intro-container {
+        display: grid;
+        grid-template-columns: 1fr, 1fr;
+        grid-template-rows: 1fr;
+        height: 100%;
+    }
+
+    .art-intro-container > div:first-child{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 400px, 1fr, 1fr;
+    }
+
+    .art-intro-container > div:last-child {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px, 1fr, 1fr;
+        width: 100%;
+    }
+
+    .art-intro-container figure {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .art-intro-container figure > img {
+        max-width: 100%;
+    }
+
+    .title {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        padding: 10px;
+    }
+
+    .gallery-links{
+        grid-column: 1/2;
+        grid-row: 3/4;
+    }
+
+    .art-intro-container > div:last-child > article {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        text-align: left;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .insta-gallery{
+        grid-column: 1/2;
+        grid-row: 3/4;
+        padding: 10px;
+    }
+
+    .insta-gallery h2{
+        padding: 10px;
+    }
+
+    .art-intro-container > div:last-child > div{
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+}
+
+/*Homepage shared*/
+
+.insta-gallery-viewer {
+    padding: 10px;
+}
+
+.insta-thumb-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.insta-thumb-container img{
+    margin: 5px;
+}
