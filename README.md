@@ -50,7 +50,7 @@ I have a basic place holder site deployed while the full site is under developem
 
 ---
 
-## Development Log Log
+## Development Log
 + 03/25/2021
   + Started initial scaffolding and view layouts.
   + `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`
@@ -115,7 +115,15 @@ I have a basic place holder site deployed while the full site is under developem
   + 05/11/2021
     + Finished all admin pages and CRUD actions site wide.
   + 05/13/2021
-    + Started building Razer Pages View Components for the gallery viewers.
+    + Implemented Bootstrap carousel for gallery viewer elements.
+    + Built out Tattoo and Drawing gallery pages with viewers.
+  + 05/15/2021
+    + Refactored HomePage admin and fixed an update CRUD issue.
+    + Scaffolded out the art main page.  Added dependency injection for tattoo and drawing gallery data.
+  + 05/16/2021
+    + Worked out desktop and mobile style for the art and code main pages.
+    + Brought in `Microsoft.AspNet.WebApi.Client` NuGet package.
+    + Brought in `SkyBrud.Social` NuGet package.
 
 ---
 
@@ -127,5 +135,5 @@ I have a basic place holder site deployed while the full site is under developem
 ---
 
 ## Acknowledgements
-
+- https://getbootstrap.com/docs/4.0/components/carousel/
 

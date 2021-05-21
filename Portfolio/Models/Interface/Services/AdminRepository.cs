@@ -1,6 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using Microsoft.AspNetCore.Http;
+using InstagramApiSharp.API.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Portfolio.Data;
@@ -178,6 +178,15 @@ namespace Portfolio.Models.Interfaces.Services
         {
             _context.Entry(homepage).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Instagram>> GetInstagram()
+        {
+            string accessToken = "AQA4w-FPtxdt7ABeIBkiAkucemIGwzWacjNwIDnuKO8eLohO2AYg6sDP8hX9C4p1VK4fCK9wVapr8RyO7PHEQu6z73EUVeOktv2FVaUz3zl0r29dr6bwooJJtBXa6G-hNWAMewABuzLihCe2pi7dinbaoa-JrlbCVfT7NDj0D5oFimO1uPkQt3QXzCLv5o2yHJ6lLa7YxjTQha3o_xd8D5QyI7YURX4wwKDp2-ueCzJxyg";
+
+
+            Console.WriteLine("");
+            return null;
         }
     }
 }

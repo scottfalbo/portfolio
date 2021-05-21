@@ -19,10 +19,13 @@ namespace Portfolio.Pages.Art
         }
 
         public HomePage HomePage { get; set; }
+        public List<Instagram> InstagramGallery { get; set; }
 
         public async Task OnGet()
         {
             HomePage = await _admin.GetHomePage("Tattoo");
+            var temp = await _admin.GetInstagram();
+
         }
     }
 }
