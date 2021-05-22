@@ -72,5 +72,23 @@ namespace Portfolio.Pages
             return Redirect("/Admin/SecretLair");
         }
 
+        /// <summary>
+        /// Updates database with most recent instagram media.
+        /// </summary>
+        public async Task<IActionResult> OnGetUpdateInstaFeed()
+        {
+            await _adminContext.GetInstagramFeed();
+            return Redirect("/Admin/SecretLair");
+        }
+
+        /// <summary>
+        /// Refresh instagram access token.
+        /// </summary>
+        public async Task<IActionResult> OnGetRefreshInstaToken()
+        {
+            await _adminContext.RefreshAccessToken();
+            return Redirect("/Admin/SecretLair");
+        }
+
     }
 }

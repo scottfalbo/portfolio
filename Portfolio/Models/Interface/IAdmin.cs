@@ -29,7 +29,7 @@ namespace Portfolio.Models.Interface
         /// Instagram API methods
         /// </summary>
         public Task GetInstagramFeed();
-        public void RefreshAccessToken();
+        public Task RefreshAccessToken();
         public Task<List<Instagram>> GetInstagrams();
     }
 }
