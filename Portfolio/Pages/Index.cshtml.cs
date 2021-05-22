@@ -26,6 +26,7 @@ namespace Portfolio.Pages
             try
             {
                 HomePage = await _adminContext.GetHomePage("Home");
+                await _adminContext.GetInstagramFeed();
             }
             catch (Exception e)
             {

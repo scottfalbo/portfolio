@@ -26,8 +26,9 @@ namespace Portfolio.Models.Interface
         public Task UpdateHomePage(HomePage homepage);
 
         /// <summary>
-        /// Instagram API call
+        /// Instagram API methods
         /// </summary>
-        public Task<List<Instagram>> GetInstagram();
+        public Task GetInstagramFeed();
+        public void RefreshAccessToken();
     }
 }

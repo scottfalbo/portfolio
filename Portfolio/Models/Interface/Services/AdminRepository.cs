@@ -1,6 +1,5 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using InstagramApiSharp.API.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Portfolio.Data;
@@ -8,6 +7,7 @@ using Portfolio.Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Portfolio.Models.Interfaces.Services
@@ -180,13 +180,52 @@ namespace Portfolio.Models.Interfaces.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Instagram>> GetInstagram()
+        public async Task GetInstagramFeed()
         {
-            string accessToken = "AQA4w-FPtxdt7ABeIBkiAkucemIGwzWacjNwIDnuKO8eLohO2AYg6sDP8hX9C4p1VK4fCK9wVapr8RyO7PHEQu6z73EUVeOktv2FVaUz3zl0r29dr6bwooJJtBXa6G-hNWAMewABuzLihCe2pi7dinbaoa-JrlbCVfT7NDj0D5oFimO1uPkQt3QXzCLv5o2yHJ6lLa7YxjTQha3o_xd8D5QyI7YURX4wwKDp2-ueCzJxyg";
+            string userId = Configuration["Instagram:UserId"];
+            string accessToken = Configuration["Instagram:AccessToken"];
+
+            using var client = new HttpClient();
+     
+            string uri = $"https://graph.instagram.com/{userId}/media?access_token={accessToken}";
+
+            var content = await client.GetAsync(uri);
 
 
-            Console.WriteLine("");
-            return null;
+            if (content.IsSuccessStatusCode.Equals(true))
+            {
+                var readImages = await content.Content.ReadAsAsync<Root>();
+
+                
+            }
+
+
         }
+        public void RefreshAccessToken()
+        {
+
+        }
+    }
+    public class Datum
+    {
+        public string id { get; set; }
+    }
+
+    public class Cursors
+    {
+        public string before { get; set; }
+        public string after { get; set; }
+    }
+
+    public class Paging
+    {
+        public Cursors cursors { get; set; }
+        public string next { get; set; }
+    }
+
+    public class Root
+    {
+        public List<Datum> data { get; set; }
+        public Paging paging { get; set; }
     }
 }
