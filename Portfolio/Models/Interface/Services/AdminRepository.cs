@@ -273,9 +273,17 @@ namespace Portfolio.Models.Interfaces.Services
             }
         }
 
-        public void RefreshAccessToken()
+        /// <summary>
+        /// Refresh access token, expires every 60 days.
+        /// </summary>
+        /// <returns></returns>
+        public async Task RefreshAccessToken()
         {
-            //refresh token every 60 days
+            string accessToken = Configuration["Instagram:AccessToken"];
+
+            using var client = new HttpClient();
+            string uri = $"https://graph.instagram.com/refresh_access_token?access_token={accessToken}&grant_type=ig_refresh_token";
+            await client.GetAsync(uri);
         }
     }
 
