@@ -224,7 +224,7 @@ namespace Portfolio.Models.Interfaces.Services
                     image_urls.Add(mediaContent);
                 }
             }
-            
+            await UpdateInstagramDB(image_urls);
         }
 
         /// <summary>

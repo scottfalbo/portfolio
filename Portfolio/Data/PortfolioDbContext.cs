@@ -116,10 +116,7 @@ namespace Portfolio.Data
                 new Instagram
                 {
                     Id = 1,
-                    Title = "default instagram model",
-                    ImageURL = "#",
-                    FileName = null,
-                    ThumbUrl = "#"
+                    ImageURL = "#"
                 });
         }
 
