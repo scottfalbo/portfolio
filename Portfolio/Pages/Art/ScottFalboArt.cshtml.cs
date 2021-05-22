@@ -24,7 +24,7 @@ namespace Portfolio.Pages.Art
         public async Task OnGet()
         {
             HomePage = await _admin.GetHomePage("Tattoo");
-
+            InstagramGallery = await _admin.GetInstagrams();
         }
     }
 }
