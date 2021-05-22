@@ -111,6 +111,16 @@ namespace Portfolio.Data
                     Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
                     FileName = "code-selfie.png"
                 });
+
+            modelBuilder.Entity<Instagram>().HasData(
+                new Instagram
+                {
+                    Id = 1,
+                    Title = "default instagram model",
+                    ImageURL = "#",
+                    FileName = null,
+                    ThumbUrl = "#"
+                });
         }
 
         private int id = 1;
