@@ -30,5 +30,6 @@ namespace Portfolio.Models.Interface
         /// </summary>
         public Task GetInstagramFeed();
         public void RefreshAccessToken();
+        public Task<List<Instagram>> GetInstagrams();
     }
 }
