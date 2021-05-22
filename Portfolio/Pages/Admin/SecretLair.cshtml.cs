@@ -75,7 +75,7 @@ namespace Portfolio.Pages
         /// <summary>
         /// Updates database with most recent instagram media.
         /// </summary>
-        public async Task<IActionResult> OnGetUpdateInstaFeed()
+        public async Task<IActionResult> OnPostUpdateInstaFeed()
         {
             await _adminContext.GetInstagramFeed();
             return Redirect("/Admin/SecretLair");
