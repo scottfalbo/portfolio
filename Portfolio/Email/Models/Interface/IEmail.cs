@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Email.Models.Interface
 {
-    interface IEmail
+    public interface IEmail
     {
         public Task<EmailResponse> SendEmailAsync(Message inboundData);
     }
