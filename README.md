@@ -128,6 +128,9 @@ I have a basic place holder site deployed while the full site is under developem
     + Created partials and added an Instagram gallery viewer to the art home page.
     + Added a "Refresh Feed" and "Refresh Token" form to secretlair admin.  The first queries the Instagram API for my most recent media, removes the old from the database, and saves the new.  The second refreshes my access_token which expires every 60 days.
     + Added CRUD actions for the Instagram database table.
+  + 05/27/2021
+    + Instagram feed successfully displaying in gallery viewer on art main page.
+    
 
 ---
 
