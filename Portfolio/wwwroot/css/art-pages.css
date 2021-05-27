@@ -89,6 +89,10 @@
     color: #f19f24;
 }
 
+.intro {
+    white-space: pre-wrap;
+}
+
 /*Mobile*/
 @media (max-width: 775px){
     .art-intro-container{
@@ -227,4 +231,12 @@
 
 .insta-thumb-container img{
     margin: 5px;
+}
+
+
+/*Booking Page*/
+
+.booking-page article {
+    white-space: pre-wrap;
+    color: #fff;
 }
