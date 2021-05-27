@@ -99,9 +99,12 @@ a:hover {
 a {
     color: #e5ffa3;
 }
+body {
+    background-color: #121212;
+}
 
 
-@media (min-width: 769px) {
+@media (min-width: 900px) {
 
     body {
         background-color: #121212;

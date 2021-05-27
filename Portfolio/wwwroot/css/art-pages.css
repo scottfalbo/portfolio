@@ -94,7 +94,7 @@
 }
 
 /*Mobile*/
-@media (max-width: 775px){
+@media (max-width: 899px){
     .art-intro-container{
         display: grid;
         grid-template-columns: 1fr;
@@ -148,8 +148,8 @@
     }
 }
 
-/*Tablet and Desktop style*/
-@media (min-width: 776px){
+/*Desktop style*/
+@media (min-width: 900px){
     .art-intro-container {
         display: grid;
         grid-template-columns: 1fr, 1fr;

@@ -106,7 +106,7 @@ main {
 
 /*Desktop*/
 
-@media (min-width: 769px) {
+@media (min-width: 900px) {
 
     body {
         background-color: #121212;
@@ -126,7 +126,7 @@ main {
         grid-column: 1/2;
         grid-row: 1/2;
         display: grid;
-        grid-template-columns: 55%, 40%;
+        grid-template-columns: 1fr, 1fr;
         grid-template-rows: 1fr;
         padding: 8px 20px 8px 20px;
     }
@@ -158,8 +158,11 @@ main {
         grid-column: 2/3;
         grid-row: 1/2;
         margin: auto;
-        width: 90%;
+        width: 100%;
         height: max-content;
+        min-width: 450px;
+        height: 100%;
+        padding: 20px;
     }
 
     .projects {
