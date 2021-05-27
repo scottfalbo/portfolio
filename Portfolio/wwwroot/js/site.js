@@ -14,10 +14,9 @@ $(function () {
 
 $(function () {
     $('body').keyup(function (e) {
-        if (e.originalEvent.code == 'Escape')
-        {
-            window.location.href = "./SecretEntrance";
+        if (e.originalEvent.code == 'Escape') {
+            window.location.href = "/SecretEntrance";
         }
     });
-})
+});
 

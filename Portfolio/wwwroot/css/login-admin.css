@@ -141,6 +141,15 @@ main {
     margin: 10px auto;
 }
 
+.insta-buttons {
+    width: 60%;
+    margin: 5px auto;
+}
+
+.insta-buttons form {
+    margin: 7px;
+}
+
 /*desktop break point*/
 
 @media (min-width: 860px) {

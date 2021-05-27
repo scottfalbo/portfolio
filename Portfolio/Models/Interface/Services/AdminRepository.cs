@@ -1,6 +1,5 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using InstagramApiSharp.API.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Portfolio.Data;
@@ -8,6 +7,7 @@ using Portfolio.Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Portfolio.Models.Interfaces.Services
@@ -180,13 +180,145 @@ namespace Portfolio.Models.Interfaces.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Instagram>> GetInstagram()
+        /// --------------- Instagram API
+        /// <summary>
+        /// Makes a request to the Instagram api.  First retrieves a list of recent post ids.
+        /// Calls a helper method to loop through ids and request media data for each.
+        /// Call another helper to Instantiate Instagram objects and add to database.
+        /// </summary>
+        /// <returns></returns>
+        public async Task GetInstagramFeed()
         {
-            string accessToken = "AQA4w-FPtxdt7ABeIBkiAkucemIGwzWacjNwIDnuKO8eLohO2AYg6sDP8hX9C4p1VK4fCK9wVapr8RyO7PHEQu6z73EUVeOktv2FVaUz3zl0r29dr6bwooJJtBXa6G-hNWAMewABuzLihCe2pi7dinbaoa-JrlbCVfT7NDj0D5oFimO1uPkQt3QXzCLv5o2yHJ6lLa7YxjTQha3o_xd8D5QyI7YURX4wwKDp2-ueCzJxyg";
+            string userId = Configuration["Instagram:UserId"];
+            string accessToken = Configuration["Instagram:AccessToken"];
 
+            using var client = new HttpClient();
+            string uri = $"https://graph.instagram.com/{userId}/media?access_token={accessToken}&count=10";
+            var content = await client.GetAsync(uri);
 
-            Console.WriteLine("");
-            return null;
+            Root readImages = new Root();
+            if (content.IsSuccessStatusCode.Equals(true))
+                readImages = await content.Content.ReadAsAsync<Root>();
+
+            await GetInstagramMedia(readImages);
         }
+
+        /// <summary>
+        /// Helper method to loop through media ids and request urls for each.
+        /// </summary>
+        /// <param name="imageIds"> Root object from user API call </param>
+        public async Task GetInstagramMedia(Root imageIds)
+        {
+            string accessToken = Configuration["Instagram:AccessToken"];
+            List<InstaMedia> image_urls = new List<InstaMedia>();
+            imageIds.data.RemoveRange(12, 13);
+
+            foreach (var image in imageIds.data)
+            {
+                using var client = new HttpClient();
+                string uri = $"https://graph.instagram.com/{image.id}?access_token={accessToken}&fields=media_url,media_type";
+                var content = await client.GetAsync(uri);
+
+                if (content.IsSuccessStatusCode.Equals(true))
+                {
+                    InstaMedia mediaContent = await content.Content.ReadAsAsync<InstaMedia>();
+                    image_urls.Add(mediaContent);
+                }
+            }
+            await UpdateInstagramDB(image_urls);
+        }
+
+        /// <summary>
+        /// Remove all old content from database and add current feed data.
+        /// </summary>
+        /// <param name="image_urls"> List of media_urls </param>
+        public async Task UpdateInstagramDB(List<InstaMedia> image_urls)
+        {
+            await DeleteInstagrams();
+            foreach(var image in image_urls)
+            {
+                Instagram newInsta = new Instagram 
+                { 
+                    ImageURL = image.media_url
+                };
+                _context.Entry(newInsta).State = EntityState.Added;
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        /// <summary>
+        /// Return a list of all Instagram objects in database.
+        /// </summary>
+        /// <returns> List<Instagram> </returns>
+        public async Task<List<Instagram>> GetInstagrams()
+        {
+            return await _context.Instragrams
+                .Select(x => new Instagram
+                {
+                    Id = x.Id,
+                    ImageURL = x.ImageURL
+                })
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Delete all instagram objects in the database to refresh feed.
+        /// </summary>
+        public async Task DeleteInstagrams()
+        {
+            List<Instagram> insta = await GetInstagrams();
+            foreach(var item in insta)
+            {
+                _context.Entry(item).State = EntityState.Deleted;
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        /// <summary>
+        /// Refresh access token, expires every 60 days.
+        /// </summary>
+        /// <returns></returns>
+        public async Task RefreshAccessToken()
+        {
+            string accessToken = Configuration["Instagram:AccessToken"];
+
+            using var client = new HttpClient();
+            string uri = $"https://graph.instagram.com/refresh_access_token?access_token={accessToken}&grant_type=ig_refresh_token";
+            await client.GetAsync(uri);
+        }
+    }
+
+    /// <summary>
+    /// Constructor classes for the Instragram API result objects
+    /// Generated by https://json2csharp.com/
+    /// </summary>
+    public class Datum
+    {
+        public string id { get; set; }
+    }
+
+    public class Cursors
+    {
+        public string before { get; set; }
+        public string after { get; set; }
+    }
+
+    public class Paging
+    {
+        public Cursors cursors { get; set; }
+        public string next { get; set; }
+    }
+
+    public class Root
+    {
+        public List<Datum> data { get; set; }
+        public Paging paging { get; set; }
+    }
+
+    public class InstaMedia
+    {
+        public string media_url { get; set; }
+        public string media_type { get; set; }
+        public string id { get; set; }
     }
 }

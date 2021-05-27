@@ -123,7 +123,11 @@ I have a basic place holder site deployed while the full site is under developem
   + 05/16/2021
     + Worked out desktop and mobile style for the art and code main pages.
     + Brought in `Microsoft.AspNet.WebApi.Client` NuGet package.
-    + Brought in `SkyBrud.Social` NuGet package.
+  + 05/21/2021
+    + Implemented the Facebook Dev Instagram API.  Makes a query for a list of recent media posts, then loops through the list querying each image url.
+    + Created partials and added an Instagram gallery viewer to the art home page.
+    + Added a "Refresh Feed" and "Refresh Token" form to secretlair admin.  The first queries the Instagram API for my most recent media, removes the old from the database, and saves the new.  The second refreshes my access_token which expires every 60 days.
+    + Added CRUD actions for the Instagram database table.
 
 ---
 
@@ -135,5 +139,6 @@ I have a basic place holder site deployed while the full site is under developem
 ---
 
 ## Acknowledgements
-- https://getbootstrap.com/docs/4.0/components/carousel/
++ https://getbootstrap.com/docs/4.0/components/carousel/
++ https://json2csharp.com/
 
