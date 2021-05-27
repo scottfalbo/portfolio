@@ -193,7 +193,7 @@ namespace Portfolio.Models.Interfaces.Services
             string accessToken = Configuration["Instagram:AccessToken"];
 
             using var client = new HttpClient();
-            string uri = $"https://graph.instagram.com/{userId}/media?access_token={accessToken}";
+            string uri = $"https://graph.instagram.com/{userId}/media?access_token={accessToken}&count=10";
             var content = await client.GetAsync(uri);
 
             Root readImages = new Root();
@@ -211,6 +211,7 @@ namespace Portfolio.Models.Interfaces.Services
         {
             string accessToken = Configuration["Instagram:AccessToken"];
             List<InstaMedia> image_urls = new List<InstaMedia>();
+            imageIds.data.RemoveRange(12, 13);
 
             foreach (var image in imageIds.data)
             {

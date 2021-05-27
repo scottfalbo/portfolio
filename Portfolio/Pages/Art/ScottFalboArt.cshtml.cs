@@ -25,6 +25,7 @@ namespace Portfolio.Pages.Art
         {
             HomePage = await _admin.GetHomePage("Tattoo");
             InstagramGallery = await _admin.GetInstagrams();
+            //InstagramGallery.RemoveRange(12, 13);
         }
     }
 }
