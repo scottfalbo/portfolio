@@ -130,6 +130,8 @@ I have a basic place holder site deployed while the full site is under developem
     + Added CRUD actions for the Instagram database table.
   + 05/27/2021
     + Instagram feed successfully displaying in gallery viewer on art main page.
+  + 05/28/2021
+    + Fixed a CSS issue with the mobile gallery viewer.  Images are properly displayed and responsive.
     
 
 ---

@@ -58,36 +58,26 @@
     margin: 10px;
 }
 
-.tattoo-gallery figure {
-    background-color: rgba(0, 0, 0, .8);
-    max-height: inherit;
-    width: inherit;
-}
-
-.tattoo-gallery figure img {
-    max-height: 100vh;
-    object-fit: contain;
-}
-
 @media (max-width: 775px) {
     .tattoo-gallery {
-        /*top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);*/
         height: 100%;
         width: 100%;
         background-color: rgba(0, 0, 0, .8);
+        display: inline-block;
     }
-        .tattoo-gallery figure {
-            background-color: rgba(0, 0, 0, .8);
-            max-height: inherit;
-            width: inherit;
-        }
+    .tattoo-gallery figure {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
 
-        .tattoo-gallery figure img{
-            position: relative;
-            top: 0px;
-        }
+    .tattoo-gallery figure img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        max-height: 100vh;
+        object-fit: contain;
+    }
 }
 
 /*Scott Falbo Art Home page style*/
@@ -148,11 +138,6 @@
     .art-intro-container > div:last-child article {
         padding: 10px;
         margin-bottom: 10px;
-    }
-
-    .tattoo-gallery {
-        max-height: 100%;
-        width: 100%;
     }
 }
 
@@ -223,6 +208,15 @@
     .art-intro-container > div:last-child > div{
         grid-column: 1/2;
         grid-row: 1/2;
+    }
+    .tattoo-gallery figure img {
+        max-height: 100vh;
+        object-fit: contain;
+    }
+    .tattoo-gallery figure {
+        background-color: rgba(0, 0, 0, .8);
+        max-height: inherit;
+        width: inherit;
     }
 }
 
