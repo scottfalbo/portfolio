@@ -245,3 +245,12 @@
 .insta-thumb-container img{
     margin: 5px;
 }
+
+/*Request form stuff*/
+.hide-confirmation{
+    visibility: hidden;
+}
+
+.show-confirmation{
+    border: 1px solid #fff;
+}
