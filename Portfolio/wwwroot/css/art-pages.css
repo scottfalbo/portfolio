@@ -11,6 +11,7 @@
 .thumb-container {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
     padding: 5px;
 }
 
@@ -173,7 +174,7 @@
     }
 
     .art-intro-container figure > img {
-        max-width: 100%;
+        max-width: 400px;
     }
 
     .title {
