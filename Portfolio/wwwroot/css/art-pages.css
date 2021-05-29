@@ -251,6 +251,41 @@
     visibility: hidden;
 }
 
-.show-confirmation{
-    border: 1px solid #fff;
+.show-confirmation {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #9ff8bb;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #9ff8bb;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 5px 5px black;
+}
+
+.show-confirmation > div {
+    background-color: #121212;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.show-confirmation > div  p {
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+#email-confirm {
+    margin-top: 30px;
+    height: 40px;
+    width: 200px;
+    border: 1px solid #9ff8bb;
+}
+
+.request-sent {
+    color: #9ff8bb;
+    font-size: 1.2em;
+    padding: 10px;
 }

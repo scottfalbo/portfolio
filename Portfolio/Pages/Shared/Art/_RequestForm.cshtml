@@ -15,7 +15,14 @@
             <div>
                 <input type="text" asp-for="@Model.RequestForm.Availability" class="form-control" placeholder="times" required />
             </div>
+            @if (!Model.WasSent)
+            {
             <div><input class="admin-button" type="submit" value="Send Request" /></div>
+            }
+            else
+            {
+                <p class="request-sent">Your request was sent.</p>
+            }
         </form>
     </div>
 </section>
