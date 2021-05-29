@@ -7,11 +7,30 @@
         <figcaption class="tag-line">@Model.HomePage.Title</figcaption>
     </figure>
     <section class="social" id="contact">
-        <a href="mailto:scottfalboart@gmail.com"><p>scottfalboart@gmail.com</p></a>
-        <a href="https://github.com/scottfalbo" target="_blank"><img src="~/images/github-light.png" alt="github logo"/></a>
-        <a href="https://www.linkedin.com/in/scott-falbo/" target="_blank"><img src="~/images/linkedIn.png" alt="linkedin logo"/></a>
-        <a href="mailto:scottfalboart@gmail.com"><img src="~/images/email.png" alt="email icon"/></a>
+        <ul>
+            <li>
+                <a asp-page="/Code/ScottFalboCode">
+                    <figure>
+                        <img src="https://via.placeholder.com/80x80" alt="" />
+                        <figcaption>Code</figcaption>
+                    </figure>
+                </a>
+            </li>
+            <li>
+                <a asp-page="/Art/ScottFalboArt">
+                    <figure>
+                        <img src="https://via.placeholder.com/80x80" alt="" />
+                        <figcaption>Art</figcaption>
+                    </figure>
+                </a>
+            </li>
+        </ul>
     </section>
 </div>
 
-<article class="intro">@Model.HomePage.Intro</article>
+<div>
+    <article class="intro">@Model.HomePage.Intro</article>
+    <img src="https://via.placeholder.com/400x200" />
+</div>
+
+<a href="mailto:scottfalboart@gmail.com"><p>scottfalboart@gmail.com</p></a>
