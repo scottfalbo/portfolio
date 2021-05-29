@@ -28,6 +28,7 @@ main {
     font-family: 'Exo 2', sans-serif;
     background-color: #121212;
     border-radius: 20px;
+    white-space: pre-wrap;
 }
 
 .social {
