@@ -131,6 +131,11 @@ I have a basic place holder site deployed while the full site is under developem
   + 05/27/2021
     + Instagram feed successfully displaying in gallery viewer on art main page.
   + 05/28/2021
+    + Installed `SendGrid` NuGet package.
+    + Created a request form under the booking route.
+    + Added models, interfaces and services for SendGrid.
+    + Created a method to take in form data and send an email.
+    + Made a confirmation popup after a successful response is received from SendGrid.
     + Fixed a CSS issue with the mobile gallery viewer.  Images are properly displayed and responsive.
     
 

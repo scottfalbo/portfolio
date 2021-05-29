@@ -285,6 +285,7 @@
 }
 
 .request-sent {
+    margin-top: 5px;
     color: #9ff8bb;
     font-size: 1.2em;
     padding: 10px;
