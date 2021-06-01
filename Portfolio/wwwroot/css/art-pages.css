@@ -11,6 +11,7 @@
 .thumb-container {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
     padding: 5px;
 }
 
@@ -36,8 +37,6 @@
     left: 0;
     right: 0;
     z-index: 100;
-    max-height: 100%;
-    width: 100%;
 }
 
 .close-gallery {
@@ -60,26 +59,25 @@
     margin: 10px;
 }
 
-
-.tattoo-gallery figure {
-    background-color: rgba(0, 0, 0, .8);
-    max-height: inherit;
-    width: inherit;
-}
-
-.tattoo-gallery figure img {
-    max-height: 100vh;
-    object-fit: contain;
-}
-
-@media (max-width: 500px) {
+@media (max-width: 775px) {
     .tattoo-gallery {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, .8);
+        display: inline-block;
     }
     .tattoo-gallery figure {
-        height: 100%;
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    .tattoo-gallery figure img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        max-height: 100vh;
+        object-fit: contain;
     }
 }
 
@@ -119,7 +117,7 @@
     }
 
     .art-intro-container figure > img {
-        max-width: 100%;
+        max-width: 400px;
     }
 
     .title {
@@ -150,7 +148,6 @@
         display: grid;
         grid-template-columns: 1fr, 1fr;
         grid-template-rows: 1fr;
-        height: 100%;
     }
 
     .art-intro-container > div:first-child{
@@ -158,7 +155,7 @@
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 400px, 1fr, 1fr;
+        grid-template-rows: 1fr, 1fr, 1fr;
     }
 
     .art-intro-container > div:last-child {
@@ -167,7 +164,7 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 50px, 1fr, 1fr;
-        width: 100%;
+        padding: 5px;
     }
 
     .art-intro-container figure {
@@ -176,7 +173,7 @@
     }
 
     .art-intro-container figure > img {
-        max-width: 100%;
+        max-width: 400px;
     }
 
     .title {
@@ -196,9 +193,20 @@
         text-align: left;
         width: 100%;
         padding: 10px;
+        background-color: #121212;
+        border-radius: 5px;
+        white-space: pre-wrap;
     }
 
-    .insta-gallery{
+    .art-intro-container > div:last-child > div {
+        padding: 5px;
+    }
+
+    .art-intro-container > div:last-child > div > img {
+        width: 100%;
+    }
+
+    .insta-gallery {
         grid-column: 1/2;
         grid-row: 3/4;
         padding: 10px;
@@ -211,6 +219,15 @@
     .art-intro-container > div:last-child > div{
         grid-column: 1/2;
         grid-row: 1/2;
+    }
+    .tattoo-gallery figure img {
+        max-height: 100vh;
+        object-fit: contain;
+    }
+    .tattoo-gallery figure {
+        background-color: rgba(0, 0, 0, .8);
+        max-height: inherit;
+        width: inherit;
     }
 }
 
@@ -227,4 +244,49 @@
 
 .insta-thumb-container img{
     margin: 5px;
+}
+
+/*Request form stuff*/
+.hide-confirmation{
+    visibility: hidden;
+}
+
+.show-confirmation {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #9ff8bb;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #9ff8bb;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 5px 5px black;
+}
+
+.show-confirmation > div {
+    background-color: #121212;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.show-confirmation > div  p {
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+#email-confirm {
+    margin-top: 30px;
+    height: 40px;
+    width: 200px;
+    border: 1px solid #9ff8bb;
+}
+
+.request-sent {
+    margin-top: 5px;
+    color: #9ff8bb;
+    font-size: 1.2em;
+    padding: 10px;
 }

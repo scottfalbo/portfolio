@@ -1,17 +1,23 @@
 ﻿@model Portfolio.Pages.IndexModel
 
 
-<div class="intro-inner">
+<div class="intro-left">
     <figure>
         <img class="selfie" src="@Model.HomePage.Selfie" alt="Photo of Scott Falbo" />
         <figcaption class="tag-line">@Model.HomePage.Title</figcaption>
     </figure>
-    <section class="social" id="contact">
-        <a href="mailto:scottfalboart@gmail.com"><p>scottfalboart@gmail.com</p></a>
-        <a href="https://github.com/scottfalbo" target="_blank"><img src="~/images/github-light.png" alt="github logo"/></a>
-        <a href="https://www.linkedin.com/in/scott-falbo/" target="_blank"><img src="~/images/linkedIn.png" alt="linkedin logo"/></a>
-        <a href="mailto:scottfalboart@gmail.com"><img src="~/images/email.png" alt="email icon"/></a>
+    <section class="desktop-menu">
+        <partial name="Art/_MainLinks" />
     </section>
 </div>
 
-<article class="intro">@Model.HomePage.Intro</article>
+<div class="intro-right">
+    <div>
+        <article class="intro">@Model.HomePage.Intro</article>
+        <img src="https://via.placeholder.com/400x200" class="index-image" />
+    </div>
+    <section class="mobile-menu">
+        <partial name="Art/_MainLinks" />
+    </section>
+</div>
+

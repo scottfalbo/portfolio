@@ -126,10 +126,17 @@ I have a basic place holder site deployed while the full site is under developem
   + 05/21/2021
     + Implemented the Facebook Dev Instagram API.  Makes a query for a list of recent media posts, then loops through the list querying each image url.
     + Created partials and added an Instagram gallery viewer to the art home page.
-    + Added a "Refresh Feed" and "Refresh Token" form to secretlair admin.  The first queries the Instagram API for my most recent media, removes the old from the database, and saves the new.  The second refreshes my access_token which expires every 60 days.
+    + Added a "Refresh Feed" and "Refresh Token" form to SecretLair admin.  The first queries the Instagram API for my most recent media, removes the old from the database, and saves the new.  The second refreshes my access_token which expires every 60 days.
     + Added CRUD actions for the Instagram database table.
   + 05/27/2021
     + Instagram feed successfully displaying in gallery viewer on art main page.
+  + 05/28/2021
+    + Installed `SendGrid` NuGet package.
+    + Created a request form under the booking route.
+    + Added models, interfaces and services for SendGrid.
+    + Created a method to take in form data and send an email.
+    + Made a confirmation popup after a successful response is received from SendGrid.
+    + Fixed a CSS issue with the mobile gallery viewer.  Images are properly displayed and responsive.
     
 
 ---
