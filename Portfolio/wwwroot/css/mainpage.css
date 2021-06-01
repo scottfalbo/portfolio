@@ -13,6 +13,7 @@ main {
     text-align: center;
     color: #93ffa2;
     font-size: 1.3em;
+    padding: 10px;
 }
 
 .intro-container h1 {
@@ -29,27 +30,6 @@ main {
     background-color: #121212;
     border-radius: 20px;
     white-space: pre-wrap;
-}
-
-.social {
-    margin: 20px 0px 20px 0px;
-}
-
-.social > a > img {
-    height: 50px;
-    margin: 8px 10px 8px 10px;
-}
-
-.social h2 {
-    margin: 7px;
-    margin-bottom: 15px;
-    font-size: 1.4em;
-    color: #b2f1bb;  
-}
-
-.social a p {
-    font-size: 1.3em;
-    padding-bottom: 5px;
 }
 
 .project-container {
@@ -104,6 +84,35 @@ main {
     color: #93ffa2;
 }
 
+/*code/art menu bouttons*/
+
+.main-menu-nav{
+    padding: 5px;
+}
+
+.main-menu-nav li{
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+.main-menu-nav img {
+    border-radius: 40px;
+    width: 60px;
+}
+
+@media (max-width: 768px){
+    .desktop-menu{
+        visibility: hidden;
+        height: 1px;
+    }
+
+    .index-image{
+        visibility: hidden;
+        height: 1px;
+    }
+}
+
+
 /*Desktop*/
 
 @media (min-width: 769px) {
@@ -116,77 +125,41 @@ main {
         background-color: #000;
     }
 
-    .main-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr, 1fr;
-    }
-
     .intro-container {
-        grid-column: 1/2;
-        grid-row: 1/2;
         display: grid;
-        grid-template-columns: 55%, 40%;
+        grid-template-columns: 50%, 50%;
         grid-template-rows: 1fr;
         padding: 8px 20px 8px 20px;
     }
 
-    .intro-inner {
+    .intro-left {
         grid-column: 1/2;
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 30px 1fr, 60px;
+        grid-template-rows: repeat(1fr, 1fr);
     }
-
-    .intro-inner h1 {
+    .intro-left figure {
         grid-column: 1/2;
         grid-row: 1/2;
+        height: 100%;
     }
-
-    .intro-inner figure {
+    .desktop-menu {
         grid-column: 1/2;
         grid-row: 2/3;
     }
 
-    .social {
-        grid-column: 1/2;
-        grid-row: 3/4;
-    }
 
-    .intro {
+    .intro-right {
         grid-column: 2/3;
         grid-row: 1/2;
-        margin: auto;
-        width: 90%;
-        height: max-content;
-    }
-
-    .projects {
-        grid-column: 1/2;
-        grid-row: 2/3;
-    }
-
-
-    .skills {
-        grid-column: 1/2;
-        grid-row: 3/4;
-        width: 60%;
-        margin: auto;
-    }
-
-    .project-container {
-        display: inline-block;
-        width: 45%;
-        margin: 20px auto;
-    }
-
-    .project-inner {
-        display: flex;
-        flex-flow: row wrap;
     }
 
     footer {
         background-color: #000;
+    }
+
+    .mobile-menu{
+        visibility: hidden;
     }
 }
