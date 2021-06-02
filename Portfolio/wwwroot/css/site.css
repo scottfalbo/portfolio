@@ -192,8 +192,39 @@ a {
 }
 
 #general-contact {
-    
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 320px;
+    background-color: #000;
+    color: #9ff8bb;
+    width: 50%;
+    height: 50%;
+    border: 2px solid #9ff8bb;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 5px 5px black;
 }
+
+#general-contact .project-admin-card {
+    height: 100%;
+    width: 100%;
+}
+
+#close-popup {
+    height: 30px;
+    width: 60%;
+    min-width: 200px;
+    margin: 20px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+#general-contact form > div {
+    margin: 10px;
+}
+
 .general-contact-hide {
     visibility: hidden;
 }

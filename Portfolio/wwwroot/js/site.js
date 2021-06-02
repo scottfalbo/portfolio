@@ -33,7 +33,7 @@ $(function () {
 
 //general contact form toggle on and off
 $(function () {
-    $('#toggle-contact').click(function () {
+    $('.toggle-contact').click(function () {
         console.log("hello");
         $('#general-contact').toggleClass('general-contact-hide');
     });
