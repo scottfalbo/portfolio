@@ -21,5 +21,8 @@
                 <p class="request-sent">Your request was sent.</p>
             }
         </form>
+        <button class="admin-button" id="close-popup">
+            @(Model.WasSent ? "Close":"Cancel")
+        </button>
     </div>
 </section>
