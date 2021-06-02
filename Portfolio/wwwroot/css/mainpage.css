@@ -92,7 +92,7 @@ main {
 
 .main-menu-nav li{
     display: inline-block;
-    margin: 0px 15px;
+    margin: auto 10px;
 }
 
 .main-menu-nav img {
@@ -148,11 +148,22 @@ main {
         grid-column: 1/2;
         grid-row: 2/3;
     }
-
+    .desktop-menu ul {
+        width: 100%;
+    }
 
     .intro-right {
         grid-column: 2/3;
         grid-row: 1/2;
+    }
+    .intro-right article {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+    .index-image {
+        width: 100%;
+        grid-column: 1/2;
+        grid-row: 2/3;
     }
 
     footer {
