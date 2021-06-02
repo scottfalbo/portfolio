@@ -42,6 +42,9 @@
         <main role="main" class="pb-3 main">
             @RenderBody()
         </main>
+        <section class="general-contact">
+            @await Component.InvokeAsync("Contact")
+        </section>
     </div>
 
     <div class="container">
@@ -52,7 +55,6 @@
                         <li><a asp-area="" asp-page="/Index">&lt;Home&gt;</a></li>
                         <li><a asp-area="" asp-page="/Code/ScottFalboCode">&lt;Code&gt;</a></li>
                         <li><a asp-area="" asp-page="/Art/ScottFalboArt">&lt;Art&gt;</a></li>
-                        <li><a href="mailto:scottfalboart@gmail.com">&lt;Contact&gt;</a></li>
                     </ul>
                 </nav>
                 &copy; 2021 - Scott Falbo
