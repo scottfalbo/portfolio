@@ -10,10 +10,10 @@
                 <input type="text" asp-for="@Model.RequestForm.Email" class="form-control" placeholder="email" required />
             </div>
             <div>
-                <input type="text" asp-for="@Model.RequestForm.Idea" class="form-control" placeholder="idea" required />
+                <textarea type="text" cols="45" rows="5" asp-for="@Model.RequestForm.Idea" class="form-control" placeholder="idea" required></textarea>
             </div>
             <div>
-                <input type="text" asp-for="@Model.RequestForm.Availability" class="form-control" placeholder="times" required />
+                <textarea type="text" cols="45" rows="3" asp-for="@Model.RequestForm.Availability" class="form-control" placeholder="times" required></textarea>
             </div>
             @if (!Model.WasSent)
             {
