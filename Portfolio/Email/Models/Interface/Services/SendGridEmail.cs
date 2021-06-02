@@ -42,15 +42,5 @@ namespace Portfolio.Email.Models.Interface.Services
                 WasSent = response.IsSuccessStatusCode
             };
         }
-
-        /// <summary>
-        /// Method to handle general contact form
-        /// </summary>
-        /// <param name="inboundData"> form input </param>
-        /// <returns> isSuccessStatusCode </returns>
-        public Task<EmailResponse> GeneralContact(Message inboundData)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

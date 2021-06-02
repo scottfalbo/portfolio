@@ -1,18 +1,25 @@
-﻿@model Portfolio.Pages.Art.BookingModel
+﻿@model Portfolio.Pages.IndexModel
 
 <section class="project-admin-card">
     <div>
         <form asp-page-handler="Send" method="post">
             <div>
-                <input type="text" asp-for="@Model.RequestForm.Name" class="form-control" placeholder="name" required />
+                <input type="text" asp-for="@Model.Contact.Name" class="form-control" placeholder="name" required />
             </div>
             <div>
-                <input type="text" asp-for="@Model.RequestForm.Email" class="form-control" placeholder="email" required />
+                <input type="text" asp-for="@Model.Contact.Email" class="form-control" placeholder="email" required />
             </div>
             <div>
-                <textarea type="text" cols="45" rows="6" asp-for="@Model.RequestForm.Idea" class="form-control" placeholder="idea" required />
+                <textarea type="text" cols="45" rows="6" asp-for="@Model.Contact.Body" class="form-control" placeholder="message" required></textarea>
             </div>
-            <div><input class="admin-button" type="submit" value="Send Message" /></div>
+            @if (!Model.WasSent)
+            {
+                <div><input class="admin-button" type="submit" value="Send Request" /></div>
+            }
+            else
+            {
+                <p class="request-sent">Your request was sent.</p>
+            }
         </form>
     </div>
 </section>
