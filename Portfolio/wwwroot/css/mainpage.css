@@ -143,7 +143,7 @@ main {
         grid-column: 1/2;
         grid-row: 1/2;
         display: grid;
-        grid-template-columns: 40%, 60%;
+        grid-template-columns: 1fr, 60%;
         grid-template-rows: 1fr;
         padding: 10px;
     }
@@ -162,6 +162,11 @@ main {
     .desktop-menu {
         grid-column: 1/2;
         grid-row: 2/3;
+        width: 315px;
+        margin: auto;
+        background: #121212;
+        padding: 5px;
+        border-radius: 10px;
     }
     .desktop-menu ul {
         width: 100%;
@@ -185,6 +190,10 @@ main {
         width: 100%;
         grid-column: 1/2;
         grid-row: 2/3;
+        max-width: max-content;
+    }
+    .index-image img {
+        width: 100%;
     }
 
     footer {
