@@ -289,6 +289,79 @@
 }
 
 /*Request form stuff*/
+
+/*desktop*/
+@media (min-width: 776px){
+    .booking-page {
+        display: grid;
+        grid-template-columns: 55%, 45%;
+        grid-template-rows: 1fr;
+    }
+    .booking-page > section {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 30px;, 1fr;
+    }
+    .booking-page > section > h2 {
+        padding: 10px;
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .booking-page > section > article {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .booking-page > div {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr, 1fr;
+    }
+    .booking-page > div > h3 {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .booking-page > section > section {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+}
+
+.booking-page {
+
+}
+.booking-page > section {
+
+}
+.booking-page > section > h2 {
+
+    font-size: 1.4em;
+    color: #8acdc1;
+}
+.booking-page > section > article {
+
+}
+
+.booking-page > div {
+
+}
+.booking-page > div > h3 {
+    font-size: 1.4em;
+    color: #9ff8bb;
+    padding: 20px;
+}
+.booking-page > section > section {
+
+}
+
+/*mobile*/
+@media (max-width: 775px){
+
+}
+
 .hide-confirmation{
     visibility: hidden;
 }
@@ -332,6 +405,8 @@
     font-size: 1.2em;
     padding: 10px;
 }
+
+
 
 /*Gallery grid*/
 

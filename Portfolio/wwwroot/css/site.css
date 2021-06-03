@@ -141,7 +141,7 @@ a {
     .intro {
         grid-column: 2/3;
         grid-row: 1/2;
-        margin: auto;
+        margin: 10px auto;
         width: 100%;
         height: max-content;
     }
