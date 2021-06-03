@@ -87,6 +87,15 @@
     color: #f19f24;
 }
 
+.art-intro-container img {
+    width: 100%;
+}
+
+.code-title {
+    position: relative;
+    left: 0px;
+}
+
 /*Mobile*/
 @media (max-width: 775px){
     .art-intro-container{

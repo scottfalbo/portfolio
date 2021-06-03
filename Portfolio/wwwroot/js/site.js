@@ -31,3 +31,18 @@ $(function () {
     });
 });
 
+//general contact form toggle on and off
+$(function () {
+    $('.toggle-contact').click(function () {
+        console.log("hello");
+        $('#general-contact').toggleClass('general-contact-hide');
+    });
+});
+
+//button to cancel and close the contact form
+$(function () {
+    $('#close-popup').click(function () {
+        console.log("hello");
+        $('#general-contact').addClass('general-contact-hide');
+    });
+});

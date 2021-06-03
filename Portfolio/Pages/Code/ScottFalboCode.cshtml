@@ -3,7 +3,7 @@
 @{
 }
 
-
+<h1 class="page-title code-title">Code</h1>
 <div>
     <partial name="Code/_CodeIntro" />
 </div>
@@ -14,4 +14,8 @@
 
 <section class="skills">
     <partial name="_Skills" />
+</section>
+
+<section id="general-contact" class="@(Model.WasSent ? "":"general-contact-hide")">
+    <partial name="Code/_Contact" />
 </section>

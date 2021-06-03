@@ -33,7 +33,7 @@ main {
 }
 
 .project-container {
-    background-color: #121212;
+    background-color: #2e3430;
     padding: 10px;
     border-radius: 10px;
     margin: 15px;
@@ -92,12 +92,19 @@ main {
 
 .main-menu-nav li{
     display: inline-block;
-    margin: 0px 15px;
+    margin: auto 10px;
+    width: 70px;
+}
+
+.main-menu-nav figcaption {
+    color: #96f16e;
+    text-align: center;
 }
 
 .main-menu-nav img {
     border-radius: 40px;
     width: 60px;
+    margin: auto;
 }
 
 @media (max-width: 768px){
@@ -125,11 +132,19 @@ main {
         background-color: #000;
     }
 
-    .intro-container {
+    .main-container {
         display: grid;
-        grid-template-columns: 50%, 50%;
+        grid-template-columns: 1fr;
         grid-template-rows: 1fr;
-        padding: 8px 20px 8px 20px;
+    }
+
+    .intro-container {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 40%, 60%;
+        grid-template-rows: 1fr;
+        padding: 10px;
     }
 
     .intro-left {
@@ -137,22 +152,36 @@ main {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(1fr, 1fr);
+        grid-template-rows: 1fr, 1fr;
     }
     .intro-left figure {
         grid-column: 1/2;
         grid-row: 1/2;
-        height: 100%;
     }
     .desktop-menu {
         grid-column: 1/2;
         grid-row: 2/3;
     }
-
+    .desktop-menu ul {
+        width: 100%;
+    }
 
     .intro-right {
         grid-column: 2/3;
         grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr, 1fr;
+
+    }
+    .intro-right article {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .index-image {
+        width: 100%;
+        grid-column: 1/2;
+        grid-row: 2/3;
     }
 
     footer {
@@ -161,5 +190,6 @@ main {
 
     .mobile-menu{
         visibility: hidden;
+        height: 1px;
     }
 }

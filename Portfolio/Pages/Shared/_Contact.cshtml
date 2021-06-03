@@ -1,0 +1,28 @@
+﻿@model Portfolio.Pages.IndexModel
+
+<section class="form-popup">
+    <div>
+        <form asp-page-handler="Send" method="post">
+            <div>
+                <input type="text" asp-for="@Model.Contact.Name" class="form-control" placeholder="name" required />
+            </div>
+            <div>
+                <input type="text" asp-for="@Model.Contact.Email" class="form-control" placeholder="email" required />
+            </div>
+            <div>
+                <textarea type="text" cols="45" rows="6" asp-for="@Model.Contact.Body" class="form-control" placeholder="message" required></textarea>
+            </div>
+            @if (!Model.WasSent)
+            {
+                <div><input class="admin-button" type="submit" value="Send Request" /></div>
+            }
+            else
+            {
+        <p class="request-sent">Your message was sent.</p>
+            }
+        </form>
+        <button class="admin-button" id="close-popup">
+            @(Model.WasSent ? "Close":"Cancel")
+        </button>
+    </div>
+</section>

@@ -9,4 +9,7 @@
     <section class="intro-container">
         <partial name="_Intro" />
     </section>
+    <section id="general-contact" class="@(Model.WasSent ? "":"general-contact-hide")">
+        <partial name="_Contact" />
+    </section>
 </div>

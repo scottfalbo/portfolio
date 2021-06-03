@@ -9,9 +9,30 @@
             <p>@Model.HomePage.Title</p>
         </section>
         <div class="gallery-links">
-            <a asp-page="/Art/Tattoos"><img src="https://via.placeholder.com/50x50" /></a>
-            <a asp-page="/Art/Drawings"><img src="https://via.placeholder.com/50x50" /></a>
-            <a href="#"><img src="https://via.placeholder.com/50x50" /></a>
+            <ul class="main-menu-nav">
+                <li>
+                    <a href="#" target="_blank">
+                        <figure>
+                            <img src="https://via.placeholder.com/80x80" alt="" />
+                            <figcaption>GitHub</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <figure>
+                            <img src="https://via.placeholder.com/80x80" alt="" />
+                            <figcaption>LinkedIn</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="toggle-contact">
+                    <figure>
+                        <img src="https://via.placeholder.com/80x80" alt="email: scottfalboart@gmail.com" />
+                        <figcaption>Contact</figcaption>
+                    </figure>
+                </li>
+            </ul>
         </div>
     </div>
     <div>
