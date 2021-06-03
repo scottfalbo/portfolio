@@ -302,7 +302,7 @@
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 30px;, 1fr;
+        grid-template-rows: 30px, 1fr;
     }
     .booking-page > section > h2 {
         padding: 10px;
@@ -330,31 +330,24 @@
     }
 }
 
-.booking-page {
-
+.request-form > div {
+    margin: 10px auto;
 }
+
 .booking-page > section {
-
+    padding: 10px;
 }
-.booking-page > section > h2 {
 
+.booking-page > section > h2 {
+    margin: 5px auto;
     font-size: 1.4em;
     color: #8acdc1;
 }
-.booking-page > section > article {
 
-}
-
-.booking-page > div {
-
-}
 .booking-page > div > h3 {
     font-size: 1.4em;
     color: #9ff8bb;
     padding: 20px;
-}
-.booking-page > section > section {
-
 }
 
 /*mobile*/
@@ -364,6 +357,7 @@
 
 .hide-confirmation{
     visibility: hidden;
+    height: 1px;
 }
 
 .show-confirmation {
