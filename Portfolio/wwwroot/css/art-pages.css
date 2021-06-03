@@ -92,8 +92,12 @@
 }
 
 .code-title {
-    position: relative;
-    left: 0px;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.art-menu {
+    background-color: #121212;
 }
 
 /*Mobile*/

@@ -12,7 +12,7 @@ html {
 
 body {
     margin: auto;
-    min-width: 380px;
+    min-width: 320px;
 }
 
 main {
@@ -103,7 +103,7 @@ a {
 @media (min-width: 769px) {
 
     body {
-        background-color: #121212;
+        background-color: #000;
     }
 
     header nav {
