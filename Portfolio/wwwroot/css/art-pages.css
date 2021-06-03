@@ -1,7 +1,7 @@
 ﻿
 .gallery-thumbs{
     width: 90%;
-    min-width: 360px;
+    min-width: 320px;
     margin: 10px auto;
     padding: 10px;
     background-color: #151515;
@@ -16,8 +16,8 @@
 }
 
 .gallery-thumbs figure {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     margin: 5px;
 }
 
@@ -59,6 +59,29 @@
     margin: 10px;
 }
 
+.gallery-end-nav button {
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 1.3em;
+}
+
+.gallery-end-nav div {
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+    margin: 10px auto;
+    font-size: 1.3em;
+    border: 2px outset #808080;
+    line-height: 20px;
+}
+
+.gallery-end-nav div p {
+    line-height: 35px;
+}
+
+
 @media (max-width: 775px) {
     .tattoo-gallery {
         height: 100%;
@@ -92,8 +115,12 @@
 }
 
 .code-title {
-    position: relative;
-    left: 0px;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.art-menu {
+    background-color: #121212;
 }
 
 /*Mobile*/
@@ -148,6 +175,11 @@
     .art-intro-container > div:last-child article {
         padding: 10px;
         margin-bottom: 10px;
+    }
+
+    .art-code-title {
+        visibility: hidden;
+        height: 1px;
     }
 }
 
@@ -207,10 +239,6 @@
         white-space: pre-wrap;
     }
 
-    .art-intro-container > div:last-child > div {
-        padding: 5px;
-    }
-
     .art-intro-container > div:last-child > div > img {
         width: 100%;
     }
@@ -225,9 +253,12 @@
         padding: 10px;
     }
 
-    .art-intro-container > div:last-child > div{
+    .art-code-title {
         grid-column: 1/2;
         grid-row: 1/2;
+        max-width: max-content;
+        width: 100%;
+        margin: auto;
     }
     .tattoo-gallery figure img {
         max-height: 100vh;
@@ -238,7 +269,9 @@
         max-height: inherit;
         width: inherit;
     }
+
 }
+
 
 /*Homepage shared*/
 
@@ -256,8 +289,75 @@
 }
 
 /*Request form stuff*/
+
+/*desktop*/
+@media (min-width: 776px){
+    .booking-page {
+        display: grid;
+        grid-template-columns: 55%, 45%;
+        grid-template-rows: 1fr;
+    }
+    .booking-page > section {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 30px, 1fr;
+    }
+    .booking-page > section > h2 {
+        padding: 10px;
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .booking-page > section > article {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .booking-page > div {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr, 1fr;
+    }
+    .booking-page > div > h3 {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .booking-page > section > section {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+}
+
+.request-form > div {
+    margin: 10px auto;
+}
+
+.booking-page > section {
+    padding: 10px;
+}
+
+.booking-page > section > h2 {
+    margin: 5px auto;
+    font-size: 1.4em;
+    color: #8acdc1;
+}
+
+.booking-page > div > h3 {
+    font-size: 1.4em;
+    color: #9ff8bb;
+    padding: 20px;
+}
+
+/*mobile*/
+@media (max-width: 775px){
+
+}
+
 .hide-confirmation{
     visibility: hidden;
+    height: 1px;
 }
 
 .show-confirmation {
@@ -298,4 +398,39 @@
     color: #9ff8bb;
     font-size: 1.2em;
     padding: 10px;
+}
+
+
+
+/*Gallery grid*/
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 60px, 1fr, 100px;
+    width: 100%;
+}
+
+.g1 {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+.g2 {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+.g3 {
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+
+.gallery-title-image {
+    max-width: max-content;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.gallery-title-image > h3 {
+    font-size: 1.4em;
+    color: #8acdc1;
 }

@@ -6,13 +6,17 @@
     box-sizing: border-box;
 }
 
+a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+
 html {
     background-color: #000;
 }
 
 body {
     margin: auto;
-    min-width: 380px;
+    min-width: 320px;
 }
 
 main {
@@ -103,7 +107,7 @@ a {
 @media (min-width: 769px) {
 
     body {
-        background-color: #121212;
+        background-color: #000;
     }
 
     header nav {
@@ -137,7 +141,7 @@ a {
     .intro {
         grid-column: 2/3;
         grid-row: 1/2;
-        margin: auto;
+        margin: 10px auto;
         width: 100%;
         height: max-content;
     }

@@ -2,7 +2,7 @@
 
 <section class="project-admin-card">
     <div>
-        <form asp-page-handler="Send" method="post">
+        <form asp-page-handler="Send" method="post" class="request-form">
             <div>
                 <input type="text" asp-for="@Model.RequestForm.Name" class="form-control" placeholder="name" required />
             </div>
@@ -10,10 +10,10 @@
                 <input type="text" asp-for="@Model.RequestForm.Email" class="form-control" placeholder="email" required />
             </div>
             <div>
-                <textarea type="text" cols="45" rows="5" asp-for="@Model.RequestForm.Idea" class="form-control" placeholder="idea" required></textarea>
+                <textarea type="text" cols="45" rows="5" asp-for="@Model.RequestForm.Idea" class="form-control" placeholder="What is your tattoo idea?" required></textarea>
             </div>
             <div>
-                <textarea type="text" cols="45" rows="3" asp-for="@Model.RequestForm.Availability" class="form-control" placeholder="times" required></textarea>
+                <textarea type="text" cols="45" rows="3" asp-for="@Model.RequestForm.Availability" class="form-control" placeholder="What is your general availability?" required></textarea>
             </div>
             @if (!Model.WasSent)
             {
