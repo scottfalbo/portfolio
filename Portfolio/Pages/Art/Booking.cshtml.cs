@@ -42,11 +42,12 @@ namespace Portfolio.Pages.Art
         /// <returns> Redirect </returns>
         public async Task OnPostSend()
         {
-            Message message = new Message()
+            RequestForm message = new RequestForm()
             {
-                To = "scottfalboart@gmail.com",
-                Subject = $"Tattoo Request from {RequestForm.Name}",
-                Body = $"{RequestForm.Idea} \n {RequestForm.Availability} \n {RequestForm.Email}"
+                Name = RequestForm.Name,
+                Email = RequestForm.Email,
+                Body = RequestForm.Body,
+                Availability = RequestForm.Availability
             };
             EmailResponse response = await _email.SendEmailAsync(message);
 
@@ -54,16 +55,5 @@ namespace Portfolio.Pages.Art
 
             Redirect("/Art/Booking");
         }
-    }
-
-    /// <summary>
-    /// Email objects for send grid templates
-    /// </summary>
-    public class RequestForm
-    {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Idea { get; set; }
-        public string Availability { get; set; }
     }
 }

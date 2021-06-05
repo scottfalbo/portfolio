@@ -22,7 +22,7 @@ namespace Portfolio.Email.Models.Interface.Services
         /// </summary>
         /// <param name="inboundData"> Message object with form input </param>
         /// <returns> EmailResponse object with success bool </returns>
-        public async Task<EmailResponse> SendEmailAsync(Message inboundData)
+        public async Task<EmailResponse> SendEmailAsync(RequestForm inboundData)
         {
             string key = Configuration["SendGrid:Key"];
             string email = Configuration["SendGrid:FromEmail"];
