@@ -32,14 +32,14 @@ namespace Portfolio.Email.Models.Interface.Services
 
             SendGridMessage message = new SendGridMessage();
             message.SetFrom(new EmailAddress(email, name));
-            message.AddTo(inboundData.To);
-            //message.SetSubject(inboundData.Subject);
-            //message.AddContent(MimeType.Html, inboundData.Body);
+            message.AddTo("scottfalboart@gmail.com");
             message.SetTemplateId("d-a040e40c67a44f9fa18aa2762c9aadfc");
-            message.SetTemplateData(new TempMessage
+            message.SetTemplateData(new SendGridTemplate
             {
-                name = "Tester",
-                body = "here is some text"
+                name = inboundData.Name,
+                email = inboundData.Email,
+                body = inboundData.Body,
+                availability = inboundData.Availability
             });
 
 
