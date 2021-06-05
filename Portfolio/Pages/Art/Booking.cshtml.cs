@@ -51,31 +51,13 @@ namespace Portfolio.Pages.Art
             EmailResponse response = await _email.SendEmailAsync(message);
 
             if (response.WasSent) WasSent = true;
-            
-            HomePage = await _admin.GetHomePage("Booking");
-            await EmailClient(RequestForm.Email);
 
             Redirect("/Art/Booking");
-        }
-
-        /// <summary>
-        /// Helper method to send a confirmation of to the client
-        /// </summary>
-        /// <param name="email"> email from form </param>
-        private async Task EmailClient(string email)
-        {
-            Message message = new Message()
-            {
-                To = email,
-                Subject = "Thanks for the request",
-                Body = "some templated thank you"
-            };
-            await _email.SendEmailAsync(message);
         }
     }
 
     /// <summary>
-    /// Email request object
+    /// Email objects for send grid templates
     /// </summary>
     public class RequestForm
     {
