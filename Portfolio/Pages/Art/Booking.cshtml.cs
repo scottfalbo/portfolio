@@ -50,6 +50,7 @@ namespace Portfolio.Pages.Art
                 Availability = RequestForm.Availability
             };
             EmailResponse response = await _email.SendEmailAsync(message);
+            HomePage = await _admin.GetHomePage("Booking");
 
             if (response.WasSent) WasSent = true;
 

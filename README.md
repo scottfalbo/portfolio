@@ -137,6 +137,10 @@ I have a basic place holder site deployed while the full site is under developem
     + Created a method to take in form data and send an email.
     + Made a confirmation popup after a successful response is received from SendGrid.
     + Fixed a CSS issue with the mobile gallery viewer.  Images are properly displayed and responsive.
+  + 06/04/2021
+    + Finished implementing SendGrid and set up templates.  Added a general contact pop up form that appears when the contact button is clicked.
+    + Finished site wide style, well... is css ever really done.  It's done enough to deploy.
+    + added image assets for navigation buttons, including social links.
     
 
 ---
