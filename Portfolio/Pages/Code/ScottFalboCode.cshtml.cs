@@ -48,11 +48,11 @@ namespace Portfolio.Pages.Code
 
         public async Task OnPostSend()
         {
-            Message message = new Message()
+            RequestForm message = new RequestForm()
             {
-                To = "scottfalboart@gmail.com",
-                Subject = $"General Contact Form from {Contact.Name}",
-                Body = $"{Contact.Body} \n {Contact.Email}"
+                Name = Contact.Name,
+                Email = Contact.Email,
+                Body = Contact.Body
             };
             EmailResponse response = await _email.SendEmailAsync(message);
 

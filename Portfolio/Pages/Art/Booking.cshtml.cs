@@ -42,46 +42,19 @@ namespace Portfolio.Pages.Art
         /// <returns> Redirect </returns>
         public async Task OnPostSend()
         {
-            Message message = new Message()
+            RequestForm message = new RequestForm()
             {
-                To = "scottfalboart@gmail.com",
-                Subject = $"Tattoo Request from {RequestForm.Name}",
-                Body = $"{RequestForm.Idea} \n {RequestForm.Availability} \n {RequestForm.Email}"
+                Name = RequestForm.Name,
+                Email = RequestForm.Email,
+                Body = RequestForm.Body,
+                Availability = RequestForm.Availability
             };
             EmailResponse response = await _email.SendEmailAsync(message);
+            HomePage = await _admin.GetHomePage("Booking");
 
             if (response.WasSent) WasSent = true;
-            
-            HomePage = await _admin.GetHomePage("Booking");
-            await EmailClient(RequestForm.Email);
 
             Redirect("/Art/Booking");
         }
-
-        /// <summary>
-        /// Helper method to send a confirmation of to the client
-        /// </summary>
-        /// <param name="email"> email from form </param>
-        private async Task EmailClient(string email)
-        {
-            Message message = new Message()
-            {
-                To = email,
-                Subject = "Thanks for the request",
-                Body = "some templated thank you"
-            };
-            await _email.SendEmailAsync(message);
-        }
-    }
-
-    /// <summary>
-    /// Email request object
-    /// </summary>
-    public class RequestForm
-    {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Idea { get; set; }
-        public string Availability { get; set; }
     }
 }

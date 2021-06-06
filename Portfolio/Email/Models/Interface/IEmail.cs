@@ -7,6 +7,6 @@ namespace Portfolio.Email.Models.Interface
 {
     public interface IEmail
     {
-        public Task<EmailResponse> SendEmailAsync(Message inboundData);
+        public Task<EmailResponse> SendEmailAsync(RequestForm inboundData);
     }
 }
