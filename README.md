@@ -141,16 +141,20 @@ I have a basic place holder site deployed while the full site is under developem
     + Finished implementing SendGrid and set up templates.  Added a general contact pop up form that appears when the contact button is clicked.
     + Finished site wide style, well... is css ever really done.  It's done enough to deploy.
     + added image assets for navigation buttons, including social links.
-
-    Azure.Security.KeyVault.Secrets
-    Microsoft.Azure.Management.KeyVault
-    Microsoft.IdentityModel.Clients.ActiveDirectory
-    Microsoft.Azure.KeyVault.WebKey
-    Microsoft.Azure.Services.AppAuthentication
-    Microsoft.Configuration.ConfigurationBuilders.Azure
-    Microsoft.Configuration.ConfigurationBuilders.Base
-    Microsoft.Rest.ClientRuntime
-    Microsoft.Rest.ClientRuntime.Azure
+  + 06/09/2021
+    + added the follow dependencies:
+      + `Azure.Security.KeyVault.Secrets`
+      + `Microsoft.Azure.Management.KeyVault`
+      + `Microsoft.IdentityModel.Clients.ActiveDirectory`
+      + `Microsoft.Azure.KeyVault.WebKey`
+      + `Microsoft.Azure.Services.AppAuthentication`
+      + `Microsoft.Configuration.ConfigurationBuilders.Azure`
+      + `Microsoft.Configuration.ConfigurationBuilders.Base`
+      + `Microsoft.Rest.ClientRuntime`
+      + `Microsoft.Rest.ClientRuntime.Azure`
+      + Fixed custom domain C_NAME issue.
+      + Fixed non-secure connection issue.
+      + Set up Azure Key Vault and moved all of the app secrets there.
     
 
 ---
