@@ -1,6 +1,6 @@
 <img src="./assets/git_title.png">
 
-# [www.scottfalbo.com](www.scottfalbo.com)
+# [www.scottfalbo.com](https://www.scottfalbo.com)
 
 ## About the Project
 
@@ -251,9 +251,9 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
       + `Microsoft.Configuration.ConfigurationBuilders.Base`
       + `Microsoft.Rest.ClientRuntime`
       + `Microsoft.Rest.ClientRuntime.Azure`
-      + Fixed custom domain C_NAME issue.
-      + Fixed non-secure connection issue.
-      + Set up Azure Key Vault and moved all of the app secrets there.
+    + Fixed custom domain C_NAME issue.
+    + Fixed non-secure connection issue.
+    + Set up Azure Key Vault and moved all of the app secrets there.
 
 ---
 
