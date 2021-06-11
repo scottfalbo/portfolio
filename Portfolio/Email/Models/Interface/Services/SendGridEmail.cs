@@ -24,9 +24,9 @@ namespace Portfolio.Email.Models.Interface.Services
         /// <returns> EmailResponse object with success bool </returns>
         public async Task<EmailResponse> SendEmailAsync(RequestForm inboundData)
         {
-            string key = Configuration["SendGrid:Key"];
-            string email = Configuration["SendGrid:FromEmail"];
-            string name = Configuration["SendGrid:FromName"];
+            string key = Configuration["Key"];
+            string email = Configuration["FromEmail"];
+            string name = Configuration["FromName"];
 
             var client = new SendGridClient(key);
 

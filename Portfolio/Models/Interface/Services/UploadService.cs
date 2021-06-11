@@ -32,7 +32,7 @@ namespace Portfolio.Models.Interface.Services
         /// <returns> new BlobClient object </returns>
         public async Task<BlobClient> UploadImage(IFormFile file)
         {
-            BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
+            BlobContainerClient container = new BlobContainerClient(Configuration["ImageBlob"], "images");
 
             await container.CreateIfNotExistsAsync();
 
