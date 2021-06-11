@@ -128,7 +128,7 @@ namespace Portfolio.Models.Interfaces.Services
         /// <returns> no return </returns>
         public async Task DeleteBlobImage(string fileName)
         {
-            BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
+            BlobContainerClient container = new BlobContainerClient(Configuration["ImageBlob"], "images");
             BlobClient blob = container.GetBlobClient(fileName);
             await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
         }
@@ -189,8 +189,8 @@ namespace Portfolio.Models.Interfaces.Services
         /// <returns></returns>
         public async Task GetInstagramFeed()
         {
-            string userId = Configuration["Instagram:UserId"];
-            string accessToken = Configuration["Instagram:AccessToken"];
+            string userId = Configuration["UserId"];
+            string accessToken = Configuration["AccessToken"];
 
             using var client = new HttpClient();
             string uri = $"https://graph.instagram.com/{userId}/media?access_token={accessToken}&count=10";
@@ -209,7 +209,7 @@ namespace Portfolio.Models.Interfaces.Services
         /// <param name="imageIds"> Root object from user API call </param>
         public async Task GetInstagramMedia(Root imageIds)
         {
-            string accessToken = Configuration["Instagram:AccessToken"];
+            string accessToken = Configuration["AccessToken"];
             List<InstaMedia> image_urls = new List<InstaMedia>();
             imageIds.data.RemoveRange(12, 13);
 
@@ -280,7 +280,7 @@ namespace Portfolio.Models.Interfaces.Services
         /// <returns></returns>
         public async Task RefreshAccessToken()
         {
-            string accessToken = Configuration["Instagram:AccessToken"];
+            string accessToken = Configuration["AccessToken"];
 
             using var client = new HttpClient();
             string uri = $"https://graph.instagram.com/refresh_access_token?access_token={accessToken}&grant_type=ig_refresh_token";
