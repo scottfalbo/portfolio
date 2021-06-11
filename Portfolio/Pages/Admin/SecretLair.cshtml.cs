@@ -41,6 +41,11 @@ namespace Portfolio.Pages
             }
         }
 
+        /// <summary>
+        /// Update selfie photo on respective home page
+        /// </summary>
+        /// <param name="file"> new image </param>
+        /// <param name="homepage"> homepage object </param>
         public async Task<IActionResult> OnPostUpdateSelfie(IFormFile file, HomePage homepage)
         {
             if (file != null)
@@ -54,6 +59,10 @@ namespace Portfolio.Pages
             return Redirect("/Admin/SecretLair");
         }
 
+        /// <summary>
+        /// Edit homepage object data and save to database
+        /// </summary>
+        /// <param name="homepage"> homepage object </param>
         public async Task<IActionResult> OnPostEdit(HomePage homepage)
         {
             if (homepage.Intro == null)

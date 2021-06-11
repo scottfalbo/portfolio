@@ -107,7 +107,7 @@ namespace Portfolio.Data
                     Id = 3,
                     Page = "Code",
                     Title = "byte bender",
-                    Intro = "code blah blah blah",
+                    Intro = "code blah \nblah blah \nblah blah",
                     Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
                     FileName = "code-selfie.png"
                 });

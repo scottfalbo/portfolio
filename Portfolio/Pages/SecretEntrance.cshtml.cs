@@ -25,6 +25,11 @@ namespace Portfolio.Pages
 
         }
 
+        /// <summary>
+        /// Login in with user name and password
+        /// </summary>
+        /// <param name="userName"> username </param>
+        /// <param name="password"> password </param>
         public async Task<IActionResult> OnPostAsync(string userName, string password)
         {
             LoginData newUser = new LoginData()
