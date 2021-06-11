@@ -44,8 +44,8 @@ namespace Portfolio.Data
                 NormalizedName = "admin"
             });
 
-            var admin = Configuration["Portfolio:AdminName"];
-            var adminPass = Configuration["Portfolio:AdminPass"];
+            var admin = Configuration["Portfolio:Name"];
+            var adminPass = Configuration["Portfolio:Pass"];
 
             var hasher = new PasswordHasher<ApplicationUser>();
             modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser

@@ -7,10 +7,10 @@
       "secretStore": "AzureKeyVault"
     },
     "secrets1": {
-      "type": "secrets",
-      "connectionId": "",
-      "suggestion": "true",
-      "ignored": "true"
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/FalboPortfolioVaultKey",
+      "type": "secrets.keyVault",
+      "connectionId": "VaultUri",
+      "secretStore": null
     }
   }
 }
