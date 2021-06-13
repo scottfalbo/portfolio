@@ -107,7 +107,7 @@ namespace Portfolio.Data
                     Id = 3,
                     Page = "Code",
                     Title = "byte bender",
-                    Intro = "code blah blah blah",
+                    Intro = "code blah \nblah blah \nblah blah",
                     Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
                     FileName = "code-selfie.png"
                 });
@@ -119,6 +119,17 @@ namespace Portfolio.Data
                     Page = "Booking",
                     Title = "",
                     Intro = "book a thing \n and stuff",
+                    Selfie = "",
+                    FileName = ""
+                });          
+            
+            modelBuilder.Entity<HomePage>().HasData(
+                new HomePage
+                {
+                    Id = 5,
+                    Page = "Studio",
+                    Title = "",
+                    Intro = "Studio Arcnaum\nshop stuff",
                     Selfie = "",
                     FileName = ""
                 });

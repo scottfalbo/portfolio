@@ -1,6 +1,7 @@
 ﻿@import url("mainpage.css");
 @import url("login-admin.css");
 @import url("art-pages.css");
+@import url("studio-arcanum.css");
 
 * {
     box-sizing: border-box;

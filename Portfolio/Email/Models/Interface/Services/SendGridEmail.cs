@@ -51,6 +51,9 @@ namespace Portfolio.Email.Models.Interface.Services
         }
     }
 
+    /// <summary>
+    /// Class model for SendGrid template object
+    /// </summary>
     public class SendGridTemplate
     {
         public string name { get; set; }

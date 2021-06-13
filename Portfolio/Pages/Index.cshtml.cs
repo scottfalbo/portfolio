@@ -44,6 +44,9 @@ namespace Portfolio.Pages
             }
         }
 
+        /// <summary>
+        /// General contact form that calls SendGrid with input data
+        /// </summary>
         public async Task OnPostSend()
         {
             RequestForm message = new RequestForm()

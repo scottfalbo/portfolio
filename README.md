@@ -1,56 +1,155 @@
-# My Portfolio Website
+<img src="./assets/git_title.png">
+
+# [www.scottfalbo.com](https://www.scottfalbo.com)
 
 ## About the Project
-For almost 10 years I've used a Squarespace site for my art portfolio.  I figured now that I've jumped into software development it's high time I rebuilt the site myself.
 
-This is an in progress project to build a site with similar functionality and ease of use that my current template site offers.
+This is my personal portfolio page for both coding projects and artwork.  It is a .NET Core application built in Visual Studio with C# and deployed on Azure.
 
+The galleries, as well as text areas, are all stored in an AzureSQL Database.  All areas of the site can be updated via an admin dashboard with full CRUD actions.  
+
+Gallery images are stored in an Azure Blob, all uploading and removal are handled via the admin dashboard.
+
+All of the site contact forms utilize SendGrid.  The toggle controls to show and hide forms are handled by jQuery.
+
+My current Instagram feed is displayed on the Art Page using the FaceBook Developers Instagram API.
+
+All API keys, access tokens and other site secrets are stored in an Azure Key Vault.
 
 ---
 
 ## Technologies
-<table>
-  <tr>
-    <td>
-      <img src = "./assets/cSharp.png" height=50>
+
+<table border>
+  <tr align=center>
+    <td width=80>
+      <img src = "./assets/cSharp.png" height=50> 
     </td>
-    <td>
+    <td width=80>
+      <img src = "./assets/dotnetcore.png" height=50>
+    </td>
+    <td width=80>
       <img src = "./assets/visualStudio.png" height=50>
     </td>
-    <td>
-      <img src = "./assets/html.png" height=50>
-    </td>
-    <td>
-      <img src = "./assets/css.png" height=50>
-    </td>
-    <td>
+    <td width=80>
       <img src = "./assets/azure.png" height=50>
     </td>
-    <td>
-      <img src = "./assets/azure_sql.png" height=50>
+  </tr>
+    <tr>
+    <td align=center>
+      C#
     </td>
-    <td>
+    <td align=center>
+      .NET Core
+    </td>
+    <td align=center>
+      Visual Studio
+    </td>
+    <td align=center>
+      Azure
+    </td>
+  </tr>
+  <tr align=center>
+    <td width=80>
+      <img src = "./assets/html.png" height=50>
+    </td>
+    <td width=80>
+      <img src = "./assets/css.png" height=50>
+    </td>
+    <td width=80>
+      <img src = "./assets/bootstrap.png" height=50>
+    </td>
+    <td width=80>
       <img src = "./assets/github-light.png" height=50>
     </td>
   </tr>
+    <tr>
+    <td align=center>
+      HTML 5
+    </td>
+    <td align=center>
+      CSS3
+    </td>
+    <td align=center>
+      Bootstrap
+    </td>
+    <td align=center>
+      GitHub
+    </td>
+  </tr>
+  </tr>
+  <tr align=center>
+    <td width=80>
+      <img src = "./assets/azure_sql.png" height=50>
+    </td>
+    <td width=80>
+      <img src = "./assets/azureBlob.png" height=50>
+    </td>
+    <td width=80>
+      <img src = "./assets/key_vault.png" height=50>
+    </td>
+    <td width=80>
+      <img src = "./assets/facebook_dev.png" height=50>
+    </td>
+  </tr>
+    <tr>
+    <td align=center>
+      AzureSQL
+    </td>
+    <td align=center>
+      Azure Blob
+    </td>
+    <td align=center>
+      Azure Key Vault
+    </td>
+    <td align=center>
+      Facebook Dev
+    </td>
+  </tr>
+  <tr align=center>
+    <td width=80>
+      <img src = "./assets/sendgrid.png" height=50>
+    </td>
+    <td width=80>
+      <img src = "./assets/jQuery.png" height=50>
+    </td>
+    <td width=80>
+      <img src = "./assets/vscode.png" height=50>
+    </td>
+    <td width=80>
+      <img src = "./assets/photoshop.png" height=50>
+    </td>
+  </tr>
+    <tr>
+    <td align=center>
+      SendGrid
+    </td>
+    <td align=center>
+      jQuery
+    </td>
+    <td align=center>
+      Visual Studio Code
+    </td>
+    <td align=center>
+      Adobe Photoshop
+    </td>
+  </tr>
 </table>
-
-
-
----
-
-## Getting Started
-I have a basic place holder site deployed while the full site is under developement.
-+ Live deployment here: [scottfalbo.com](https://falboportfolio.azurewebsites.net/)  
 
 ---
 
 <!-- ## Architecture -->
 
-
 ---
 
+## Change Log
+
++ 00/00/2021
+  + **version 1.0.0**
+    + Initial deployment
+
 ## Development Log
+
 + 03/25/2021
   + Started initial scaffolding and view layouts.
   + `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`
@@ -141,21 +240,28 @@ I have a basic place holder site deployed while the full site is under developem
     + Finished implementing SendGrid and set up templates.  Added a general contact pop up form that appears when the contact button is clicked.
     + Finished site wide style, well... is css ever really done.  It's done enough to deploy.
     + added image assets for navigation buttons, including social links.
-
-    Azure.Security.KeyVault.Secrets
-    Microsoft.Azure.Management.KeyVault
-    Microsoft.IdentityModel.Clients.ActiveDirectory
-    Microsoft.Azure.KeyVault.WebKey
-    Microsoft.Azure.Services.AppAuthentication
-    Microsoft.Configuration.ConfigurationBuilders.Azure
-    Microsoft.Configuration.ConfigurationBuilders.Base
-    Microsoft.Rest.ClientRuntime
-    Microsoft.Rest.ClientRuntime.Azure
-    
+  + 06/10/2021
+    + added the follow dependencies:
+      + `Azure.Security.KeyVault.Secrets`
+      + `Microsoft.Azure.Management.KeyVault`
+      + `Microsoft.IdentityModel.Clients.ActiveDirectory`
+      + `Microsoft.Azure.KeyVault.WebKey`
+      + `Microsoft.Azure.Services.AppAuthentication`
+      + `Microsoft.Configuration.ConfigurationBuilders.Azure`
+      + `Microsoft.Configuration.ConfigurationBuilders.Base`
+      + `Microsoft.Rest.ClientRuntime`
+      + `Microsoft.Rest.ClientRuntime.Azure`
+    + Fixed custom domain C_NAME issue.
+    + Fixed non-secure connection issue.
+    + Set up Azure Key Vault and moved all of the app secrets there.
+  + 06/12/2021
+    + Added a studio section to the art main page.
+    + Used Google API to display a map to the studio.
 
 ---
 
 ## Contact
+
 + Email: Scottfalboart@gmail.com
 + [GitHub](https://github.com/scottfalbo)
 + [LinkedIn](https://www.linkedin.com/in/scott-falbo/)
@@ -163,6 +269,8 @@ I have a basic place holder site deployed while the full site is under developem
 ---
 
 ## Acknowledgements
-+ https://getbootstrap.com/docs/4.0/components/carousel/
-+ https://json2csharp.com/
 
++ [Bootstrap Carousel](https://getbootstrap.com/docs/4.0/components/carousel/)
++ [json2csharp](https://json2csharp.com/)
++ [Microsoft Docs](https://docs.microsoft.com/en-us/)
++ [Google Maps dark mode script](https://developers.google.com/maps/documentation/javascript/examples/style-array)
