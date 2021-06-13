@@ -3,10 +3,16 @@
 @{
 }
 
+<div>
+    <partial name="Art/_ArtMenu" />
+</div>
 <div class="studio-container">
     <section>
         <h2>Studio Arcanum</h2>
-        <address></address>
+        <address>
+            4333 Fremont Ave N. <br />Seattle, WA 98103
+
+        </address>
         <div>
             <a href="http://www.studioarcanum.com" target="_blank">link</a>
         </div>
@@ -36,7 +42,7 @@
                 </ul>
             </nav>
         </section>
-        <article>blah blah</article>
+        <article>@Model.HomePage.Intro</article>
     </section>
     <section>
         <div id="google-map"></div>

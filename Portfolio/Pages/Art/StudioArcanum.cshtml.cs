@@ -18,6 +18,7 @@ namespace Portfolio.Pages.Art
             _admin = admin;
         }
 
+        [BindProperty]
         public HomePage HomePage { get; set; } 
 
         public async void OnGet()

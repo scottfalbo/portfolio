@@ -11,11 +11,12 @@
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 50px, 1fr, 50px, 1fr, 1fr;
+        grid-template-rows: 1fr, 1fr, 50px, 1fr, 1fr;
     }
     .studio-container section:first-child h2{
         grid-column: 1/2;
         grid-row: 1/2;
+        padding: 20px;
     }
     .studio-container section:first-child address{
         grid-column: 1/2;
@@ -45,10 +46,14 @@
     .studio-container section:last-child > div {
         grid-column: 1/2;
         grid-row: 1/2;
+        margin: 20px auto;
+        padding: 10px;
     }
     .studio-container section:last-child > button {
         grid-column: 1/2;
         grid-row: 2/3;
+        height: 40px;
+        margin: 20px auto;
     }
 
     #google-map {
@@ -75,22 +80,27 @@
         grid-template-rows: 50px, 1fr, 50px, 1fr, 1fr;
     }
     .studio-container section:first-child h2{
+        padding: 10px;
         grid-column: 1/2;
         grid-row: 1/2;
     }
     .studio-container section:first-child address{
+        padding: 10px;
         grid-column: 1/2;
         grid-row: 2/3;
     }
     .studio-container section:first-child > div{
+        padding: 10px;
         grid-column: 1/2;
         grid-row: 3/4;
     }
-    .studio-container section:first-child h2 > section{
+    .studio-container section:first-child > section{
+        padding: 10px;
         grid-column: 1/2;
         grid-row: 4/5;
     }
-    .studio-container section:first-child h2 article{
+    .studio-container section:first-child article{
+        padding: 10px;
         grid-column: 1/2;
         grid-row: 5/6;
     }
@@ -102,6 +112,7 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr, 1fr;
+        padding: 10px;
     }
     .studio-container section:last-child > div {
         grid-column: 1/2;
@@ -110,6 +121,8 @@
     .studio-container section:last-child > button {
         grid-column: 1/2;
         grid-row: 2/3;
+        height: 40px;
+        margin: 20px auto;
     }
 
     #google-map {
