@@ -270,3 +270,4 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
 + [Bootstrap Carousel](https://getbootstrap.com/docs/4.0/components/carousel/)
 + [json2csharp](https://json2csharp.com/)
 + [Microsoft Docs](https://docs.microsoft.com/en-us/)
++ [Google Maps dark mode script](https://developers.google.com/maps/documentation/javascript/examples/style-array)

@@ -2,7 +2,45 @@
 @model Portfolio.Pages.Art.StudioArcanumModel
 @{
 }
-
-<h3>My Google Maps Demo</h3>
-<!--The div element for the map -->
 <div id="google-map"></div>
+<div class="studio-container">
+    <section>
+        <h2>Studio Arcanum</h2>
+        <address></address>
+        <div>
+            <a href="http://www.studioarcanum.com" target="_blank">link</a>
+        </div>
+        <section>
+            <nav>
+                <ul class="main-menu-nav">
+                    <li>
+                        <a href="https://www.instagram.com/scottfalboart/" target="_blank">
+                            <figure>
+                                <img src="/images/site_logos/instagram.png" alt="" />
+                                <figcaption>Instagram</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="/images/site_logos/instagram.png" alt="" />
+                            <figcaption>policy</figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="/images/site_logos/instagram.png" alt="" />
+                            <figcaption>aftercare</figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <article>@Model.HomePage.Intro</article>
+    </section>
+    <section>
+        
+        <button type="button" onclick="history.back();" class="admin-button">Back to Art Main</button>
+    </section>
+</div>
+
