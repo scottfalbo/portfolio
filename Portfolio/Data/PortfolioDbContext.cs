@@ -121,6 +121,17 @@ namespace Portfolio.Data
                     Intro = "book a thing \n and stuff",
                     Selfie = "",
                     FileName = ""
+                });          
+            
+            modelBuilder.Entity<HomePage>().HasData(
+                new HomePage
+                {
+                    Id = 5,
+                    Page = "Studio",
+                    Title = "",
+                    Intro = "Studio Arcnaum\nshop stuff",
+                    Selfie = "",
+                    FileName = ""
                 });
 
         }

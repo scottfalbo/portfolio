@@ -46,3 +46,27 @@ $(function () {
         $('#general-contact').addClass('general-contact-hide');
     });
 });
+
+//Google maps API callback function
+function initMap() {
+    //Set the Latitude and Longitude of the Map  
+    var myAddress = new google.maps.LatLng(47.660103768145014, -122.35032563073302);
+    console.log(myAddress);
+    //Create Options or set different Characteristics of Google Map  
+    var mapOptions = {
+        center: myAddress,
+        zoom: 15,
+        minZoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    //Display the Google map in the div control with the defined Options  
+    var map = new google.maps.Map(document.getElementById("google-map"), mapOptions);
+
+    //Set Marker on the Map  
+    var marker = new google.maps.Marker({
+        position: myAddress
+    });
+
+    marker.setMap(map); 
+}

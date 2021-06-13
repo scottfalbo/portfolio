@@ -1,0 +1,21 @@
+﻿/* Desktop */
+@media (min-width: 776px) {
+    #google-map {
+        width: 100%;
+        background-color: #161616;
+    }
+}
+
+
+
+
+
+
+
+/* Mobile */
+@media (max-width: 775px) {
+    #google-map {
+        width: 100%;
+        background-color: #161616;
+    }
+}
