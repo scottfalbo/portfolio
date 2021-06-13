@@ -11,7 +11,7 @@
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr, 50px, 1fr, 1fr;
+        grid-template-rows: 40px, 60px, 50px, 1fr, 1fr;
     }
     .studio-container section:first-child h2{
         grid-column: 1/2;
