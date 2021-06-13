@@ -57,6 +57,7 @@ function initMap() {
         zoom: 10,
         minZoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
+        //https://developers.google.com/maps/documentation/javascript/examples/style-array
         styles: [
             { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
             { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },

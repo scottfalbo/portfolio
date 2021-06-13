@@ -254,6 +254,9 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
     + Fixed custom domain C_NAME issue.
     + Fixed non-secure connection issue.
     + Set up Azure Key Vault and moved all of the app secrets there.
+  + 06/12/2021
+    + Added a studio section to the art main page.
+    + Used Google API to display a map to the studio.
 
 ---
 
