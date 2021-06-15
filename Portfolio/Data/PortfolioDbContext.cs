@@ -19,6 +19,7 @@ namespace Portfolio.Data
         public DbSet<Design> Designs { get; set; }
         public DbSet<HomePage> HomePage { get; set; }
         public DbSet<Instagram> Instragrams { get; set; }
+        public DbSet<Studio> Studio { get; set; }
 
         public IConfiguration Configuration { get; }
 
@@ -123,15 +124,13 @@ namespace Portfolio.Data
                     FileName = ""
                 });          
             
-            modelBuilder.Entity<HomePage>().HasData(
-                new HomePage
+            modelBuilder.Entity<Studio>().HasData(
+                new Studio
                 {
-                    Id = 5,
-                    Page = "Studio",
-                    Title = "",
-                    Intro = "Studio Arcnaum\nshop stuff",
-                    Selfie = "",
-                    FileName = ""
+                    Id = 1,
+                    Intro ="Studio Arcanum \nblah blah",
+                    Policies = "be cool",
+                    Aftercare = "don't be dumb"
                 });
 
         }
