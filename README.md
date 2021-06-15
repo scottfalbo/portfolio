@@ -257,6 +257,9 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
   + 06/12/2021
     + Added a studio section to the art main page.
     + Used Google API to display a map to the studio.
+  + 06/14/2021
+    + Added a page for the studio the art section of the site.
+    + Made a `Studio` model and added CRUD UI to the admin dashboard for text areas. 
 
 ---
 
