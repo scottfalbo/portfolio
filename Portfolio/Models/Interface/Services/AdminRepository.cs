@@ -180,6 +180,34 @@ namespace Portfolio.Models.Interfaces.Services
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Get studio data from DB
+        /// </summary>
+        /// <param name="id"> studio id </param>
+        /// <returns> Studio object </returns>
+        public async Task<Studio> GetStudio(int id)
+        {
+            return await _context.Studio
+               .Where(x => x.Id == id)
+               .Select(y => new Studio
+               {
+                   Id = y.Id,
+                   Intro = y.Intro,
+                   Policies = y.Policies,
+                   Aftercare = y.Aftercare
+               }).FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// Update studio data in database
+        /// </summary>
+        /// <param name="studio"> Studio object </param>
+        public async Task UpdateStudio(Studio studio)
+        {
+            _context.Entry(studio).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
         /// --------------- Instagram API
         /// <summary>
         /// Makes a request to the Instagram api.  First retrieves a list of recent post ids.
