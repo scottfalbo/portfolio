@@ -20,15 +20,15 @@ namespace Portfolio.Pages.Art
             _admin = admin;
             Configuration = config;
         }
-
+        
         [BindProperty]
-        public HomePage HomePage { get; set; } 
+        public Studio Studio { get; set; }
 
         public string GoogleMapRequest { get; set; }
 
         public async void OnGet()
         {
-            HomePage = await _admin.GetHomePage("Studio");
+            Studio = await _admin.GetStudio(1);
             string googleApiKey = Configuration["GoogleMapKey"];
             GoogleMapRequest = $"https://maps.googleapis.com/maps/api/js?key={googleApiKey}&callback=initMap";
         }
