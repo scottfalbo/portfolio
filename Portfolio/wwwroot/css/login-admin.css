@@ -160,3 +160,8 @@ main {
 
 
 }
+
+.project-admin-card h3 {
+    color: #9ff8bb;
+    font-family: 'Jura', sans-serif;
+}

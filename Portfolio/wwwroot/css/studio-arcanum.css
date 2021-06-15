@@ -26,13 +26,17 @@
         grid-column: 1/2;
         grid-row: 3/4;
     }
-    .studio-container section:first-child h2 > section{
+    .studio-container section:first-child > section{
         grid-column: 1/2;
         grid-row: 4/5;
     }
-    .studio-container section:first-child h2 article{
+    .studio-container section:first-child article{
         grid-column: 1/2;
         grid-row: 5/6;
+        white-space: pre-wrap;
+        background-color: #121212;
+        color: #9ff8bb;
+        font-family: 'Jura', sans-serif;
     }
 
     /*right section*/
@@ -103,6 +107,7 @@
         padding: 10px;
         grid-column: 1/2;
         grid-row: 5/6;
+        white-space: pre-wrap;
     }
 
     /*bottom section*/

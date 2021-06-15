@@ -29,10 +29,14 @@ namespace Portfolio.Pages
         [BindProperty]
         public HomePage HomePage { get; set; }
 
+        [BindProperty]
+        public Studio Studio { get; set; }
+
         public async Task OnGet()
         {
             try
             {
+                Studio = await _adminContext.GetStudio(1);
                 HomePages = await _adminContext.GetHomePages();
             }
             catch (Exception e)
@@ -78,6 +82,30 @@ namespace Portfolio.Pages
                 Intro = homepage.Intro
             };
             await _adminContext.UpdateHomePage(updatedPage);
+            return Redirect("/Admin/SecretLair");
+        }
+
+        /// <summary>
+        /// Update the studio data in database with form input
+        /// </summary>
+        /// <param name="studio"> Studio object </param>
+        public async Task<IActionResult> OnPostEditStudio(Studio studio)
+        {
+            if (studio.Intro == null)
+                studio.Intro = (await _adminContext.GetStudio(studio.Id)).Intro;
+            if (studio.Policies == null)
+                studio.Policies = (await _adminContext.GetStudio(studio.Id)).Policies;
+            if (studio.Aftercare == null)
+                studio.Aftercare = (await _adminContext.GetStudio(studio.Id)).Aftercare;
+
+            Studio updatedPage = new Studio()
+            {
+                Id = studio.Id,
+                Intro = studio.Intro,
+                Policies = studio.Policies,
+                Aftercare = studio.Aftercare
+            };
+            await _adminContext.UpdateStudio(updatedPage);
             return Redirect("/Admin/SecretLair");
         }
 

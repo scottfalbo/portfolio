@@ -2,7 +2,7 @@
 @model Portfolio.Pages.Art.StudioArcanumModel
 @{
 }
-
+<script async src=@Model.GoogleMapRequest></script>
 <div>
     <partial name="Art/_ArtMenu" />
 </div>
@@ -42,7 +42,7 @@
                 </ul>
             </nav>
         </section>
-        <article>@Model.HomePage.Intro</article>
+        <article>@Model.Studio.Intro</article>
     </section>
     <section>
         <div id="google-map"></div>

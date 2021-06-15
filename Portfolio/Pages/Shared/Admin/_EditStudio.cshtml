@@ -1,0 +1,24 @@
+﻿@model Portfolio.Pages.SecretLairModel
+
+<section class="project-admin">
+    <div class="project-admin-card">
+        <form asp-page-handler="EditStudio" method="post">
+            <div>
+                <h3>Intro</h3>
+                <textarea type="text" cols="45" rows="5" asp-for="Studio.Intro" class="form-control" placeholder="@Model.Studio.Intro"></textarea>
+            </div>
+            <div>
+                <h3>Studio Polices</h3>
+                <textarea type="text" cols="45" rows="5" asp-for="Studio.Policies" class="form-control" placeholder="@Model.Studio.Policies"></textarea>
+            </div>
+            <div>
+                <h3>Aftercare</h3>
+                <textarea type="text" cols="45" rows="5" asp-for="Studio.Aftercare" class="form-control" placeholder="@Model.Studio.Aftercare"></textarea>
+            </div>
+            <input type="hidden" asp-for="@Model.Studio.Id" value="@Model.Studio.Id" />
+            <div>
+                <input class="admin-button" type="submit" value="Update" />
+            </div>
+        </form>
+    </div>
+</section>
