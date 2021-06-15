@@ -91,7 +91,6 @@ namespace Portfolio.Pages
         /// <param name="studio"> Studio object </param>
         public async Task<IActionResult> OnPostEditStudio(Studio studio)
         {
-            Console.WriteLine("");
             if (studio.Intro == null)
                 studio.Intro = (await _adminContext.GetStudio(studio.Id)).Intro;
             if (studio.Policies == null)
