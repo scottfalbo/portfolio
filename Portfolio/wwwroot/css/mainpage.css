@@ -51,6 +51,7 @@ main {
     text-align: left;
     color: #93ffa2;
     padding: 7px;
+    white-space: pre-wrap;
 }
 
 .projects  figure  img {
@@ -153,7 +154,7 @@ main {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr;
+        grid-template-rows: 280px 200px;
     }
     .intro-left figure {
         grid-column: 1/2;
@@ -163,7 +164,7 @@ main {
     .desktop-menu {
         grid-column: 1/2;
         grid-row: 2/3;
-        width: 315px;
+        width: 100%;
         margin: auto;
         background: #121212;
         padding: 5px;

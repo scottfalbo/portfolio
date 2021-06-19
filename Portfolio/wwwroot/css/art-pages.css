@@ -209,7 +209,7 @@ main div:nth-child(3) h2 {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 50px 1fr;
+        grid-template-rows: 10px 1fr;
         padding: 5px;
     }
 
