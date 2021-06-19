@@ -28,13 +28,13 @@
                         </a>
                     </li>
                     <li>
-                        <figure>
+                        <figure id="show-policies">
                             <img src="/images/site_logos/instagram.png" alt="" />
-                            <figcaption>policy</figcaption>
+                            <figcaption>policies</figcaption>
                         </figure>
                     </li>
                     <li>
-                        <figure>
+                        <figure id="show-aftercare">
                             <img src="/images/site_logos/instagram.png" alt="" />
                             <figcaption>aftercare</figcaption>
                         </figure>
@@ -49,12 +49,10 @@
         <button type="button" onclick="history.back();" class="admin-button">Back to Art Main</button>
     </section>
 </div>
-<div class="studio-popup">
-    <div>
-        <partial name="Art/Studio/_Policies" />
-    </div>
-    <div>
-        <partial name="Art/Studio/_Aftercare" />
-    </div>
+<div class="studio-popup hidden-popup" id="shop-policies">
+    <partial name="Art/Studio/_Policies" />
+</div>
+<div class="studio-popup hidden-popup" id="tattoo-aftercare">
+    <partial name="Art/Studio/_Aftercare" />
 </div>
 

@@ -34,7 +34,6 @@ $(function () {
 //general contact form toggle on and off
 $(function () {
     $('.toggle-contact').click(function () {
-        console.log("hello");
         $('#general-contact').toggleClass('general-contact-hide');
     });
 });
@@ -42,11 +41,32 @@ $(function () {
 //button to cancel and close the contact form
 $(function () {
     $('#close-popup').click(function () {
-        console.log("hello");
         $('#general-contact').addClass('general-contact-hide');
     });
 });
 
+//buttons to hide and show studio page pop ups.
+// aftercare button
+$(function () {
+    $('#show-policies').click(function () {
+        $('#shop-policies').removeClass('hidden-popup');
+    });
+});
+// policies button
+$(function () {
+    $('#show-aftercare').click(function () {
+        $('#tattoo-aftercare').removeClass('hidden-popup');
+    });
+});
+// close the popup window
+$(function () {
+    $('.studio-popup-close').click(function () {
+        $('.studio-popup').addClass("hidden-popup");
+    })
+})
+
+
+//https://developers.google.com/maps/documentation/javascript/examples/style-array
 //Google maps API callback function
 function initMap() {
 
