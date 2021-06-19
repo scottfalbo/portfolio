@@ -133,7 +133,7 @@ main div:nth-child(3) h2 {
     .art-intro-container{
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr;
+        grid-template-rows: 1fr 100%;
     }
 
     .art-intro-container > div:first-child {
@@ -141,7 +141,7 @@ main div:nth-child(3) h2 {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 200px, 1fr, 1fr;
+        grid-template-rows: 240px 30px 120px;
     }
 
     .art-intro-container > div:last-child {
@@ -149,7 +149,7 @@ main div:nth-child(3) h2 {
         grid-row: 2/3;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 50px, 1fr, 1fr;
+        grid-template-rows: 1px 1fr 100%;
     }
 
     .art-intro-container figure {
@@ -192,7 +192,7 @@ main div:nth-child(3) h2 {
 @media (min-width: 776px){
     .art-intro-container {
         display: grid;
-        grid-template-columns: 1fr, 1fr;
+        grid-template-columns: 40% 60%;
         grid-template-rows: 1fr;
     }
 
@@ -201,7 +201,7 @@ main div:nth-child(3) h2 {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr, 1fr;
+        grid-template-rows: 249px 30px 120px;
     }
 
     .art-intro-container > div:last-child {
@@ -209,7 +209,7 @@ main div:nth-child(3) h2 {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 50px, 1fr, 1fr;
+        grid-template-rows: 50px 1fr;
         padding: 5px;
     }
 
@@ -299,7 +299,7 @@ main div:nth-child(3) h2 {
 @media (min-width: 776px){
     .booking-page {
         display: grid;
-        grid-template-columns: 55%, 45%;
+        grid-template-columns: 55% 45%;
         grid-template-rows: 1fr;
     }
     .booking-page > section {
@@ -307,7 +307,7 @@ main div:nth-child(3) h2 {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 30px, 1fr;
+        grid-template-rows: 30px 1fr;
     }
     .booking-page > section > h2 {
         padding: 10px;
@@ -323,7 +323,7 @@ main div:nth-child(3) h2 {
         grid-column: 2/3;
         grid-row: 1/2;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr;
+        grid-template-rows: 1fr 40px;
     }
     .booking-page > div > h3 {
         grid-column: 1/2;
@@ -412,7 +412,7 @@ main div:nth-child(3) h2 {
 .gallery-grid {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 60px, 1fr, 100px;
+    grid-template-rows: 60px 1fr 100px;
     width: 100%;
 }
 
