@@ -123,6 +123,11 @@
     background-color: #121212;
 }
 
+main div:nth-child(3) h2 {
+    padding: 10px;
+    color: #9fff3d;
+}
+
 /*Mobile*/
 @media (max-width: 775px){
     .art-intro-container{

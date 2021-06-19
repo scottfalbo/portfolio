@@ -2,7 +2,7 @@
 @media (min-width: 776px) {
     .studio-container {
         display: grid;
-        grid-template-columns: 50%, 50%;
+        grid-template-columns: 50% 50%;
         grid-template-rows: 1fr;
     }
     /*left section*/
@@ -11,20 +11,24 @@
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 40px, 60px, 50px, 1fr, 1fr;
+        grid-template-rows: 40px 80px 50px 100px 1fr;
     }
     .studio-container section:first-child h2{
         grid-column: 1/2;
         grid-row: 1/2;
         padding: 20px;
+        font-size: 1.7em;
     }
     .studio-container section:first-child address{
         grid-column: 1/2;
         grid-row: 2/3;
+        color: #00ff90;
+        padding: 10px;
     }
     .studio-container section:first-child > div{
         grid-column: 1/2;
         grid-row: 3/4;
+        font-size: 1.5em;
     }
     .studio-container section:first-child > section{
         grid-column: 1/2;
@@ -37,6 +41,8 @@
         background-color: #121212;
         color: #9ff8bb;
         font-family: 'Jura', sans-serif;
+        padding: 10px;
+        border-radius: 10px;
     }
 
     /*right section*/
@@ -45,7 +51,7 @@
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr;
+        grid-template-rows: 1fr 80px;
     }
     .studio-container section:last-child > div {
         grid-column: 1/2;
@@ -73,7 +79,7 @@
     .studio-container {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr;
+        grid-template-rows: 1fr 1fr;
     }
     /*top section*/
     .studio-container section:first-child {
@@ -81,22 +87,26 @@
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 50px, 1fr, 50px, 1fr, 1fr;
+        grid-template-rows: 40px 60px 40px 80px 1fr;
     }
     .studio-container section:first-child h2{
         padding: 10px;
         grid-column: 1/2;
         grid-row: 1/2;
+        font-size: 1.6em;
     }
     .studio-container section:first-child address{
         padding: 10px;
         grid-column: 1/2;
         grid-row: 2/3;
+        color: #00ff90;
     }
-    .studio-container section:first-child > div{
+    .studio-container section:first-child > div {
         padding: 10px;
         grid-column: 1/2;
         grid-row: 3/4;
+        font-size: 1.7em;
+        color: #7ffbf6;
     }
     .studio-container section:first-child > section{
         padding: 10px;
@@ -108,6 +118,12 @@
         grid-column: 1/2;
         grid-row: 5/6;
         white-space: pre-wrap;
+        background-color: #121212;
+        color: #9ff8bb;
+        font-family: 'Jura', sans-serif;
+        padding: 10px;
+        border-radius: 10px;
+        height: fit-content();
     }
 
     /*bottom section*/
@@ -116,7 +132,7 @@
         grid-row: 2/3;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr;
+        grid-template-rows: 1fr 40px;
         padding: 10px;
     }
     .studio-container section:last-child > div {

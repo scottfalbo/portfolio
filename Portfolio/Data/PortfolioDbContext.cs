@@ -85,7 +85,7 @@ namespace Portfolio.Data
                 {
                     Id = 1,
                     Page = "Home",
-                    Title = "hello",
+                    Title = "Software Developer | Artist",
                     Intro = "test <br /> test",
                     Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
                     FileName = "code-selfie.png"
@@ -96,7 +96,7 @@ namespace Portfolio.Data
                 {
                     Id = 2,
                     Page = "Tattoo",
-                    Title = "flesh renderer",
+                    Title = "Tattoo Artist | Studio Arcanum",
                     Intro = "tattoo blah blah blah",
                     Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
                     FileName = "code-selfie.png"
@@ -107,7 +107,7 @@ namespace Portfolio.Data
                 {
                     Id = 3,
                     Page = "Code",
-                    Title = "byte bender",
+                    Title = "Software Developer | C# .NET",
                     Intro = "code blah \nblah blah \nblah blah",
                     Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
                     FileName = "code-selfie.png"
