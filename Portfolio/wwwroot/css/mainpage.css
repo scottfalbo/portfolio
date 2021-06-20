@@ -161,6 +161,9 @@ main {
         grid-row: 1/2;
         margin: auto;
     }
+    .intro-left figcaption {
+        white-space: pre-wrap;
+    }
     .desktop-menu {
         grid-column: 1/2;
         grid-row: 2/3;

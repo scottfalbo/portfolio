@@ -194,3 +194,17 @@
     background: #000;
     color: #ffbc29;
 }
+
+article {
+    text-align: left;
+}
+
+.studio-back-button {
+    height: 40px;
+    width: 240px;
+    color: #7ffbf6;
+    border: 1px solid #8dfffa;
+    margin: auto;
+    border-radius: 10px;
+    line-height: 35px;
+}

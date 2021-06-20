@@ -148,7 +148,7 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
   + **version 1.0.0**
     + Initial deployment
 
-## Development Log
++ ### Development Log
 
 + 03/25/2021
   + Started initial scaffolding and view layouts.
