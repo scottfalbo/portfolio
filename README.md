@@ -138,10 +138,6 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
 
 ---
 
-<!-- ## Architecture -->
-
----
-
 ## Change Log
 
 + 00/00/2021
@@ -263,6 +259,9 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
   + 06/18/2021
     + Built out the studio page. Added jQuery controls to hide and show info pop ups.
     + Fixed a bunch of sire wide grid issues and finished overall styling.
+  + 06/19/2021
+    + Dialed in CSS here and there.  
+    + Updated seed data for deployment
 
 ---
 
