@@ -51,6 +51,7 @@ main {
     text-align: left;
     color: #93ffa2;
     padding: 7px;
+    white-space: pre-wrap;
 }
 
 .projects  figure  img {
@@ -143,7 +144,7 @@ main {
         grid-column: 1/2;
         grid-row: 1/2;
         display: grid;
-        grid-template-columns: 1fr, 60%;
+        grid-template-columns: 40% 60%;
         grid-template-rows: 1fr;
         padding: 10px;
     }
@@ -153,16 +154,20 @@ main {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr, 1fr;
+        grid-template-rows: 280px 200px;
     }
     .intro-left figure {
         grid-column: 1/2;
         grid-row: 1/2;
+        margin: auto;
+    }
+    .intro-left figcaption {
+        white-space: pre-wrap;
     }
     .desktop-menu {
         grid-column: 1/2;
         grid-row: 2/3;
-        width: 315px;
+        width: 100%;
         margin: auto;
         background: #121212;
         padding: 5px;
@@ -191,6 +196,7 @@ main {
         grid-column: 1/2;
         grid-row: 2/3;
         max-width: max-content;
+        margin: auto;
     }
     .index-image img {
         width: 100%;

@@ -138,17 +138,13 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
 
 ---
 
-<!-- ## Architecture -->
-
----
-
 ## Change Log
 
 + 00/00/2021
   + **version 1.0.0**
     + Initial deployment
 
-## Development Log
++ ### Development Log
 
 + 03/25/2021
   + Started initial scaffolding and view layouts.
@@ -257,6 +253,15 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
   + 06/12/2021
     + Added a studio section to the art main page.
     + Used Google API to display a map to the studio.
+  + 06/14/2021
+    + Added a page for the studio the art section of the site.
+    + Made a `Studio` model and added CRUD UI to the admin dashboard for text areas.
+  + 06/18/2021
+    + Built out the studio page. Added jQuery controls to hide and show info pop ups.
+    + Fixed a bunch of sire wide grid issues and finished overall styling.
+  + 06/19/2021
+    + Dialed in CSS here and there.  
+    + Updated seed data for deployment
 
 ---
 

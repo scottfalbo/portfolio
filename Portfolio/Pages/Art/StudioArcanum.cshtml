@@ -28,17 +28,17 @@
                         </a>
                     </li>
                     <li>
-                        <figure>
+                        <figure id="show-policies">
                             <img src="/images/site_logos/instagram.png" alt="" />
-                            <figcaption>policy</figcaption>
+                            <figcaption>policies</figcaption>
                         </figure>
                     </li>
-                    <li>
-                        <figure>
+                    @*<li>
+                        <figure id="show-aftercare">
                             <img src="/images/site_logos/instagram.png" alt="" />
                             <figcaption>aftercare</figcaption>
                         </figure>
-                    </li>
+                    </li>*@
                 </ul>
             </nav>
         </section>
@@ -46,15 +46,13 @@
     </section>
     <section>
         <div id="google-map"></div>
-        <button type="button" onclick="history.back();" class="admin-button">Back to Art Main</button>
+        <a asp-page="/Art/ScottFalboArt"><div class="studio-back-button">Back to Art Page</div></a>
     </section>
 </div>
-<div class="studio-popup">
-    <div>
-        <partial name="Art/Studio/_Policies" />
-    </div>
-    <div>
-        <partial name="Art/Studio/_Aftercare" />
-    </div>
+<div class="studio-popup hidden-popup" id="shop-policies">
+    <partial name="Art/Studio/_Policies" />
+</div>
+<div class="studio-popup hidden-popup" id="tattoo-aftercare">
+    <partial name="Art/Studio/_Aftercare" />
 </div>
 

@@ -36,6 +36,7 @@ namespace Portfolio.Pages.Code
             try
             {
                 ProjectList = await _adminContext.GetProjects();
+                ProjectList.Reverse();
                 HomePage = await _adminContext.GetHomePage("Code");
                 Contact = new GeneralContact();
             }

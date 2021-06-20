@@ -66,27 +66,13 @@ namespace Portfolio.Data
                 UserId = id
             });
 
-
-            modelBuilder.Entity<Project>().HasData(
-                new Project
-                {
-                    Id = -1,
-                    Title = "SmallBoi, The Game",
-                    SourceURL = "images/smallboi.png",
-                    Description = "SmallBoi is a two player coop platform puzzle game built in Unity.  It has both local and network multiple player options using Photon.",
-                    RepoLink = "https://github.com/AmeiliaAndTheSmallBois/SmallBoi/tree/main",
-                    AltText = "SmallBoi screenshot",
-                    Order = 0
-                }
-            );
-
             modelBuilder.Entity<HomePage>().HasData(
                 new HomePage
                 {
                     Id = 1,
                     Page = "Home",
-                    Title = "hello",
-                    Intro = "test <br /> test",
+                    Title = "Software Developer | Artist",
+                    Intro = "Software developer and artist in Seattle.",
                     Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
                     FileName = "code-selfie.png"
                 });
@@ -96,8 +82,8 @@ namespace Portfolio.Data
                 {
                     Id = 2,
                     Page = "Tattoo",
-                    Title = "flesh renderer",
-                    Intro = "tattoo blah blah blah",
+                    Title = "Tattoo Artist | Studio Arcanum",
+                    Intro = "I do tattoos some times",
                     Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
                     FileName = "code-selfie.png"
                 });
@@ -107,8 +93,8 @@ namespace Portfolio.Data
                 {
                     Id = 3,
                     Page = "Code",
-                    Title = "byte bender",
-                    Intro = "code blah \nblah blah \nblah blah",
+                    Title = "Software Developer | C# .NET",
+                    Intro = "I write code better than bios, coming soon...",
                     Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
                     FileName = "code-selfie.png"
                 });
@@ -119,7 +105,7 @@ namespace Portfolio.Data
                     Id = 4,
                     Page = "Booking",
                     Title = "",
-                    Intro = "book a thing \n and stuff",
+                    Intro = "Booking information",
                     Selfie = "",
                     FileName = ""
                 });          
@@ -128,9 +114,9 @@ namespace Portfolio.Data
                 new Studio
                 {
                     Id = 1,
-                    Intro ="Studio Arcanum \nblah blah",
-                    Policies = "be cool",
-                    Aftercare = "don't be dumb"
+                    Intro ="Studio Arcanum \nSeattle Wa",
+                    Policies = "...",
+                    Aftercare = "..."
                 });
 
         }
