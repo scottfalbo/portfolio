@@ -1,7 +1,19 @@
 {
   "dependencies": {
+    "secrets1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/FalboPortfolioVaultKey",
+      "type": "secrets.keyVault",
+      "connectionId": "VaultUri",
+      "secretStore": "AzureAppSettings"
+    },
+    "storage1": {
+      "type": "storage",
+      "connectionId": "",
+      "suggestion": "true",
+      "ignored": "true"
+    },
     "mssql1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/portfolio-db-server/databases/Portfolio_db",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/falboportfolioserver/databases/Portfolio_db",
       "type": "mssql.azure",
       "connectionId": "DefaultConnection",
       "secretStore": "AzureAppSettings"
