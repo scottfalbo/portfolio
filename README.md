@@ -2,6 +2,10 @@
 
 # [www.scottfalbo.com](https://www.scottfalbo.com)
 
+version 1.0.0
+
+
+
 ## About the Project
 
 This is my personal portfolio page for both coding projects and artwork.  It is a .NET Core application built in Visual Studio with C# and deployed on Azure.
@@ -143,6 +147,9 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
 + 06/20/2021
   + **version 1.0.0**
     + Initial deployment of full site
++ 06/21/2021
+  + Fixed a handful of style issues across the site.
+  + Used jQuery ajax to call a method to see if the user is authenticated. If user is not logged in the secret entrance appears.  If the user is logged in the secret lair appear.  That's what I call my dashboard.
 
 + ### [Development Log](development.md#development-log)
 
