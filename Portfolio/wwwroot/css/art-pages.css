@@ -178,6 +178,7 @@ main div:nth-child(3) h2 {
     }
 
     .art-intro-container > div:last-child article {
+        white-space: pre-wrap;
         padding: 10px;
         margin-bottom: 10px;
     }
