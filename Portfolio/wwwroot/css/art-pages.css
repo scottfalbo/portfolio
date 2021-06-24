@@ -141,7 +141,7 @@ main div:nth-child(3) h2 {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 240px 30px 120px;
+        grid-template-rows: 240px 30px 180px;
     }
 
     .art-intro-container > div:last-child {
@@ -202,7 +202,7 @@ main div:nth-child(3) h2 {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 249px 30px 120px;
+        grid-template-rows: 249px 30px 180px;
     }
 
     .art-intro-container > div:last-child {
@@ -441,4 +441,15 @@ main div:nth-child(3) h2 {
     color: #8acdc1;
 }
 
+.temp-menu-items {
+    padding: 10px;
+}
 
+.temp-menu-items li {
+    margin: 5px;
+}
+
+.temp-menu-items li a {
+    color: #4fffd2;
+    font-size: 1.2em;
+}
