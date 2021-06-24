@@ -213,7 +213,7 @@ namespace Portfolio.Models.Interface.Services
         /// <returns> no return </returns>
         public async Task DeleteBlobImage(string fileName)
         {
-            BlobContainerClient container = new BlobContainerClient(Configuration.GetConnectionString("ImageBlob"), "images");
+            BlobContainerClient container = new BlobContainerClient(Configuration["ImageBlob"], "images");
             BlobClient blob = container.GetBlobClient(fileName);
             await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
         }

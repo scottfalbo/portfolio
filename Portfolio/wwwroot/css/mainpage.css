@@ -54,9 +54,9 @@ main {
     white-space: pre-wrap;
 }
 
-.projects  figure  img {
+.project-container > figure > img {
     margin-top: 10px;
-    width: 90%;
+    width: 100%;
 }
 
 .projects h3 {

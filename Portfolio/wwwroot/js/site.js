@@ -18,7 +18,17 @@ $(function () {
 $(function () {
     $('body').keyup(function (e) {
         if (e.originalEvent.code == 'Escape') {
-            window.location.href = "/SecretEntrance";
+            $.ajax({
+                url: '/Shared/LoggedIn',
+            })
+            .done(function (result) {
+                if (result == "true") {
+                    window.location.href = "/Admin/SecretLair";
+                }
+                else {
+                    window.location.href = "/SecretEntrance";
+                }
+            });
         }
     });
 });
