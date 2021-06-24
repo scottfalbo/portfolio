@@ -150,6 +150,8 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
 + 06/21/2021
   + Fixed a handful of style issues across the site.
   + Used jQuery ajax to call a method to see if the user is authenticated. If user is not logged in the secret entrance appears.  If the user is logged in the secret lair appear.  That's what I call my dashboard.
++ 06/23/2021
+  + Added screaming Ethel favicon.
 
 + ### [Development Log](development.md#development-log)
 
