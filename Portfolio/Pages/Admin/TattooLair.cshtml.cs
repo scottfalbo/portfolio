@@ -47,10 +47,13 @@ namespace Portfolio.Pages.Admin
         /// </summary>
         /// <param name="file"> input file </param>
         /// <returns> redirects in place </returns>
-        public async Task<IActionResult> OnPostAddTattoo(IFormFile file)
+        public async Task<IActionResult> OnPostAddTattoo(IFormFile[] files)
         {
-            if (file != null)
-                await _uploadService.AddTattooImage(file);
+            foreach (var file in files)
+            {
+                if (file != null)
+                    await _uploadService.AddTattooImage(file);
+            }
             return Redirect("/Admin/TattooLair");
         }
 
