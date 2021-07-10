@@ -16,11 +16,13 @@ namespace Portfolio.Pages.Art
     {
         public IAdmin _admin;
         public IEmail _email;
+        public IUploadService _upload;
 
-        public BookingModel(IAdmin admin, IEmail email)
+        public BookingModel(IAdmin admin, IEmail email, IUploadService upload)
         {
             _admin = admin;
             _email = email;
+            _upload = upload;
         }
 
         public HomePage HomePage { get; set; }
@@ -43,13 +45,23 @@ namespace Portfolio.Pages.Art
         /// <returns> Redirect </returns>
         public async Task OnPostSend(IFormFile[] files)
         {
+            Images images = new Images();
+            images.Urls = new List<Uri>();
+
+            foreach (var file in files)
+            {
+                if (file != null)
+                    images.Urls.Add((await _upload.UploadImage(file)).Uri);
+            }
             RequestForm message = new RequestForm()
             {
                 Name = RequestForm.Name,
                 Email = RequestForm.Email,
                 Body = RequestForm.Body,
-                Availability = RequestForm.Availability
+                Availability = RequestForm.Availability,
+                Images = images
             };
+            Console.WriteLine("");
             EmailResponse response = await _email.SendEmailAsync(message);
             HomePage = await _admin.GetHomePage("Booking");
 
@@ -57,5 +69,10 @@ namespace Portfolio.Pages.Art
 
             Redirect("/Art/Booking");
         }
+    }
+
+    public class Images 
+    {
+        public List<Uri> Urls { get; set; }
     }
 }
