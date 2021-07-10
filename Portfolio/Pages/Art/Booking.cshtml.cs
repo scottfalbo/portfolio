@@ -45,13 +45,12 @@ namespace Portfolio.Pages.Art
         /// <returns> Redirect </returns>
         public async Task OnPostSend(IFormFile[] files)
         {
-            Images images = new Images();
-            images.Urls = new List<Uri>();
+            Uris images = new Uris();
 
             foreach (var file in files)
             {
                 if (file != null)
-                    images.Urls.Add((await _upload.UploadImage(file)).Uri);
+                    images.ImageUris.Add( new ImageUri((await _upload.UploadImage(file)).Uri));
             }
             RequestForm message = new RequestForm()
             {
@@ -71,8 +70,22 @@ namespace Portfolio.Pages.Art
         }
     }
 
-    public class Images 
+    public class ImageUri 
     {
-        public List<Uri> Urls { get; set; }
+        public Uri Uri { get; set; }
+
+        public ImageUri (Uri uri)
+        {
+            Uri = uri;
+        }
+    }
+    public class Uris
+    {
+        public List<ImageUri> ImageUris { get; set; }
+
+        public Uris()
+        {
+            ImageUris = new List<ImageUri>();
+        }
     }
 }

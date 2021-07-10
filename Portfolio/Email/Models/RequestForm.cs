@@ -12,6 +12,6 @@ namespace Portfolio.Email.Models
         public string Email { get; set; }
         public string Body { get; set; }
         public string Availability { get; set; }
-        public Images Images { get; set; }
+        public Uris Images { get; set; }
     }
 }
