@@ -47,10 +47,13 @@ namespace Portfolio.Pages.Admin
         /// </summary>
         /// <param name="file"> input file </param>
         /// <returns> redirects in place </returns>
-        public async Task<IActionResult> OnPostAddDrawing(IFormFile file)
+        public async Task<IActionResult> OnPostAddDrawing(IFormFile[] files)
         {
-            if (file != null)
-                await _uploadService.AddDrawingImage(file);
+            foreach (var file in files)
+            {
+                if (file != null)
+                    await _uploadService.AddDrawingImage(file);
+            }
             return Redirect("/Admin/DrawingLair");
         }
 

@@ -17,7 +17,8 @@
             </div>
             @if (!Model.WasSent)
             {
-            <div><input class="admin-button" type="submit" value="Send Request" /></div>
+                <input name="files" type="file" multiple="multiple" accept="image/*" />
+                <div><input class="admin-button" type="submit" value="Send Request" /></div>
             }
             else
             {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Email.Models;
@@ -40,7 +41,7 @@ namespace Portfolio.Pages.Art
         /// Build Message object with user input and call SendGrid method.
         /// </summary>
         /// <returns> Redirect </returns>
-        public async Task OnPostSend()
+        public async Task OnPostSend(IFormFile[] files)
         {
             RequestForm message = new RequestForm()
             {
