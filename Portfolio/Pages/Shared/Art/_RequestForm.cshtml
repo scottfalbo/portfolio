@@ -17,7 +17,10 @@
             </div>
             @if (!Model.WasSent)
             {
-                <input name="files" type="file" multiple="multiple" accept="image/*" />
+                <div class="request-image-upload">
+                    <p>Attach References <span>(optional)</span></p>
+                    <input name="files" type="file" multiple="multiple" accept="image/*" />
+                </div>
                 <div><input class="admin-button" type="submit" value="Send Request" /></div>
             }
             else

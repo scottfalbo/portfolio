@@ -356,6 +356,52 @@ main div:nth-child(3) h2 {
     padding: 20px;
 }
 
+.request-image-upload {
+    color: #96c8bb;
+    text-align: center;
+}
+
+.request-image-upload p {
+    padding: 10px;
+    color: #f6be6a;
+    font-size: 1.3em;
+}
+
+.request-image-upload p span {
+    font-size: 0.7em;
+    color: #ccef84
+}
+
+.request-image-upload input {
+    height: 70px;
+    padding: 15px;
+    margin: 10px;
+}
+
+.request-image-upload input::-webkit-file-upload-button {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+}
+
+.request-image-upload input::before {
+    outline: none;
+    border: 2px solid #9fff3d;
+    content: 'Select Files';
+    padding: 15px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #000;
+    color: #b6ff00;
+    cursor: pointer;
+}
+
+.request-image-upload input:hover::before {
+    border: 2px solid #f19f24;
+    color: #f19f24;
+}
+
 /*mobile*/
 @media (max-width: 775px){
 

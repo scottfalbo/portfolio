@@ -60,7 +60,6 @@ namespace Portfolio.Pages.Art
                 Availability = RequestForm.Availability,
                 Uris = images
             };
-            Console.WriteLine("");
             EmailResponse response = await _email.SendEmailAsync(message);
             HomePage = await _admin.GetHomePage("Booking");
 
