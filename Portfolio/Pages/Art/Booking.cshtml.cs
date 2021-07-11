@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using Portfolio.Email.Models;
 using Portfolio.Email.Models.Interface;
 using Portfolio.Models;
@@ -17,12 +18,16 @@ namespace Portfolio.Pages.Art
         public IAdmin _admin;
         public IEmail _email;
         public IUploadService _upload;
+        public IConfiguration _config;
+        public string CaptchaKey;
 
-        public BookingModel(IAdmin admin, IEmail email, IUploadService upload)
+        public BookingModel(IAdmin admin, IEmail email, IUploadService upload, IConfiguration config)
         {
             _admin = admin;
             _email = email;
             _upload = upload;
+            _config = config;
+            CaptchaKey = _config["CaptchaKey"];
         }
 
         public HomePage HomePage { get; set; }

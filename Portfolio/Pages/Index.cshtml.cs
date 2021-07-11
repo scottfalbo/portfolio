@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Portfolio.Email.Models;
 using Portfolio.Email.Models.Interface;
@@ -16,11 +17,15 @@ namespace Portfolio.Pages
     {
         public IAdmin _adminContext;
         public IEmail _email;
+        public IConfiguration _config;
+        public string CaptchaKey;
 
-        public IndexModel (IAdmin context, IEmail email)
+        public IndexModel (IAdmin context, IEmail email, IConfiguration config)
         {
             _adminContext = context;
             _email = email;
+            _config = config;
+            CaptchaKey = _config["CaptchaKey"];
         }
 
         public HomePage HomePage { get; set; }
