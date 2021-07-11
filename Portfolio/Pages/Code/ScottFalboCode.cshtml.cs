@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using Portfolio.Email.Models;
 using Portfolio.Email.Models.Interface;
 using Portfolio.Models;
@@ -15,11 +16,15 @@ namespace Portfolio.Pages.Code
     {
         public IAdmin _adminContext;
         public IEmail _email;
+        public IConfiguration _config;
+        public string CaptchaKey;
 
-        public ScottFalboCodeModel(IAdmin context, IEmail email)
+        public ScottFalboCodeModel(IAdmin context, IEmail email, IConfiguration config)
         {
             _adminContext = context;
             _email = email;
+            _config = config;
+            CaptchaKey = _config["CaptchaKey"];
         }
 
         public List<Project> ProjectList { get; set; }

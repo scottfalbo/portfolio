@@ -1,8 +1,14 @@
 ﻿@model Portfolio.Pages.Code.ScottFalboCodeModel
 
+ <script>
+   function onSubmit(token) {
+     document.getElementById("generic-contact").submit();
+   }
+ </script>
+
 <section class="form-popup">
     <div>
-        <form asp-page-handler="Send" method="post">
+        <form asp-page-handler="Send" method="post" id="generic-contact">
             <div>
                 <input type="text" asp-for="@Model.Contact.Name" class="form-control" placeholder="name" required />
             </div>
@@ -14,7 +20,7 @@
             </div>
             @if (!Model.WasSent)
             {
-                <div><input class="admin-button" type="submit" value="Send Request" /></div>
+                <div><input class="admin-button g-recaptcha" type="submit" value="Send Request" data-sitekey=@Model.CaptchaKey data-callback="onSubmit" data-action="submit"/></div>
             }
             else
             {
