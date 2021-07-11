@@ -189,13 +189,15 @@ $(function () {
         });
         if (uploadSize > 20) {
             $('.request-upload').val('');
-
+            $('.upload-too-large').removeClass("hidden-popup");
         }
     });
 });
 
+// Close request upload size warning
 $(function () {
-    $('.upload-too-large-close').click(() => {
-
+    $('.upload-too-large-close').click(function () {
+        console.log('hello');
+        $('.upload-too-large').addClass("hidden-popup");
     });
-})
+});
