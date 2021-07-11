@@ -152,6 +152,11 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
   + Used jQuery ajax to call a method to see if the user is authenticated. If user is not logged in the secret entrance appears.  If the user is logged in the secret lair appear.  That's what I call my dashboard.
 + 06/23/2021
   + Added screaming Ethel favicon.
++ 07/10/2021
+  + Added an image upload input to the request form.
+    + Updated SendGridTemplate object to include the URIs of the uploaded images.
+  + Changed all image upload inputs to accept multiple files.
+    + Added a jQuery function to enforce a max upload size of 20mbs.  
 
 + ### [Development Log](development.md#development-log)
 
