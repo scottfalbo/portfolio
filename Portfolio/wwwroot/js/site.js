@@ -178,3 +178,26 @@ function initMap() {
 
     marker.setMap(map); 
 }
+
+// Request form upload file size checker
+$(function () {
+    $('.request-upload').on('change', (e) => {
+        let uploadSize = 0;
+        let files = e.currentTarget.files;
+        Array.from(files).forEach((file) => {
+            uploadSize += (file.size/1000000);
+        });
+        if (uploadSize > 20) {
+            $('.request-upload').val('');
+            $('.upload-too-large').removeClass("hidden-popup");
+        }
+    });
+});
+
+// Close request upload size warning
+$(function () {
+    $('.upload-too-large-close').click(function () {
+        console.log('hello');
+        $('.upload-too-large').addClass("hidden-popup");
+    });
+});

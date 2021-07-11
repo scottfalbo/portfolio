@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Portfolio.Pages.Art;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
@@ -39,7 +40,8 @@ namespace Portfolio.Email.Models.Interface.Services
                 name = inboundData.Name,
                 email = inboundData.Email,
                 body = inboundData.Body,
-                availability = inboundData.Availability
+                availability = inboundData.Availability,
+                uris = inboundData.Uris
             });
 
 
@@ -60,5 +62,6 @@ namespace Portfolio.Email.Models.Interface.Services
         public string email { get; set; }
         public string body { get; set; }
         public string availability { get; set; }
+        public Uris uris { get; set; }
     }
 }

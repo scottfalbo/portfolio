@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Email.Models;
@@ -15,11 +16,13 @@ namespace Portfolio.Pages.Art
     {
         public IAdmin _admin;
         public IEmail _email;
+        public IUploadService _upload;
 
-        public BookingModel(IAdmin admin, IEmail email)
+        public BookingModel(IAdmin admin, IEmail email, IUploadService upload)
         {
             _admin = admin;
             _email = email;
+            _upload = upload;
         }
 
         public HomePage HomePage { get; set; }
@@ -40,14 +43,22 @@ namespace Portfolio.Pages.Art
         /// Build Message object with user input and call SendGrid method.
         /// </summary>
         /// <returns> Redirect </returns>
-        public async Task OnPostSend()
+        public async Task OnPostSend(IFormFile[] files)
         {
+            Uris images = new Uris();
+
+            foreach (var file in files)
+            {
+                if (file != null)
+                    images.ImageUris.Add(new ImageUri(((await _upload.UploadImage(file)).Uri).ToString()));
+            }
             RequestForm message = new RequestForm()
             {
                 Name = RequestForm.Name,
                 Email = RequestForm.Email,
                 Body = RequestForm.Body,
-                Availability = RequestForm.Availability
+                Availability = RequestForm.Availability,
+                Uris = images
             };
             EmailResponse response = await _email.SendEmailAsync(message);
             HomePage = await _admin.GetHomePage("Booking");
@@ -55,6 +66,25 @@ namespace Portfolio.Pages.Art
             if (response.WasSent) WasSent = true;
 
             Redirect("/Art/Booking");
+        }
+    }
+
+    public class ImageUri 
+    {
+        public string Uri { get; set; }
+
+        public ImageUri (string uri)
+        {
+            Uri = uri;
+        }
+    }
+    public class Uris
+    {
+        public List<ImageUri> ImageUris { get; set; }
+
+        public Uris()
+        {
+            ImageUris = new List<ImageUri>();
         }
     }
 }

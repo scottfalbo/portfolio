@@ -4,7 +4,7 @@
 <div>
     <form asp-page-handler="AddTattoo" method="post" enctype="multipart/form-data">
         <label>
-            <input name="file" type="file" />
+            <input name="files" type="file" multiple="multiple" accept="image/*"/>
             <input type="submit" value="Add Tattoo" />
         </label>
     </form>

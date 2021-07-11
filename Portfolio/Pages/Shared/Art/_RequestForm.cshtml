@@ -2,7 +2,7 @@
 
 <section class="project-admin-card">
     <div>
-        <form asp-page-handler="Send" method="post" class="request-form">
+        <form asp-page-handler="Send" method="post" class="request-form" enctype="multipart/form-data">
             <div>
                 <input type="text" asp-for="@Model.RequestForm.Name" class="form-control" placeholder="name" required />
             </div>
@@ -17,12 +17,20 @@
             </div>
             @if (!Model.WasSent)
             {
-            <div><input class="admin-button" type="submit" value="Send Request" /></div>
+                <div class="request-image-upload">
+                    <p>Attach References <span>(optional)</span></p>
+                    <input name="files" type="file" multiple="multiple" accept="image/*" class="request-upload"/>
+                </div>
+                <div><input class="admin-button" type="submit" value="Send Request" /></div>
             }
             else
             {
                 <p class="request-sent">Your request was sent.</p>
             }
         </form>
+    </div>
+    <div class="upload-too-large hidden-popup">
+        <p>Please limit your upload size to 20mb</p>
+        <button type="button" class="upload-too-large-close admin-button">Got it</button>
     </div>
 </section>
