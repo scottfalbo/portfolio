@@ -50,7 +50,7 @@ namespace Portfolio.Pages.Art
             foreach (var file in files)
             {
                 if (file != null)
-                    images.ImageUris.Add( new ImageUri((await _upload.UploadImage(file)).Uri));
+                    images.ImageUris.Add(new ImageUri(((await _upload.UploadImage(file)).Uri).ToString()));
             }
             RequestForm message = new RequestForm()
             {
@@ -58,7 +58,7 @@ namespace Portfolio.Pages.Art
                 Email = RequestForm.Email,
                 Body = RequestForm.Body,
                 Availability = RequestForm.Availability,
-                Images = images
+                Uris = images
             };
             Console.WriteLine("");
             EmailResponse response = await _email.SendEmailAsync(message);
@@ -72,9 +72,9 @@ namespace Portfolio.Pages.Art
 
     public class ImageUri 
     {
-        public Uri Uri { get; set; }
+        public string Uri { get; set; }
 
-        public ImageUri (Uri uri)
+        public ImageUri (string uri)
         {
             Uri = uri;
         }
