@@ -181,8 +181,8 @@ function initMap() {
 
 // Request form upload file size checker
 $(function () {
-    let uploadSize = 0;
     $('.request-upload').on('change', (e) => {
+        let uploadSize = 0;
         let files = e.currentTarget.files;
         Array.from(files).forEach((file) => {
             uploadSize += (file.size/1000000);
