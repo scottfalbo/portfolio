@@ -402,6 +402,37 @@ main div:nth-child(3) h2 {
     color: #f19f24;
 }
 
+.booking-page .project-admin-card {
+    position: relative;
+}
+
+.upload-too-large {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 320px;
+    background-color: #000;
+    color: #9ff8bb;
+    width: 80%;
+    height: 160px;
+    border: 2px solid #9ff8bb;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px black;
+    padding: 10px;
+}
+
+.upload-too-large p {
+    font-size: 1.2em;
+    margin: 10px;
+    padding: 5px;
+}
+.upload-too-large button {
+    height: 50px;
+    font-size: 1.2em;
+    border: 2px solid #9fff3d;
+}
+
 /*mobile*/
 @media (max-width: 775px){
 

@@ -178,3 +178,24 @@ function initMap() {
 
     marker.setMap(map); 
 }
+
+// Request form upload file size checker
+$(function () {
+    let uploadSize = 0;
+    $('.request-upload').on('change', (e) => {
+        let files = e.currentTarget.files;
+        Array.from(files).forEach((file) => {
+            uploadSize += (file.size/1000000);
+        });
+        if (uploadSize > 20) {
+            $('.request-upload').val('');
+
+        }
+    });
+});
+
+$(function () {
+    $('.upload-too-large-close').click(() => {
+
+    });
+})

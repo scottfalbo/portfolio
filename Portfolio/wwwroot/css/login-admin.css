@@ -58,6 +58,7 @@ main {
     margin: 10px auto;
     background-color: #121212;
     border-radius: 10px;
+    height: min-content;
 }
 
 .project-admin-card > section {

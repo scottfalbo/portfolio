@@ -19,7 +19,7 @@
             {
                 <div class="request-image-upload">
                     <p>Attach References <span>(optional)</span></p>
-                    <input name="files" type="file" multiple="multiple" accept="image/*" />
+                    <input name="files" type="file" multiple="multiple" accept="image/*" class="request-upload"/>
                 </div>
                 <div><input class="admin-button" type="submit" value="Send Request" /></div>
             }
@@ -28,5 +28,9 @@
                 <p class="request-sent">Your request was sent.</p>
             }
         </form>
+    </div>
+    <div class="upload-too-large">
+        <p>Please limit your upload size to 20mb</p>
+        <button type="button" class="upload-too-large-close admin-button">Close</button>
     </div>
 </section>
