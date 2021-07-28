@@ -38,32 +38,33 @@ namespace Portfolio.Pages.Art
         public async Task OnGet()
         {
             IsLoaded = false;
-            Loadable = true;
-            Limit = 12;
-            AllTattoos = await _artAdmin.GetTattoos();
-            AllTattoos.Reverse();
-            if (Limit < AllTattoos.Count())
-                Tattoos = AllTattoos.Take(Limit).ToList();
-            else
-            {
-                Tattoos = AllTattoos;
-                Loadable = false;
-            }
-            
-            HomePage = await _admin.GetHomePage("Tattoo");
-        }
-
-        public async Task OnPostLoadMore()
-        {
+            Limit = 0;
             await Paginate();
         }
 
+        /// <summary>
+        /// Loads the next 12 images in thumbnail view
+        /// </summary>
+        public async Task OnPostLoadMore()
+        {
+            IsLoaded = false;
+            await Paginate();
+        }
+
+        /// <summary>
+        /// Loads the next 12 images in open gallery view.
+        /// Toggles on IsLoaded.  On reload gallery opens to proper index.
+        /// </summary>
+        /// <returns></returns>
         public async Task OnPostLoadFromCarousel()
         {
             IsLoaded = true;
             await Paginate();
         }
 
+        /// <summary>
+        /// Helper method to load the next 12 images in the gallery
+        /// </summary>
         private async Task Paginate()
         {
             Loadable = true;
