@@ -14,6 +14,10 @@ $(function () {
     });
 });
 
+function getCarouselIndex() {
+    return $('figure.active').index();
+}
+
 //event listener for the escape key to get to admin entrance
 $(function () {
     $('body').keyup(function (e) {
