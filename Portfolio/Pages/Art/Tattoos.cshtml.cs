@@ -53,31 +53,19 @@ namespace Portfolio.Pages.Art
             HomePage = await _admin.GetHomePage("Tattoo");
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public async Task OnPostLoadMore()
         {
-            Loadable = true;
-            Limit += 12;
-            AllTattoos = await _artAdmin.GetTattoos();
-            AllTattoos.Reverse();
-            if (Limit < AllTattoos.Count())
-                Tattoos = AllTattoos.Take(Limit).ToList();
-            else
-            {
-                Tattoos = AllTattoos;
-                Loadable = false;
-            }
-
-            HomePage = await _admin.GetHomePage("Tattoo");
-            Redirect("/Art/Tattoos");
+            await Paginate();
         }
 
         public async Task OnPostLoadFromCarousel()
         {
             IsLoaded = true;
+            await Paginate();
+        }
+
+        private async Task Paginate()
+        {
             Loadable = true;
             Limit += 12;
             AllTattoos = await _artAdmin.GetTattoos();
@@ -89,7 +77,6 @@ namespace Portfolio.Pages.Art
                 Tattoos = AllTattoos;
                 Loadable = false;
             }
-
             HomePage = await _admin.GetHomePage("Tattoo");
             Redirect("/Art/Tattoos");
         }
