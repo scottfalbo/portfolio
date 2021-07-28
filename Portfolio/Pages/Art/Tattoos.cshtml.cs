@@ -28,6 +28,8 @@ namespace Portfolio.Pages.Art
         public int Limit { get; set; }
         [BindProperty]
         public bool Loadable { get; set; }
+        [BindProperty]
+        public bool IsLoaded { get; set; }
         public HomePage HomePage { get; set; }
 
         /// <summary>
@@ -35,6 +37,7 @@ namespace Portfolio.Pages.Art
         /// </summary>
         public async Task OnGet()
         {
+            IsLoaded = false;
             Loadable = true;
             Limit = 12;
             AllTattoos = await _artAdmin.GetTattoos();
@@ -72,5 +75,23 @@ namespace Portfolio.Pages.Art
             Redirect("/Art/Tattoos");
         }
 
+        public async Task OnPostLoadFromCarousel()
+        {
+            IsLoaded = true;
+            Loadable = true;
+            Limit += 12;
+            AllTattoos = await _artAdmin.GetTattoos();
+            AllTattoos.Reverse();
+            if (Limit < AllTattoos.Count())
+                Tattoos = AllTattoos.Take(Limit).ToList();
+            else
+            {
+                Tattoos = AllTattoos;
+                Loadable = false;
+            }
+
+            HomePage = await _admin.GetHomePage("Tattoo");
+            Redirect("/Art/Tattoos");
+        }
     }
 }
