@@ -22,13 +22,54 @@ namespace Portfolio.Pages.Art
 
         [BindProperty]
         public List<Tattoo> Tattoos { get; set; }
+        [BindProperty]
+        public List<Tattoo> AllTattoos { get; set; }
+        [BindProperty]
+        public int Limit { get; set; }
+        [BindProperty]
+        public bool Loadable { get; set; }
         public HomePage HomePage { get; set; }
 
+        /// <summary>
+        /// Get all of the tattoos from the database and displays the first 12
+        /// </summary>
         public async Task OnGet()
         {
-            Tattoos = await _artAdmin.GetTattoos();
+            Loadable = true;
+            Limit = 12;
+            AllTattoos = await _artAdmin.GetTattoos();
+            AllTattoos.Reverse();
+            if (Limit < AllTattoos.Count())
+                Tattoos = AllTattoos.Take(Limit).ToList();
+            else
+            {
+                Tattoos = AllTattoos;
+                Loadable = false;
+            }
+            
             HomePage = await _admin.GetHomePage("Tattoo");
-            Tattoos.Reverse();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public async Task OnPostLoadMore()
+        {
+            Loadable = true;
+            Limit += 12;
+            AllTattoos = await _artAdmin.GetTattoos();
+            AllTattoos.Reverse();
+            if (Limit < AllTattoos.Count())
+                Tattoos = AllTattoos.Take(Limit).ToList();
+            else
+            {
+                Tattoos = AllTattoos;
+                Loadable = false;
+            }
+
+            HomePage = await _admin.GetHomePage("Tattoo");
+            Redirect("/Art/Tattoos");
         }
 
     }
