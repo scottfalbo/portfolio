@@ -158,6 +158,8 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
   + Changed all image upload inputs to accept multiple files.
     + Added a jQuery function to enforce a max upload size of 20mbs. 
   + Added Google reCaptcha to all contact forms.
+
+
     + [Implementation docs](https://developers.google.com/recaptcha/docs/v3)
 
 + ### [Development Log](development.md#development-log)

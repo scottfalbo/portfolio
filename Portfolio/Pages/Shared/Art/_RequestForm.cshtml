@@ -1,8 +1,15 @@
 ﻿@model Portfolio.Pages.Art.BookingModel
 
+ <script>
+     function onSubmit(token) {
+         console.log(token);
+     document.getElementById("request-form").submit();
+   }
+ </script>
+
 <section class="project-admin-card">
     <div>
-        <form asp-page-handler="Send" method="post" class="request-form" enctype="multipart/form-data">
+        <form asp-page-handler="Send" method="post" class="request-form" enctype="multipart/form-data" id="request-form">
             <div>
                 <input type="text" asp-for="@Model.RequestForm.Name" class="form-control" placeholder="name" required />
             </div>
@@ -21,7 +28,7 @@
                     <p>Attach References <span>(optional)</span></p>
                     <input name="files" type="file" multiple="multiple" accept="image/*" class="request-upload"/>
                 </div>
-                <div><input class="admin-button" type="submit" value="Send Request" /></div>
+                <div><input class="admin-button g-recaptcha" type="submit" value="Send Request" data-sitekey=@Model.CaptchaKey data-callback="onSubmit" data-action="sumbit"/></div>
             }
             else
             {

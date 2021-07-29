@@ -257,3 +257,8 @@ a {
 .general-contact-hide {
     visibility: hidden;
 }
+
+#general-contact .grecaptcha-badge {
+    position: absolute !important;
+    bottom: -80px !important;
+}
