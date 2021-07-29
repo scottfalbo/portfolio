@@ -75,6 +75,7 @@ namespace Portfolio.Pages.Art
                 Tattoos = AllTattoos.Take(Limit).ToList();
             else
             {
+                Limit = AllTattoos.Count();
                 Tattoos = AllTattoos;
                 Loadable = false;
             }

@@ -15,7 +15,9 @@ $(function () {
 });
 
 function getCarouselIndex() {
-    return $('figure.active').index();
+    const index = ($('figure.active').index()) + 2;
+    $('#limit').val(index);
+    console.log(index);
 }
 
 //event listener for the escape key to get to admin entrance
