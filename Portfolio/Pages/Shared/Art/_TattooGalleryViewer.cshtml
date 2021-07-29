@@ -1,14 +1,15 @@
 ﻿@model Portfolio.Pages.Art.TattoosModel
+@Html.Hidden("limit", 0);
 
 <section id="Gallery-Control" class="carousel slide" data-ride="carousel" data-interval="0">
     <div>
         <partial name="Art/_TattooThumbs" />
     </div>
-    <div class="show-gallery tattoo-gallery" id="gallery-switch">
+    <div class="@(!Model.IsLoaded ? "show-gallery" : "") tattoo-gallery" id="gallery-switch">
         <div class="carousel-inner">
             @foreach (var tattoo in Model.Tattoos)
             {
-                <figure class="carousel-item @(tattoo == Model.Tattoos.First() ? "active" : "")">
+                <figure class="carousel-item @(tattoo == Model.Tattoos[Model.Limit - 12] ? "active" : "")">
                     <img class="d-block w-100" src="@tattoo.ImageURL" alt="@tattoo.Title" />
                 </figure>
             }
@@ -18,9 +19,28 @@
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#Gallery-Control" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+
+        <div></div>
+
+        @if (Model.Loadable && Model.Limit == 0)
+        {
+            <a class="carousel-control-next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <form asp-page-handler="LoadFromCarousel" method="post" class="carousel-control-next">
+                <input type="hidden" asp-for="Limit" value="@Model.Limit" />
+                <input type="hidden" asp-for="IsLoaded" value="@Model.IsLoaded" />
+                <input type="submit" value="Load More" class="carousel-control-next-icon" />
+            </form>
+        }
+        else
+        {
+            <a class="carousel-control-next" href="#Gallery-Control" onclick="getCarouselIndex()" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        }
+
     </div>
 </section>
