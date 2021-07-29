@@ -1,7 +1,10 @@
-﻿@import url("mainpage.css");
+﻿/* @import url("mainpage.css");
 @import url("login-admin.css");
 @import url("art-pages.css");
-@import url("studio-arcanum.css");
+@import url("studio-arcanum.css"); */
+@import url("layout.css");
+@import url("modules.css");
+@import url("themes.css");
 
 * {
     box-sizing: border-box;
@@ -11,7 +14,27 @@ a, a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
-html {
+/* Mobile */
+@media screen and (max-width: 480px){
+
+}
+
+/* Tablet */
+@media screen and (min-width: 481px) and (max-width: 768px){
+
+}
+
+/* Laptop | Small Screen | IPad pro */
+@media screen and (min-width: 769px) and (max-width: 1024px){
+
+}
+
+/* DeskTop | Large Displays */
+@media screen and (min-width: 1025px){
+
+}
+
+/* html {
     background-color: #000;
 }
 
@@ -24,10 +47,10 @@ body {
 main {
     background-color: #000;
 
-}
+} */
 
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     body {
         max-width: 540px;
         background-color: #000;
@@ -41,7 +64,7 @@ main {
 .header {
     font-family: 'Jura', sans-serif;
     color: #9ff8bb;
-}
+} */
 
 #collapsingMenu {
     flex-direction: row-reverse;

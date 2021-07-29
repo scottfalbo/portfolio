@@ -156,11 +156,13 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
   + Added an image upload input to the request form.
     + Updated SendGridTemplate object to include the URIs of the uploaded images.
   + Changed all image upload inputs to accept multiple files.
-    + Added a jQuery function to enforce a max upload size of 20mbs. 
+    + Added a jQuery function to enforce a max upload size of 20mbs.
   + Added Google reCaptcha to all contact forms.
-
-
     + [Implementation docs](https://developers.google.com/recaptcha/docs/v3)
+  + 7/29/2021
+    + Started complete refactor.
+
++ ### [Refactor Development Log](refactor-dev.md)
 
 + ### [Development Log](development.md#development-log)
 
