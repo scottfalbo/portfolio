@@ -12,18 +12,18 @@
             <figcaption class="tag-line">@Model.HomePage.Title</figcaption>
         </figure>
         <section class="desktop-menu">
-
+            <partial name="SiteNavButtons/_MainPageNav" />
         </section>
     </div>
 
     <div class="right-col">
         <article class="intro">@Model.HomePage.Intro</article>
-        <div class="index-image">
+        <figure class="mainpage-art">
             <img src="~/images/eye.png" />
-        </div>
+        </figure>
 
         <section class="mobile-menu">
-
+                <partial name="SiteNavButtons/_MainPageNav" />
         </section>
     </div>
 </div>
