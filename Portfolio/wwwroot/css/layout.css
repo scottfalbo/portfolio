@@ -1,6 +1,6 @@
 /* Global */
 
-/*  Header */
+/* ----------------------------------------- Header */
 
 header {
   margin: auto;
@@ -33,18 +33,77 @@ header {
   width: 100%;
 }
 
+/* -------------------------------------- Main */
+
 .selfie {
   width: 100%;
   max-width: 400px;
 }
 
-/* Mobile */
+/* ------------------------------------ Navigation Buttons */
 
-@media screen and (max-width: 480px) {}
+.mainpage-nav ul {
+  margin: auto;
+  width: 240px;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-/* Tablet */
+.mainpage-nav li {
+  width: 80px;
+}
 
-@media screen and (min-width: 481px) and (max-width: 768px) {}
+.site-nav-button img {
+  width: 60px;
+}
+
+/* ------------------------------------ Break Points */
+
+/* Mobile and Tablet */
+/*  mobile: 320-480, tablet: 481-768 */
+
+@media screen and (max-width: 768px){
+  .desktop-menu {
+    visibility: hidden;
+    height: 0px;
+  }
+
+  .mainpage-art-desktop {
+    visibility: hidden;
+    height: 0px;
+  }
+
+  .homepage-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: min-content min-content;
+  }
+
+  .left-col {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
+  .right-col {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+
+  .intro {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .mainpage-art-mobile {
+    margin: 10px;
+    text-align: center;
+    opacity: .6;
+  }
+
+  .popup-toggle-button {
+    margin: 5px auto;
+  }
+}
 
 /* Laptop | Small Screen | IPad pro */
 

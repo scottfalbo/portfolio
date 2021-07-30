@@ -1,6 +1,5 @@
 ﻿@import url("layout.css");
 @import url("modules.css");
-@import url("themes.css");
 
 * {
     box-sizing: border-box;
@@ -10,18 +9,19 @@ a, a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
+body {
+  margin: auto;
+}
+
 .hide-me {
   visibility: hidden;
   height: 0px;
 }
 
-/* Mobile */
-@media screen and (max-width: 480px){
+/* Mobile and Tablet */
+/*  mobile: 320-480, tablet: 481-768 */
 
-}
-
-/* Tablet */
-@media screen and (min-width: 481px) and (max-width: 768px){
+@media screen and (max-width: 768px){
 
 }
 

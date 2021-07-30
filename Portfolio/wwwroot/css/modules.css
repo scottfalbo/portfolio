@@ -1,25 +1,111 @@
-/*  Header */
+/*  Global */
 
+body {
+  background-color: #070707;
+}
+
+/* ------------------------------------- Header */
+header {
+  background-color: #000;
+  font-family: 'Jura', sans-serif;
+}
 .navbar {
   padding: 0;
 }
 
+.header .navbar-dark .navbar-toggler {
+  border: 1px solid #57ff7b;
+  border-radius: 50%;
+  height: 56px;
+}
+
+.page-title {
+  background: url("https://via.placeholder.com/60");
+  background-size: cover;
+}
 .page-title img {
   border-radius: 50%;
+  border: 1px solid #84faa9;
 }
 
 .page-title h1 {
   padding: 0px .4em;
   line-height: 60px;
+  font-size: 1.1em;
+  color: #84faa9;
 }
 
-/* Mobile */
-@media screen and (max-width: 480px){
-
+header ul a > p {
+  font-size: 1.1em;
+  color: #84faa9;
 }
 
-/* Tablet */
-@media screen and (min-width: 481px) and (max-width: 768px){
+header ul a > p:hover {
+  color: #cbf7ff;
+}
+
+/* ---------------------------------------------- Main */
+
+main {
+  background-color: #000;
+  box-shadow: 0px 5px 20px 30px #000;
+}
+
+.left-col {
+  text-align: center;
+}
+
+.tag-line {
+  padding: .3em;
+  color: #57ff7b;
+  font-family: 'Jura', sans-serif;
+}
+
+.intro {
+  text-align: left;
+  padding: 10px 15px;
+  color: #d2ffd8;
+  font-family: 'Exo 2', sans-serif;
+  background-color: #070707;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  line-height: 1.2em;
+}
+
+.module-open-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #ffbb00;
+  background-color: #000;
+  color: #ffbb00;
+  line-height: 52px;
+}
+
+/* ------------------------------------ Navigation Buttons */
+
+.site-nav-button figure {
+  text-align: center;
+  padding: 3px;
+}
+
+.site-nav-button img {
+  border: 1px solid rgb(0, 248, 83);
+  border-radius: 50%;
+}
+
+.site-nav-button figcaption {
+
+  color: #84faa9;
+  font-family: 'Jura', sans-serif;
+}
+
+/* ------------------------------------ Break Points */
+
+/* Mobile and Tablet */
+/*  mobile: 320-480, tablet: 481-768 */
+
+@media screen and (max-width: 768px){
 
 }
 
