@@ -5,10 +5,12 @@ body {
 }
 
 /* ------------------------------------- Header */
+
 header {
   background-color: #000;
   font-family: 'Jura', sans-serif;
 }
+
 .navbar {
   padding: 0;
 }
@@ -23,6 +25,7 @@ header {
   background: url("https://via.placeholder.com/60");
   background-size: cover;
 }
+
 .page-title img {
   border-radius: 50%;
   border: 1px solid #84faa9;
@@ -35,12 +38,12 @@ header {
   color: #84faa9;
 }
 
-header ul a > p {
+header ul a>p {
   font-size: 1.1em;
   color: #84faa9;
 }
 
-header ul a > p:hover {
+header ul a>p:hover {
   color: #cbf7ff;
 }
 
@@ -95,26 +98,82 @@ main {
 }
 
 .site-nav-button figcaption {
-
   color: #84faa9;
   font-family: 'Jura', sans-serif;
+}
+
+/*  ------------------------------------ Popup Module */
+
+.popup-module-outer {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.popup-module-inner {
+  background-color: #070707;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.popup-module-inner input {
+  margin: 15px auto;
+}
+
+/* Global Buttons */
+
+.site-button {
+  width: 200px;
+  height: 50px;
+  background-color: #000;
+  color:rgb(0, 248, 83);
+  padding: 10px;
+  border: 1px solid #57ff7b;
+  border-radius: 15px;
+  box-shadow: 2px 3px 3px #000;
+  font-family: 'Jura', sans-serif;
+}
+
+.admin-module input::-webkit-file-upload-button {
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+}
+
+.admin-module input::before {
+  outline: none;
+  border: 2px solid #9fff3d;
+  content: 'Select File';
+  padding: 15px;
+  width: 200px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #000;
+  color: #b6ff00;
+  cursor: pointer;
+  font-family: 'Jura', sans-serif;
+}
+
+.admin-module input:hover::before {
+  border: 2px solid #f19f24;
+  color: #f19f24;
+}
+
+.admin-module label {
+  font-family: 'Jura', sans-serif;
+  color: rgb(45, 255, 56);
 }
 
 /* ------------------------------------ Break Points */
 
 /* Mobile and Tablet */
+
 /*  mobile: 320-480, tablet: 481-768 */
 
-@media screen and (max-width: 768px){
-
-}
+@media screen and (max-width: 768px) {}
 
 /* Laptop | Small Screen | IPad pro */
-@media screen and (min-width: 769px) and (max-width: 1024px){
 
-}
+@media screen and (min-width: 769px) and (max-width: 1024px) {}
 
 /* DeskTop | Large Displays */
-@media screen and (min-width: 1025px){
 
-}
+@media screen and (min-width: 1025px) {}

@@ -9,7 +9,8 @@ header {
 #collapsingMenu {
   flex-direction: row-reverse;
 }
-#collapsingMenu > ul > li {
+
+#collapsingMenu>ul>li {
   text-align: right;
 }
 
@@ -57,49 +58,88 @@ header {
   width: 60px;
 }
 
+/*  ------------------------------------ Popup Module */
+
+.popup-module-outer {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+}
+
+.popup-module-inner {
+  width: 90%;
+  margin: 10px auto;
+  max-width: 500px;
+}
+
+.admin-module figure {
+  text-align: center;
+}
+
+.admin-module img {
+  width: 90%;
+}
+
+.admin-module label {
+  width: 100%;
+  color: rgb(45, 255, 56);
+}
+
+.admin-module section:first-child label input {
+  display: block;
+}
+
+.admin-module section:first-child label input:first-child {
+  height: 60px;
+}
+
+.popup-module-inner .site-button {
+  margin: 10px auto;
+}
+
+.popup-module-inner input {
+  margin: 8px;
+}
+
 /* ------------------------------------ Break Points */
 
 /* Mobile and Tablet */
+
 /*  mobile: 320-480, tablet: 481-768 */
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .desktop-menu {
     visibility: hidden;
     height: 0px;
   }
-
   .mainpage-art-desktop {
     visibility: hidden;
     height: 0px;
   }
-
   .homepage-container {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: min-content min-content;
   }
-
   .left-col {
     grid-column: 1/2;
     grid-row: 1/2;
   }
-
   .right-col {
     grid-column: 1/2;
     grid-row: 2/3;
   }
-
   .intro {
     width: 90%;
     margin: 20px auto;
   }
-
   .mainpage-art-mobile {
     margin: 10px;
     text-align: center;
     opacity: .6;
   }
-
   .popup-toggle-button {
     margin: 5px auto;
   }
