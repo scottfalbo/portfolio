@@ -21,9 +21,9 @@ namespace Portfolio.Pages.Art
         }
 
         [BindProperty]
-        public List<Tattoo> Tattoos { get; set; }
+        public List<Image> Tattoos { get; set; }
         [BindProperty]
-        public List<Tattoo> AllTattoos { get; set; }
+        public List<Image> AllTattoos { get; set; }
         [BindProperty]
         public int Limit { get; set; }
         [BindProperty]
@@ -69,7 +69,7 @@ namespace Portfolio.Pages.Art
         {
             Loadable = true;
             Limit += 12;
-            AllTattoos = await _artAdmin.GetTattoos();
+            AllTattoos = await _artAdmin.GetImages();
             AllTattoos.Reverse();
             if (Limit < AllTattoos.Count())
                 Tattoos = AllTattoos.Take(Limit).ToList();

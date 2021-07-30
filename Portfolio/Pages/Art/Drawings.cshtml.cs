@@ -19,11 +19,11 @@ namespace Portfolio.Pages.Art
         }
 
         [BindProperty]
-        public List<Drawing> Drawings { get; set; }
+        public List<Image> Drawings { get; set; }
 
         public async Task OnGet()
         {
-            Drawings = await _artAdmin.GetDrawings();
+            Drawings = await _artAdmin.GetImages();
             Drawings.Reverse();
         }
     }

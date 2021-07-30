@@ -21,10 +21,10 @@ namespace Portfolio.Pages.Admin
             _uploadService = upload;
         }
 
-        public List<Drawing> DrawingList { get; set; }
+        public List<Image> DrawingList { get; set; }
 
         [BindProperty]
-        public Drawing Drawing { get; set; }
+        public Image Drawing { get; set; }
 
         /// <summary>
         /// Gets a list of all Drawing objects in the database
@@ -33,7 +33,7 @@ namespace Portfolio.Pages.Admin
         {
             try
             {
-                DrawingList = await _adminContext.GetDrawings();
+                DrawingList = await _adminContext.GetImages();
             }
             catch (Exception e)
             {
@@ -62,20 +62,20 @@ namespace Portfolio.Pages.Admin
         /// </summary>
         /// <param name="drawing"> Drawing object </param>
         /// <returns> redirect in place </returns>
-        public async Task<IActionResult> OnPostEdit(Drawing drawing)
+        public async Task<IActionResult> OnPostEdit(Image image)
         {
 
-            Drawing updatedDrawing = new Drawing()
+            Image updatedDrawing = new Image()
             {
-                Id = drawing.Id,
-                Title = drawing.Title,
-                ImageURL = drawing.ImageURL,
-                FileName = drawing.FileName,
-                Order = drawing.Order,
-                Display = drawing.Display
+                Id = image.Id,
+                Title = image.Title,
+                Type = image.Type,
+                ImageURL = image.ImageURL,
+                FileName = image.FileName,
+                Order = image.Order
             };
 
-            await _adminContext.UpdateDrawing(updatedDrawing);
+            await _adminContext.UpdateImage(updatedDrawing);
             return Redirect("/Admin/DrawingLair");
         }
 
@@ -86,7 +86,7 @@ namespace Portfolio.Pages.Admin
         /// <returns></returns>
         public async Task<IActionResult> OnPostDelete()
         {
-            await _adminContext.DeleteDrawing(Drawing.Id);
+            await _adminContext.DeleteImage(Drawing.Id);
             return Redirect("/Admin/DrawingLair");
         }
     }

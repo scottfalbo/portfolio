@@ -21,10 +21,10 @@ namespace Portfolio.Pages.Admin
             _uploadService = upload;
         }
 
-        public List<Tattoo> TattooList { get; set; }
+        public List<Image> TattooList { get; set; }
 
         [BindProperty]
-        public Tattoo Tattoo { get; set; }
+        public Image Tattoo { get; set; }
 
         /// <summary>
         /// Gets a list of all Tattoo objects in the database
@@ -33,7 +33,7 @@ namespace Portfolio.Pages.Admin
         {
             try
             {
-               TattooList = await _adminContext.GetTattoos();
+               TattooList = await _adminContext.GetImages();
             }
             catch (Exception e)
             {
@@ -62,19 +62,19 @@ namespace Portfolio.Pages.Admin
         /// </summary>
         /// <param name="tattoo"> Tattoo object </param>
         /// <returns> redirect in place </returns>
-        public async Task<IActionResult> OnPostEdit(Tattoo tattoo)
+        public async Task<IActionResult> OnPostEdit(Image tattoo)
         {
-            Tattoo updatedTattoo = new Tattoo()
+            Image updatedTattoo = new Image()
             {
                 Id = tattoo.Id,
                 Title = tattoo.Title,
+                Type = tattoo.Type,
                 ImageURL = tattoo.ImageURL,
                 FileName = tattoo.FileName,
-                Order = tattoo.Order,
-                Display = tattoo.Display
+                Order = tattoo.Order
             };
 
-            await _adminContext.UpdateTattoo(updatedTattoo);
+            await _adminContext.UpdateImage(updatedTattoo);
             return Redirect("/Admin/TattooLair");
         }
 
@@ -102,7 +102,7 @@ namespace Portfolio.Pages.Admin
         /// <returns></returns>
         public async Task<IActionResult> OnPostDelete()
         {
-            await _adminContext.DeleteTattoo(Tattoo.Id);
+            await _adminContext.DeleteImage(Tattoo.Id);
             return Redirect("/Admin/TattooLair");
         }
 

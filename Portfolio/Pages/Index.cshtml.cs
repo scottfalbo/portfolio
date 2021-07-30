@@ -41,6 +41,11 @@ namespace Portfolio.Pages
             }
         }
 
+        /// <summary>
+        /// Update mainpage photo.
+        /// </summary>
+        /// <param name="file"> new image </param>
+        /// <param name="homepage"> homepage object </param>
         public async Task<IActionResult> OnPostUpdatePhoto(IFormFile file, HomePage homepage)
         {
             if (file != null)
@@ -55,6 +60,10 @@ namespace Portfolio.Pages
             return Redirect("/");
         }
 
+        /// <summary>
+        /// Edit homepage object data and save to database
+        /// </summary>
+        /// <param name="homepage"> homepage object </param>
         public async Task<IActionResult> OnPostUpdatePage(HomePage homepage)
         {
             if (homepage.Intro == null)
