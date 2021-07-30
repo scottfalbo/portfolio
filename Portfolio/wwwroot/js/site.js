@@ -23,7 +23,7 @@ $(function () {
             })
             .done(function (result) {
                 if (result == "true") {
-                    window.location.href = "/Admin/SecretLair";
+                    window.location.href = "/Index";
                 }
                 else {
                     window.location.href = "/SecretEntrance";
