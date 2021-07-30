@@ -72,6 +72,7 @@ header {
   width: 90%;
   margin: 10px auto;
   max-width: 500px;
+  height: min-content;
 }
 
 .admin-module figure {
@@ -84,7 +85,10 @@ header {
 
 .admin-module label {
   width: 100%;
-  color: rgb(45, 255, 56);
+}
+
+.popup-module-inner .site-button {
+  margin: 10px auto;
 }
 
 .admin-module section:first-child label input {
@@ -95,8 +99,8 @@ header {
   height: 60px;
 }
 
-.popup-module-inner .site-button {
-  margin: 10px auto;
+.admin-module form div button {
+  float: right;
 }
 
 .popup-module-inner input {

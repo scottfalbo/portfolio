@@ -121,7 +121,7 @@ main {
 /* Global Buttons */
 
 .site-button {
-  width: 200px;
+  width: 120px;
   height: 50px;
   background-color: #000;
   color:rgb(0, 248, 83);
@@ -140,12 +140,12 @@ main {
 
 .admin-module input::before {
   outline: none;
-  border: 2px solid #9fff3d;
+  border: 1px solid #9fff3d;
   content: 'Select File';
   padding: 15px;
   width: 200px;
-  height: 60px;
-  border-radius: 5px;
+  height: 50px;
+  border-radius: 15px;
   background-color: #000;
   color: #b6ff00;
   cursor: pointer;
@@ -160,6 +160,10 @@ main {
 .admin-module label {
   font-family: 'Jura', sans-serif;
   color: rgb(45, 255, 56);
+}
+
+.admin-module label input:first-child {
+  line-height: 50px;
 }
 
 /* ------------------------------------ Break Points */

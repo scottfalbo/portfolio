@@ -37,7 +37,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="fullscreen popup-module-outer">
+    <div class="fullscreen popup-module-outer hide-me">
         <div class="popup-module-inner">
             <div class="admin-module">
                 <section>
@@ -65,11 +65,12 @@
                             <input type="hidden" asp-for="HomePage.Page" value="@Model.HomePage.Page" />
                             <input type="hidden" asp-for="HomePage.Selfie" value="@Model.HomePage.Selfie" />
                             <input class="site-button" type="submit" value="Update" />
+                            <button class="module-close-button site-button">close</button>
                         </div>
                     </form>
                 </section>
             </div>
-            <button class="module-close-button site-button">close</button>
+            
         </div>
     </div>   
 }
