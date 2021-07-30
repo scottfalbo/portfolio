@@ -14,6 +14,11 @@ a, a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
+.hide-me {
+  visibility: hidden;
+  height: 0px;
+}
+
 /* Mobile */
 @media screen and (max-width: 480px){
 

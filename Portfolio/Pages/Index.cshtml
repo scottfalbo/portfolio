@@ -23,7 +23,23 @@
         </figure>
 
         <section class="mobile-menu">
-                <partial name="SiteNavButtons/_MainPageNav" />
+            <partial name="SiteNavButtons/_MainPageNav" />
         </section>
     </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <partial name="_PopupToggle" />
+    }
 </div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="fullscreen popup-module-outer hide-me">
+        <div class="popup-module-inner">
+            <section id="mainpage-admin">
+                admin module
+                <button class="module-close-button">close</button>
+            </section>
+        </div>
+    </div>   
+}
