@@ -43,13 +43,8 @@ $(function () {
 
 
 
-
-
-
-
-
-
 // old code, saving until after refactor is complete
+
 //toggles gallery viewer on when a thumbnail is clicked
 // $(function () {
 //     $('.gallery-toggle').click(function () {
@@ -69,25 +64,6 @@ $(function () {
 //     $('#limit').val(index);
 //     console.log(index);
 // }
-
-// //event listener for the escape key to get to admin entrance
-// $(function () {
-//     $('body').keyup(function (e) {
-//         if (e.originalEvent.code == 'Escape') {
-//             $.ajax({
-//                 url: '/Shared/LoggedIn',
-//             })
-//             .done(function (result) {
-//                 if (result == "true") {
-//                     window.location.href = "/Admin/SecretLair";
-//                 }
-//                 else {
-//                     window.location.href = "/SecretEntrance";
-//                 }
-//             });
-//         }
-//     });
-// });
 
 // //confirmation box from request form
 // $(function () {
