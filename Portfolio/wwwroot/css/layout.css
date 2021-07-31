@@ -66,6 +66,7 @@ header {
   left: 0px;
   width: 100%;
   height: 100vh;
+  z-index: 5;
 }
 
 .popup-module-inner {
@@ -73,6 +74,7 @@ header {
   margin: 10px auto;
   max-width: 500px;
   height: min-content;
+  z-index: 10;
 }
 
 .admin-module figure {
@@ -99,12 +101,17 @@ header {
   height: 60px;
 }
 
-.admin-module form div button {
-  float: right;
+button.module-close-button.site-button {
+
 }
 
 .popup-module-inner input {
   margin: 8px;
+}
+
+
+#tester {
+  color: red;
 }
 
 /* ------------------------------------ Break Points */

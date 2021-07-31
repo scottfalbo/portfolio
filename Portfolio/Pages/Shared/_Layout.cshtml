@@ -19,7 +19,7 @@
             <nav class="navbar navbar-expand-md navbar-dark">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">
                     <div class="page-title">
-                        <img src="https://via.placeholder.com/50" alt="small site logo"/>
+                        <img src="https://via.placeholder.com/50" alt="small site logo" />
                         <h1>Scott Falbo</h1>
                     </div>
                 </a>
@@ -46,16 +46,36 @@
     </div>
 
     <div class="container">
-        <footer class="footer text-muted">
+        <footer class="footer">
             <div class="container">
-                <nav>
-                    <ul>
-                        <li><a asp-area="" asp-page="/Index">&lt;Home&gt;</a></li>
-                        <li><a asp-area="" asp-page="/Code/ScottFalboCode">&lt;Code&gt;</a></li>
-                        <li><a asp-area="" asp-page="/Art/ScottFalboArt">&lt;Art&gt;</a></li>
-                    </ul>
-                </nav>
-                &copy; 2021 - Scott Falbo
+                <div class="dropup">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown link
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <nav>
+                            <ul>
+                                <li><a asp-area="" asp-page="/Index">&lt;Home&gt;</a></li>
+                                <li><a asp-area="" asp-page="/Code/ScottFalboCode">&lt;Code&gt;</a></li>
+                                <li><a asp-area="" asp-page="/Art/ScottFalboArt">&lt;Art&gt;</a></li>
+                                <li><a asp-area="" asp-page="/Art/Booking">&lt;Booking&gt;</a></li>
+                            </ul>
+                            <ul>
+                                <li><a asp-area="" asp-page="/About">&lt;About&gt;</a></li>
+                                <li><a href="https://github.com/scottfalbo/portfolio" target="_blank">&lt;Site Repo&gt;</a></li>
+                                <li><a asp-area="" asp-page="/SecretEntrance">&lt;Grumble&gt;</a></li>
+                                <li><a href="mailto:scottfalboart@gmail.com">&lt;Contact&gt;</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="https://github.com/scottfalbo" target="_blank">&lt;GitHub&gt;</a></li>
+                                <li><a href="https://www.linkedin.com/mwlite/in/scott-falbo" target="_blank">&lt;LinkedIn&gt;</a></li>
+                                <li><a href="https://www.instagram.com/scottfalboart/" target="_blank">&lt;Instagram&gt;</a></li>
+                                <li><a href="https://www.studioarcanum.com/" target="_blank">&lt;Arcanum&gt;</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
         </footer>
     </div>
@@ -68,3 +88,7 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
+
+

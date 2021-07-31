@@ -42,7 +42,6 @@ $(function () {
 
 
 
-
 // old code, saving until after refactor is complete
 
 //toggles gallery viewer on when a thumbnail is clicked
