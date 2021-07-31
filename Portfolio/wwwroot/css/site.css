@@ -18,6 +18,12 @@ body {
   height: 0px;
 }
 
+a:active, a:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none;
+}
+
 /* Mobile and Tablet */
 /*  mobile: 320-480, tablet: 481-768 */
 
