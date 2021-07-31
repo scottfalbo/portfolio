@@ -9,8 +9,10 @@ a, a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
+
 body {
   margin: auto;
+  height: max-content;
 }
 
 .hide-me {

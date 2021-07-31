@@ -166,74 +166,89 @@ main {
   line-height: 50px;
 }
 
+/* Footer */
+footer {
+  font-family: 'Jura', sans-serif;
+}
+.footer-line {
+  position: relative;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.footer-line div {
+  position: relative;
+  top: 15px;
+  z-index: 1;
+  width: 100%;
+  margin: auto;
+  height: 1px;
+  background-color: #23ff36;
+  opacity: .5;
+}
+
+.footer-line img {
+  position: relative;
+  height: 30px;
+  z-index: 2;
+  border: 1px solid #23ff36;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.footer-line div {
+  background-color: #23ff36;
+  opacity: .6;
+}
+
+.footer-line img {
+  border: 1px solid #23ff36;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.footer nav {
+  margin: 15px auto;
+  padding-bottom: 20px;
+}
+
+.footer nav ul {
+  margin: auto;
+}
+
+.footer ul li {
+  color: rgb(64, 255, 230);
+  opacity: .6;
+  padding: 5px 0;
+
+}
+
+footer p {
+  text-align: center;
+  color:rgba(255, 187, 0, 0.4);
+}
+
 /* ------------------------------------ Break Points */
 
 /* Mobile and Tablet */
 
 /*  mobile: 320-480, tablet: 481-768 */
 
-@media screen and (max-width: 768px) {
-  /* Footer */
-  a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle {
-    height: 50px;
-    width: 100%;
-    background-color: #0e0d0d;
-    border: none;
-  }
-  a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle::after {
-    visibility: hidden;
-    height: 0px;
-  }
-  .footer-line {
-    position: relative;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  .footer-line div {
-    position: relative;
-    top: 15px;
-    z-index: 1;
-    width: 100%;
-    margin: auto;
-    height: 1px;
-    background-color: #23ff36;
-    opacity: .5;
-  }
-  .footer-line img {
-    position: relative;
-    height: 30px;
-    z-index: 2;
-    border: 1px solid #23ff36;
-    border-radius: 50%;
-    background-color: black;
-  }
-
-  .footer-line div {
-    background-color: #23ff36;
-    opacity: .6;
-  }
-  .footer-line img {
-    border: 1px solid #23ff36;
-    border-radius: 50%;
-    background-color: black;
-  }
-  .footer nav {
-    margin: 15px auto;
-    padding-bottom: 20px;
-  }
-  .footer nav ul {
-    margin: auto;
-  }
-  .footer ul li {
-    color:rgb(64, 255, 230);
-    opacity: .6;
-    padding: 5px 0;
-  }
-}
+@media screen and (max-width: 768px) {}
 
 /* Laptop | Small Screen | IPad pro */
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {}
+@media screen and (min-width: 769px) {
+  .right-col {
+    padding: 20px;
+  }
+  .right-col .intro {
+    margin-bottom: 20px;
+  }
+  .left-col {
+    padding-top:20px;
+  }
+}
 
 /* DeskTop | Large Displays */
 
