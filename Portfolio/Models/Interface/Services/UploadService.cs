@@ -80,14 +80,13 @@ namespace Portfolio.Models.Interface.Services
         {
             BlobClient blob = await UploadImage(file);
 
-            Tattoo newTattoo = new Tattoo()
+            Image newTattoo = new Image()
             {
                 ImageURL = blob.Uri.ToString(),
                 FileName = file.FileName,
-                Order = 0,
-                Display = false
+                Order = 0
             };
-            await _artAdmin.CreateTattoo(newTattoo);
+            await _artAdmin.CreateImage(newTattoo);
         }
 
         /// <summary>
@@ -99,14 +98,13 @@ namespace Portfolio.Models.Interface.Services
         {
             BlobClient blob = await UploadImage(file);
 
-            Drawing newDrawing = new Drawing()
+            Image newDrawing = new Image()
             {
                 ImageURL = blob.Uri.ToString(),
                 FileName = file.FileName,
                 Order = 0,
-                Display = false
             };
-            await _artAdmin.CreateDrawing(newDrawing);
+            await _artAdmin.CreateImage(newDrawing);
         }
 
         /// <summary>
@@ -131,11 +129,11 @@ namespace Portfolio.Models.Interface.Services
         /// <param name="id"> tattoo id </param>
         public async Task UpdateTattooImage(IFormFile file, int id)
         {
-            Tattoo tattoo = await _context.Tattoos.FindAsync(id);
+            Image tattoo = await _context.Images.FindAsync(id);
             BlobClient blob = await UploadImage(file);
             tattoo.ImageURL = blob.Uri.ToString();
             tattoo.FileName = file.FileName;
-            await _artAdmin.UpdateTattoo(tattoo);
+            await _artAdmin.UpdateImage(tattoo);
         }
 
         /// <summary>

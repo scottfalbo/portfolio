@@ -14,9 +14,7 @@ namespace Portfolio.Data
     public class PortfolioDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Project> Projects { get; set; }
-        public DbSet<Tattoo> Tattoos { get; set; }
-        public DbSet<Drawing> Drawings { get; set; }
-        public DbSet<Design> Designs { get; set; }
+        public DbSet<Image> Images { get; set; }
         public DbSet<HomePage> HomePage { get; set; }
         public DbSet<Instagram> Instragrams { get; set; }
         public DbSet<Studio> Studio { get; set; }
@@ -73,7 +71,7 @@ namespace Portfolio.Data
                     Page = "Home",
                     Title = "Software Developer | Artist",
                     Intro = "Software developer and artist in Seattle.",
-                    Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
+                    Selfie = "",
                     FileName = "code-selfie.png"
                 });
             
@@ -84,7 +82,7 @@ namespace Portfolio.Data
                     Page = "Tattoo",
                     Title = "Tattoo Artist | Studio Arcanum",
                     Intro = "I do tattoos some times",
-                    Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
+                    Selfie = "",
                     FileName = "code-selfie.png"
                 });
             
@@ -95,7 +93,7 @@ namespace Portfolio.Data
                     Page = "Code",
                     Title = "Software Developer | C# .NET",
                     Intro = "I write code better than bios, coming soon...",
-                    Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie.png",
+                    Selfie = "",
                     FileName = "code-selfie.png"
                 });
           

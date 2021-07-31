@@ -1,20 +1,264 @@
-/* Mobile */
-@media screen and (max-width: 480px){
+/* Global */
 
+/* ----------------------------------------- Header */
+
+header {
+  margin: auto;
 }
 
-/* Tablet */
-@media screen and (min-width: 481px) and (max-width: 768px){
+#collapsingMenu {
+  flex-direction: row-reverse;
+}
 
+#collapsingMenu>ul>li {
+  text-align: right;
+}
+
+.page-title {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50px 100%;
+  grid-template-rows: 60px;
+}
+
+.page-title img {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  margin: 5px 5px 5px 0px;
+  width: 100%;
+}
+
+.page-title h1 {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: 100%;
+}
+
+/* -------------------------------------- Main */
+
+.selfie {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* ------------------------------------ Navigation Buttons */
+
+.mainpage-nav ul {
+  margin: auto;
+  width: 240px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mainpage-nav li {
+  width: 80px;
+}
+
+.site-nav-button img {
+  width: 60px;
+}
+
+/*  ------------------------------------ Popup Module */
+
+.popup-module-outer {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+}
+
+.popup-module-inner {
+  width: 90%;
+  margin: 10px auto;
+  max-width: 500px;
+  height: min-content;
+  z-index: 10;
+}
+
+.admin-module figure {
+  text-align: center;
+}
+
+.admin-module img {
+  width: 90%;
+}
+
+.admin-module label {
+  width: 100%;
+}
+
+.popup-module-inner .site-button {
+  margin: 10px auto;
+}
+
+.admin-module section:first-child label input {
+  display: block;
+}
+
+.admin-module section:first-child label input:first-child {
+  height: 60px;
+}
+
+button.module-close-button.site-button {}
+
+.popup-module-inner input {
+  margin: 8px;
+}
+
+/* Footer */
+
+.footer-line {
+  /* position: relative; */
+}
+
+.footer-line div {
+  position: relative;
+  top: 15px;
+  z-index: 1;
+  width: 90%;
+  margin: auto;
+  height: 1px;
+}
+
+.footer-line img {
+  /* position: relative; */
+  height: 30px;
+  z-index: 2;
+}
+
+.footer {
+  margin-bottom: 0;
+}
+
+/* Footer Nav Grid */
+
+.footer nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: min-content;
+}
+
+.footer nav ul:first-child {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.footer nav ul:nth-child(2) {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+.footer nav ul:last-child {
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+
+/* ------------------------------------ Break Points */
+
+/* Mobile and Tablet */
+
+/*  mobile: 320-480, tablet: 481-768 */
+
+@media screen and (max-width: 768px) {
+  .desktop-menu {
+    visibility: hidden;
+    height: 0px;
+  }
+  .mainpage-art-desktop {
+    visibility: hidden;
+    height: 0px;
+  }
+  .homepage-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: min-content min-content;
+  }
+  .left-col {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .right-col {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  .intro {
+    width: 90%;
+    margin: 20px auto;
+  }
+  .mainpage-art-mobile {
+    margin: 10px;
+    text-align: center;
+    opacity: .6;
+  }
+  .popup-toggle-button {
+    margin: 5px auto;
+  }
 }
 
 /* Laptop | Small Screen | IPad pro */
-@media screen and (min-width: 769px) and (max-width: 1024px){
 
+@media screen and (min-width: 769px) {
+  body > .container:nth-child(2) {
+    height: 100%;
+    margin-bottom: 0px;
+  }
+  .mobile-menu {
+    visibility: hidden;
+    height: 0px;
+  }
+  .mainpage-art-mobile {
+    visibility: hidden;
+    height: 0px;
+  }
+  .homepage-container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: min-content 60px;
+  }
+  .left-col {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: min-content min-content;
+  }
+  .right-col {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: min-content min-content;
+  }
+  .left-col figure {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .left-col > section {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  .right-col .intro {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .right-col .mainpage-art-desktop {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  .right-col img {
+    width: 100%;
+  }
+  .homepage-container > .popup-toggle-button {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+  .homepage-container > .popup-toggle-button button {
+    float: right;
+  }
 }
 
 /* DeskTop | Large Displays */
-@media screen and (min-width: 1025px){
 
-}
-
+@media screen and (min-width: 1025px) {}

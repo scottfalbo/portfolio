@@ -17,13 +17,9 @@ namespace Portfolio.Pages
         {
             service = userService;
         }
+
         public string Username { get; set; }
         public string Password { get; set; }
-
-        public void OnGet()
-        {
-
-        }
 
         /// <summary>
         /// Login in with user name and password
@@ -41,7 +37,7 @@ namespace Portfolio.Pages
             var user = await service.Authenticate(newUser.UserName, newUser.Password);
 
             if (user != null)
-                return Redirect("Admin/SecretLair");
+                return Redirect("/");
             return Redirect("Opps");
         }
     }

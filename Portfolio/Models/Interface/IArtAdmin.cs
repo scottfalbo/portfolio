@@ -10,22 +10,12 @@ namespace Portfolio.Models.Interface
         /// <summary>
         /// Tattoo portfolio CRUD
         /// </summary>
-        public Task CreateTattoo(Tattoo tattoo);
-        public Task<Tattoo> GetTattoo(int id);
-        public Task<List<Tattoo>> GetTattoos();
-        public Task UpdateTattoo(Tattoo tattoo);
-        public Task DeleteTattoo(int id);
-        public Task DeleteAllTattoos();
-
-        /// <summary>
-        /// Drawing portfolio CRUD
-        /// </summary>
-        public Task CreateDrawing(Drawing drawing);
-        public Task<Drawing> GetDrawing(int id);
-        public Task<List<Drawing>> GetDrawings();
-        public Task UpdateDrawing(Drawing drawing);
-        public Task DeleteDrawing(int id);
-        public Task DeleteAllDrawings();
+        public Task CreateImage(Image tattoo);
+        public Task<Image> GetImage(int id);
+        public Task<List<Image>> GetImages();
+        public Task UpdateImage(Image tattoo);
+        public Task DeleteImage(int id);
+        public Task DeleteAllImages();
 
         public Task DeleteBlobImage(string fileName);
     }
