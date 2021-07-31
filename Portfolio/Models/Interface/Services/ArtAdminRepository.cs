@@ -23,186 +23,95 @@ namespace Portfolio.Models.Interface.Services
 
         //-------------------------------Tattoo CRUD ------------------------------
         /// <summary>
-        /// Instantiate a new Tattoo() object and save it to the database
+        /// Instantiate a new Image() object and save it to the database
         /// </summary>
-        /// <param name="tattoo"> new Tattoo object </param>
-        public async Task CreateTattoo(Tattoo tattoo)
+        /// <param name="image"> new Image object </param>
+        public async Task CreateImage(Image image)
         {
-            Tattoo newTattoo = new Tattoo()
+            Image newImage = new Image()
             {
-                Title = tattoo.FileName,
-                ImageURL = tattoo.ImageURL,
-                FileName = tattoo.FileName,
-                Order = 0,
-                Display = false
+                Title = image.FileName,
+                Type = image.Type,
+                ImageURL = image.ImageURL,
+                FileName = image.FileName,
+                Order = 0
             };
-            _context.Entry(newTattoo).State = EntityState.Added;
+            _context.Entry(newImage).State = EntityState.Added;
             await _context.SaveChangesAsync();
         }
 
         /// <summary>
-        /// Get a Tattoo object by Id from the database
+        /// Get a Image object by Id from the database
         /// </summary>
-        /// <param name="id"> tattoo id </param>
-        /// <returns> Tattoo object </returns>
-        public async Task<Tattoo> GetTattoo(int id)
+        /// <param name="id"> image id </param>
+        /// <returns> Image object </returns>
+        public async Task<Image> GetImage(int id)
         {
-            return await _context.Tattoos
+            return await _context.Images
                 .Where(x => x.Id == id)
-                .Select(y => new Tattoo
+                .Select(y => new Image
                 {
                     Id = y.Id,
                     Title = y.Title,
+                    Type = y.Type,
                     ImageURL = y.ImageURL,
                     FileName = y.FileName,
-                    Order = y.Order,
-                    Display = y.Display
+                    Order = y.Order
                 }).FirstOrDefaultAsync();
         }
 
         /// <summary>
-        /// Get a list of all Tattoo objects contained in the database
+        /// Get a list of all Image objects contained in the database
         /// </summary>
-        /// <returns> List<Tattoo> </returns>
-        public async Task<List<Tattoo>> GetTattoos()
+        /// <returns> List<Image> </returns>
+        public async Task<List<Image>> GetImages()
         {
-            return await _context.Tattoos
-                .Select(x => new Tattoo
+            return await _context.Images
+                .Select(x => new Image
                 {
                     Id = x.Id,
                     Title = x.Title,
                     ImageURL = x.ImageURL,
                     FileName = x.FileName,
-                    Display = x.Display,
+                    Type = x.Type,
                     Order = x.Order
                 })
                 .ToListAsync();
         }
 
         /// <summary>
-        /// Update a Tattoo objects and save to database
+        /// Update a Image objects and save to database
         /// </summary>
-        /// <param name="tattoo"> updated Tattoo object </param>
-        public async Task UpdateTattoo(Tattoo tattoo)
+        /// <param name="image"> updated Image object </param>
+        public async Task UpdateImage(Image image)
         {
-            _context.Entry(tattoo).State = EntityState.Modified;
+            _context.Entry(image).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
         /// <summary>
-        /// Delete a Tattoo object from the database
+        /// Delete a Image object from the database
         /// Remove the associated image from azure storage
         /// </summary>
-        /// <param name="id"> tattoo id </param>
-        public async Task DeleteTattoo(int id)
+        /// <param name="id"> image id </param>
+        public async Task DeleteImage(int id)
         {
-            Tattoo tattoo = await _context.Tattoos.FindAsync(id);
+            Image image = await _context.Images.FindAsync(id);
 
-            await DeleteBlobImage(tattoo.FileName);
+            await DeleteBlobImage(image.FileName);
 
-            _context.Entry(tattoo).State = EntityState.Deleted;
+            _context.Entry(image).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
 
         /// <summary>
-        /// Delete all of the saved tattoos
+        /// Delete all of the saved images
         /// </summary>
-        public async Task DeleteAllTattoos()
+        public async Task DeleteAllImages()
         {
-            List<Tattoo> tattoos = await GetTattoos();
-            foreach (Tattoo tattoo in tattoos)
-                await DeleteTattoo(tattoo.Id);
-        }
-
-        //-------------------------------Drawing CRUD ------------------------------
-        /// <summary>
-        /// Instantiate a new Drawing object with image data and save to database
-        /// </summary>
-        /// <param name="drawing"> drawing Object </param>
-        public async Task CreateDrawing(Drawing drawing)
-        {
-            Drawing newDrawing = new Drawing()
-            {
-                Title = drawing.FileName,
-                ImageURL = drawing.ImageURL,
-                FileName = drawing.FileName,
-                Order = 0,
-                Display = false
-            };
-            _context.Entry(newDrawing).State = EntityState.Added;
-            await _context.SaveChangesAsync();
-        }
-
-        /// <summary>
-        /// Get a drawing by Id from the database
-        /// </summary>
-        /// <param name="id"> drawing id </param>
-        /// <returns> Drawing object </returns>
-        public async Task<Drawing> GetDrawing(int id)
-        {
-            return await _context.Drawings
-                .Where(x => x.Id == id)
-                .Select(y => new Drawing
-                {
-                    Id = y.Id,
-                    Title = y.Title,
-                    ImageURL = y.ImageURL,
-                    FileName = y.FileName,
-                    Order = y.Order,
-                    Display = y.Display
-                }).FirstOrDefaultAsync();
-        }
-
-        /// <summary>
-        /// Get and return a list of all of the drawings in the database
-        /// </summary>
-        /// <returns> List<Drawing> drawings </returns>
-        public async Task<List<Drawing>> GetDrawings()
-        {
-            return await _context.Drawings
-                .Select(y => new Drawing
-                {
-                    Id = y.Id,
-                    Title = y.Title,
-                    ImageURL = y.ImageURL,
-                    FileName = y.FileName,
-                    Order = y.Order,
-                    Display = y.Display
-                }).ToListAsync();
-        }
-
-        /// <summary>
-        /// Save updated drawing object to the database
-        /// </summary>
-        /// <param name="drawing"> updated Drawing object </param>
-        public async Task UpdateDrawing(Drawing drawing)
-        {
-            _context.Entry(drawing).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        }
-
-        /// <summary>
-        /// Delete a drawing from the database by id
-        /// </summary>
-        /// <param name="id"> drawing id </param>
-        public async Task DeleteDrawing(int id)
-        {
-            Drawing drawing = await _context.Drawings.FindAsync(id);
-
-            await DeleteBlobImage(drawing.FileName);
-
-            _context.Entry(drawing).State = EntityState.Deleted;
-            await _context.SaveChangesAsync();
-        }
-
-        /// <summary>
-        /// Delete all of the drawings from the database
-        /// </summary>
-        public async Task DeleteAllDrawings()
-        {
-            List<Drawing> drawings = await GetDrawings();
-            foreach (Drawing drawing in drawings)
-                await DeleteTattoo(drawing.Id);
+            List<Image> tattoos = await GetImages();
+            foreach (Image tattoo in tattoos)
+                await DeleteImage(tattoo.Id);
         }
 
         //------------------------------- Shared ------------------------------

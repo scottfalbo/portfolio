@@ -5,11 +5,72 @@
 }
 
 
-<div class="main-container">
-    <section class="intro-container">
-        <partial name="_Intro" />
-    </section>
-    <section id="general-contact" class="@(Model.WasSent ? "":"general-contact-hide")">
-        <partial name="_Contact" />
-    </section>
+<div class="homepage-container">
+    <div class="left-col">
+        <figure>
+            <img class="selfie" src="@Model.HomePage.Selfie" alt="Photo of Scott Falbo" />
+            <figcaption class="tag-line">@Model.HomePage.Title</figcaption>
+        </figure>
+        <section class="desktop-menu">
+            <partial name="SiteNavButtons/_MainPageNav" />
+        </section>
+    </div>
+
+    <div class="right-col">
+        <article class="intro">@Model.HomePage.Intro</article>
+        <figure class="mainpage-art-desktop">
+            <img src="http://via.placeholder.com/600x360" />
+        </figure>
+
+        <section class="mobile-menu">
+            <partial name="SiteNavButtons/_MainPageNav" />
+        </section>
+        <figure class="mainpage-art-mobile">
+            <img src="~/images/eye.png" />
+        </figure>
+    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <partial name="_PopupToggle" />
+    }
 </div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="fullscreen popup-module-outer hide-me">
+        <div class="popup-module-inner">
+            <div class="admin-module">
+                <section>
+                    <figure><img src="@Model.HomePage.Selfie" /></figure>
+                    <form asp-page-handler="UpdatePhoto" method="post" enctype="multipart/form-data">
+                        <label>
+                            <input name="file" type="file" />
+                            <input type="submit" value="Update Image" class="site-button"/>
+                            <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
+                            <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
+                        </label>
+                    </form>
+                </section>
+                <section>
+                    <form asp-page-handler="UpdatePage" method="post">
+                        <div>
+                            <input type="text" asp-for="HomePage.Title" class="form-control" placeholder="@Model.HomePage.Title" value="@Model.HomePage.Title" />
+                        </div>
+                        <div>
+                            <textarea type="text" cols="45" rows="5" asp-for="HomePage.Intro" class="form-control" placeholder="@Model.HomePage.Intro"></textarea>
+                        </div>
+                        <div>
+                            <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
+                            <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
+                            <input type="hidden" asp-for="HomePage.Page" value="@Model.HomePage.Page" />
+                            <input type="hidden" asp-for="HomePage.Selfie" value="@Model.HomePage.Selfie" />
+                            <input class="site-button" type="submit" value="Update" />
+                        </div>
+                        <button class="module-close-button site-button">close</button>
+                    </form>
+                </section>
+            </div>
+            
+        </div>
+    </div>   
+}

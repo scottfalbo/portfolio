@@ -1,7 +1,5 @@
-﻿@import url("mainpage.css");
-@import url("login-admin.css");
-@import url("art-pages.css");
-@import url("studio-arcanum.css");
+﻿@import url("layout.css");
+@import url("modules.css");
 
 * {
     box-sizing: border-box;
@@ -11,254 +9,37 @@ a, a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
-html {
-    background-color: #000;
-}
 
 body {
-    margin: auto;
-    min-width: 320px;
-    width: 100%;
+  margin: auto;
+  height: max-content;
 }
 
-main {
-    background-color: #000;
-
+.hide-me {
+  visibility: hidden;
+  height: 0px;
 }
 
-
-@media (max-width: 768px) {
-    body {
-        max-width: 540px;
-        background-color: #000;
-    }
-    footer {
-        background-color: #121212;
-        border-radius: 10px;
-    }
+a:active, a:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none;
 }
 
-.header {
-    font-family: 'Jura', sans-serif;
-    color: #9ff8bb;
-}
+/* Mobile and Tablet */
+/*  mobile: 320-480, tablet: 481-768 */
 
-#collapsingMenu {
-    flex-direction: row-reverse;
-}
-
-#collapsingAdminMenu {
-    flex-direction: row-reverse;
-}
-
-#collapsingArtMenu {
-    flex-direction: row-reverse;
-}
-
-#collapsingMenu > ul > li {
-    text-align: right;
-}
-
-#collapsingAdminMenu {
-    text-align: right;
-}
-
-#collapsingArtMenu {
-    text-align: right;
-}
-
-.page-title {
-    font-size: 1.50em;
-    color: #d7fbce;
-}
-
-.menu-button {
-    color: #9ff8bb;
-}
-
-main {
+@media screen and (max-width: 768px){
 
 }
 
-footer {
-    text-align: center;
-    font-family: 'Jura', sans-serif;
-    color: #526d4b;
-    padding: 5px;
-    margin-bottom: 8px;
+/* Laptop | Small Screen | IPad pro */
+@media screen and (min-width: 769px) and (max-width: 1024px){
+
 }
 
-footer li {
-    display: inline-block;
-    margin: 5px 10px 5px 10px;
-    color: #9ff8bb;
+/* DeskTop | Large Displays */
+@media screen and (min-width: 1025px){
+
 }
 
-footer a {
-    color: #9ff8bb;
-}
-
-a:hover {
-    color: #9ff8bb;
-}
-a {
-    color: #e5ffa3;
-}
-
-
-@media (min-width: 769px) {
-
-    body {
-        background-color: #000;
-    }
-
-    header nav {
-        background-color: #000;
-    }
-
-
-    .intro-inner {
-        grid-column: 1/2;
-        grid-row: 1/2;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 30px 1fr, 60px;
-    }
-
-        .intro-inner h1 {
-            grid-column: 1/2;
-            grid-row: 1/2;
-        }
-
-        .intro-inner figure {
-            grid-column: 1/2;
-            grid-row: 2/3;
-        }
-
-    .social {
-        grid-column: 1/2;
-        grid-row: 3/4;
-    }
-
-    .intro {
-        grid-column: 2/3;
-        grid-row: 1/2;
-        margin: 10px auto;
-        width: 100%;
-        height: max-content;
-    }
-
-    .projects {
-        grid-column: 1/2;
-        grid-row: 2/3;
-    }
-
-
-    .skills {
-        grid-column: 1/2;
-        grid-row: 3/4;
-        width: 60%;
-        margin: auto;
-    }
-
-    .project-container {
-        display: inline-block;
-        width: 45%;
-        margin: 20px auto;
-    }
-
-    .project-inner {
-        display: flex;
-        flex-flow: row wrap;
-    }
-
-    footer {
-        background-color: #000;
-    }
-}
-
-/*Contact pop up window stuff*/
-
-.toggle-contact {
-    cursor: pointer;
-}
-
-#general-contact {
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 320px;
-    background-color: #000;
-    color: #9ff8bb;
-    width: 50%;
-    height: fit-content();
-    border: 2px solid #9ff8bb;
-    border-radius: 10px;
-    box-shadow: 0px 5px 5px black;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    padding: 10px;
-}
-
-#general-contact .form-popup {
-    margin-top: 10px;
-    height: 100%;
-    width: 100%;
-    margin: auto;
-    background-color: #1f2520;
-    border-radius: 10px;
-    padding: 10px;
-    grid-column: 1/2;
-    grid-row: 1/2;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-}
-
-.form-popup div:nth-child(4) > input {
-    height: 40px;
-}
-
-#general-contact .form-popup > div {
-    width: 100%;
-    height: 100%;
-    grid-column: 1/2;
-    grid-row: 1/2;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr, 1fr;
-}
-
-#general-contact .form-popup > div > form {
-    width: 100%;
-    height: 100%;
-    grid-column: 1/2;
-    grid-row: 1/2;
-}
-
-#general-contact .form-popup > div button {
-    grid-column: 1/2;
-    grid-row: 2/3;
-}
-
-#close-popup {
-    height: 30px;
-    width: 200px;
-    border-radius: 5px;
-    margin: auto;
-}
-
-#general-contact form > div {
-    margin: 10px;
-}
-
-.general-contact-hide {
-    visibility: hidden;
-}
-
-#general-contact .grecaptcha-badge {
-    position: absolute !important;
-    bottom: -80px !important;
-}

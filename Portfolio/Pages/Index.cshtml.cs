@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -15,33 +16,24 @@ namespace Portfolio.Pages
 {
     public class IndexModel : PageModel
     {
-        public IAdmin _adminContext;
-        public IEmail _email;
+        public IAdmin _admin;
+        public IUploadService _upload;
         public IConfiguration _config;
-        public string CaptchaKey;
 
-        public IndexModel (IAdmin context, IEmail email, IConfiguration config)
+        public IndexModel (IAdmin admin, IUploadService upload, IConfiguration config)
         {
-            _adminContext = context;
-            _email = email;
+            _admin = admin;
+            _upload = upload;
             _config = config;
-            CaptchaKey = _config["CaptchaKey"];
         }
 
         public HomePage HomePage { get; set; }
-
-        [BindProperty]
-        public GeneralContact Contact { get; set; }
-
-        [BindProperty]
-        public bool WasSent { get; set; }
 
         public async Task OnGet()
         {
             try
             {
-                HomePage = await _adminContext.GetHomePage("Home");
-                Contact = new GeneralContact();
+                HomePage = await _admin.GetHomePage("Home");
             }
             catch (Exception e)
             {
@@ -50,22 +42,45 @@ namespace Portfolio.Pages
         }
 
         /// <summary>
-        /// General contact form that calls SendGrid with input data
+        /// Update mainpage photo.
         /// </summary>
-        public async Task OnPostSend()
+        /// <param name="file"> new image </param>
+        /// <param name="homepage"> homepage object </param>
+        public async Task<IActionResult> OnPostUpdatePhoto(IFormFile file, HomePage homepage)
         {
-            RequestForm message = new RequestForm()
+            if (file != null)
             {
-                Name = Contact.Name,
-                Email = Contact.Email,
-                Body = Contact.Body
+                if (homepage.FileName != null)
+                {
+                    await _admin.DeleteBlobImage(homepage.FileName);
+                }
+                await _upload.UpdateSelfie(file, homepage.Id);
+            }
+            HomePage = await _admin.GetHomePage("Home");
+            return Redirect("/");
+        }
+
+        /// <summary>
+        /// Edit homepage object data and save to database
+        /// </summary>
+        /// <param name="homepage"> homepage object </param>
+        public async Task<IActionResult> OnPostUpdatePage(HomePage homepage)
+        {
+            if (homepage.Intro == null)
+                homepage.Intro = (await _admin.GetHomePage(homepage.Page)).Intro;
+
+            HomePage updatedPage = new HomePage()
+            {
+                Id = homepage.Id,
+                Page = homepage.Page,
+                Selfie = homepage.Selfie,
+                FileName = homepage.FileName,
+                Title = homepage.Title,
+                Intro = homepage.Intro
             };
-            EmailResponse response = await _email.SendEmailAsync(message);
-
-            if (response.WasSent) WasSent = true;
-
-            HomePage = await _adminContext.GetHomePage("Home");
-            Redirect("/");
+            await _admin.UpdateHomePage(updatedPage);
+            HomePage = await _admin.GetHomePage("Home");
+            return Redirect("/Index");
         }
     }
 }
