@@ -21,9 +21,9 @@ namespace Portfolio.Models.Interface
         /// gallery CRUD
         /// </summary>
         public Task CreateGallery(Gallery gallery);
-        public Task<Image> GetGallery(int id);
-        public Task<List<Image>> GetGalleries();
-        public Task UpdateGallery(Image tattoo);
+        public Task<Gallery> GetGallery(int id);
+        public Task<List<Gallery>> GetGalleries();
+        public Task UpdateGallery(Gallery gallery);
         public Task DeleteGallery(int id);
 
         /// <summary>
