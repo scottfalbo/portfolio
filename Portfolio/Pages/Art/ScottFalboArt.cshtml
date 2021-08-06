@@ -1,14 +1,55 @@
 ﻿@page
 @model Portfolio.Pages.Art.ScottFalboArtModel
 @{
+    ViewData["Title"] = "Scott Falbo Art";
 }
 
-<div>
-    <partial name="Art/_ArtMenu" />
+<partial name="Art/_ArtMenu" />
+
+<div class="homepage-container">
+    <div class="left-col">
+        <figure>
+            <img class="selfie" src="@Model.HomePage.Selfie" alt="Photo of Scott Falbo" />
+            <figcaption class="tag-line">@Model.HomePage.Title</figcaption>
+        </figure>
+        <section class="desktop-menu">
+            <partial name="SiteNavButtons/_MainPageNav" />
+        </section>
+    </div>
+
+    <div class="right-col">
+        <article class="intro">@Model.HomePage.Intro</article>
+        <section class="galleries">
+            <div>Tattoos</div>
+            <div>Drawings</div>
+            <div>Misc</div>
+        </section>
+
+        <section class="mobile-menu">
+            <partial name="SiteNavButtons/_MainPageNav" />
+        </section>
+        <figure class="mainpage-art-mobile">
+            <img src="~/images/eye.png" />
+        </figure>
+    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <partial name="_PopupToggle" />
+    }
 </div>
-<div>
-    <partial name ="Art/_ArtIntro" />
-</div>
-@*<div>
-    <partial name="Art/_InstaGalleryViewer" />
-</div>*@
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="fullscreen popup-module-outer hide-me">
+        <div class="popup-module-inner">
+            <div class="admin-module">
+                <section>
+                    Page Admin
+                </section>
+            </div>
+
+        </div>
+    </div>
+}
+
