@@ -21,7 +21,7 @@ namespace Portfolio.Models.Interface.Services
             Configuration = config;
         }
 
-        //-------------------------------Tattoo CRUD ------------------------------
+        //-------------------------------Image CRUD ------------------------------
         /// <summary>
         /// Instantiate a new Image() object and save it to the database
         /// </summary>
@@ -105,13 +105,44 @@ namespace Portfolio.Models.Interface.Services
         }
 
         /// <summary>
-        /// Delete all of the saved images
+        /// Delete all saved image objects and galleries
         /// </summary>
-        public async Task DeleteAllImages()
+        public async Task DeleteAll()
         {
             List<Image> tattoos = await GetImages();
             foreach (Image tattoo in tattoos)
                 await DeleteImage(tattoo.Id);
+        }
+
+        public Task CreateGallery(Gallery gallery)
+        {
+            throw new NotImplementedException();
+        }
+        public Task<Image> GetGallery(int id)
+        {
+            throw new NotImplementedException();
+        }
+        public Task<List<Image>> GetGalleries()
+        {
+            throw new NotImplementedException();
+        }
+        public Task UpdateGallery(Image tattoo)
+        {
+            throw new NotImplementedException();
+        }
+        public Task DeleteGallery(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AddImageToGallery(int galleryId, int imageId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RemoveImageFromGallery(int galleryId, int imageId)
+        {
+            throw new NotImplementedException();
         }
 
         //------------------------------- Shared ------------------------------
@@ -126,5 +157,6 @@ namespace Portfolio.Models.Interface.Services
             BlobClient blob = container.GetBlobClient(fileName);
             await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
         }
+
     }
 }
