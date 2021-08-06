@@ -18,6 +18,8 @@ namespace Portfolio.Data
         public DbSet<HomePage> HomePage { get; set; }
         public DbSet<Instagram> Instragrams { get; set; }
         public DbSet<Studio> Studio { get; set; }
+        public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<GalleryImage> GalleryImage { get; set; }
 
         public IConfiguration Configuration { get; }
 
@@ -31,6 +33,8 @@ namespace Portfolio.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<GalleryImage>().HasKey(x => new { x.GalleryId, x.ImageId });
 
             //SeedRole(modelBuilder, "admin", "create", "read", "update", "delete");
 
