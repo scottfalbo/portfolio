@@ -115,10 +115,36 @@ namespace Portfolio.Data
             modelBuilder.Entity<Studio>().HasData(
                 new Studio
                 {
-                    Id = 1,
+                    Id = 5,
                     Intro ="Studio Arcanum \nSeattle Wa",
-                    Policies = "...",
-                    Aftercare = "..."
+                    Policies = "....",
+                    Aftercare = "...."
+                });
+
+            modelBuilder.Entity<Gallery>().HasData(
+                new Gallery
+                { 
+                    Id = -1,
+                    Title = "test",
+                    Display = true,
+                    Order = 0
+                });
+
+            modelBuilder.Entity<Image>().HasData(
+                new Image
+                {
+                    Id = -1,
+                    Title = "test image",
+                    ImageURL = "https://via.placeholder.com/300",
+                    FileName = "blank",
+                    Order = 0
+                });
+
+            modelBuilder.Entity<GalleryImage>().HasData(
+                new GalleryImage
+                {
+                    GalleryId = -1,
+                    ImageId = -1
                 });
 
         }

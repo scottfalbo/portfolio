@@ -214,7 +214,6 @@ namespace Portfolio.Models.Interface.Services
         /// </summary>
         /// <param name="galleryId"> gallery id</param>
         /// <param name="imageId"> image id </param>
-        /// <returns></returns>
         public async Task RemoveImageFromGallery(int galleryId, int imageId)
         {
             GalleryImage image = await _context.GalleryImage

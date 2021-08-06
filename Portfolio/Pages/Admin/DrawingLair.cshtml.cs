@@ -69,7 +69,6 @@ namespace Portfolio.Pages.Admin
             {
                 Id = image.Id,
                 Title = image.Title,
-                Type = image.Type,
                 ImageURL = image.ImageURL,
                 FileName = image.FileName,
                 Order = image.Order
