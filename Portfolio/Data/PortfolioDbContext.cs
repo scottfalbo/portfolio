@@ -115,7 +115,7 @@ namespace Portfolio.Data
             modelBuilder.Entity<Studio>().HasData(
                 new Studio
                 {
-                    Id = 5,
+                    Id = 1,
                     Intro ="Studio Arcanum \nSeattle Wa",
                     Policies = "....",
                     Aftercare = "...."

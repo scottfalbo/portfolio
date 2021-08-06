@@ -9,6 +9,7 @@ namespace Portfolio.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string CollapseId { get; set; }
         public bool Display { get; set; }
         public int Order { get; set; }
         public List<GalleryImage> GalleryImages { get; set; }

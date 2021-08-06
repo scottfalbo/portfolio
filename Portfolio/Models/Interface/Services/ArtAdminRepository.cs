@@ -126,6 +126,21 @@ namespace Portfolio.Models.Interface.Services
             };
             _context.Entry(newGallery).State = EntityState.Added;
             await _context.SaveChangesAsync();
+            await GalleryCollapseId(gallery);
+        }
+        // Helper method to add a CollapseId to the gallery for use with bootstrap accordian
+        private async Task GalleryCollapseId(Gallery gallery)
+        {
+            Gallery newGallery = await _context.Galleries
+                .Where(x => gallery.Title == x.Title)
+                .Select(y => new Gallery
+                {
+                    Id = y.Id,
+                    Title = y.Title,
+                    CollapseId = $"{y.Title}{y.Id}",
+                    Display = y.Display,
+                    Order = y.Order
+                }).FirstOrDefaultAsync();
         }
 
         /// <summary>
