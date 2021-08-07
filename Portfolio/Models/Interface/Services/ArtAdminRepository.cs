@@ -152,6 +152,8 @@ namespace Portfolio.Models.Interface.Services
         {
             return await _context.Galleries
                 .Where(x => x.Id == id)
+                .Include(gi => gi.GalleryImages)
+                .ThenInclude(i => i.Image)
                 .Select(y => new Gallery
                 {
                     Id = y.Id,

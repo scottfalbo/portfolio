@@ -13,7 +13,7 @@ namespace Portfolio.Models
         public string ImageURL { get; set; }
         public string FileName { get; set; }
         public int Order { get; set; }
-        public Gallery Gallery { get; set; }
+        public List<GalleryImage> GalleryImage { get; set; }
         
     }
 }

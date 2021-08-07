@@ -127,7 +127,8 @@ namespace Portfolio.Data
                     Id = -1,
                     Title = "test",
                     Display = true,
-                    Order = 0
+                    Order = 0,
+                    CollapseId = "test-1"
                 });
 
             modelBuilder.Entity<Image>().HasData(
@@ -145,6 +146,59 @@ namespace Portfolio.Data
                 {
                     GalleryId = -1,
                     ImageId = -1
+                });
+                        modelBuilder.Entity<Gallery>().HasData(
+                new Gallery
+                { 
+                    Id = -2,
+                    Title = "test 2",
+                    Display = true,
+                    Order = 0,
+                    CollapseId = "test2-2"
+                });
+
+            modelBuilder.Entity<Image>().HasData(
+                new Image
+                {
+                    Id = -2,
+                    Title = "test image 2",
+                    ImageURL = "https://via.placeholder.com/290",
+                    FileName = "blank",
+                    Order = 0
+                });
+
+            modelBuilder.Entity<GalleryImage>().HasData(
+                new GalleryImage
+                {
+                    GalleryId = -2,
+                    ImageId = -2
+                });
+
+            modelBuilder.Entity<Gallery>().HasData(
+                new Gallery
+                {
+                    Id = -3,
+                    Title = "test 3",
+                    Display = true,
+                    Order = 0,
+                    CollapseId = "test3-3"
+                });
+
+            modelBuilder.Entity<Image>().HasData(
+                new Image
+                {
+                    Id = -3,
+                    Title = "test image 3",
+                    ImageURL = "https://via.placeholder.com/300",
+                    FileName = "blank",
+                    Order = 0
+                });
+
+            modelBuilder.Entity<GalleryImage>().HasData(
+                new GalleryImage
+                {
+                    GalleryId = -3,
+                    ImageId = -3
                 });
 
         }
