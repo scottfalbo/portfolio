@@ -68,7 +68,6 @@ namespace Portfolio.Pages.Admin
             {
                 Id = tattoo.Id,
                 Title = tattoo.Title,
-                Type = tattoo.Type,
                 ImageURL = tattoo.ImageURL,
                 FileName = tattoo.FileName,
                 Order = tattoo.Order
