@@ -26,12 +26,31 @@
         <section class="galleries">
             <!--Accordion wrapper-->
             <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
-                @foreach(var gallery in Model.Galleries)
+                @foreach (var gallery in Model.Galleries)
                 {
-                    @foreach(var galleryImage in gallery.GalleryImages)
-                    {
-                        <img src="@galleryImage.Image.ImageURL" />
-                    }
+                    <!-- Accordion card -->
+                    <div class="card">
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="@gallery.AccordianId">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#@gallery.CollapseId" aria-expanded="true"
+                               aria-controls="collapseOne1">
+                                <h5 class="mb-0">
+                                    @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+                        </div>
+                        <!-- Card body -->
+                        <div id="@gallery.CollapseId" class="collapse show" role="tabpanel" aria-labelledby="@gallery.AccordianId"
+                             data-parent="#accordionEx">
+                            <div class="card-body">
+                                @foreach(var image in gallery.GalleryImages)
+                                {
+                                    <img src="@image.Image.ImageURL" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
                 }
             </div>
             <!-- Accordion wrapper -->

@@ -68,6 +68,7 @@ namespace Portfolio.Data
                 UserId = id
             });
 
+            /// Page information seeds
             modelBuilder.Entity<HomePage>().HasData(
                 new HomePage
                 {
@@ -77,9 +78,7 @@ namespace Portfolio.Data
                     Intro = "Software developer and artist in Seattle.",
                     Selfie = "",
                     FileName = "code-selfie.png"
-                });
-            
-            modelBuilder.Entity<HomePage>().HasData(
+                },
                 new HomePage
                 {
                     Id = 2,
@@ -88,9 +87,7 @@ namespace Portfolio.Data
                     Intro = "I do tattoos some times",
                     Selfie = "",
                     FileName = "code-selfie.png"
-                });
-            
-            modelBuilder.Entity<HomePage>().HasData(
+                },
                 new HomePage
                 {
                     Id = 3,
@@ -99,9 +96,7 @@ namespace Portfolio.Data
                     Intro = "I write code better than bios, coming soon...",
                     Selfie = "",
                     FileName = "code-selfie.png"
-                });
-          
-            modelBuilder.Entity<HomePage>().HasData(
+                },
                 new HomePage
                 {
                     Id = 4,
@@ -110,7 +105,7 @@ namespace Portfolio.Data
                     Intro = "Booking information",
                     Selfie = "",
                     FileName = ""
-                });          
+                });
             
             modelBuilder.Entity<Studio>().HasData(
                 new Studio
@@ -121,85 +116,71 @@ namespace Portfolio.Data
                     Aftercare = "...."
                 });
 
+            /// Gallery seeds
             modelBuilder.Entity<Gallery>().HasData(
                 new Gallery
                 { 
-                    Id = -1,
-                    Title = "test",
+                    Id = 1,
+                    Title = "Gallery One",
+                    AccordianId = "galleryone",
                     Display = true,
                     Order = 0,
-                    CollapseId = "test-1"
-                });
-
-            modelBuilder.Entity<Image>().HasData(
-                new Image
-                {
-                    Id = -1,
-                    Title = "test image",
-                    ImageURL = "https://via.placeholder.com/300",
-                    FileName = "blank",
-                    Order = 0
-                });
-
-            modelBuilder.Entity<GalleryImage>().HasData(
-                new GalleryImage
-                {
-                    GalleryId = -1,
-                    ImageId = -1
-                });
-                        modelBuilder.Entity<Gallery>().HasData(
-                new Gallery
-                { 
-                    Id = -2,
-                    Title = "test 2",
-                    Display = true,
-                    Order = 0,
-                    CollapseId = "test2-2"
-                });
-
-            modelBuilder.Entity<Image>().HasData(
-                new Image
-                {
-                    Id = -2,
-                    Title = "test image 2",
-                    ImageURL = "https://via.placeholder.com/290",
-                    FileName = "blank",
-                    Order = 0
-                });
-
-            modelBuilder.Entity<GalleryImage>().HasData(
-                new GalleryImage
-                {
-                    GalleryId = -2,
-                    ImageId = -2
-                });
-
-            modelBuilder.Entity<Gallery>().HasData(
+                    CollapseId = "galleryone1"
+                },
                 new Gallery
                 {
-                    Id = -3,
-                    Title = "test 3",
+                    Id = 2,
+                    Title = "Gallery Two",
+                    AccordianId = "gallerytwo",
                     Display = true,
-                    Order = 0,
-                    CollapseId = "test3-3"
-                });
-
-            modelBuilder.Entity<Image>().HasData(
-                new Image
+                    Order = 1,
+                    CollapseId = "gallerytwo2"
+                },
+                new Gallery
                 {
-                    Id = -3,
-                    Title = "test image 3",
-                    ImageURL = "https://via.placeholder.com/300",
-                    FileName = "blank",
-                    Order = 0
-                });
+                    Id = 3,
+                    Title = "Gallery Three",
+                    AccordianId = "gallerythree",
+                    Display = true,
+                    Order = 2,
+                    CollapseId = "gallerythree3"
+                }
+            );
 
-            modelBuilder.Entity<GalleryImage>().HasData(
-                new GalleryImage
-                {
-                    GalleryId = -3,
-                    ImageId = -3
-                });
+            /// Image seeds
+            for (int i = 1; i < 37; i++)
+            {
+                modelBuilder.Entity<Image>().HasData(
+                    new Image
+                    {
+                        Id = i,
+                        Title = $"testimage{i}",
+                        ImageURL = "https://via.placeholder.com/80",
+                        FileName = "blank",
+                        Order = i
+                    });
+            }
+
+            for (int i = 1; i < 13; i++)
+            {
+                modelBuilder.Entity<GalleryImage>().HasData(
+                    new GalleryImage
+                    {
+                        GalleryId = 1,
+                        ImageId = i
+                    },
+                    new GalleryImage
+                    {
+                        GalleryId = 2,
+                        ImageId = i+12
+                    },
+                    new GalleryImage
+                    {
+                        GalleryId = 3,
+                        ImageId = i+24
+                    }
+                );
+            }
 
         }
 
