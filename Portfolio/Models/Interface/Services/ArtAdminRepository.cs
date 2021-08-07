@@ -160,6 +160,8 @@ namespace Portfolio.Models.Interface.Services
                     Title = y.Title,
                     Display = y.Display,
                     Order = y.Order,
+                    AccordianId = y.AccordianId,
+                    CollapseId = y.CollapseId,
                     GalleryImages = y.GalleryImages
                 }).FirstOrDefaultAsync();
         }
@@ -179,6 +181,8 @@ namespace Portfolio.Models.Interface.Services
                     Title = y.Title,
                     Display = y.Display,
                     Order = y.Order,
+                    AccordianId = y.AccordianId,
+                    CollapseId = y.CollapseId,
                     GalleryImages = y.GalleryImages
                 }).ToListAsync();
         }
