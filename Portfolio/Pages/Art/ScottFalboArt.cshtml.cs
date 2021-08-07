@@ -26,7 +26,6 @@ namespace Portfolio.Pages.Art
         public async Task OnGet()
         {
             Galleries = await _art.GetGalleries();
-            var temp = Galleries[0].GalleryImages[0].Image.ImageURL;
             HomePage = await _admin.GetHomePage("Tattoo");
         }
     }

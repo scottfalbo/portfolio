@@ -171,6 +171,8 @@ namespace Portfolio.Models.Interface.Services
         public async Task<List<Gallery>> GetGalleries()
         {
             return await _context.Galleries
+                .Include(gi => gi.GalleryImages)
+                .ThenInclude(i => i.Image)
                 .Select(y => new Gallery
                 {
                     Id = y.Id,
