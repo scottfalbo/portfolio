@@ -1,5 +1,12 @@
 /*  Global */
 
+input, textarea, article {
+  font-family: 'Montserrat', sans-serif;
+}
+/* textarea {
+  font-family: 'Montserrat', sans-serif;
+} */
+
 body {
   background-color: #070707;
 }
@@ -68,7 +75,6 @@ main {
   text-align: left;
   padding: 10px 15px;
   color: #d2ffd8;
-  font-family: 'Exo 2', sans-serif;
   background-color: #070707;
   border-radius: 10px;
   white-space: pre-wrap;
@@ -229,7 +235,7 @@ footer p {
 }
 
 i.fas.fa-angle-down.rotate-icon {
-  
+
 }
 
 /* ------------------------------------ Break Points */
