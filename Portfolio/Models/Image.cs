@@ -12,6 +12,8 @@ namespace Portfolio.Models
         public string Title { get; set; }
         public string ImageURL { get; set; }
         public string FileName { get; set; }
+        
+        //TODO: add thumbnail filename and url
         public int Order { get; set; }
         public List<GalleryImage> GalleryImage { get; set; }
         

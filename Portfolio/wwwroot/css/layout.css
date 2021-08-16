@@ -37,8 +37,8 @@ header {
 /* -------------------------------------- Main */
 
 .selfie {
-  width: 100%;
   max-width: 400px;
+  max-height: 250px;
 }
 
 /* ------------------------------------ Navigation Buttons */
@@ -82,7 +82,8 @@ header {
 }
 
 .admin-module img {
-  width: 90%;
+  max-width: 400px;
+  max-height: 250px;
 }
 
 .admin-module label {
