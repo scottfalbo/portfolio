@@ -113,7 +113,7 @@
             </div>
         </div>
     </div>
-    <div class="fullscreen gallery-module-outer @(Model.ActiveGalleryAdmin ? "" : "hide-me")">
+    <div class="fullscreen gallery-module-outer @(Model.GalleryToggle.ActiveGalleryAdmin ? "" : "hide-me")">
         <div class="popup-module-inner">
             <div class="admin-module">
                 <section class="gallery-admin-images">
@@ -133,10 +133,13 @@
                                     </a>
                                     <div>
                                         <div>
-                                            <label class="switch"> Display
-                                                <input type="checkbox">
-                                                <span class="slider"></span>
-                                            </label>
+                                            <form asp-page-handler="ToggleDisplay" method="post">
+                                                <label class="gallery-checkbox"> Display
+                                                    <input type="checkbox" asp-for="GalleryToggle.Display" checked="@(gallery.Display)">
+                                                </label>
+                                                <input type="hidden" asp-for="GalleryToggle.GalleryId" value="@gallery.Id" />
+                                                <input type="submit" value="o" class="accordion-button" />
+                                            </form>
                                         </div>
                                         <div>
                                              <button class="accordion-button delete-gallery">x</button>
@@ -151,7 +154,7 @@
                                     </div>
                                 </div>
                                 <!-- Card body -->
-                                <div id="@gallery.AdminCollapseId" class="@(gallery.Order == Model.ActiveGalleryId && Model.ActiveGalleryAdmin ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordionId"
+                                <div id="@gallery.AdminCollapseId" class="@(gallery.Order == Model.GalleryToggle.ActiveGalleryId && !Model.GalleryToggle.StayCollapsed ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordionId"
                                      data-parent="#accordionExAdmin">
                                     <div class="card-body">
                                         <section>
@@ -170,8 +173,8 @@
                                                 <div class="delete-image-confirm hide-me confirm-popup">
                                                     delete the thing?
                                                     <form asp-page-handler="DeleteImage" method="post">
-                                                        <input type="hidden" asp-for="ImageId" value="@image.Image.Id" />
-                                                        <input type="hidden" asp-for="ActiveGalleryId" value="@gallery.Order" />
+                                                        <input type="hidden" asp-for="GalleryToggle.ImageId" value="@image.Image.Id" />
+                                                        <input type="hidden" asp-for="GalleryToggle.ActiveGalleryId" value="@gallery.Order" />
                                                         <input class="delete-confirmation site-button" type="submit" value="Confirm" />
                                                     </form>
                                                 </div>

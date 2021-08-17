@@ -27,20 +27,17 @@ namespace Portfolio.Pages.Art
         public List<Gallery> Galleries { get; set; }
 
         [BindProperty]
-        public int ImageId { get; set; }
-
-        [BindProperty]
-        public bool ActiveGalleryAdmin { get; set; }
-
-        [BindProperty]
-        public int ActiveGalleryId { get; set; }
+        public GalleryToggle GalleryToggle { get; set; }
 
         public async Task OnGet()
         {
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
-            ActiveGalleryAdmin = false;
-            ActiveGalleryId = 0;
+            GalleryToggle = new GalleryToggle()
+            {
+                ActiveGalleryId = 0,
+                StayCollapsed = true
+            };
         }
 
         /// <summary>
@@ -84,9 +81,12 @@ namespace Portfolio.Pages.Art
         }
 
         public async Task OnPostDeleteImage()
-        { 
-
-            ActiveGalleryAdmin = true;
+        {
+            GalleryToggle = new GalleryToggle()
+            {
+                ActiveGalleryAdmin = true
+            };
+            
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
 
@@ -97,7 +97,12 @@ namespace Portfolio.Pages.Art
         {
             await _art.CreateGallery(title);
 
-            ActiveGalleryAdmin = true;
+            GalleryToggle = new GalleryToggle()
+            {
+                ActiveGalleryAdmin = true,
+                StayCollapsed = true
+            };
+
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
 
@@ -108,11 +113,46 @@ namespace Portfolio.Pages.Art
         {
             await _art.DeleteGallery(id);
 
-            ActiveGalleryAdmin = true;
+            GalleryToggle = new GalleryToggle()
+            {
+                ActiveGalleryAdmin = true,
+                StayCollapsed = true
+            };
+
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
 
             Redirect("/Art/ScottFalboArt");
         }
+
+        public async Task OnPostToggleDisplay()
+        {
+            Gallery gallery = await _art.GetGallery(GalleryToggle.GalleryId);
+            gallery.Display = GalleryToggle.Display;
+
+
+
+            GalleryToggle = new GalleryToggle()
+            {
+                ActiveGalleryAdmin = true,
+                StayCollapsed = true
+            };
+
+            Galleries = await _art.GetGalleries();
+            HomePage = await _admin.GetHomePage("Tattoo");
+
+            Redirect("/Art/ScottFalboArt");
+        }
+    }
+
+
+    public class GalleryToggle
+    {
+        public int GalleryId { get; set; }
+        public bool Display { get; set; }
+        public int ImageId { get; set; }
+        public bool ActiveGalleryAdmin { get; set; }
+        public int ActiveGalleryId { get; set; }
+        public bool StayCollapsed { get; set; }
     }
 }
