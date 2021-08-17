@@ -28,29 +28,32 @@
             <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                 @foreach (var gallery in Model.Galleries)
                 {
-                    <!-- Accordion card -->
-                    <div class="card">
-                        <!-- Card header -->
-                        <div class="card-header" role="tab" id="@gallery.AccordianId">
-                            <a data-toggle="collapse" data-parent="#accordionEx" href="#@gallery.CollapseId" aria-expanded="true"
-                               aria-controls="collapseOne1">
-                                <h5 class="mb-0">
-                                    @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
-                                </h5>
-                            </a>
-                        </div>
-                        <!-- Card body -->
-                        <div id="@gallery.CollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AccordianId"
-                             data-parent="#accordionEx">
-                            <div class="card-body">
-                                @foreach (var image in gallery.GalleryImages)
-                                {
-                                    <img src="@image.Image.ImageURL" />
-                                }
+                    @if (gallery.Display)
+                    {
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <!-- Card header -->
+                            <div class="card-header" role="tab" id="@gallery.AccordionId">
+                                <a data-toggle="collapse" data-parent="#accordionEx" href="#@gallery.CollapseId" aria-expanded="true"
+                                   aria-controls="collapseOne1">
+                                    <h5 class="mb-0">
+                                        @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="@gallery.CollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AccordionId"
+                                 data-parent="#accordionEx">
+                                <div class="card-body">
+                                    @foreach (var image in gallery.GalleryImages)
+                                    {
+                                        <img src="@image.Image.ImageURL" class="temp-image"/>
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Accordion card -->
+                        <!-- Accordion card -->
+                    }
                 }
             </div>
             <!-- Accordion wrapper -->
@@ -110,19 +113,19 @@
             </div>
         </div>
     </div>
-    <div class="fullscreen gallery-module-outer hide-me">
+    <div class="fullscreen gallery-module-outer @(Model.ActiveGalleryAdmin ? "" : "hide-me")">
         <div class="popup-module-inner">
-            <div class="gallery-admin-module">
-                <section>
+            <div class="admin-module">
+                <section class="gallery-admin-images">
                     <!--Accordion wrapper-->
-                    <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                    <div class="accordion md-accordion" id="accordionExAdmin" role="tablist" aria-multiselectable="true">
                         @foreach (var gallery in Model.Galleries)
                         {
                             <!-- Accordion card -->
                             <div class="card">
                                 <!-- Card header -->
-                                <div class="card-header" role="tab" id="@gallery.AdminAccordianId">
-                                    <a data-toggle="collapse" data-parent="#accordionEx" href="#@gallery.AdminCollapseId" aria-expanded="true"
+                                <div class="card-header" role="tab" id="@gallery.AdminAccordionId">
+                                    <a data-toggle="collapse" data-parent="#accordionExAdmin" href="#@gallery.AdminCollapseId" aria-expanded="true"
                                        aria-controls="collapseOne1">
                                         <h5 class="mb-0">
                                             @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
@@ -130,8 +133,8 @@
                                     </a>
                                 </div>
                                 <!-- Card body -->
-                                <div id="@gallery.AdminCollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordianId"
-                                     data-parent="#accordionEx">
+                                <div id="@gallery.AdminCollapseId" class="@(gallery.Order == Model.ActiveGalleryId ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordionId"
+                                     data-parent="#accordionExAdmin">
                                     <div class="card-body">
                                         <section>
                                             add image
@@ -142,15 +145,19 @@
                                         <section>
                                             @foreach (var image in gallery.GalleryImages)
                                             {
-                                            <div>
-                                                <img src="@image.Image.ImageURL" />
-                                                <button class="module-open-button delete-gallery-image">x</button>
-                                            </div>
+                                                <div>
+                                                    <img src="@image.Image.ImageURL" class="temp-image"/>
+                                                    <button class="module-open-button delete-gallery-image">x</button>
+                                                </div>
+                                                <div class="delete-image-confirm hide-me">
+                                                    delete the thing?
+                                                    <form asp-page-handler="DeleteImage" method="post">
+                                                        <input type="hidden" asp-for="ImageId" value="@image.Image.Id" />
+                                                        <input type="hidden" asp-for="ActiveGalleryId" value="@gallery.Order" />
+                                                        <input class="delete-confirmation site-button" type="submit" value="Confirm" />
+                                                    </form>
+                                                </div>
                                             }
-                                            <div class="delete-image-confirm hide-me">
-                                                delete the thing?
-                                                <button class="delete-confirmation site-button">yes</button>
-                                            </div>
                                         </section>
                                     </div>
                                 </div>
@@ -161,7 +168,10 @@
                     <!-- Accordion wrapper -->
                 </section>
                 <section>
-                    add gallery form
+                    <form asp-page-handler="NewGallery" method="post">
+                        <input type="text" name="title" class="form-control" placeholder="new gallery" />
+                        <input class="site-button" type="submit" value="Add" />
+                    </form>
                 </section>
                 <button class="module-close-button site-button">close</button>
             </div>

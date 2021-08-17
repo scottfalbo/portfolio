@@ -21,6 +21,7 @@ $(function () {
     });
 });
 
+
 // Open confirmation window to delete a gallery image
 $(function () {
   $('.delete-gallery-image').click(function () {

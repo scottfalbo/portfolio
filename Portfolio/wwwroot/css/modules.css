@@ -263,3 +263,12 @@ i.fas.fa-angle-down.rotate-icon {
 /* DeskTop | Large Displays */
 
 @media screen and (min-width: 1025px) {}
+
+
+.right-col img.temp-image {
+  width: 80px;
+}
+
+.temp-image {
+  width: 80px;
+}

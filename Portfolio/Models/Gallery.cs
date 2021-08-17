@@ -9,9 +9,9 @@ namespace Portfolio.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string AccordianId { get; set; }
+        public string AccordionId { get; set; }
         public string CollapseId { get; set; }
-        public string AdminAccordianId { get; set; }
+        public string AdminAccordionId { get; set; }
         public string AdminCollapseId { get; set; }
         public bool Display { get; set; }
         public int Order { get; set; }

@@ -26,10 +26,21 @@ namespace Portfolio.Pages.Art
         public HomePage HomePage { get; set; }
         public List<Gallery> Galleries { get; set; }
 
+        [BindProperty]
+        public int ImageId { get; set; }
+
+        [BindProperty]
+        public bool ActiveGalleryAdmin { get; set; }
+
+        [BindProperty]
+        public int ActiveGalleryId { get; set; }
+
         public async Task OnGet()
         {
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
+            ActiveGalleryAdmin = false;
+            ActiveGalleryId = 0;
         }
 
         /// <summary>
@@ -70,6 +81,27 @@ namespace Portfolio.Pages.Art
             };
             await _admin.UpdateHomePage(updatedPage);
             return Redirect("/Art/ScottFalboArt");
+        }
+
+        public async Task OnPostDeleteImage()
+        { 
+
+            ActiveGalleryAdmin = true;
+            Galleries = await _art.GetGalleries();
+            HomePage = await _admin.GetHomePage("Tattoo");
+
+            Redirect("/Art/ScottFalboArt");
+        }
+
+        public async Task OnPostNewGallery(string title)
+        {
+            await _art.CreateGallery(title);
+
+            ActiveGalleryAdmin = true;
+            Galleries = await _art.GetGalleries();
+            HomePage = await _admin.GetHomePage("Tattoo");
+
+            Redirect("/Art/ScottFalboArt");
         }
     }
 }

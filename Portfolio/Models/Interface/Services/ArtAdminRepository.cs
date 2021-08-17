@@ -6,6 +6,7 @@ using Portfolio.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Portfolio.Models.Interface.Services
@@ -116,32 +117,43 @@ namespace Portfolio.Models.Interface.Services
         /// </summary>
         /// <param name="gallery"></param>
         /// <returns></returns>
-        public async Task CreateGallery(Gallery gallery)
+        public async Task CreateGallery(string title)
         {
             Gallery newGallery = new Gallery()
             {
-                Title = gallery.Title,
-                Display = false,
-                Order = gallery.Order
+                Title = title,
+                Display = false
             };
+            newGallery.Order = await GalleryOrder();
+            newGallery = GalleryAccordionIds(newGallery);
+
             _context.Entry(newGallery).State = EntityState.Added;
             await _context.SaveChangesAsync();
-            await GalleryCollapseId(gallery);
         }
-        // Helper method to add a CollapseId to the gallery for use with bootstrap accordian
-        private async Task GalleryCollapseId(Gallery gallery)
+        /// <summary>
+        /// Helper method to auto assign a gallery order of last to new galleries
+        /// </summary>
+        /// <returns> list<galleries>.Count + 1 </galleries> </returns>
+        private async Task<int> GalleryOrder()
         {
-            // TODO: use regex to strip spaces from title and make class names => tolower
-            Gallery newGallery = await _context.Galleries
-                .Where(x => gallery.Title == x.Title)
-                .Select(y => new Gallery
-                {
-                    Id = y.Id,
-                    Title = y.Title,
-                    Display = y.Display,
-                    Order = y.Order
-                    // Add classes here
-                }).FirstOrDefaultAsync();
+            var galleries = await GetGalleries();
+            return galleries.Count + 1;
+        }
+        /// <summary>
+        /// Helper method to normalize the input title and use it for class identification with bootstrap accordion.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <returns></returns>
+        private Gallery GalleryAccordionIds(Gallery gallery)
+        {
+            string str = (Regex.Replace(gallery.Title, @"\s+", String.Empty)).ToLower();
+
+            gallery.AccordionId = str;
+            gallery.CollapseId = $"{str}{gallery.Id}";
+            gallery.AdminAccordionId = $"{str}admin";
+            gallery.AdminCollapseId = $"{str}{gallery.Id}admin";
+
+            return gallery;
         }
 
         /// <summary>
@@ -161,9 +173,9 @@ namespace Portfolio.Models.Interface.Services
                     Title = y.Title,
                     Display = y.Display,
                     Order = y.Order,
-                    AccordianId = y.AccordianId,
+                    AccordionId = y.AccordionId,
                     CollapseId = y.CollapseId,
-                    AdminAccordianId = y.AdminAccordianId,
+                    AdminAccordionId = y.AdminAccordionId,
                     AdminCollapseId = y.AdminCollapseId,
                     GalleryImages = y.GalleryImages
                 }).FirstOrDefaultAsync();
@@ -184,9 +196,9 @@ namespace Portfolio.Models.Interface.Services
                     Title = y.Title,
                     Display = y.Display,
                     Order = y.Order,
-                    AccordianId = y.AccordianId,
+                    AccordionId = y.AccordionId,
                     CollapseId = y.CollapseId,
-                    AdminAccordianId = y.AdminAccordianId,
+                    AdminAccordionId = y.AdminAccordionId,
                     AdminCollapseId = y.AdminCollapseId,
                     GalleryImages = y.GalleryImages
                 }).ToListAsync();

@@ -20,7 +20,7 @@ namespace Portfolio.Models.Interface
         /// <summary>
         /// gallery CRUD
         /// </summary>
-        public Task CreateGallery(Gallery gallery);
+        public Task CreateGallery(string title);
         public Task<Gallery> GetGallery(int id);
         public Task<List<Gallery>> GetGalleries();
         public Task UpdateGallery(Gallery gallery);
