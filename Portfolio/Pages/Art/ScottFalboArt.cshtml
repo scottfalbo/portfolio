@@ -133,10 +133,25 @@
                                 <div id="@gallery.AdminCollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordianId"
                                      data-parent="#accordionEx">
                                     <div class="card-body">
-                                        @foreach (var image in gallery.GalleryImages)
-                                        {
-                                            <img src="@image.Image.ImageURL" />
-                                        }
+                                        <section>
+                                            add image
+                                        </section>
+                                        <section>
+                                            title and display
+                                        </section>
+                                        <section>
+                                            @foreach (var image in gallery.GalleryImages)
+                                            {
+                                            <div>
+                                                <img src="@image.Image.ImageURL" />
+                                                <button class="module-open-button delete-gallery-image">x</button>
+                                            </div>
+                                            }
+                                            <div class="delete-image-confirm hide-me">
+                                                delete the thing?
+                                                <button class="delete-confirmation site-button">yes</button>
+                                            </div>
+                                        </section>
                                     </div>
                                 </div>
                             </div>

@@ -21,6 +21,20 @@ $(function () {
     });
 });
 
+// Open confirmation window to delete a gallery image
+$(function () {
+  $('.delete-gallery-image').click(function () {
+      $('.delete-image-confirm').removeClass('hide-me');
+  });
+});
+
+// close delete confirmation window, don't think I need it?
+$(function () {
+  $('.delete-confirmation').click(function () {
+      $('.delete-image-confirm').addClass('hide-me');
+  });
+});
+
 // //event listener for the escape key to get to admin entrance
 $(function () {
     $('body').keyup(function (e) {
