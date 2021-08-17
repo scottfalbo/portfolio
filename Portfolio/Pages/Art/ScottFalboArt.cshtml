@@ -131,9 +131,24 @@
                                             @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
                                         </h5>
                                     </a>
+                                    <div>
+                                        <div>
+                                            display
+                                        </div>
+                                        <div>
+                                             <button class="accordion-button delete-gallery">x</button>
+                                            </div>
+                                            <div class="delete-gallery-confirmation hide-me confirm-popup">
+                                                delete the thing?
+                                                <form asp-page-handler="DeleteGallery" method="post">
+                                                    <input type="hidden" name="id" value="@gallery.Id" />
+                                                    <input class="delete-confirmation site-button" type="submit" value="Confirm" />
+                                                </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- Card body -->
-                                <div id="@gallery.AdminCollapseId" class="@(gallery.Order == Model.ActiveGalleryId ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordionId"
+                                <div id="@gallery.AdminCollapseId" class="@(gallery.Order == Model.ActiveGalleryId && Model.ActiveGalleryAdmin ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordionId"
                                      data-parent="#accordionExAdmin">
                                     <div class="card-body">
                                         <section>
@@ -149,7 +164,7 @@
                                                     <img src="@image.Image.ImageURL" class="temp-image"/>
                                                     <button class="module-open-button delete-gallery-image">x</button>
                                                 </div>
-                                                <div class="delete-image-confirm hide-me">
+                                                <div class="delete-image-confirm hide-me confirm-popup">
                                                     delete the thing?
                                                     <form asp-page-handler="DeleteImage" method="post">
                                                         <input type="hidden" asp-for="ImageId" value="@image.Image.Id" />

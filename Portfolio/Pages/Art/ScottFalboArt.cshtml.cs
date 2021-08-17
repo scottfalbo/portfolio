@@ -103,5 +103,16 @@ namespace Portfolio.Pages.Art
 
             Redirect("/Art/ScottFalboArt");
         }
+
+        public async Task OnPostDeleteGallery(int id)
+        {
+            await _art.DeleteGallery(id);
+
+            ActiveGalleryAdmin = true;
+            Galleries = await _art.GetGalleries();
+            HomePage = await _admin.GetHomePage("Tattoo");
+
+            Redirect("/Art/ScottFalboArt");
+        }
     }
 }

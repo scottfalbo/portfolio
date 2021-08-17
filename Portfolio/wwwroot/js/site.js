@@ -18,6 +18,8 @@ $(function () {
 $(function () {
     $('.module-close-button').click(function () {
         $('.fullscreen').addClass('hide-me');
+        $('.delete-image-confirm').addClass('hide-me');
+        $('.delete-gallery-confirmation').addClass('hide-me');
     });
 });
 
@@ -29,12 +31,19 @@ $(function () {
   });
 });
 
-// close delete confirmation window, don't think I need it?
+// Open confirmation window to delete a gallery
 $(function () {
-  $('.delete-confirmation').click(function () {
-      $('.delete-image-confirm').addClass('hide-me');
+  $('.delete-gallery').click(function () {
+    $('.delete-gallery-confirmation').removeClass('hide-me');
   });
 });
+
+// close delete confirmation window, don't think I need it?
+// $(function () {
+//   $('.delete-confirmation').click(function () {
+//       $('.delete-image-confirm').addClass('hide-me');
+//   });
+// });
 
 // //event listener for the escape key to get to admin entrance
 $(function () {

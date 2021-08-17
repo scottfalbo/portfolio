@@ -142,8 +142,8 @@ namespace Portfolio.Models.Interface.Services
         /// <summary>
         /// Helper method to normalize the input title and use it for class identification with bootstrap accordion.
         /// </summary>
-        /// <param name="title"></param>
-        /// <returns></returns>
+        /// <param name="gallery"> new gallery object </param>
+        /// <returns> updated gallery object </returns>
         private Gallery GalleryAccordionIds(Gallery gallery)
         {
             string str = (Regex.Replace(gallery.Title, @"\s+", String.Empty)).ToLower();
