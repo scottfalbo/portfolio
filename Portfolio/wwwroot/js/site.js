@@ -1,16 +1,23 @@
 ﻿'use strict';
 
-// Open button for popup modules. 
+// Open button for admin popup modules. 
 $(function () {
-  $('.module-open-button').click(function () {
-    console.log('open please');
+  $('.open-admin').click(function () {
       $('.popup-module-outer').removeClass('hide-me');
   });
 });
+
+// Open button for gallery admin popup module. 
+$(function () {
+  $('.open-gallery-admin').click(function () {
+      $('.gallery-module-outer').removeClass('hide-me');
+  });
+});
+
 // Close button for popup modules. 
 $(function () {
     $('.module-close-button').click(function () {
-        $('.popup-module-outer').addClass('hide-me');
+        $('.fullscreen').addClass('hide-me');
     });
 });
 

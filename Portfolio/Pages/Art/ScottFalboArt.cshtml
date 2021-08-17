@@ -29,31 +29,34 @@
                 @foreach (var gallery in Model.Galleries)
                 {
                     <!-- Accordion card -->
-                <div class="card">
-                    <!-- Card header -->
-                    <div class="card-header" role="tab" id="@gallery.AccordianId">
-                        <a data-toggle="collapse" data-parent="#accordionEx" href="#@gallery.CollapseId" aria-expanded="true"
-                           aria-controls="collapseOne1">
-                            <h5 class="mb-0">
-                                @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
-                            </h5>
-                        </a>
-                    </div>
-                    <!-- Card body -->
-                    <div id="@gallery.CollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AccordianId"
-                         data-parent="#accordionEx">
-                        <div class="card-body">
-                            @foreach (var image in gallery.GalleryImages)
-                            {
-                                <img src="@image.Image.ImageURL" />
-                            }
+                    <div class="card">
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="@gallery.AccordianId">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#@gallery.CollapseId" aria-expanded="true"
+                               aria-controls="collapseOne1">
+                                <h5 class="mb-0">
+                                    @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+                        </div>
+                        <!-- Card body -->
+                        <div id="@gallery.CollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AccordianId"
+                             data-parent="#accordionEx">
+                            <div class="card-body">
+                                @foreach (var image in gallery.GalleryImages)
+                                {
+                                    <img src="@image.Image.ImageURL" />
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
                     <!-- Accordion card -->
                 }
             </div>
             <!-- Accordion wrapper -->
+            <div class="popup-toggle-button">
+                <button class="module-open-button open-gallery-admin">° ° °</button>
+            </div>
         </section>
 
         <section class="mobile-menu">
@@ -80,7 +83,7 @@
                     <form asp-page-handler="UpdateSelfie" method="post" enctype="multipart/form-data">
                         <label>
                             <input name="file" type="file" />
-                            <input type="submit" value="Update Image" class="site-button"/>
+                            <input type="submit" value="Update Image" class="site-button" />
                             <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
                             <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
                         </label>
@@ -102,6 +105,19 @@
                             <input class="site-button" type="submit" value="Update" />
                         </div>
                     </form>
+                </section>
+                <button class="module-close-button site-button">close</button>
+            </div>
+        </div>
+    </div>
+    <div class="fullscreen gallery-module-outer hide-me">
+        <div class="popup-module-inner">
+            <div class="gallery-admin-module">
+                <section>
+                    stuff
+                </section>
+                <section>
+                    stuff
                 </section>
                 <button class="module-close-button site-button">close</button>
             </div>

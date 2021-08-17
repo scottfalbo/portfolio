@@ -60,7 +60,7 @@ header {
 
 /*  ------------------------------------ Popup Module */
 
-.popup-module-outer {
+.fullscreen {
   position: fixed;
   top: 0px;
   left: 0px;
