@@ -131,15 +131,16 @@ namespace Portfolio.Models.Interface.Services
         // Helper method to add a CollapseId to the gallery for use with bootstrap accordian
         private async Task GalleryCollapseId(Gallery gallery)
         {
+            // TODO: use regex to strip spaces from title and make class names => tolower
             Gallery newGallery = await _context.Galleries
                 .Where(x => gallery.Title == x.Title)
                 .Select(y => new Gallery
                 {
                     Id = y.Id,
                     Title = y.Title,
-                    CollapseId = $"{y.Title}{y.Id}",
                     Display = y.Display,
                     Order = y.Order
+                    // Add classes here
                 }).FirstOrDefaultAsync();
         }
 
@@ -162,6 +163,8 @@ namespace Portfolio.Models.Interface.Services
                     Order = y.Order,
                     AccordianId = y.AccordianId,
                     CollapseId = y.CollapseId,
+                    AdminAccordianId = y.AdminAccordianId,
+                    AdminCollapseId = y.AdminCollapseId,
                     GalleryImages = y.GalleryImages
                 }).FirstOrDefaultAsync();
         }
@@ -183,6 +186,8 @@ namespace Portfolio.Models.Interface.Services
                     Order = y.Order,
                     AccordianId = y.AccordianId,
                     CollapseId = y.CollapseId,
+                    AdminAccordianId = y.AdminAccordianId,
+                    AdminCollapseId = y.AdminCollapseId,
                     GalleryImages = y.GalleryImages
                 }).ToListAsync();
         }

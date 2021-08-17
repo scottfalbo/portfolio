@@ -114,10 +114,39 @@
         <div class="popup-module-inner">
             <div class="gallery-admin-module">
                 <section>
-                    stuff
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                        @foreach (var gallery in Model.Galleries)
+                        {
+                            <!-- Accordion card -->
+                            <div class="card">
+                                <!-- Card header -->
+                                <div class="card-header" role="tab" id="@gallery.AdminAccordianId">
+                                    <a data-toggle="collapse" data-parent="#accordionEx" href="#@gallery.AdminCollapseId" aria-expanded="true"
+                                       aria-controls="collapseOne1">
+                                        <h5 class="mb-0">
+                                            @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
+                                        </h5>
+                                    </a>
+                                </div>
+                                <!-- Card body -->
+                                <div id="@gallery.AdminCollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordianId"
+                                     data-parent="#accordionEx">
+                                    <div class="card-body">
+                                        @foreach (var image in gallery.GalleryImages)
+                                        {
+                                            <img src="@image.Image.ImageURL" />
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Accordion card -->
+                        }
+                    </div>
+                    <!-- Accordion wrapper -->
                 </section>
                 <section>
-                    stuff
+                    add gallery form
                 </section>
                 <button class="module-close-button site-button">close</button>
             </div>

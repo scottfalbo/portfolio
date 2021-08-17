@@ -125,7 +125,9 @@ namespace Portfolio.Data
                     AccordianId = "galleryone",
                     Display = true,
                     Order = 0,
-                    CollapseId = "galleryone1"
+                    CollapseId = "galleryone1",
+                    AdminAccordianId = "galleryoneadmin",
+                    AdminCollapseId = "galleryone1admin"
                 },
                 new Gallery
                 {
@@ -134,7 +136,9 @@ namespace Portfolio.Data
                     AccordianId = "gallerytwo",
                     Display = true,
                     Order = 1,
-                    CollapseId = "gallerytwo2"
+                    CollapseId = "gallerytwo2",
+                    AdminAccordianId = "gallerytwoadmin",
+                    AdminCollapseId = "gallerytwo2admin"
                 },
                 new Gallery
                 {
@@ -143,7 +147,9 @@ namespace Portfolio.Data
                     AccordianId = "gallerythree",
                     Display = true,
                     Order = 2,
-                    CollapseId = "gallerythree3"
+                    CollapseId = "gallerythree3",
+                    AdminAccordianId = "gallerythreeadmin",
+                    AdminCollapseId = "gallerythree3admin"
                 }
             );
 
