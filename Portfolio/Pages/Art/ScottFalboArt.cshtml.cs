@@ -81,18 +81,45 @@ namespace Portfolio.Pages.Art
         }
 
         /// <summary>
-        ///
+        /// Upload and image to the blob, save it to database, and add to gallery.
         /// </summary>
+        /// <param name="files"> list of files to be uploaded </param>
         /// <returns></returns>
-        public async Task OnPostDeleteImage()
+        public async Task OnPostAddImages(IFormFile[] files)
         {
+            foreach (var file in files)
+            {
+                if (file != null)
+                    await _upload.AddArtImage(file);
+            }
+
+            // add to gallery
+
             GalleryToggle = new GalleryToggle()
             {
                 ActiveGalleryAdmin = true
             };
-            
-            //remove from gallery, GalleryImage
-            //remove from database and blob
+
+            Galleries = await _art.GetGalleries();
+            HomePage = await _admin.GetHomePage("Tattoo");
+
+            Redirect("/Art/ScottFalboArt");
+        }
+
+        /// <summary>
+        /// Remove and image from a gallery.
+        /// Delete the Image and GalleryImage record from database.
+        /// Remove the image from the azure storage blob.
+        /// </summary>
+        public async Task OnPostDeleteImage()
+        {
+            await _art.RemoveImageFromGallery(GalleryToggle.GalleryId, GalleryToggle.ImageId);
+            await _art.DeleteImage(GalleryToggle.ImageId);
+
+            GalleryToggle = new GalleryToggle()
+            {
+                ActiveGalleryAdmin = true
+            };
 
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
@@ -142,8 +169,9 @@ namespace Portfolio.Pages.Art
         }
 
         /// <summary>
-        /// Update galleries display preference in database.
+        /// Updates a Gallery's title and display bool in the database.
         /// </summary>
+        /// <param name="title"> title from form </param>
         public async Task OnPostUpdateGallery(string title)
         {
             Gallery gallery = await _art.GetGallery(GalleryToggle.GalleryId);

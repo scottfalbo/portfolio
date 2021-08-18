@@ -38,12 +38,6 @@ $(function () {
   });
 });
 
-// close delete confirmation window, don't think I need it?
-// $(function () {
-//   $('.delete-confirmation').click(function () {
-//       $('.delete-image-confirm').addClass('hide-me');
-//   });
-// });
 
 // //event listener for the escape key to get to admin entrance
 $(function () {

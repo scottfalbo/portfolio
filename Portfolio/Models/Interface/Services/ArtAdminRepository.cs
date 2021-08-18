@@ -129,6 +129,9 @@ namespace Portfolio.Models.Interface.Services
 
             _context.Entry(newGallery).State = EntityState.Added;
             await _context.SaveChangesAsync();
+
+            var temp = newGallery.Id;
+            Console.WriteLine("");
         }
         /// <summary>
         /// Helper method to auto assign a gallery order of last to new galleries

@@ -162,7 +162,12 @@
                                 </div>
                             </section>
                             <section>
-                                add image
+                                <form asp-page-handler="AddImages" method="post" enctype="multipart/form-data">
+                                    <label>
+                                        <input name="files" type="file" multiple="multiple" accept="image/*" />
+                                        <input type="submit" value="Add Tattoo" />
+                                    </label>
+                                </form>
                             </section>
                             <section>
                                 @foreach (var image in gallery.GalleryImages)
@@ -175,6 +180,7 @@
                                         delete the thing?
                                         <form asp-page-handler="DeleteImage" method="post">
                                             <input type="hidden" asp-for="GalleryToggle.ImageId" value="@image.Image.Id" />
+                                            <input type="hidden" asp-for="GalleryToggle.GalleryId" value="@gallery.Id" />
                                             <input type="hidden" asp-for="GalleryToggle.ActiveGalleryId" value="@gallery.Order" />
                                             <input class="delete-confirmation site-button" type="submit" value="Confirm" />
                                         </form>
