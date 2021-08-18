@@ -78,125 +78,126 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="fullscreen popup-module-outer hide-me">
-        <div class="popup-module-inner">
-            <div class="admin-module">
-                <section>
-                    <figure><img src="@Model.HomePage.Selfie" /></figure>
-                    <form asp-page-handler="UpdateSelfie" method="post" enctype="multipart/form-data">
-                        <label>
-                            <input name="file" type="file" />
-                            <input type="submit" value="Update Image" class="site-button" />
-                            <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
-                            <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
-                        </label>
-                    </form>
-                </section>
-                <section>
-                    <form asp-page-handler="Edit" method="post">
-                        <div>
-                            <input type="text" asp-for="HomePage.Title" class="form-control" placeholder="@Model.HomePage.Title" value="@Model.HomePage.Title" />
-                        </div>
-                        <div>
-                            <textarea type="text" cols="45" rows="5" asp-for="HomePage.Intro" class="form-control" placeholder="@Model.HomePage.Intro"></textarea>
-                        </div>
-                        <div>
-                            <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
-                            <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
-                            <input type="hidden" asp-for="HomePage.Page" value="@Model.HomePage.Page" />
-                            <input type="hidden" asp-for="HomePage.Selfie" value="@Model.HomePage.Selfie" />
-                            <input class="site-button" type="submit" value="Update" />
-                        </div>
-                    </form>
-                </section>
-                <button class="module-close-button site-button">close</button>
+<div class="fullscreen popup-module-outer hide-me">
+<div class="popup-module-inner">
+<div class="admin-module">
+    <section>
+        <figure><img src="@Model.HomePage.Selfie" /></figure>
+        <form asp-page-handler="UpdateSelfie" method="post" enctype="multipart/form-data">
+            <label>
+                <input name="file" type="file" />
+                <input type="submit" value="Update Image" class="site-button" />
+                <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
+                <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
+            </label>
+        </form>
+    </section>
+    <section>
+        <form asp-page-handler="Edit" method="post">
+            <div>
+                <input type="text" asp-for="HomePage.Title" class="form-control" placeholder="@Model.HomePage.Title" value="@Model.HomePage.Title" />
             </div>
-        </div>
-    </div>
-    <div class="fullscreen gallery-module-outer @(Model.GalleryToggle.ActiveGalleryAdmin ? "" : "hide-me")">
-        <div class="popup-module-inner">
-            <div class="admin-module">
-                <section class="gallery-admin-images">
-                    <!--Accordion wrapper-->
-                    <div class="accordion md-accordion" id="accordionExAdmin" role="tablist" aria-multiselectable="true">
-                        @foreach (var gallery in Model.Galleries)
-                        {
-                            <!-- Accordion card -->
-                            <div class="card">
-                                <!-- Card header -->
-                                <div class="card-header" role="tab" id="@gallery.AdminAccordionId">
-                                    <a data-toggle="collapse" data-parent="#accordionExAdmin" href="#@gallery.AdminCollapseId" aria-expanded="true"
-                                       aria-controls="collapseOne1">
-                                        <h5 class="mb-0">
-                                            @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
-                                        </h5>
-                                    </a>
-                                    <div>
-                                        <div>
-                                            <form asp-page-handler="ToggleDisplay" method="post">
-                                                <label class="gallery-checkbox"> Display
-                                                    <input type="checkbox" asp-for="GalleryToggle.Display" checked="@(gallery.Display)">
-                                                </label>
-                                                <input type="hidden" asp-for="GalleryToggle.GalleryId" value="@gallery.Id" />
-                                                <input type="submit" value="o" class="accordion-button" />
-                                            </form>
-                                        </div>
-                                        <div>
-                                             <button class="accordion-button delete-gallery">x</button>
-                                            </div>
-                                            <div class="delete-gallery-confirmation hide-me confirm-popup">
-                                                delete the thing?
-                                                <form asp-page-handler="DeleteGallery" method="post">
-                                                    <input type="hidden" name="id" value="@gallery.Id" />
-                                                    <input class="delete-confirmation site-button" type="submit" value="Confirm" />
-                                                </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card body -->
-                                <div id="@gallery.AdminCollapseId" class="@(gallery.Order == Model.GalleryToggle.ActiveGalleryId && !Model.GalleryToggle.StayCollapsed ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordionId"
-                                     data-parent="#accordionExAdmin">
-                                    <div class="card-body">
-                                        <section>
-                                            add image
-                                        </section>
-                                        <section>
-                                            title and display
-                                        </section>
-                                        <section>
-                                            @foreach (var image in gallery.GalleryImages)
-                                            {
-                                                <div>
-                                                    <img src="@image.Image.ImageURL" class="temp-image"/>
-                                                    <button class="module-open-button delete-gallery-image">x</button>
-                                                </div>
-                                                <div class="delete-image-confirm hide-me confirm-popup">
-                                                    delete the thing?
-                                                    <form asp-page-handler="DeleteImage" method="post">
-                                                        <input type="hidden" asp-for="GalleryToggle.ImageId" value="@image.Image.Id" />
-                                                        <input type="hidden" asp-for="GalleryToggle.ActiveGalleryId" value="@gallery.Order" />
-                                                        <input class="delete-confirmation site-button" type="submit" value="Confirm" />
-                                                    </form>
-                                                </div>
-                                            }
-                                        </section>
-                                    </div>
-                                </div>
+            <div>
+                <textarea type="text" cols="45" rows="5" asp-for="HomePage.Intro" class="form-control" placeholder="@Model.HomePage.Intro"></textarea>
+            </div>
+            <div>
+                <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
+                <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
+                <input type="hidden" asp-for="HomePage.Page" value="@Model.HomePage.Page" />
+                <input type="hidden" asp-for="HomePage.Selfie" value="@Model.HomePage.Selfie" />
+                <input class="site-button" type="submit" value="Update" />
+            </div>
+        </form>
+    </section>
+    <button class="module-close-button site-button">close</button>
+</div>
+</div>
+</div>
+<div class="fullscreen gallery-module-outer @(Model.GalleryToggle.ActiveGalleryAdmin ? "" : "hide-me")">
+<div class="popup-module-inner">
+<div class="admin-module">
+    <section class="gallery-admin-images">
+        <!--Accordion wrapper-->
+        <div class="accordion md-accordion" id="accordionExAdmin" role="tablist" aria-multiselectable="true">
+            @foreach (var gallery in Model.Galleries)
+            {
+                <!-- Accordion card -->
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="@gallery.AdminAccordionId">
+                        <a data-toggle="collapse" data-parent="#accordionExAdmin" href="#@gallery.AdminCollapseId" aria-expanded="true"
+                            aria-controls="collapseOne1">
+                            <h5 class="mb-0">
+                                @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
+                            </h5>
+                        </a>
+                        <div>
+                            <div>
+                                <button class="accordion-button delete-gallery">x</button>
                             </div>
-                            <!-- Accordion card -->
-                        }
+                            <div class="delete-gallery-confirmation hide-me confirm-popup">
+                                <p>Delete the thing?</p>
+                                <form asp-page-handler="DeleteGallery" method="post">
+                                    <input type="hidden" name="id" value="@gallery.Id" />
+                                    <input class="delete-confirmation site-button" type="submit" value="Confirm" />
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Accordion wrapper -->
-                </section>
-                <section>
-                    <form asp-page-handler="NewGallery" method="post">
-                        <input type="text" name="title" class="form-control" placeholder="new gallery" />
-                        <input class="site-button" type="submit" value="Add" />
-                    </form>
-                </section>
-                <button class="module-close-button site-button">close</button>
-            </div>
+                    <!-- Card body -->
+                    <div id="@gallery.AdminCollapseId" class="@(gallery.Order == Model.GalleryToggle.ActiveGalleryId && !Model.GalleryToggle.StayCollapsed ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordionId"
+                            data-parent="#accordionExAdmin">
+                        <div class="card-body">
+                            <section>
+                                <div>
+                                    <form asp-page-handler="UpdateGallery" method="post">
+                                        <input type="text" name="title" value="@gallery.Title" placeholder="@gallery.Title"/>
+                                        <label class="gallery-checkbox">
+                                            Display
+                                            <input type="checkbox" asp-for="GalleryToggle.Display" checked="@(gallery.Display)">
+                                        </label>
+                                        <input type="hidden" asp-for="GalleryToggle.GalleryId" value="@gallery.Id" />
+                                        <input type="submit" value="o" class="accordion-button" />
+                                    </form>
+                                </div>
+                            </section>
+                            <section>
+                                add image
+                            </section>
+                            <section>
+                                @foreach (var image in gallery.GalleryImages)
+                                {
+                                    <div>
+                                        <img src="@image.Image.ImageURL" class="temp-image"/>
+                                        <button class="module-open-button delete-gallery-image">x</button>
+                                    </div>
+                                    <div class="delete-image-confirm hide-me confirm-popup">
+                                        delete the thing?
+                                        <form asp-page-handler="DeleteImage" method="post">
+                                            <input type="hidden" asp-for="GalleryToggle.ImageId" value="@image.Image.Id" />
+                                            <input type="hidden" asp-for="GalleryToggle.ActiveGalleryId" value="@gallery.Order" />
+                                            <input class="delete-confirmation site-button" type="submit" value="Confirm" />
+                                        </form>
+                                    </div>
+                                }
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion card -->
+            }
         </div>
-    </div>
+        <!-- Accordion wrapper -->
+    </section>
+    <section>
+        <form asp-page-handler="NewGallery" method="post">
+            <input type="text" name="title" class="form-control" placeholder="new gallery" />
+            <input class="site-button" type="submit" value="Add" />
+        </form>
+    </section>
+    <button class="module-close-button site-button">close</button>
+</div>
+</div>
+</div>
 }
 

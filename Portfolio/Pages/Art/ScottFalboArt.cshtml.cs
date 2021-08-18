@@ -80,6 +80,10 @@ namespace Portfolio.Pages.Art
             return Redirect("/Art/ScottFalboArt");
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <returns></returns>
         public async Task OnPostDeleteImage()
         {
             GalleryToggle = new GalleryToggle()
@@ -87,12 +91,20 @@ namespace Portfolio.Pages.Art
                 ActiveGalleryAdmin = true
             };
             
+            //remove from gallery, GalleryImage
+            //remove from database and blob
+
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
 
             Redirect("/Art/ScottFalboArt");
         }
 
+        /// <summary>
+        /// Instantiates and saves a new gallery to the database.
+        /// CreateGallery method auto assigns order to last and creates class names for bootstrap accordion.
+        /// </summary>
+        /// <param name="title"> new gallery title from input form </param>
         public async Task OnPostNewGallery(string title)
         {
             await _art.CreateGallery(title);
@@ -109,6 +121,10 @@ namespace Portfolio.Pages.Art
             Redirect("/Art/ScottFalboArt");
         }
 
+        /// <summary>
+        /// Remove a Gallery and all associated Image and GalleryImage records from database.
+        /// </summary>
+        /// <param name="id"> gallery id </param>
         public async Task OnPostDeleteGallery(int id)
         {
             await _art.DeleteGallery(id);
@@ -125,17 +141,20 @@ namespace Portfolio.Pages.Art
             Redirect("/Art/ScottFalboArt");
         }
 
-        public async Task OnPostToggleDisplay()
+        /// <summary>
+        /// Update galleries display preference in database.
+        /// </summary>
+        public async Task OnPostUpdateGallery(string title)
         {
             Gallery gallery = await _art.GetGallery(GalleryToggle.GalleryId);
             gallery.Display = GalleryToggle.Display;
+            gallery.Title = title;
 
-
+            await _art.UpdateGallery(gallery);
 
             GalleryToggle = new GalleryToggle()
             {
-                ActiveGalleryAdmin = true,
-                StayCollapsed = true
+                ActiveGalleryAdmin = true
             };
 
             Galleries = await _art.GetGalleries();
@@ -145,14 +164,22 @@ namespace Portfolio.Pages.Art
         }
     }
 
-
+    /// <summary>
+    /// Gallery toggle properties
+    /// </summary>
     public class GalleryToggle
     {
+        // gallery id from form
         public int GalleryId { get; set; }
+        // bool from form used to toggle gallery display
         public bool Display { get; set; }
+        // image id from form
         public int ImageId { get; set; }
+        // bool that is toggled to keep admin window open on refresh
         public bool ActiveGalleryAdmin { get; set; }
+        // gallery id of active gallery when images are edited to reopen in place on refresh
         public int ActiveGalleryId { get; set; }
+        // bool to decide whether or not to keep the galleries collapsed on reload
         public bool StayCollapsed { get; set; }
     }
 }
