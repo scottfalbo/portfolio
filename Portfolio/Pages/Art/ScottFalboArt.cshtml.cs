@@ -96,10 +96,7 @@ namespace Portfolio.Pages.Art
                 }
             }
 
-            PageToggles = new PageToggles()
-            {
-                ActiveGalleryAdmin = true
-            };
+            PageToggles.ActiveGalleryAdmin = true;
 
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
@@ -117,10 +114,7 @@ namespace Portfolio.Pages.Art
             await _art.RemoveImageFromGallery(PageToggles.GalleryId, PageToggles.ImageId);
             await _art.DeleteImage(PageToggles.ImageId);
 
-            PageToggles = new PageToggles()
-            {
-                ActiveGalleryAdmin = true
-            };
+            PageToggles.ActiveGalleryAdmin = true;
 
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
@@ -135,11 +129,8 @@ namespace Portfolio.Pages.Art
         /// <param name="title"> new gallery title from input form </param>
         public async Task OnPostNewGallery(string title)
         {
-            PageToggles = new PageToggles()
-            {
-                ActiveGalleryAdmin = true,
-                StayCollapsed = true
-            };
+            PageToggles.ActiveGalleryAdmin = true;
+            PageToggles.StayCollapsed = true;
 
             if (!await _art.CheckGalleryTitle(title))
                 await _art.CreateGallery(title);
@@ -160,11 +151,8 @@ namespace Portfolio.Pages.Art
         {
             await _art.DeleteGallery(id);
 
-            PageToggles = new PageToggles()
-            {
-                ActiveGalleryAdmin = true,
-                StayCollapsed = true
-            };
+            PageToggles.ActiveGalleryAdmin = true;
+            PageToggles.StayCollapsed = true;
 
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
@@ -178,17 +166,18 @@ namespace Portfolio.Pages.Art
         /// <param name="title"> title from form </param>
         public async Task OnPostUpdateGallery(string title)
         {
+            PageToggles.ActiveGalleryAdmin = true;
+
             Gallery gallery = await _art.GetGallery(PageToggles.GalleryId);
-            gallery.Display = PageToggles.Display;
-            gallery.Title = title;
 
-            await _art.UpdateGallery(gallery);
-
-            PageToggles = new PageToggles()
+            if (!await _art.CheckGalleryTitle(title))
             {
-                ActiveGalleryAdmin = true
-            };
-
+                gallery.Title = title;
+            }
+            
+            gallery.Display = PageToggles.Display;
+            await _art.UpdateGallery(gallery);
+            
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
 

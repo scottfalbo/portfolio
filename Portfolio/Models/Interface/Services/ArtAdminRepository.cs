@@ -212,6 +212,7 @@ namespace Portfolio.Models.Interface.Services
         /// <param name="gallery"> Gallery() object </param>
         public async Task UpdateGallery(Gallery gallery)
         {
+            gallery = GalleryAccordionIds(gallery);
             _context.Entry(gallery).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
@@ -235,6 +236,11 @@ namespace Portfolio.Models.Interface.Services
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Checks if a gallery title already exists
+        /// </summary>
+        /// <param name="title"> gallery title </param>
+        /// <returns> true if exists </returns>
         public async Task<bool> CheckGalleryTitle(string title)
         {
             Gallery gallery = await _context.Galleries
