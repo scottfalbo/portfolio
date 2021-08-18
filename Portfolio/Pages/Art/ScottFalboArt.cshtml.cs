@@ -87,13 +87,15 @@ namespace Portfolio.Pages.Art
         /// <returns></returns>
         public async Task OnPostAddImages(IFormFile[] files)
         {
+            Image image = new Image();
             foreach (var file in files)
             {
                 if (file != null)
-                    await _upload.AddArtImage(file);
+                {
+                    image = await _upload.AddArtImage(file);
+                    await _art.AddImageToGallery(GalleryToggle.GalleryId, image.Id);
+                }
             }
-
-            // add to gallery
 
             GalleryToggle = new GalleryToggle()
             {

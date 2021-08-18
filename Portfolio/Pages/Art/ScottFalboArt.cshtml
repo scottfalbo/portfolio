@@ -165,7 +165,8 @@
                                 <form asp-page-handler="AddImages" method="post" enctype="multipart/form-data">
                                     <label>
                                         <input name="files" type="file" multiple="multiple" accept="image/*" />
-                                        <input type="submit" value="Add Tattoo" />
+                                        <input type="hidden" asp-for="GalleryToggle.GalleryId" value="@gallery.Id" />
+                                        <input type="submit" value="Add Image" />
                                     </label>
                                 </form>
                             </section>

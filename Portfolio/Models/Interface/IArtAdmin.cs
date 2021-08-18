@@ -10,7 +10,7 @@ namespace Portfolio.Models.Interface
         /// <summary>
         /// Images CRUD
         /// </summary>
-        public Task CreateImage(Image tattoo);
+        public Task<Image> CreateImage(Image tattoo);
         public Task<Image> GetImage(int id);
         public Task<List<Image>> GetImages();
         public Task UpdateImage(Image tattoo);

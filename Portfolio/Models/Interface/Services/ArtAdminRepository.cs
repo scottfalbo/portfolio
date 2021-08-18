@@ -27,7 +27,7 @@ namespace Portfolio.Models.Interface.Services
         /// Instantiate a new Image() object and save it to the database
         /// </summary>
         /// <param name="image"> new Image object </param>
-        public async Task CreateImage(Image image)
+        public async Task<Image> CreateImage(Image image)
         {
             Image newImage = new Image()
             {
@@ -38,6 +38,8 @@ namespace Portfolio.Models.Interface.Services
             };
             _context.Entry(newImage).State = EntityState.Added;
             await _context.SaveChangesAsync();
+
+            return newImage;
         }
 
         /// <summary>
@@ -129,9 +131,6 @@ namespace Portfolio.Models.Interface.Services
 
             _context.Entry(newGallery).State = EntityState.Added;
             await _context.SaveChangesAsync();
-
-            var temp = newGallery.Id;
-            Console.WriteLine("");
         }
         /// <summary>
         /// Helper method to auto assign a gallery order of last to new galleries

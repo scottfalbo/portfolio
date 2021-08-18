@@ -76,7 +76,7 @@ namespace Portfolio.Models.Interface.Services
         /// Create a new Tattoo object with new image and save to database
         /// </summary>
         /// <param name="file"> input file </param>
-        public async Task AddArtImage(IFormFile file)
+        public async Task<Image> AddArtImage(IFormFile file)
         {
             BlobClient blob = await UploadImage(file);
 
@@ -88,7 +88,7 @@ namespace Portfolio.Models.Interface.Services
                 ThumbFileName = file.FileName,
                 Order = 0
             };
-            await _artAdmin.CreateImage(image);
+            return await _artAdmin.CreateImage(image);
         }
 
         /// <summary>
