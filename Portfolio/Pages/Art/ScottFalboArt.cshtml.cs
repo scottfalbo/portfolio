@@ -27,15 +27,14 @@ namespace Portfolio.Pages.Art
         public List<Gallery> Galleries { get; set; }
 
         [BindProperty]
-        public GalleryToggle GalleryToggle { get; set; }
+        public PageToggles PageToggles { get; set; }
 
         public async Task OnGet()
         {
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
-            GalleryToggle = new GalleryToggle()
+            PageToggles = new PageToggles()
             {
-                ActiveGalleryId = 0,
                 StayCollapsed = true
             };
         }
@@ -93,11 +92,11 @@ namespace Portfolio.Pages.Art
                 if (file != null)
                 {
                     image = await _upload.AddArtImage(file);
-                    await _art.AddImageToGallery(GalleryToggle.GalleryId, image.Id);
+                    await _art.AddImageToGallery(PageToggles.GalleryId, image.Id);
                 }
             }
 
-            GalleryToggle = new GalleryToggle()
+            PageToggles = new PageToggles()
             {
                 ActiveGalleryAdmin = true
             };
@@ -115,10 +114,10 @@ namespace Portfolio.Pages.Art
         /// </summary>
         public async Task OnPostDeleteImage()
         {
-            await _art.RemoveImageFromGallery(GalleryToggle.GalleryId, GalleryToggle.ImageId);
-            await _art.DeleteImage(GalleryToggle.ImageId);
+            await _art.RemoveImageFromGallery(PageToggles.GalleryId, PageToggles.ImageId);
+            await _art.DeleteImage(PageToggles.ImageId);
 
-            GalleryToggle = new GalleryToggle()
+            PageToggles = new PageToggles()
             {
                 ActiveGalleryAdmin = true
             };
@@ -136,13 +135,16 @@ namespace Portfolio.Pages.Art
         /// <param name="title"> new gallery title from input form </param>
         public async Task OnPostNewGallery(string title)
         {
-            await _art.CreateGallery(title);
-
-            GalleryToggle = new GalleryToggle()
+            PageToggles = new PageToggles()
             {
                 ActiveGalleryAdmin = true,
                 StayCollapsed = true
             };
+
+            if (!await _art.CheckGalleryTitle(title))
+                await _art.CreateGallery(title);
+            else
+                PageToggles.RepeatGalleryTitle = true;
 
             Galleries = await _art.GetGalleries();
             HomePage = await _admin.GetHomePage("Tattoo");
@@ -158,7 +160,7 @@ namespace Portfolio.Pages.Art
         {
             await _art.DeleteGallery(id);
 
-            GalleryToggle = new GalleryToggle()
+            PageToggles = new PageToggles()
             {
                 ActiveGalleryAdmin = true,
                 StayCollapsed = true
@@ -176,13 +178,13 @@ namespace Portfolio.Pages.Art
         /// <param name="title"> title from form </param>
         public async Task OnPostUpdateGallery(string title)
         {
-            Gallery gallery = await _art.GetGallery(GalleryToggle.GalleryId);
-            gallery.Display = GalleryToggle.Display;
+            Gallery gallery = await _art.GetGallery(PageToggles.GalleryId);
+            gallery.Display = PageToggles.Display;
             gallery.Title = title;
 
             await _art.UpdateGallery(gallery);
 
-            GalleryToggle = new GalleryToggle()
+            PageToggles = new PageToggles()
             {
                 ActiveGalleryAdmin = true
             };
@@ -197,7 +199,7 @@ namespace Portfolio.Pages.Art
     /// <summary>
     /// Gallery toggle properties
     /// </summary>
-    public class GalleryToggle
+    public class PageToggles
     {
         // gallery id from form
         public int GalleryId { get; set; }
@@ -211,5 +213,7 @@ namespace Portfolio.Pages.Art
         public int ActiveGalleryId { get; set; }
         // bool to decide whether or not to keep the galleries collapsed on reload
         public bool StayCollapsed { get; set; }
+        // bool to throw warning popup if a gallery title is repeated
+        public bool RepeatGalleryTitle { get; set; }
     }
 }

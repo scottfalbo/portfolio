@@ -235,6 +235,26 @@ namespace Portfolio.Models.Interface.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task<bool> CheckGalleryTitle(string title)
+        {
+            Gallery gallery = await _context.Galleries
+                .Where(x => x.Title == title)
+                .Select(y => new Gallery
+                {
+                    Id = y.Id,
+                    Title = y.Title,
+                    Display = y.Display,
+                    Order = y.Order,
+                    AccordionId = y.AccordionId,
+                    CollapseId = y.CollapseId,
+                    AdminAccordionId = y.AdminAccordionId,
+                    AdminCollapseId = y.AdminCollapseId,
+                    GalleryImages = y.GalleryImages
+                }).FirstOrDefaultAsync();
+
+            return gallery != null ? true : false;
+        }
+
         /// <summary>
         /// Add an image to a gallery using the GalleryImage join table
         /// </summary>

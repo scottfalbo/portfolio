@@ -47,7 +47,7 @@
                                 <div class="card-body">
                                     @foreach (var image in gallery.GalleryImages)
                                     {
-                                        <img src="@image.Image.ImageURL" class="temp-image"/>
+                                        <img src="@image.Image.ImageURL" class="temp-image" />
                                     }
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
         </figure>
     </div>
     @if (User.Identity.IsAuthenticated)
-    {
+    { 
         <partial name="_PopupToggle" />
     }
 </div>
@@ -113,7 +113,7 @@
 </div>
 </div>
 </div>
-<div class="fullscreen gallery-module-outer @(Model.GalleryToggle.ActiveGalleryAdmin ? "" : "hide-me")">
+<div class="fullscreen gallery-module-outer @(Model.PageToggles.ActiveGalleryAdmin ? "" : "hide-me")">
 <div class="popup-module-inner">
 <div class="admin-module">
     <section class="gallery-admin-images">
@@ -145,7 +145,7 @@
                         </div>
                     </div>
                     <!-- Card body -->
-                    <div id="@gallery.AdminCollapseId" class="@(gallery.Order == Model.GalleryToggle.ActiveGalleryId && !Model.GalleryToggle.StayCollapsed ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordionId"
+                    <div id="@gallery.AdminCollapseId" class="@(gallery.Order == Model.PageToggles.ActiveGalleryId && !Model.PageToggles.StayCollapsed ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AdminAccordionId"
                             data-parent="#accordionExAdmin">
                         <div class="card-body">
                             <section>
@@ -154,9 +154,9 @@
                                         <input type="text" name="title" value="@gallery.Title" placeholder="@gallery.Title"/>
                                         <label class="gallery-checkbox">
                                             Display
-                                            <input type="checkbox" asp-for="GalleryToggle.Display" checked="@(gallery.Display)">
+                                            <input type="checkbox" asp-for="PageToggles.Display" checked="@(gallery.Display)">
                                         </label>
-                                        <input type="hidden" asp-for="GalleryToggle.GalleryId" value="@gallery.Id" />
+                                        <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
                                         <input type="submit" value="o" class="accordion-button" />
                                     </form>
                                 </div>
@@ -165,7 +165,7 @@
                                 <form asp-page-handler="AddImages" method="post" enctype="multipart/form-data">
                                     <label>
                                         <input name="files" type="file" multiple="multiple" accept="image/*" />
-                                        <input type="hidden" asp-for="GalleryToggle.GalleryId" value="@gallery.Id" />
+                                        <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
                                         <input type="submit" value="Add Image" />
                                     </label>
                                 </form>
@@ -180,9 +180,9 @@
                                     <div class="delete-image-confirm hide-me confirm-popup">
                                         delete the thing?
                                         <form asp-page-handler="DeleteImage" method="post">
-                                            <input type="hidden" asp-for="GalleryToggle.ImageId" value="@image.Image.Id" />
-                                            <input type="hidden" asp-for="GalleryToggle.GalleryId" value="@gallery.Id" />
-                                            <input type="hidden" asp-for="GalleryToggle.ActiveGalleryId" value="@gallery.Order" />
+                                            <input type="hidden" asp-for="PageToggles.ImageId" value="@image.Image.Id" />
+                                            <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
+                                            <input type="hidden" asp-for="PageToggles.ActiveGalleryId" value="@gallery.Order" />
                                             <input class="delete-confirmation site-button" type="submit" value="Confirm" />
                                         </form>
                                     </div>
@@ -198,9 +198,13 @@
     </section>
     <section>
         <form asp-page-handler="NewGallery" method="post">
-            <input type="text" name="title" class="form-control" placeholder="new gallery" />
+            <input type="text" name="title" class="form-control" placeholder="new gallery" value="New Gallery"/>
             <input class="site-button" type="submit" value="Add" />
         </form>
+        <div class="repeat-gallery-title @(Model.PageToggles.RepeatGalleryTitle ? "" : "hide-me")">
+            <p>stops copies me</p>
+            <button class="repeat-gallery-close site-button">okay</button>
+        </div>
     </section>
     <button class="module-close-button site-button">close</button>
 </div>

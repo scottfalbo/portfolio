@@ -25,6 +25,7 @@ namespace Portfolio.Models.Interface
         public Task<List<Gallery>> GetGalleries();
         public Task UpdateGallery(Gallery gallery);
         public Task DeleteGallery(int id);
+        public Task<bool> CheckGalleryTitle(string title);
 
         /// <summary>
         /// GalleryImage join table CRUD to add images to galleries.
