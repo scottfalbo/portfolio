@@ -10,7 +10,7 @@ namespace Portfolio.Models.Interface
         /// <summary>
         /// Images CRUD
         /// </summary>
-        public Task CreateImage(Image tattoo);
+        public Task<Image> CreateImage(Image tattoo);
         public Task<Image> GetImage(int id);
         public Task<List<Image>> GetImages();
         public Task UpdateImage(Image tattoo);
@@ -20,11 +20,12 @@ namespace Portfolio.Models.Interface
         /// <summary>
         /// gallery CRUD
         /// </summary>
-        public Task CreateGallery(Gallery gallery);
+        public Task CreateGallery(string title);
         public Task<Gallery> GetGallery(int id);
         public Task<List<Gallery>> GetGalleries();
         public Task UpdateGallery(Gallery gallery);
         public Task DeleteGallery(int id);
+        public Task<bool> CheckGalleryTitle(string title);
 
         /// <summary>
         /// GalleryImage join table CRUD to add images to galleries.

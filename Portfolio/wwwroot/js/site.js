@@ -1,18 +1,50 @@
 ﻿'use strict';
 
-// Open button for popup modules. 
+// Open button for admin popup modules. 
 $(function () {
-  $('.module-open-button').click(function () {
-    console.log('open please');
-      $('.popup-module-outer').removeClass('hide-me');
-  });
+    $('.open-admin').click(function () {
+        $('.popup-module-outer').removeClass('hide-me');
+    });
 });
+
+// Open button for gallery admin popup module. 
+$(function () {
+    $('.open-gallery-admin').click(function () {
+        $('.gallery-module-outer').removeClass('hide-me');
+    });
+});
+
 // Close button for popup modules. 
 $(function () {
     $('.module-close-button').click(function () {
-        $('.popup-module-outer').addClass('hide-me');
+        $('.fullscreen').addClass('hide-me');
+        $('.delete-image-confirm').addClass('hide-me');
+        $('.delete-gallery-confirmation').addClass('hide-me');
     });
 });
+
+
+// Open confirmation window to delete a gallery image
+$(function () {
+    $('.delete-gallery-image').click(function () {
+        $('.delete-image-confirm').removeClass('hide-me');
+    });
+});
+
+// Open confirmation window to delete a gallery
+$(function () {
+    $('.delete-gallery').click(function () {
+        $('.delete-gallery-confirmation').removeClass('hide-me');
+    });
+});
+
+// Close gallery title repeat popup
+$(function () {
+    $('.repeat-gallery-close').click(function () {
+        $('.repeat-gallery-title').addClass('hide-me');
+    });
+});
+
 
 // //event listener for the escape key to get to admin entrance
 $(function () {
@@ -21,14 +53,14 @@ $(function () {
             $.ajax({
                 url: '/Shared/LoggedIn',
             })
-            .done(function (result) {
-                if (result == "true") {
-                    window.location.href = "/Index";
-                }
-                else {
-                    window.location.href = "/SecretEntrance";
-                }
-            });
+                .done(function (result) {
+                    if (result == "true") {
+                        window.location.href = "/Index";
+                    }
+                    else {
+                        window.location.href = "/SecretEntrance";
+                    }
+                });
         }
     });
 });
@@ -112,7 +144,7 @@ $(function () {
 // function initMap() {
 
 //     var myAddress = new google.maps.LatLng(47.660103768145014, -122.35032563073302);
- 
+
 //     var mapOptions = {
 //         center: myAddress,
 //         zoom: 10,

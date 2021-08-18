@@ -103,7 +103,7 @@ namespace Portfolio.Pages.Admin
             if (file != null)
             {
                 await _adminContext.DeleteBlobImage(Project.FileName);
-                await _uploadService.UpdateImage(file, Project.Id);
+                await _uploadService.UpdateProjectImage(file, Project.Id);
             }
 
             return Redirect("/Admin/ProjectLair");

@@ -110,7 +110,7 @@ main {
 
 /*  ------------------------------------ Popup Module */
 
-.popup-module-outer {
+.fullscreen {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -144,7 +144,7 @@ main {
   height: 0px;
 }
 
-.admin-module input::before {
+/* .admin-module input::before {
   outline: none;
   border: 1px solid #9fff3d;
   content: 'Select File';
@@ -156,7 +156,7 @@ main {
   color: #b6ff00;
   cursor: pointer;
   font-family: 'Jura', sans-serif;
-}
+} */
 
 .admin-module input:hover::before {
   border: 2px solid #f19f24;
@@ -224,7 +224,7 @@ footer {
 
 .footer ul li {
   color: rgb(64, 255, 230);
-  opacity: .6;
+  opacity: .9;
   padding: 5px 0;
 
 }
@@ -263,3 +263,12 @@ i.fas.fa-angle-down.rotate-icon {
 /* DeskTop | Large Displays */
 
 @media screen and (min-width: 1025px) {}
+
+
+.right-col img.temp-image {
+  width: 80px;
+}
+
+.temp-image {
+  width: 80px;
+}

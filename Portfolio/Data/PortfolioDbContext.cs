@@ -122,28 +122,34 @@ namespace Portfolio.Data
                 { 
                     Id = 1,
                     Title = "Gallery One",
-                    AccordianId = "galleryone",
+                    AccordionId = "galleryone",
                     Display = true,
                     Order = 0,
-                    CollapseId = "galleryone1"
+                    CollapseId = "galleryone1",
+                    AdminAccordionId = "galleryoneadmin",
+                    AdminCollapseId = "galleryone1admin"
                 },
                 new Gallery
                 {
                     Id = 2,
                     Title = "Gallery Two",
-                    AccordianId = "gallerytwo",
+                    AccordionId = "gallerytwo",
                     Display = true,
                     Order = 1,
-                    CollapseId = "gallerytwo2"
+                    CollapseId = "gallerytwo2",
+                    AdminAccordionId = "gallerytwoadmin",
+                    AdminCollapseId = "gallerytwo2admin"
                 },
                 new Gallery
                 {
                     Id = 3,
                     Title = "Gallery Three",
-                    AccordianId = "gallerythree",
+                    AccordionId = "gallerythree",
                     Display = true,
                     Order = 2,
-                    CollapseId = "gallerythree3"
+                    CollapseId = "gallerythree3",
+                    AdminAccordionId = "gallerythreeadmin",
+                    AdminCollapseId = "gallerythree3admin"
                 }
             );
 

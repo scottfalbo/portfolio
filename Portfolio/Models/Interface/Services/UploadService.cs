@@ -76,35 +76,19 @@ namespace Portfolio.Models.Interface.Services
         /// Create a new Tattoo object with new image and save to database
         /// </summary>
         /// <param name="file"> input file </param>
-        public async Task AddTattooImage(IFormFile file)
+        public async Task<Image> AddArtImage(IFormFile file)
         {
             BlobClient blob = await UploadImage(file);
 
-            Image newTattoo = new Image()
+            Image image = new Image()
             {
                 ImageURL = blob.Uri.ToString(),
                 FileName = file.FileName,
+                ThumbURL = blob.Uri.ToString(),
+                ThumbFileName = file.FileName,
                 Order = 0
             };
-            await _artAdmin.CreateImage(newTattoo);
-        }
-
-        /// <summary>
-        /// Upload and image to azure storage
-        /// Create a new Drawing object with new image and save to database
-        /// </summary>
-        /// <param name="file"> input file </param>
-        public async Task AddDrawingImage(IFormFile file)
-        {
-            BlobClient blob = await UploadImage(file);
-
-            Image newDrawing = new Image()
-            {
-                ImageURL = blob.Uri.ToString(),
-                FileName = file.FileName,
-                Order = 0,
-            };
-            await _artAdmin.CreateImage(newDrawing);
+            return await _artAdmin.CreateImage(image);
         }
 
         /// <summary>
@@ -113,7 +97,7 @@ namespace Portfolio.Models.Interface.Services
         /// <param name="file"> input file </param>
         /// <param name="id"> project id </param>
         /// <returns> no return </returns>
-        public async Task UpdateImage(IFormFile file, int id)
+        public async Task UpdateProjectImage(IFormFile file, int id)
         {
             Project project = await _context.Projects.FindAsync(id);
             BlobClient blob = await UploadImage(file);
@@ -127,7 +111,7 @@ namespace Portfolio.Models.Interface.Services
         /// </summary>
         /// <param name="file"> input file </param>
         /// <param name="id"> tattoo id </param>
-        public async Task UpdateTattooImage(IFormFile file, int id)
+        public async Task UpdateArtImage(IFormFile file, int id)
         {
             Image tattoo = await _context.Images.FindAsync(id);
             BlobClient blob = await UploadImage(file);

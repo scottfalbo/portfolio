@@ -6,6 +6,7 @@ using Portfolio.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Portfolio.Models.Interface.Services
@@ -26,7 +27,7 @@ namespace Portfolio.Models.Interface.Services
         /// Instantiate a new Image() object and save it to the database
         /// </summary>
         /// <param name="image"> new Image object </param>
-        public async Task CreateImage(Image image)
+        public async Task<Image> CreateImage(Image image)
         {
             Image newImage = new Image()
             {
@@ -37,6 +38,8 @@ namespace Portfolio.Models.Interface.Services
             };
             _context.Entry(newImage).State = EntityState.Added;
             await _context.SaveChangesAsync();
+
+            return newImage;
         }
 
         /// <summary>
@@ -116,31 +119,43 @@ namespace Portfolio.Models.Interface.Services
         /// </summary>
         /// <param name="gallery"></param>
         /// <returns></returns>
-        public async Task CreateGallery(Gallery gallery)
+        public async Task CreateGallery(string title)
         {
             Gallery newGallery = new Gallery()
             {
-                Title = gallery.Title,
-                Display = false,
-                Order = gallery.Order
+                Title = title,
+                Display = false
             };
+            newGallery.Order = await GalleryOrder();
+            newGallery = GalleryAccordionIds(newGallery);
+
             _context.Entry(newGallery).State = EntityState.Added;
             await _context.SaveChangesAsync();
-            await GalleryCollapseId(gallery);
         }
-        // Helper method to add a CollapseId to the gallery for use with bootstrap accordian
-        private async Task GalleryCollapseId(Gallery gallery)
+        /// <summary>
+        /// Helper method to auto assign a gallery order of last to new galleries
+        /// </summary>
+        /// <returns> list<galleries>.Count + 1 </galleries> </returns>
+        private async Task<int> GalleryOrder()
         {
-            Gallery newGallery = await _context.Galleries
-                .Where(x => gallery.Title == x.Title)
-                .Select(y => new Gallery
-                {
-                    Id = y.Id,
-                    Title = y.Title,
-                    CollapseId = $"{y.Title}{y.Id}",
-                    Display = y.Display,
-                    Order = y.Order
-                }).FirstOrDefaultAsync();
+            var galleries = await GetGalleries();
+            return galleries.Count + 1;
+        }
+        /// <summary>
+        /// Helper method to normalize the input title and use it for class identification with bootstrap accordion.
+        /// </summary>
+        /// <param name="gallery"> new gallery object </param>
+        /// <returns> updated gallery object </returns>
+        private Gallery GalleryAccordionIds(Gallery gallery)
+        {
+            string str = (Regex.Replace(gallery.Title, @"\s+", String.Empty)).ToLower();
+
+            gallery.AccordionId = str;
+            gallery.CollapseId = $"{str}{gallery.Id}";
+            gallery.AdminAccordionId = $"{str}admin";
+            gallery.AdminCollapseId = $"{str}{gallery.Id}admin";
+
+            return gallery;
         }
 
         /// <summary>
@@ -160,8 +175,10 @@ namespace Portfolio.Models.Interface.Services
                     Title = y.Title,
                     Display = y.Display,
                     Order = y.Order,
-                    AccordianId = y.AccordianId,
+                    AccordionId = y.AccordionId,
                     CollapseId = y.CollapseId,
+                    AdminAccordionId = y.AdminAccordionId,
+                    AdminCollapseId = y.AdminCollapseId,
                     GalleryImages = y.GalleryImages
                 }).FirstOrDefaultAsync();
         }
@@ -181,8 +198,10 @@ namespace Portfolio.Models.Interface.Services
                     Title = y.Title,
                     Display = y.Display,
                     Order = y.Order,
-                    AccordianId = y.AccordianId,
+                    AccordionId = y.AccordionId,
                     CollapseId = y.CollapseId,
+                    AdminAccordionId = y.AdminAccordionId,
+                    AdminCollapseId = y.AdminCollapseId,
                     GalleryImages = y.GalleryImages
                 }).ToListAsync();
         }
@@ -193,6 +212,7 @@ namespace Portfolio.Models.Interface.Services
         /// <param name="gallery"> Gallery() object </param>
         public async Task UpdateGallery(Gallery gallery)
         {
+            gallery = GalleryAccordionIds(gallery);
             _context.Entry(gallery).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
@@ -214,6 +234,31 @@ namespace Portfolio.Models.Interface.Services
                 await DeleteImage(image);
             _context.Entry(gallery).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Checks if a gallery title already exists
+        /// </summary>
+        /// <param name="title"> gallery title </param>
+        /// <returns> true if exists </returns>
+        public async Task<bool> CheckGalleryTitle(string title)
+        {
+            Gallery gallery = await _context.Galleries
+                .Where(x => x.Title == title)
+                .Select(y => new Gallery
+                {
+                    Id = y.Id,
+                    Title = y.Title,
+                    Display = y.Display,
+                    Order = y.Order,
+                    AccordionId = y.AccordionId,
+                    CollapseId = y.CollapseId,
+                    AdminAccordionId = y.AdminAccordionId,
+                    AdminCollapseId = y.AdminCollapseId,
+                    GalleryImages = y.GalleryImages
+                }).FirstOrDefaultAsync();
+
+            return gallery != null ? true : false;
         }
 
         /// <summary>
