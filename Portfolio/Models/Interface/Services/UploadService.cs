@@ -85,7 +85,7 @@ namespace Portfolio.Models.Interface.Services
                 ImageURL = blob.Uri.ToString(),
                 FileName = file.FileName,
                 ThumbURL = blob.Uri.ToString(),
-                ThumbFileName = file.FileName,
+                ThumbFileName = $"{file.FileName}_thumb",
                 Order = 0
             };
             return await _artAdmin.CreateImage(image);

@@ -14,5 +14,7 @@ Refactoring the overall structure of the site while adding new content and secti
   + Added admin CRUD to the art page for main page info.
 + 8/16/2021
   + Added edit button and popup module for gallery admin.
++ 8/17/2021
+  + Built out all gallery admin CRUD methods and forms.
 
 [Back to README](README.md#refactor-development-log)
