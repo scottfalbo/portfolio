@@ -54,6 +54,7 @@ namespace Portfolio
                 options.UseSqlServer(connectionString);
             });
 
+
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 //options go here

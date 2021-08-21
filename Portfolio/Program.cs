@@ -23,6 +23,7 @@ namespace Portfolio
             var host = CreateHostBuilder(args).Build();
             UpdateDatabase(host.Services);
             host.Run();
+            //CreateHostBuilder(args).Build().Run();
         }
 
         private static void UpdateDatabase(IServiceProvider services)
@@ -49,6 +50,11 @@ namespace Portfolio
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+            .ConfigureServices(
+                (hostContext, services) =>
+                {
+
                 });
         private static string GetKeyVaultEndpoint() => "https://falboportfoliovaultkey.vault.azure.net/";
     }

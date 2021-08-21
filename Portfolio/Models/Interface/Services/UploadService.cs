@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SixLabors.ImageSharp;
 
 namespace Portfolio.Models.Interface.Services
 {
@@ -78,17 +79,38 @@ namespace Portfolio.Models.Interface.Services
         /// <param name="file"> input file </param>
         public async Task<Image> AddArtImage(IFormFile file)
         {
+            //resize if over 1900
             BlobClient blob = await UploadImage(file);
+
+            //make thumbnail
+            BlobClient thumb = await UploadImage(file);
 
             Image image = new Image()
             {
                 ImageURL = blob.Uri.ToString(),
                 FileName = file.FileName,
-                ThumbURL = blob.Uri.ToString(),
+                ThumbURL = thumb.Uri.ToString(),
                 ThumbFileName = $"{file.FileName}_thumb",
                 Order = 0
             };
             return await _artAdmin.CreateImage(image);
+        }
+
+        private IFormFile ResizeImage(IFormFile file, int n)
+        {
+            using var image = SixLabors.ImageSharp.Image.Load(file.OpenReadStream());
+            if (n == 1900 && image.Height > 1900)
+            {
+                int width = FindWidth(image.Width, image.Height, n);
+            }
+            return file;
+        }
+
+        private int FindWidth (int width, int height, int n)
+        {
+            float ratio = height / n;
+            int newWidth = Convert.ToInt32(width / ratio);
+            return newWidth;
         }
 
         /// <summary>
@@ -104,20 +126,6 @@ namespace Portfolio.Models.Interface.Services
             project.SourceURL = blob.Uri.ToString();
             project.FileName = file.FileName;
             await _admin.UpdateProject(project);
-        }
-
-        /// <summary>
-        /// Updates a tattoos ImageUrl to newly uploaded image
-        /// </summary>
-        /// <param name="file"> input file </param>
-        /// <param name="id"> tattoo id </param>
-        public async Task UpdateArtImage(IFormFile file, int id)
-        {
-            Image tattoo = await _context.Images.FindAsync(id);
-            BlobClient blob = await UploadImage(file);
-            tattoo.ImageURL = blob.Uri.ToString();
-            tattoo.FileName = file.FileName;
-            await _artAdmin.UpdateImage(tattoo);
         }
 
         /// <summary>

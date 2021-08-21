@@ -7,5 +7,6 @@ namespace Portfolio.SecretGame.Models.Interfaces.Services
 {
     public class GameMasterServices : IGameMaster
     {
+
     }
 }

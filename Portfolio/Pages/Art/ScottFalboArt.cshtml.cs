@@ -96,6 +96,8 @@ namespace Portfolio.Pages.Art
                 }
             }
 
+           
+
             PageToggles.ActiveGalleryAdmin = true;
 
             Galleries = await _art.GetGalleries();
