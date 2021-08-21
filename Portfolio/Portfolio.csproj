@@ -64,6 +64,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Shared\Code\SecretGame\" />
     <Folder Include="wwwroot\css\secretgame\" />
   </ItemGroup>
 
