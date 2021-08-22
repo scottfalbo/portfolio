@@ -18,5 +18,6 @@ Refactoring the overall structure of the site while adding new content and secti
   + Built out all gallery admin CRUD methods and forms.
 + 8/21/2021
   + `Install-Package SixLabors.ImageSharp -IncludePrerelease`
+  + `System.Drawing.Common`
 
 [Back to README](README.md#refactor-development-log)

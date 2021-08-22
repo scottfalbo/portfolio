@@ -8,6 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Portfolio.Models.Interface.Services
 {
@@ -53,6 +57,31 @@ namespace Portfolio.Models.Interface.Services
         }
 
         /// <summary>
+        /// Overload method for uploading resized images that are already Streams
+        /// </summary>
+        /// <param name="file"> IFormFile file </param>
+        /// <param name="stream"> Stream stream </param>
+        /// <returns> BlobClient blob </returns>
+        public async Task<BlobClient> UploadImage(Stream stream, string filename, string contentType)
+        {
+            BlobContainerClient container = new BlobContainerClient(Configuration["ImageBlob"], "images");
+
+            await container.CreateIfNotExistsAsync();
+
+            BlobClient blob = container.GetBlobClient(filename);
+
+            BlobUploadOptions options = new BlobUploadOptions()
+            {
+                HttpHeaders = new BlobHttpHeaders() { ContentType = contentType }
+            };
+
+            if (!blob.Exists())
+                await blob.UploadAsync(stream, options);
+
+            return blob;
+        }
+
+        /// <summary>
         /// Upload an image and create a new project
         /// </summary>
         /// <param name="file"> input file </param>
@@ -79,11 +108,11 @@ namespace Portfolio.Models.Interface.Services
         /// <param name="file"> input file </param>
         public async Task<Image> AddArtImage(IFormFile file)
         {
-            //resize if over 1900
-            BlobClient blob = await UploadImage(file);
+            Stream stream = ResizeImage(file, 1900);
+            BlobClient blob = await UploadImage(stream, file.FileName, file.ContentType);
 
-            //make thumbnail
-            BlobClient thumb = await UploadImage(file);
+            Stream thumbStream = ResizeImage(file, 80);
+            BlobClient thumb = await UploadImage(thumbStream, $"{file.FileName}_thumb", file.ContentType);
 
             Image image = new Image()
             {
@@ -96,20 +125,31 @@ namespace Portfolio.Models.Interface.Services
             return await _artAdmin.CreateImage(image);
         }
 
-        private IFormFile ResizeImage(IFormFile file, int n)
+        private Stream ResizeImage(IFormFile file, int n)
         {
             using var image = SixLabors.ImageSharp.Image.Load(file.OpenReadStream());
+            var stream = new MemoryStream();
+
             if (n == 1900 && image.Height > 1900)
             {
                 int width = FindWidth(image.Width, image.Height, n);
+                image.Mutate(x => x.Resize(width, n));
+                image.SaveAsJpeg(stream);
             }
-            return file;
+            if (n == 80 && image.Height > 80)
+            {
+                int width = FindWidth(image.Width, image.Height, n);
+                image.Mutate(x => x.Resize(width, n));
+                image.SaveAsJpeg(stream);
+            }
+            stream.Position = 0;
+            return stream;
         }
 
         private int FindWidth (int width, int height, int n)
         {
-            float ratio = height / n;
-            int newWidth = Convert.ToInt32(width / ratio);
+            float ratio = (float)height / (float)n;
+            int newWidth = Convert.ToInt32((float)width / ratio);
             return newWidth;
         }
 
