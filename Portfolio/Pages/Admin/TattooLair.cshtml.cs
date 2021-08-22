@@ -88,7 +88,7 @@ namespace Portfolio.Pages.Admin
             if (file != null)
             {
                 await _adminContext.DeleteBlobImage(Tattoo.FileName);
-                await _uploadService.UpdateArtImage(file, Tattoo.Id);
+               // await _uploadService.UpdateArtImage(file, Tattoo.Id);
             }
 
             return Redirect("/Admin/TattooLair");

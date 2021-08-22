@@ -92,9 +92,11 @@ namespace Portfolio.Pages.Art
                 if (file != null)
                 {
                     image = await _upload.AddArtImage(file);
-                    await _art.AddImageToGallery(PageToggles.GalleryId, image.Id);
+                    //await _art.AddImageToGallery(PageToggles.GalleryId, image.Id);
                 }
             }
+
+           
 
             PageToggles.ActiveGalleryAdmin = true;
 

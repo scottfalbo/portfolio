@@ -20,10 +20,13 @@ using Portfolio.Models.Interface;
 using Portfolio.Models.Interface.Services;
 using Portfolio.Models.Interfaces;
 using Portfolio.Models.Interfaces.Services;
+using Portfolio.SecretGame.Models.Interfaces;
+using Portfolio.SecretGame.Models.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace Portfolio
 {
@@ -39,6 +42,7 @@ namespace Portfolio
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddRazorPages(options =>
             {
                 //options go here
@@ -49,6 +53,7 @@ namespace Portfolio
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
+
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
@@ -76,6 +81,7 @@ namespace Portfolio
             services.AddTransient<IArtAdmin, ArtAdminRepository>();
             services.AddTransient<IUploadService, UploadService>();
             services.AddTransient<IEmail, SendGridEmail>();
+            services.AddTransient<IGameMaster, GameMasterServices>();
 
             services.AddAzureClients(builder =>
             {
@@ -97,7 +103,8 @@ namespace Portfolio
                 app.UseHsts();
             }
 
-        app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
