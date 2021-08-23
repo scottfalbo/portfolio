@@ -125,6 +125,14 @@ namespace Portfolio.Models.Interface.Services
             return await _artAdmin.CreateImage(image);
         }
 
+        /// <summary>
+        /// Create Image object from the upload file.
+        /// Resize for max gallery height or thumbnail based on n parameter.
+        /// Save the updated Image to a Stream for upload to blob.
+        /// </summary>
+        /// <param name="file"> IFormFile from form </param>
+        /// <param name="n"> height </param>
+        /// <returns> Steam of resized Image </returns>
         private Stream ResizeImage(IFormFile file, int n)
         {
             using var image = SixLabors.ImageSharp.Image.Load(file.OpenReadStream());
@@ -134,18 +142,40 @@ namespace Portfolio.Models.Interface.Services
             {
                 int width = FindWidth(image.Width, image.Height, n);
                 image.Mutate(x => x.Resize(width, n));
-                image.SaveAsJpeg(stream);
             }
             if (n == 80 && image.Height > 80)
             {
                 int width = FindWidth(image.Width, image.Height, n);
                 image.Mutate(x => x.Resize(width, n));
-                image.SaveAsJpeg(stream);
+            }
+            switch (file.ContentType)
+            {
+                case "image/jpeg":
+                    image.SaveAsJpeg(stream);
+                    break;
+                case "image/png":
+                    image.SaveAsPng(stream);
+                    break;
+                case "image/bmp":
+                    image.SaveAsBmp(stream);
+                    break;
+                case "image/gif":
+                    image.SaveAsGif(stream);
+                    break;
+                default:
+                    throw new Exception("invalud file type");
             }
             stream.Position = 0;
             return stream;
         }
 
+        /// <summary>
+        /// Helper function to find width relative to new height.
+        /// </summary>
+        /// <param name="width"> image width </param>
+        /// <param name="height"> image height </param>
+        /// <param name="n"> new height </param>
+        /// <returns> int new width </returns>
         private int FindWidth (int width, int height, int n)
         {
             float ratio = (float)height / (float)n;
