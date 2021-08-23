@@ -64,7 +64,15 @@ $(function () {
     });
 });
 
-// Close button for gallery viewer popups
+// Open button (thumbnail) for each galleries respective viewer.
+// Each gallery uses a unique class generated from the gallery title.
+function openGallery(gallery) {
+    var galleryId = $(gallery).data('gallery-id');
+    console.log(galleryId);
+    $('.' + galleryId).removeClass('hide-me');
+}
+
+// Close button for gallery viewer.
 $(function () {
     $('.close-gallery').click(function () {
         $('.image-gallery').addClass('hide-me');

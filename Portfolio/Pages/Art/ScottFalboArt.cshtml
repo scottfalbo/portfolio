@@ -49,7 +49,7 @@
                                             <div class="thumb-container">
                                                 @foreach (var image in gallery.GalleryImages)
                                                 {
-                                                    <a href="#Gallery-Control" role="button" data-slide-to="@gallery.GalleryImages.IndexOf(image)" class="gallery-toggle">
+                                                    <a href="#Gallery-Control" role="button" data-slide-to="@gallery.GalleryImages.IndexOf(image)" class="gallery-toggle" data-gallery-id="@($"{gallery.AccordionId}-gallery")" onclick="openGallery(this)">
                                                         <figure>
                                                             <img src="@image.Image.ThumbURL" alt="@image.Image.Title" />
                                                         </figure>
@@ -57,7 +57,7 @@
                                                 }
                                             </div>
                                         </section>
-                                        <div id="gallery-switch" class="image-gallery hide-me">
+                                        <div id="gallery-switch" class="image-gallery hide-me @($"{gallery.AccordionId}-gallery")">
                                             <div class="carousel-inner">
                                                 @foreach (var image in gallery.GalleryImages)
                                                 {

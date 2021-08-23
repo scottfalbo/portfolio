@@ -22,7 +22,9 @@ Refactoring the overall structure of the site while adding new content and secti
   + Both images are uploaded to the blob with an over loaded `UploadImage()` that takes a `Stream`.
 + 8/22/2021
   + Implemented Bootstrap carousel in the gallery accordion dropdowns in `ScottFalboArt.cshtml`.
-  + 
-
++ 8/23/2021
+  + Styled the carousels and added jQuery functions to open and close the gallery viewers.
+    + `site.js -> openGallery(gallery)` uses a unique class id created from the galleries title to open only the selected gallery.
+  + .
 
 [Back to README](README.md#refactor-development-log)
