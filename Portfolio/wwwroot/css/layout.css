@@ -37,6 +37,7 @@ header {
 /* -------------------------------------- Main */
 
 .selfie {
+    width: 100%;
     max-width: 400px;
     max-height: 250px;
 }
@@ -44,7 +45,7 @@ header {
 .module-open-button {
     width: 50px;
     height: 50px;
-    margin: 5px;
+    margin: 10px;
     float: right;
 }
 
@@ -72,31 +73,43 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 10;
 }
 
 .close-gallery {
-    cursor: pointer;
-    z-index: 1000;
+    z-index: 15;
     width: 40px;
     height: 40px;
-    border: 2px #d2ffd8 solid;
-    border-radius: 20px;
-    background-color: #121212;
-    text-align: center;
-    box-shadow: 0px 5px 5px black;
-    line-height: 20px;
-    color: #d2ffd8;
-    font-size: 30px;
-    padding: .25em .1em;
     position: absolute;
     top: 0;
     right: 0;
     margin: 10px;
 }
 
+.galleries .card-header a {
+    width: 100%;
+    display: grid;
+    grid-template-columns: min-content, 40px;
+    grid-template-rows: 40px;
+}
+
+.galleries a > h5 {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.galleries a > .gallery-header-eye {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.galleries a > .gallery-header-eye > img {
+    width: 40px;
+    height: 40px;
+}
+
 .image-thumbs{
-    width: 90%;
+    width: 100%;
     margin: 10px auto;
     padding: 10px;
     background-color: #151515;

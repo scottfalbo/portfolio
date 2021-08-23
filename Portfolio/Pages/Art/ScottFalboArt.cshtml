@@ -39,6 +39,9 @@
                                     <h5 class="mb-0">
                                         @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
                                     </h5>
+                                    <div class="gallery-header-eye">
+                                        <img src="https://via.placeholder.com/40" />
+                                    </div>
                                 </a>
                             </div>
                             <!-- Card body -->
@@ -85,9 +88,12 @@
                 }
             </div>
             <!-- Accordion wrapper -->
-            <div class="popup-toggle-button">
-                <button class="module-open-button open-gallery-admin">° ° °</button>
-            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="popup-toggle-button">
+                    <button class="module-open-button open-gallery-admin">° ° °</button>
+                </div>
+            }
         </section>
 
         <section class="mobile-menu">
@@ -203,7 +209,7 @@
                             @foreach (var image in gallery.GalleryImages)
                             {
                             <div>
-                                <img src="@image.Image.ThumbURL" class="temp-image"/>
+                                <img src="@image.Image.ThumbURL" />
                                 <button class="module-open-button delete-gallery-image">x</button>
                             </div>
                             <div class="delete-image-confirm hide-me confirm-popup">
