@@ -45,7 +45,6 @@ $(function () {
     });
 });
 
-
 // //event listener for the escape key to get to admin entrance
 $(function () {
     $('body').keyup(function (e) {
@@ -65,7 +64,12 @@ $(function () {
     });
 });
 
-
+// Close button for gallery viewer popups
+$(function () {
+    $('.close-gallery').click(function () {
+        $('.image-gallery').addClass('hide-me');
+    });
+});
 
 
 

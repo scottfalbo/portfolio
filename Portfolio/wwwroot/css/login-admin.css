@@ -1,5 +1,4 @@
-﻿
-main {
+﻿main {
     text-align: center;
     font-family: 'Jura', sans-serif;
 }
@@ -61,8 +60,7 @@ main {
     height: min-content;
 }
 
-.project-admin-card > section {
-
+.project-admin-card>section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -73,16 +71,17 @@ main {
     padding: 5px;
 }
 
-.project-admin-card > section > figure {
+.project-admin-card>section>figure {
     grid-column: 1/2;
     grid-row: 1/2;
     padding: 5px;
 }
-.project-admin-card > section > figure > img {
+
+.project-admin-card>section>figure>img {
     object-fit: contain;
 }
 
-.project-admin-card > section > form {
+.project-admin-card>section>form {
     grid-column: 2/2;
     grid-row: 1/2;
 }
@@ -91,7 +90,7 @@ main {
     width: 100%;
 }
 
-.project-admin-card > section > form > label > input {
+.project-admin-card>section>form>label>input {
     background-color: #000;
     color: #b6ff00;
     width: 60%;
@@ -154,12 +153,10 @@ main {
 /*desktop break point*/
 
 @media (min-width: 860px) {
-    .project-admin > div > section {
+    .project-admin>div>section {
         display: flex;
         flex-flow: row wrap;
     }
-
-
 }
 
 .project-admin-card h3 {
