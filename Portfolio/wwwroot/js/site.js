@@ -68,7 +68,6 @@ $(function () {
 // Each gallery uses a unique class generated from the gallery title.
 function openGallery(gallery) {
     var galleryId = $(gallery).data('gallery-id');
-    console.log(galleryId);
     $('.' + galleryId).removeClass('hide-me');
 }
 

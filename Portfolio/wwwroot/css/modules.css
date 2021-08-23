@@ -83,8 +83,6 @@ main {
 }
 
 .module-open-button {
-    width: 50px;
-    height: 50px;
     border-radius: 50%;
     border: 1px solid #ffbb00;
     background-color: #000;
@@ -125,11 +123,9 @@ main {
     margin: 15px auto;
 }
 
-/* Global Buttons */
+/* ------------------------------------- Global Buttons */
 
 .site-button {
-    width: 120px;
-    height: 50px;
     background-color: #000;
     color: rgb(0, 248, 83);
     padding: 10px;
@@ -139,25 +135,16 @@ main {
     font-family: 'Jura', sans-serif;
 }
 
-.admin-module input::-webkit-file-upload-button {
-    visibility: hidden;
-    width: 0px;
-    height: 0px;
+.admin-module input.file-selection-input::before {
+    outline: none;
+    border: 2px solid #9fff3d;
+    content: 'Select Files';
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #000;
+    color: #b6ff00;
+    cursor: pointer;
 }
-
-/* .admin-module input::before {
-  outline: none;
-  border: 1px solid #9fff3d;
-  content: 'Select File';
-  padding: 15px;
-  width: 200px;
-  height: 50px;
-  border-radius: 15px;
-  background-color: #000;
-  color: #b6ff00;
-  cursor: pointer;
-  font-family: 'Jura', sans-serif;
-} */
 
 .admin-module input:hover::before {
     border: 2px solid #f19f24;
@@ -173,7 +160,7 @@ main {
     line-height: 50px;
 }
 
-/* Footer */
+/* ------------------------------------- Footer */
 
 footer {
     font-family: 'Jura', sans-serif;

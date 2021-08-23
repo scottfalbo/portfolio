@@ -45,7 +45,7 @@
                             <div id="@gallery.CollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AccordionId" data-parent="#accordionEx">
                                 <div class="card-body">
                                     <section id="Gallery-Control" class="carousel slide" data-ride="carousel" data-interval="0">
-                                        <section class="gallery-thumbs">
+                                        <section class="image-thumbs">
                                             <div class="thumb-container">
                                                 @foreach (var image in gallery.GalleryImages)
                                                 {
@@ -113,7 +113,7 @@
         <figure><img src="@Model.HomePage.Selfie" /></figure>
         <form asp-page-handler="UpdateSelfie" method="post" enctype="multipart/form-data">
             <label>
-                <input name="file" type="file" />
+                <input name="file" type="file" class="file-selection-input"/>
                 <input type="submit" value="Update Image" class="site-button" />
                 <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
                 <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
@@ -193,7 +193,7 @@
                         <section>
                             <form asp-page-handler="AddImages" method="post" enctype="multipart/form-data">
                                 <label>
-                                    <input name="files" type="file" multiple="multiple" accept="image/*" />
+                                    <input name="files" type="file" multiple="multiple" accept="image/*" class="file-selection-input"/>
                                     <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
                                     <input type="submit" value="Add Image" />
                                 </label>
