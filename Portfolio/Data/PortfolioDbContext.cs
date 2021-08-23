@@ -161,7 +161,9 @@ namespace Portfolio.Data
                     {
                         Id = i,
                         Title = $"testimage{i}",
-                        ImageURL = "https://via.placeholder.com/80",
+                        ImageURL = "https://via.placeholder.com/700",
+                        ThumbURL = "https://via.placeholder.com/80",
+                        ThumbFileName = "blank_thumb",
                         FileName = "blank",
                         Order = i
                     });
