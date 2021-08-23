@@ -212,6 +212,30 @@ header {
     grid-row: 1/2;
 }
 
+/* Confirmation popups */
+
+.confirm-popup {
+    z-index: 15;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 230px;
+    width: 300px;
+}
+
+.confirm-popup p {
+    margin-bottom: 20px;
+}
+
+.confirm-popup .cancel-confirmation {
+    width: 100%;
+}
+
+.confirm-popup .delete-confirmation {
+    width: 100%;
+}
+
 /* -------------------------------- Global Buttons */
 
 .site-button {

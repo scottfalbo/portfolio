@@ -38,6 +38,13 @@ $(function () {
     });
 });
 
+// Cancel deletion confirmation
+$(function () {
+    $('.cancel-confirmation').click(function () {
+        $('.confirm-popup').addClass('hide-me');
+    });
+});
+
 // Close gallery title repeat popup
 $(function () {
     $('.repeat-gallery-close').click(function () {

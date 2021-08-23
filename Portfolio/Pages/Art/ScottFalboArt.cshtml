@@ -175,6 +175,7 @@
                                 <input type="hidden" name="id" value="@gallery.Id" />
                                 <input class="delete-confirmation site-button" type="submit" value="Confirm" />
                             </form>
+                            <button class="cancel-confirmation site-button">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -214,13 +215,14 @@
                                 <button class="module-open-button delete-gallery-image">x</button>
                             </div>
                             <div class="delete-image-confirm hide-me confirm-popup">
-                                delete the thing?
+                                <p>Delete the thing?</p>
                                 <form asp-page-handler="DeleteImage" method="post">
                                     <input type="hidden" asp-for="PageToggles.ImageId" value="@image.Image.Id" />
                                     <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
                                     <input type="hidden" asp-for="PageToggles.ActiveGalleryId" value="@gallery.Order" />
                                     <input class="delete-confirmation site-button" type="submit" value="Confirm" />
                                 </form>
+                                <button class="cancel-confirmation site-button">Cancel</button>
                             </div>
                             }
                         </section>
