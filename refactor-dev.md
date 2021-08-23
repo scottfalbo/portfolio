@@ -19,7 +19,10 @@ Refactoring the overall structure of the site while adding new content and secti
 + 8/21/2021
   + `Install-Package SixLabors.ImageSharp -IncludePrerelease`
   + Added `ResizeImage` method to the `UploadServices` to resize gallery images to a max height of 1900, and to resize and create a separate thumbnail image.
-    + Both images are uploaded to the blob with an over loaded `UploadImage()` that takes a `Stream`.
+  + Both images are uploaded to the blob with an over loaded `UploadImage()` that takes a `Stream`.
++ 8/22/2021
+  + Implemented Bootstrap carousel in the gallery accordion dropdowns in `ScottFalboArt.cshtml`.
+  + 
 
 
 [Back to README](README.md#refactor-development-log)
