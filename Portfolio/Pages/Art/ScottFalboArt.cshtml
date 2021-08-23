@@ -23,7 +23,7 @@
 
     <div class="right-col">
         <article class="intro">@Model.HomePage.Intro</article>
-        <section class="galleries">
+        <section class="galleries gallery-display">
             <!--Accordion wrapper-->
             <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                 @foreach (var gallery in Model.Galleries)
@@ -97,7 +97,7 @@
         </section>
 
         <section class="mobile-menu">
-            <partial name="SiteNavButtons/_MainPageNav" />
+            <partial name="SiteNavButtons/_ArtPageNav" />
         </section>
         <figure class="mainpage-art-mobile">
             <img src="~/images/eye.png" />
@@ -150,7 +150,7 @@
 <div class="fullscreen gallery-module-outer @(Model.PageToggles.ActiveGalleryAdmin ? "" : "hide-me")">
 <div class="popup-module-inner">
 <div class="admin-module">
-    <section class="gallery-admin-images">
+    <section class="gallery-admin-images galleries">
         <!--Accordion wrapper-->
         <div class="accordion md-accordion" id="accordionExAdmin" role="tablist" aria-multiselectable="true">
             @foreach (var gallery in Model.Galleries)
@@ -160,15 +160,15 @@
                 <!-- Card header -->
                 <div class="card-header" role="tab" id="@gallery.AdminAccordionId">
                     <a data-toggle="collapse" data-parent="#accordionExAdmin" href="#@gallery.AdminCollapseId" aria-expanded="true"
-                        aria-controls="collapseOne1">
+                       aria-controls="collapseOne1">
                         <h5 class="mb-0">
                             @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
                         </h5>
                     </a>
+                    <div class="delete-gallery-container">
+                        <button class="accordion-button delete-gallery">✖</button>
+                    </div>
                     <div>
-                        <div>
-                            <button class="accordion-button delete-gallery">x</button>
-                        </div>
                         <div class="delete-gallery-confirmation hide-me confirm-popup">
                             <p>Delete the thing?</p>
                             <form asp-page-handler="DeleteGallery" method="post">
@@ -199,9 +199,10 @@
                         <section>
                             <form asp-page-handler="AddImages" method="post" enctype="multipart/form-data">
                                 <label>
-                                    <input name="files" type="file" multiple="multiple" accept="image/*" class="file-selection-input"/>
+                                    <input name="files" type="file" multiple="multiple" accept="image/*" class="file-selection-input" />
                                     <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
-                                    <input type="submit" value="Add Image" />
+                                    <input type="hidden" asp-for="PageToggles.ActiveGalleryId" value="@gallery.Order" />
+                                    <input type="submit" value="Add Images" />
                                 </label>
                             </form>
                         </section>
