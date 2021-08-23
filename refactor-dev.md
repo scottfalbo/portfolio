@@ -18,6 +18,8 @@ Refactoring the overall structure of the site while adding new content and secti
   + Built out all gallery admin CRUD methods and forms.
 + 8/21/2021
   + `Install-Package SixLabors.ImageSharp -IncludePrerelease`
-  + `System.Drawing.Common`
+  + Added `ResizeImage` method to the `UploadServices` to resize gallery images to a max height of 1900, and to resize and create a separate thumbnail image.
+    + Both images are uploaded to the blob with an over loaded `UploadImage()` that takes a `Stream`.
+
 
 [Back to README](README.md#refactor-development-log)
