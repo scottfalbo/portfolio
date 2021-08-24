@@ -27,6 +27,10 @@ Refactoring the overall structure of the site while adding new content and secti
     + `site.js -> openGallery(gallery)` uses a unique class id created from the galleries title to open only the selected gallery.
   + Used jQuery and a `MutationObserver` object to have an eye graphic open and close with gallery sections.
   + Added `CheckFileName` method to `UploadServices` to ensure there are no duplicate files names on image upload.  Uses gallery repeat popup as warning.
+  + Finished styling the art page and associated admin.  
+  + Added a loading bar for async CRUD actions.
++ 8/24/2021
+    + 
 
 
 [Back to README](README.md#refactor-development-log)
