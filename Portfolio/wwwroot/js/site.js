@@ -125,7 +125,12 @@ $('.collapse').each(function() {
     observer.observe(this, config);
 })
 
-
+// Loading window toggle
+$(function () {
+    $('.loader').click(function () {
+        $('#loading-bar-outer').removeClass('hide-me');
+    })
+})
 
 // old code, saving until after refactor is complete
 

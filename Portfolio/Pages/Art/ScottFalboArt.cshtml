@@ -123,7 +123,7 @@
         <partial name="_PopupToggle" />
     }
 </div>
-
+<partial name="_LoadingBar" />
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -135,7 +135,7 @@
                     <form asp-page-handler="UpdateSelfie" method="post" enctype="multipart/form-data">
                         <label>
                             <input name="file" type="file" class="file-selection-input" />
-                            <input type="submit" value="Update Image" class="site-button" />
+                            <input type="submit" value="Update Image" class="site-button loader" />
                             <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
                             <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
                         </label>
@@ -154,7 +154,7 @@
                             <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
                             <input type="hidden" asp-for="HomePage.Page" value="@Model.HomePage.Page" />
                             <input type="hidden" asp-for="HomePage.Selfie" value="@Model.HomePage.Selfie" />
-                            <input class="site-button" type="submit" value="Update" />
+                            <input class="site-button loader" type="submit" value="Update" />
                         </div>
                     </form>
                 </section>
@@ -208,7 +208,7 @@
                                                     </label>
                                                     <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
                                                     <input type="hidden" asp-for="PageToggles.ActiveGalleryId" value="@gallery.Order" />
-                                                    <input type="submit" value="o" class="accordion-button" />
+                                                    <input type="submit" value="o" class="accordion-button loader" />
                                                 </form>
                                             </div>
                                         </section>
@@ -218,7 +218,7 @@
                                                     <input name="files" type="file" multiple="multiple" accept="image/*" class="file-selection-input" />
                                                     <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
                                                     <input type="hidden" asp-for="PageToggles.ActiveGalleryId" value="@gallery.Order" />
-                                                    <input type="submit" value="Add Images" />
+                                                    <input type="submit" value="Add Images" class="loader" />
                                                 </label>
                                             </form>
                                         </section>
@@ -235,7 +235,7 @@
                                                         <input type="hidden" asp-for="PageToggles.ImageId" value="@image.Image.Id" />
                                                         <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
                                                         <input type="hidden" asp-for="PageToggles.ActiveGalleryId" value="@gallery.Order" />
-                                                        <input class="delete-confirmation site-button" type="submit" value="Confirm" />
+                                                        <input class="delete-confirmation site-button loader" type="submit" value="Confirm" />
                                                     </form>
                                                     <button class="cancel-confirmation site-button">Cancel</button>
                                                 </div>

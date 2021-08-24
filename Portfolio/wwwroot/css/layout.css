@@ -242,6 +242,30 @@ header {
     width: 100%;
 }
 
+/* Loading Bar */
+
+
+#loading-bar-outer {
+    z-index: 20;
+}
+
+#loading-bar-inner {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 205px;
+    height: 60px;
+}
+  
+#loading-bar-inner > div {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    z-index: 25;
+    margin: 17px 6px;
+}
+
 /* -------------------------------- Global Buttons */
 
 .site-button {

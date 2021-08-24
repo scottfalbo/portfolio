@@ -1,5 +1,7 @@
 ﻿@import url("layout.css");
 @import url("modules.css");
+@import url('modules/loading-bar.css');
+
 * {
     box-sizing: border-box;
 }
