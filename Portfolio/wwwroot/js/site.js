@@ -85,32 +85,45 @@ $(function () {
     });
 });
 
-// Gallery eyes
-// Open and close eyes based on active gallery.
+// -------------------------------------------- Gallery eyes
+// Open the active galleries eye.
 function openEye(gallery) {
-    $('.' + gallery).removeClass('closed-gallery-eye');
     $('.' + gallery).addClass('open-gallery-eye');
 }
-function closeEye(gallery) {
-    $('.' + gallery).removeClass('open-gallery-eye');
-    $('.' + gallery).addClass('closed-gallery-eye');
+
+// Checks for open gallery on page load.
+$(document).ready(function () {
+    checkActiveGallery();
+});
+
+let galleryList = [];
+
+// Checks each gallery and turns on eye if classList contains 'show'.
+function checkActiveGallery() {
+    galleryList.forEach(x => {
+        const gallery = document.getElementById(x);
+        if (gallery.classList.contains('show')) {
+            openEye(gallery.id + '_eye');
+        }
+    });
 }
 
-// Rechecks for active gallery when ever drop down link is used.
-function eyeExam(gallery) {
-    for (let i = 0; i < gallery.length; i++) {
-        if ($('#' + gallery[i]).hasClass('show')) {
-            openEye(gallery[i] + '_eye');
-        }
-        else {
-            closeEye(gallery[i] + '_eye');
-        }
-    }
-
+// Callback function for the observer event listener.
+function checkChange(mutations) {
+    $('.gallery-eye').removeClass('open-gallery-eye');
+    checkActiveGallery();
 }
 
+// MutationObserver instantiation and configuration.
+var config = {
+    attributes: true
+};
+var targets = document.getElementsByClassName('collapse');
+let observer = new MutationObserver(checkChange);
 
-
+$('.collapse').each(function() {
+    observer.observe(this, config);
+})
 
 
 

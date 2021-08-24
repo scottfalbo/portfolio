@@ -180,13 +180,14 @@ main {
     background: rgb(32, 34, 32);
 }
 
+.closed-gallery-eye {
+    background: rgb(64, 255, 230);
+}
+
 .open-gallery-eye {
     background:rgb(0, 248, 83);
 }
 
-.closed-gallery-eye {
-    background: rgb(64, 255, 230);
-}
 
 /*  ------------------------------------ Popup Module */
 

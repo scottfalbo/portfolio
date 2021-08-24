@@ -4,6 +4,20 @@
     ViewData["Title"] = "Scott Falbo Art";
 }
 
+@{
+    List<string> galleries = new List<string>();
+    foreach (var gallery in Model.Galleries)
+        galleries.Add(gallery.CollapseId);
+    var list = Json.Serialize(galleries);
+}
+<script>
+    $(document).ready(function () {
+        galleryList = @list;
+        console.log(galleryList);
+    });
+</script>
+
+
 <partial name="Art/_ArtMenu" />
 
 <div class="homepage-container">
@@ -25,49 +39,28 @@
         <article class="intro">@Model.HomePage.Intro</article>
         <section class="galleries gallery-display">
             <!--Accordion wrapper-->
-            @{
-                List<string> galleries = new List<string>();
-                foreach (var gallery in Model.Galleries)
-                    galleries.Add(gallery.CollapseId);
-                var list = Json.Serialize(galleries);
-            }
-            <div class="accordion md-accordion" id="accordionEx" role="tablist" onclick="QueueEyeExam()" aria-multiselectable="true" >
-                <script>
-                    function QueueEyeExam() {
-                        eyeExam(@list);
-                    }
-                </script>
+            <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                 @foreach (var gallery in Model.Galleries)
                 {
                     @if (gallery.Display)
                     {
-                        <script>
-                        $(document).ready(function () {
-                            const div = @gallery.CollapseId;
-                            if (div.classList.contains('show')) {
-                                openEye('@($"{gallery.CollapseId}_eye")');
-                            }
-                            else {
-                                closeEye('@($"{gallery.CollapseId}_eye")');
-                            }
-                        });
-                        </script>
+
                         <!-- Accordion card -->
                         <div class="card">
                             <!-- Card header -->
                             <div class="card-header" role="tab" id="@gallery.AccordionId">
                                 <a data-toggle="collapse" data-parent="#accordionEx" href="#@gallery.CollapseId" aria-expanded="true"
-                                   aria-controls="collapseOne1">
+                                   aria-controls="collapseOne1" class="eye-check">
                                     <h5 class="mb-0">
                                         @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
                                     </h5>
                                     <div class="gallery-header-eye">
-                                        <div class="gallery-eye @($"{gallery.CollapseId}_eye")"></div>
+                                        <div class="gallery-eye @($"{gallery.CollapseId}_eye") closed-gallery-eye"></div>
                                     </div>
                                 </a>
                             </div>
                             <!-- Card body -->
-                            <div id="@gallery.CollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse") eye-checker" role="tabpanel" aria-labelledby="@gallery.AccordionId" data-parent="#accordionEx">
+                            <div id="@gallery.CollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AccordionId" data-parent="#accordionEx">
                                 <div class="card-body">
                                     <section id="Gallery-Control" class="carousel slide" data-ride="carousel" data-interval="0">
                                         <section class="image-thumbs">

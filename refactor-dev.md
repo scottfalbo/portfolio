@@ -25,6 +25,6 @@ Refactoring the overall structure of the site while adding new content and secti
 + 8/23/2021
   + Styled the carousels and added jQuery functions to open and close the gallery viewers.
     + `site.js -> openGallery(gallery)` uses a unique class id created from the galleries title to open only the selected gallery.
-  + .
+  + Used jQuery and a `MutationObserver` object to have an eye graphic open and close with gallery sections.
 
 [Back to README](README.md#refactor-development-log)
