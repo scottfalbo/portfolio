@@ -34,6 +34,8 @@ namespace Portfolio.Models.Interface.Services
                 Title = image.FileName,
                 ImageURL = image.ImageURL,
                 FileName = image.FileName,
+                ThumbURL = image.ThumbURL,
+                ThumbFileName = image.ThumbFileName,
                 Order = 0
             };
             _context.Entry(newImage).State = EntityState.Added;
@@ -57,6 +59,8 @@ namespace Portfolio.Models.Interface.Services
                     Title = y.Title,
                     ImageURL = y.ImageURL,
                     FileName = y.FileName,
+                    ThumbURL = y.ThumbURL,
+                    ThumbFileName = y.ThumbFileName,
                     Order = y.Order
                 }).FirstOrDefaultAsync();
         }
@@ -74,6 +78,8 @@ namespace Portfolio.Models.Interface.Services
                     Title = x.Title,
                     ImageURL = x.ImageURL,
                     FileName = x.FileName,
+                    ThumbURL = x.ThumbURL,
+                    ThumbFileName = x.ThumbFileName,
                     Order = x.Order
                 })
                 .ToListAsync();
@@ -297,7 +303,7 @@ namespace Portfolio.Models.Interface.Services
 
         //------------------------------- Shared ------------------------------
         /// <summary>
-        /// Deletes file from azure storage
+        /// Deletes file and thumbnail from azure storage
         /// </summary>
         /// <param name="fileName"> file to delete </param>
         /// <returns> no return </returns>
@@ -305,6 +311,8 @@ namespace Portfolio.Models.Interface.Services
         {
             BlobContainerClient container = new BlobContainerClient(Configuration["ImageBlob"], "images");
             BlobClient blob = container.GetBlobClient(fileName);
+            await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
+            blob = container.GetBlobClient($"{fileName}_thumb");
             await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
         }
 

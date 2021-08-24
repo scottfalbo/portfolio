@@ -4,14 +4,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Portfolio.Data;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using System.IO;
-using System.Drawing;
-using System.Drawing.Imaging;
+using Microsoft.EntityFrameworkCore;
 
 namespace Portfolio.Models.Interface.Services
 {
@@ -54,6 +52,28 @@ namespace Portfolio.Models.Interface.Services
                     await blob.UploadAsync(stream, options);
 
                 return blob;
+        }
+
+        /// <summary>
+        /// Helper method to see if a file name already exists on upload. 
+        /// </summary>
+        /// <param name="file"> IFormFile from input form </param>
+        /// <returns> true if doesn't exist </returns>
+        public async Task<bool> CheckFileName(IFormFile file)
+        {
+            var fileCheck = await _context.Images
+                .Where(x => x.FileName == file.FileName)
+                .Select(y => new Image
+                {
+                    Id = y.Id,
+                    Title = y.Title,
+                    ImageURL = y.ImageURL,
+                    FileName = y.FileName,
+                    ThumbURL = y.ThumbURL,
+                    ThumbFileName = y.ThumbFileName,
+                    Order = y.Order
+                }).FirstOrDefaultAsync();
+            return fileCheck == null;
         }
 
         /// <summary>
@@ -111,7 +131,7 @@ namespace Portfolio.Models.Interface.Services
             Stream stream = ResizeImage(file, 1900);
             BlobClient blob = await UploadImage(stream, file.FileName, file.ContentType);
 
-            Stream thumbStream = ResizeImage(file, 80);
+            Stream thumbStream = ResizeImage(file, 100);
             BlobClient thumb = await UploadImage(thumbStream, $"{file.FileName}_thumb", file.ContentType);
 
             Image image = new Image()
@@ -125,27 +145,50 @@ namespace Portfolio.Models.Interface.Services
             return await _artAdmin.CreateImage(image);
         }
 
+        /// <summary>
+        /// Create Image object from the upload file.
+        /// Resize for max gallery height or thumbnail based on n parameter.
+        /// Save the updated Image to a Stream for upload to blob.
+        /// </summary>
+        /// <param name="file"> IFormFile from form </param>
+        /// <param name="n"> height </param>
+        /// <returns> Steam of resized Image </returns>
         private Stream ResizeImage(IFormFile file, int n)
         {
             using var image = SixLabors.ImageSharp.Image.Load(file.OpenReadStream());
             var stream = new MemoryStream();
 
-            if (n == 1900 && image.Height > 1900)
+            int width = FindWidth(image.Width, image.Height, n);
+            image.Mutate(x => x.Resize(width, n));
+
+            switch (file.ContentType)
             {
-                int width = FindWidth(image.Width, image.Height, n);
-                image.Mutate(x => x.Resize(width, n));
-                image.SaveAsJpeg(stream);
-            }
-            if (n == 80 && image.Height > 80)
-            {
-                int width = FindWidth(image.Width, image.Height, n);
-                image.Mutate(x => x.Resize(width, n));
-                image.SaveAsJpeg(stream);
+                case "image/jpeg":
+                    image.SaveAsJpeg(stream);
+                    break;
+                case "image/png":
+                    image.SaveAsPng(stream);
+                    break;
+                case "image/bmp":
+                    image.SaveAsBmp(stream);
+                    break;
+                case "image/gif":
+                    image.SaveAsGif(stream);
+                    break;
+                default:
+                    throw new Exception("invalud file type");
             }
             stream.Position = 0;
             return stream;
         }
 
+        /// <summary>
+        /// Helper function to find width relative to new height.
+        /// </summary>
+        /// <param name="width"> image width </param>
+        /// <param name="height"> image height </param>
+        /// <param name="n"> new height </param>
+        /// <returns> int new width </returns>
         private int FindWidth (int width, int height, int n)
         {
             float ratio = (float)height / (float)n;

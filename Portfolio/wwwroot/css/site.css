@@ -1,6 +1,6 @@
 ﻿@import url("layout.css");
 @import url("modules.css");
-
+@import url('modules/loading-bar.css');
 * {
     box-sizing: border-box;
 }
@@ -9,37 +9,32 @@ a, a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
-
 body {
-  margin: auto;
-  height: max-content;
+    margin: auto;
+    height: max-content;
 }
 
 .hide-me {
-  visibility: hidden;
-  height: 0px;
+    visibility: hidden;
+    height: 0px;
 }
 
 a:active, a:focus {
-  outline: 0;
-  border: none;
-  -moz-outline-style: none;
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
 }
 
 /* Mobile and Tablet */
+
 /*  mobile: 320-480, tablet: 481-768 */
 
-@media screen and (max-width: 768px){
-
-}
+@media screen and (max-width: 768px) {}
 
 /* Laptop | Small Screen | IPad pro */
-@media screen and (min-width: 769px) and (max-width: 1024px){
 
-}
+@media screen and (min-width: 769px) and (max-width: 1024px) {}
 
 /* DeskTop | Large Displays */
-@media screen and (min-width: 1025px){
 
-}
-
+@media screen and (min-width: 1025px) {}

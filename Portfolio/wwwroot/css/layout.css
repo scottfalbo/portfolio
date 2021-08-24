@@ -6,11 +6,11 @@ header {
     margin: auto;
 }
 
-#collapsingMenu {
+#collapsingMenu, #collapsingArtMenu {
     flex-direction: row-reverse;
 }
 
-#collapsingMenu>ul>li {
+#collapsingMenu>ul>li, #collapsingArtMenu>ul>li {
     text-align: right;
 }
 
@@ -37,20 +37,32 @@ header {
 /* -------------------------------------- Main */
 
 .selfie {
+    width: 100%;
     max-width: 400px;
     max-height: 250px;
 }
 
+.module-open-button {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    float: right;
+}
+
 /* ------------------------------------ Navigation Buttons */
 
-.mainpage-nav ul {
+.page-nav {
+    margin: 15px auto;
+}
+
+.page-nav ul {
     margin: auto;
     width: 240px;
     display: flex;
     flex-wrap: wrap;
 }
 
-.mainpage-nav li {
+.page-nav li {
     width: 80px;
 }
 
@@ -58,7 +70,140 @@ header {
     width: 60px;
 }
 
-/*  ------------------------------------ Popup Module */
+/* ------------------------------------- Gallery Viewer */
+
+.image-gallery {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.close-gallery {
+    z-index: 15;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+
+.gallery-display .card-header a {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: 40px;
+}
+
+.gallery-display a>h5 {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.gallery-display a>.gallery-header-eye {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.gallery-display a>.gallery-header-eye>.gallery-eye {
+    width: 40px;
+    height: 40px;
+}
+
+.gallery-display a>.gallery-header-eye>img {
+    width: 40px;
+    height: 40px;
+}
+
+.image-thumbs {
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #151515;
+    border-radius: 10px;
+}
+
+.thumb-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 5px;
+}
+
+.image-thumbs figure {
+    height: 100px;
+    margin: 5px;
+}
+
+.image-thumbs img {
+    image-rendering: -moz-crisp-edges;
+    height: 100%;
+    box-shadow: 0px 5px 5px black;
+}
+
+/*  -------------------------------- Popup Admin Module */
+
+.gallery-admin-images .card-body > section:first-child > form {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 40px 30px;
+    width: 98%;
+    margin: 20px auto;
+}
+
+.gallery-admin-images .card-body > section:first-child > form input:first-child {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    height: 40px;
+    width: 90%;
+    margin: auto;
+}
+
+.gallery-admin-images .card-body > section:first-child > form > div {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 30px;
+    margin: 5px auto;
+    width: 100%;
+}
+
+.gallery-admin-images .card-body > section:first-child > form label {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 30px;
+    text-align: right;
+}
+
+.gallery-admin-images .card-body > section:first-child > form label > p {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    line-height: 30px;
+}
+
+.gallery-admin-images .card-body > section:first-child > form label > input {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+
+.gallery-admin-images .card-body > section:first-child > form input.loader {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    width: 100px;
+    height: 30px;
+    margin: auto;
+    line-height: 5px;
+}
 
 .fullscreen {
     position: fixed;
@@ -106,13 +251,119 @@ header {
     height: 60px;
 }
 
-button.module-close-button.site-button {}
-
 .popup-module-inner input {
     margin: 8px;
 }
 
-/* Footer */
+.gallery-admin-images .delete-gallery, .delete-gallery-image {
+    height: 40px;
+    width: 40px;
+}
+
+.admin-image-thumb {
+    width: min-content;
+    min-height: min-content;
+    position: relative;
+    margin: 5px;
+}
+
+.delete-gallery-image {
+    position: relative;
+    bottom: 35px;
+    left: 50px;
+    height: 30px;
+    width: 30px;
+}
+
+/* grid for gallery admin accordion header */
+
+.gallery-admin-images .card .card-header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: 40px;
+}
+
+.gallery-admin-images .card .card-header a {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.gallery-admin-images a>.delete-gallery-container {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+/* Confirmation popups */
+
+.confirm-popup {
+    z-index: 15;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 230px;
+    width: 300px;
+}
+
+.confirm-popup p {
+    margin-bottom: 20px;
+}
+
+.confirm-popup .cancel-confirmation {
+    width: 100%;
+}
+
+.confirm-popup .delete-confirmation {
+    width: 100%;
+}
+
+.confirm-popup .repeat-gallery-close {
+    width: 100%;
+}
+
+/* Loading Bar */
+
+#loading-bar-outer {
+    z-index: 20;
+}
+
+#loading-bar-inner {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 205px;
+    height: 60px;
+}
+
+#loading-bar-inner>div {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    z-index: 25;
+    margin: 17px 6px;
+}
+
+/* -------------------------------- Global Buttons */
+
+.site-button {
+    width: 120px;
+    height: 50px;
+}
+
+.admin-module input::-webkit-file-upload-button {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+}
+
+.admin-module input.file-selection-input::before {
+    width: 100%;
+    height: 50px;
+}
+
+/* --------------------------------------- Footer */
 
 .footer-line {
     /* position: relative; */
@@ -200,6 +451,25 @@ button.module-close-button.site-button {}
     .popup-toggle-button {
         margin: 5px auto;
     }
+    /*  Gallery Viewer */
+    .image-gallery {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, .8);
+        display: inline-block;
+    }
+    .image-gallery figure {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+    .image-gallery figure img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        max-height: 100vh;
+        object-fit: contain;
+    }
 }
 
 /* Laptop | Small Screen | IPad pro */
@@ -261,6 +531,16 @@ button.module-close-button.site-button {}
     }
     .homepage-container>.popup-toggle-button button {
         float: right;
+    }
+    /* Gallery Viewer */
+    .image-gallery figure img {
+        max-height: 100vh;
+        object-fit: contain;
+    }
+    .image-gallery figure {
+        background-color: rgba(0, 0, 0, .8);
+        max-height: inherit;
+        width: inherit;
     }
 }
 

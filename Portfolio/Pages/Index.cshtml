@@ -44,7 +44,7 @@
                     <figure><img src="@Model.HomePage.Selfie" /></figure>
                     <form asp-page-handler="UpdatePhoto" method="post" enctype="multipart/form-data">
                         <label>
-                            <input name="file" type="file" />
+                            <input name="file" type="file" class="file-selection-input"/>
                             <input type="submit" value="Update Image" class="site-button"/>
                             <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
                             <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />

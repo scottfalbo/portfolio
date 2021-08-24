@@ -38,13 +38,19 @@ $(function () {
     });
 });
 
+// Cancel deletion confirmation
+$(function () {
+    $('.cancel-confirmation').click(function () {
+        $('.confirm-popup').addClass('hide-me');
+    });
+});
+
 // Close gallery title repeat popup
 $(function () {
     $('.repeat-gallery-close').click(function () {
         $('.repeat-gallery-title').addClass('hide-me');
     });
 });
-
 
 // //event listener for the escape key to get to admin entrance
 $(function () {
@@ -65,14 +71,66 @@ $(function () {
     });
 });
 
+// Open button (thumbnail) for each galleries respective viewer.
+// Each gallery uses a unique class generated from the gallery title.
+function openGallery(gallery) {
+    var galleryId = $(gallery).data('gallery-id');
+    $('.' + galleryId).removeClass('hide-me');
+}
 
+// Close button for gallery viewer.
+$(function () {
+    $('.close-gallery').click(function () {
+        $('.image-gallery').addClass('hide-me');
+    });
+});
 
+// -------------------------------------------- Gallery eyes
+// Open the active galleries eye.
+function openEye(gallery) {
+    $('.' + gallery).addClass('open-gallery-eye');
+}
 
+// Checks for open gallery on page load.
+$(document).ready(function () {
+    checkActiveGallery();
+});
 
+let galleryList = [];
 
+// Checks each gallery and turns on eye if classList contains 'show'.
+function checkActiveGallery() {
+    galleryList.forEach(x => {
+        const gallery = document.getElementById(x);
+        if (gallery.classList.contains('show')) {
+            openEye(gallery.id + '_eye');
+        }
+    });
+}
 
+// Callback function for the observer event listener.
+function checkChange(mutations) {
+    $('.gallery-eye').removeClass('open-gallery-eye');
+    checkActiveGallery();
+}
 
+// MutationObserver instantiation and configuration.
+var config = {
+    attributes: true
+};
+var targets = document.getElementsByClassName('collapse');
+let observer = new MutationObserver(checkChange);
 
+$('.collapse').each(function () {
+    observer.observe(this, config);
+})
+
+// Loading window toggle
+$(function () {
+    $('.loader').click(function () {
+        $('#loading-bar-outer').removeClass('hide-me');
+    })
+})
 
 // old code, saving until after refactor is complete
 

@@ -1,0 +1,129 @@
+@keyframes loading-bar-1 {
+    16% {
+        background: #fff;
+    }
+    33% {
+        background: rgb(134, 134, 134);
+    }
+    49% {
+        background: rgb(51, 51, 51);
+    }
+    66% {
+        background: #000;
+    }
+    82% {
+        background: #000;
+    }
+    99% {
+        background: rgb(134, 134, 134);
+    }
+}
+
+@keyframes loading-bar-2 {
+    16% {
+        background: rgb(134, 134, 134);
+    }
+    33% {
+        background: #fff;
+    }
+    49% {
+        background: rgb(134, 134, 134);
+    }
+    66% {
+        background: rgb(51, 51, 51);
+    }
+    82% {
+        background: #000;
+    }
+    99% {
+        background: #000;
+    }
+}
+
+@keyframes loading-bar-3 {
+    16% {
+        background: rgb(51, 51, 51);
+    }
+    33% {
+        background: rgb(134, 134, 134);
+    }
+    49% {
+        background: #fff;
+    }
+    66% {
+        background: rgb(134, 134, 134);
+    }
+    82% {
+        background: rgb(51, 51, 51);
+    }
+    99% {
+        background: #000;
+    }
+}
+
+@keyframes loading-bar-4 {
+    16% {
+        background: #000;
+    }
+    33% {
+        background: rgb(51, 51, 51);
+    }
+    49% {
+        background: rgb(134, 134, 134);
+    }
+    66% {
+        background: #fff;
+    }
+    82% {
+        background: rgb(134, 134, 134);
+    }
+    99% {
+        background: rgb(51, 51, 51);
+    }
+}
+
+@keyframes loading-bar-5 {
+    16% {
+        background: #000;
+    }
+    33% {
+        background: #000;
+    }
+    49% {
+        background: rgb(51, 51, 51);
+    }
+    66% {
+        background: rgb(134, 134, 134);
+    }
+    82% {
+        background: #fff;
+    }
+    99% {
+        background: rgb(134, 134, 134);
+    }
+}
+
+#loading-bar-inner div:nth-child(1) {
+    background: rgb(134, 134, 134);
+    animation: loading-bar-1 .9s infinite;
+}
+
+#loading-bar-inner div:nth-child(2) {
+    background: #000;
+    animation: loading-bar-2 .9s infinite;
+}
+
+#loading-bar-inner div:nth-child(3) {
+    background: #000;
+    animation: loading-bar-3 .9s infinite;
+}
+
+#loading-bar-inner div:nth-child(4) {
+    background: rgb(51, 51, 51);
+    animation: loading-bar-4 .9s infinite;
+}
+
+#loading-bar-inner div:nth-child(5) {
+    background: rgb(134, 134, 134);
+    animation: loading-bar-5 .9s infinite;
+}
