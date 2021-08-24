@@ -8,9 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Shared\Code\SecretGame\**" />
     <Compile Remove="wwwroot\dist\**" />
+    <Content Remove="Pages\Shared\Code\SecretGame\**" />
     <Content Remove="wwwroot\dist\**" />
+    <EmbeddedResource Remove="Pages\Shared\Code\SecretGame\**" />
     <EmbeddedResource Remove="wwwroot\dist\**" />
+    <None Remove="Pages\Shared\Code\SecretGame\**" />
     <None Remove="wwwroot\dist\**" />
   </ItemGroup>
 
@@ -66,7 +70,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Shared\Code\SecretGame\" />
     <Folder Include="wwwroot\css\secretgame\" />
   </ItemGroup>
 

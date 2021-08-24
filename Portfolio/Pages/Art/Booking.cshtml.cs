@@ -44,6 +44,22 @@ namespace Portfolio.Pages.Art
             RequestForm = new RequestForm();
         }
 
+        public async Task<IActionResult> OnPostEdit(HomePage homepage)
+        {
+            if (homepage.Intro == null)
+                homepage.Intro = (await _admin.GetHomePage(homepage.Page)).Intro;
+
+            HomePage updatedPage = new HomePage()
+            {
+                Id = homepage.Id,
+                Page = homepage.Page,
+                Title = homepage.Title,
+                Intro = homepage.Intro
+            };
+            await _admin.UpdateHomePage(updatedPage);
+            return Redirect("/Art/Booking");
+        }
+
         /// <summary>
         /// Build Message object with user input and call SendGrid method.
         /// </summary>

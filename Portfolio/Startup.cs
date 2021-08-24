@@ -20,8 +20,6 @@ using Portfolio.Models.Interface;
 using Portfolio.Models.Interface.Services;
 using Portfolio.Models.Interfaces;
 using Portfolio.Models.Interfaces.Services;
-using Portfolio.SecretGame.Models.Interfaces;
-using Portfolio.SecretGame.Models.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,7 +79,6 @@ namespace Portfolio
             services.AddTransient<IArtAdmin, ArtAdminRepository>();
             services.AddTransient<IUploadService, UploadService>();
             services.AddTransient<IEmail, SendGridEmail>();
-            services.AddTransient<IGameMaster, GameMasterServices>();
 
             services.AddAzureClients(builder =>
             {
