@@ -26,5 +26,7 @@ Refactoring the overall structure of the site while adding new content and secti
   + Styled the carousels and added jQuery functions to open and close the gallery viewers.
     + `site.js -> openGallery(gallery)` uses a unique class id created from the galleries title to open only the selected gallery.
   + Used jQuery and a `MutationObserver` object to have an eye graphic open and close with gallery sections.
+  + Added `CheckFileName` method to `UploadServices` to ensure there are no duplicate files names on image upload.  Uses gallery repeat popup as warning.
+
 
 [Back to README](README.md#refactor-development-log)

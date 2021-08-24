@@ -195,6 +195,26 @@ header {
     margin: 8px;
 }
 
+.gallery-admin-images .delete-gallery, .delete-gallery-image {
+    height: 40px;
+    width: 40px;
+}
+
+.admin-image-thumb {
+    width: min-content;
+    min-height: min-content;
+    position: relative;
+    margin: 5px;
+}
+
+.delete-gallery-image {
+    position: relative;
+    bottom: 35px;
+    left: 50px;
+    height: 30px;
+    width: 30px;
+}
+
 /* grid for gallery admin accordion header */
 
 .gallery-admin-images .card .card-header {
@@ -244,7 +264,6 @@ header {
 
 /* Loading Bar */
 
-
 #loading-bar-outer {
     z-index: 20;
 }
@@ -257,8 +276,8 @@ header {
     width: 205px;
     height: 60px;
 }
-  
-#loading-bar-inner > div {
+
+#loading-bar-inner>div {
     display: inline-block;
     width: 25px;
     height: 25px;

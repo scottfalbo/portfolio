@@ -185,9 +185,8 @@ main {
 }
 
 .open-gallery-eye {
-    background:rgb(0, 248, 83);
+    background: rgb(0, 248, 83);
 }
-
 
 /*  ------------------------------------ Popup Module */
 
@@ -205,9 +204,7 @@ main {
     margin: 15px auto;
 }
 
-.gallery-admin-images .delete-gallery {
-    height: 40px;
-    width: 40px;
+.gallery-admin-images .delete-gallery, .delete-gallery-image {
     background: #000;
     border: 1px solid #f19f24;
     border-radius: 50%;
@@ -246,8 +243,8 @@ main {
     box-shadow: 0px 2px 2px #000;
     background: #000;
 }
-  
-#loading-bar-inner > div {
+
+#loading-bar-inner>div {
     background: #fff;
 }
 

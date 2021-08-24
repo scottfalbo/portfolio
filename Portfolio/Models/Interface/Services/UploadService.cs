@@ -4,14 +4,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Portfolio.Data;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using System.IO;
-using System.Drawing;
-using System.Drawing.Imaging;
+using Microsoft.EntityFrameworkCore;
 
 namespace Portfolio.Models.Interface.Services
 {
@@ -54,6 +52,28 @@ namespace Portfolio.Models.Interface.Services
                     await blob.UploadAsync(stream, options);
 
                 return blob;
+        }
+
+        /// <summary>
+        /// Helper method to see if a file name already exists on upload. 
+        /// </summary>
+        /// <param name="file"> IFormFile from input form </param>
+        /// <returns> true if doesn't exist </returns>
+        public async Task<bool> CheckFileName(IFormFile file)
+        {
+            var fileCheck = await _context.Images
+                .Where(x => x.FileName == file.FileName)
+                .Select(y => new Image
+                {
+                    Id = y.Id,
+                    Title = y.Title,
+                    ImageURL = y.ImageURL,
+                    FileName = y.FileName,
+                    ThumbURL = y.ThumbURL,
+                    ThumbFileName = y.ThumbFileName,
+                    Order = y.Order
+                }).FirstOrDefaultAsync();
+            return fileCheck == null;
         }
 
         /// <summary>

@@ -121,7 +121,7 @@ var config = {
 var targets = document.getElementsByClassName('collapse');
 let observer = new MutationObserver(checkChange);
 
-$('.collapse').each(function() {
+$('.collapse').each(function () {
     observer.observe(this, config);
 })
 

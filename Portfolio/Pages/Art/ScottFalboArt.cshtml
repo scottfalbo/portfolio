@@ -222,12 +222,12 @@
                                                 </label>
                                             </form>
                                         </section>
-                                        <section>
+                                        <section class="thumb-container">
                                             @foreach (var image in gallery.GalleryImages)
                                             {
-                                                <div>
+                                                <div class="admin-image-thumb">
                                                     <img src="@image.Image.ThumbURL" />
-                                                    <button class="module-open-button delete-gallery-image">x</button>
+                                                    <button class="delete-gallery-image">✖</button>
                                                 </div>
                                                 <div class="delete-image-confirm hide-me confirm-popup">
                                                     <p>Delete the thing?</p>
