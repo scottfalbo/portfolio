@@ -111,7 +111,7 @@ namespace Portfolio.Models.Interface.Services
             Stream stream = ResizeImage(file, 1900);
             BlobClient blob = await UploadImage(stream, file.FileName, file.ContentType);
 
-            Stream thumbStream = ResizeImage(file, 80);
+            Stream thumbStream = ResizeImage(file, 100);
             BlobClient thumb = await UploadImage(thumbStream, $"{file.FileName}_thumb", file.ContentType);
 
             Image image = new Image()
@@ -138,16 +138,9 @@ namespace Portfolio.Models.Interface.Services
             using var image = SixLabors.ImageSharp.Image.Load(file.OpenReadStream());
             var stream = new MemoryStream();
 
-            if (n == 1900 && image.Height > 1900)
-            {
-                int width = FindWidth(image.Width, image.Height, n);
-                image.Mutate(x => x.Resize(width, n));
-            }
-            if (n == 80 && image.Height > 80)
-            {
-                int width = FindWidth(image.Width, image.Height, n);
-                image.Mutate(x => x.Resize(width, n));
-            }
+            int width = FindWidth(image.Width, image.Height, n);
+            image.Mutate(x => x.Resize(width, n));
+
             switch (file.ContentType)
             {
                 case "image/jpeg":

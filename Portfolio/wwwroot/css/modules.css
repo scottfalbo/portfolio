@@ -23,10 +23,32 @@ header {
     padding: 0;
 }
 
-.header .navbar-dark .navbar-toggler {
+.art-menu {
+    background: #202020;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Jura', sans-serif;
+}
+
+.art-menu h1 {
+    font-size: 1.3em;
+    color: #18f7ff;
+    padding: 0px .4em;
+}
+
+.header .navbar-dark .navbar-toggler, .art-menu .navbar-dark .navbar-toggler  {
     border: 1px solid #57ff7b;
     border-radius: 50%;
     height: 56px;
+}
+
+.art-menu .navbar-dark .navbar-toggler {
+    border: 1px solid #18f7ff;
+}
+
+.art-menu ul a p {
+    font-size: 1.1em;
+    color: #18f7ff;
 }
 
 .page-title {
@@ -172,6 +194,15 @@ main {
 
 .popup-module-inner input {
     margin: 15px auto;
+}
+
+.gallery-admin-images .delete-gallery {
+    height: 40px;
+    width: 40px;
+    background: #000;
+    border: 1px solid #f19f24;
+    border-radius: 50%;
+    color: #f19f24;
 }
 
 /* Confirmation popups */

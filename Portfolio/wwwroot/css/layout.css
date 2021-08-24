@@ -6,11 +6,11 @@ header {
     margin: auto;
 }
 
-#collapsingMenu {
+#collapsingMenu, #collapsingArtMenu {
     flex-direction: row-reverse;
 }
 
-#collapsingMenu>ul>li {
+#collapsingMenu>ul>li, #collapsingArtMenu>ul>li {
     text-align: right;
 }
 
@@ -130,8 +130,7 @@ header {
 }
 
 .image-thumbs figure {
-    width: 80px;
-    height: 80px;
+    height: 100px;
     margin: 5px;
 }
 
@@ -233,6 +232,10 @@ header {
 }
 
 .confirm-popup .delete-confirmation {
+    width: 100%;
+}
+
+.confirm-popup .repeat-gallery-close {
     width: 100%;
 }
 
