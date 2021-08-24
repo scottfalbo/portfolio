@@ -36,7 +36,7 @@ header {
     padding: 0px .4em;
 }
 
-.header .navbar-dark .navbar-toggler, .art-menu .navbar-dark .navbar-toggler  {
+.header .navbar-dark .navbar-toggler, .art-menu .navbar-dark .navbar-toggler {
     border: 1px solid #57ff7b;
     border-radius: 50%;
     height: 56px;
@@ -154,15 +154,15 @@ main {
     font-size: 1.2em;
 }
 
-.galleries a > h5 {
+.galleries a>h5 {
     line-height: 40px;
 }
 
-.galleries a > .gallery-header-eye {
+.gallery-display a>.gallery-header-eye {
     text-align: right;
 }
 
-.galleries a > .gallery-header-eye > img {
+.gallery-display a>.gallery-header-eye>.gallery-eye {
     border: 1px solid #00c6d4;
     border-radius: 50%;
 }
@@ -177,7 +177,15 @@ main {
 }
 
 .galleries .card-header {
-    background:rgb(32, 34, 32);
+    background: rgb(32, 34, 32);
+}
+
+.open-gallery-eye {
+    background:rgb(0, 248, 83);
+}
+
+.closed-gallery-eye {
+    background: rgb(64, 255, 230);
 }
 
 /*  ------------------------------------ Popup Module */
@@ -223,7 +231,7 @@ main {
 }
 
 .confirm-popup form .delete-confirmation {
-    color:#00e1ff;
+    color: #00e1ff;
 }
 
 .confirm-popup button {

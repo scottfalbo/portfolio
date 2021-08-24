@@ -85,7 +85,29 @@ $(function () {
     });
 });
 
+// Gallery eyes
+// Open and close eyes based on active gallery.
+function openEye(gallery) {
+    $('.' + gallery).removeClass('closed-gallery-eye');
+    $('.' + gallery).addClass('open-gallery-eye');
+}
+function closeEye(gallery) {
+    $('.' + gallery).removeClass('open-gallery-eye');
+    $('.' + gallery).addClass('closed-gallery-eye');
+}
 
+// Rechecks for active gallery when ever drop down link is used.
+function eyeExam(gallery) {
+    for (let i = 0; i < gallery.length; i++) {
+        if ($('#' + gallery[i]).hasClass('show')) {
+            openEye(gallery[i] + '_eye');
+        }
+        else {
+            closeEye(gallery[i] + '_eye');
+        }
+    }
+
+}
 
 
 
