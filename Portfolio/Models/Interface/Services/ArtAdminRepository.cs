@@ -303,7 +303,7 @@ namespace Portfolio.Models.Interface.Services
 
         //------------------------------- Shared ------------------------------
         /// <summary>
-        /// Deletes file from azure storage
+        /// Deletes file and thumbnail from azure storage
         /// </summary>
         /// <param name="fileName"> file to delete </param>
         /// <returns> no return </returns>
@@ -311,6 +311,8 @@ namespace Portfolio.Models.Interface.Services
         {
             BlobContainerClient container = new BlobContainerClient(Configuration["ImageBlob"], "images");
             BlobClient blob = container.GetBlobClient(fileName);
+            await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
+            blob = container.GetBlobClient($"{fileName}_thumb");
             await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
         }
 
