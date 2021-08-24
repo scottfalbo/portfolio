@@ -144,6 +144,7 @@ main {
     padding: .25em .1em;
 }
 
+
 .galleries {
     padding: 5px;
 }
@@ -188,7 +189,7 @@ main {
     background: rgb(0, 248, 83);
 }
 
-/*  ------------------------------------ Popup Module */
+/*  -------------------------------- Popup Admin Module */
 
 .fullscreen {
     background-color: rgba(0, 0, 0, 0.8);
@@ -283,6 +284,10 @@ main {
 
 .admin-module label input:first-child {
     line-height: 50px;
+}
+
+.gallery-admin-images .card-body > section:nth-child(2) > form label {
+    background: #000;
 }
 
 /* ------------------------------------- Footer */

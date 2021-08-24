@@ -199,18 +199,18 @@
                                      data-parent="#accordionExAdmin">
                                     <div class="card-body">
                                         <section>
-                                            <div>
                                                 <form asp-page-handler="UpdateGallery" method="post">
                                                     <input type="text" name="title" value="@gallery.Title" placeholder="@gallery.Title" />
-                                                    <label class="gallery-checkbox">
-                                                        Display
-                                                        <input type="checkbox" asp-for="PageToggles.Display" checked="@(gallery.Display)">
-                                                    </label>
-                                                    <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
-                                                    <input type="hidden" asp-for="PageToggles.ActiveGalleryId" value="@gallery.Order" />
-                                                    <input type="submit" value="o" class="accordion-button loader" />
+                                                    <div>
+                                                        <label class="gallery-checkbox">
+                                                            <p>Display</p>
+                                                            <input type="checkbox" asp-for="PageToggles.Display" checked="@(gallery.Display)">
+                                                        </label>
+                                                        <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
+                                                        <input type="hidden" asp-for="PageToggles.ActiveGalleryId" value="@gallery.Order" />
+                                                        <input type="submit" value="update" class="accordion-button loader site-button" />
+                                                    </div>
                                                 </form>
-                                            </div>
                                         </section>
                                         <section>
                                             <form asp-page-handler="AddImages" method="post" enctype="multipart/form-data">
@@ -218,7 +218,7 @@
                                                     <input name="files" type="file" multiple="multiple" accept="image/*" class="file-selection-input" />
                                                     <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
                                                     <input type="hidden" asp-for="PageToggles.ActiveGalleryId" value="@gallery.Order" />
-                                                    <input type="submit" value="Add Images" class="loader" />
+                                                    <input type="submit" value="Add Images" class="loader site-button" />
                                                 </label>
                                             </form>
                                         </section>
