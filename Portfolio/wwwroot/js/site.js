@@ -132,69 +132,43 @@ $(function () {
     })
 })
 
+// Request form upload file size checker
+$(function () {
+    $('.request-upload').on('change', (e) => {
+        let uploadSize = 0;
+        let files = e.currentTarget.files;
+        Array.from(files).forEach((file) => {
+            uploadSize += (file.size/1000000);
+        });
+        if (uploadSize > 20) {
+            $('.request-upload').val('');
+            $('.upload-too-large').removeClass("hide-me");
+        }
+    });
+});
+
+// Close request upload size warning
+$(function () {
+    $('.upload-too-large-close').click(function () {
+        $('.upload-too-large').addClass("hide-me");
+    });
+});
+
+// Close request verification window.
+$(function () {
+    $('#email-confirm').click(function () {
+        $('#request-confirmation').addClass('hide-me');
+    });
+});
+
 // old code, saving until after refactor is complete
 
-//toggles gallery viewer on when a thumbnail is clicked
-// $(function () {
-//     $('.gallery-toggle').click(function () {
-//         $('#gallery-switch').removeClass('show-gallery');
-//     });
-// });
-
-// //toggles gallery viewer off when X is clicked
-// $(function () {
-//     $('.close-gallery').click(function () {
-//         $('#gallery-switch').addClass('show-gallery');
-//     });
-// });
 
 // function getCarouselIndex() {
 //     const index = ($('figure.active').index()) + 2;
 //     $('#limit').val(index);
 //     console.log(index);
 // }
-
-// //confirmation box from request form
-// $(function () {
-//     $('#email-confirm').click(function () {
-//         $('#request-confirmation').addClass('hide-confirmation');
-//         $('#request-confirmation').removeClass('show-confirmation');
-//     });
-// });
-
-// //general contact form toggle on and off
-// $(function () {
-//     $('.toggle-contact').click(function () {
-//         $('#general-contact').toggleClass('general-contact-hide');
-//     });
-// });
-
-// //button to cancel and close the contact form
-// $(function () {
-//     $('#close-popup').click(function () {
-//         $('#general-contact').addClass('general-contact-hide');
-//     });
-// });
-
-// //buttons to hide and show studio page pop ups.
-// // aftercare button
-// $(function () {
-//     $('#show-policies').click(function () {
-//         $('#shop-policies').removeClass('hidden-popup');
-//     });
-// });
-// // policies button
-// $(function () {
-//     $('#show-aftercare').click(function () {
-//         $('#tattoo-aftercare').removeClass('hidden-popup');
-//     });
-// });
-// // close the popup window
-// $(function () {
-//     $('.studio-popup-close').click(function () {
-//         $('.studio-popup').addClass("hidden-popup");
-//     })
-// })
 
 
 // //https://developers.google.com/maps/documentation/javascript/examples/style-array
@@ -300,25 +274,3 @@ $(function () {
 //     marker.setMap(map); 
 // }
 
-// // Request form upload file size checker
-// $(function () {
-//     $('.request-upload').on('change', (e) => {
-//         let uploadSize = 0;
-//         let files = e.currentTarget.files;
-//         Array.from(files).forEach((file) => {
-//             uploadSize += (file.size/1000000);
-//         });
-//         if (uploadSize > 20) {
-//             $('.request-upload').val('');
-//             $('.upload-too-large').removeClass("hidden-popup");
-//         }
-//     });
-// });
-
-// // Close request upload size warning
-// $(function () {
-//     $('.upload-too-large-close').click(function () {
-//         console.log('hello');
-//         $('.upload-too-large').addClass("hidden-popup");
-//     });
-// });

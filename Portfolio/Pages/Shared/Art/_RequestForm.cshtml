@@ -28,7 +28,7 @@
                     <p>Attach References <span>(optional)</span></p>
                     <input name="files" type="file" multiple="multiple" accept="image/*" class="request-upload"/>
                 </div>
-                <div><input class="admin-button g-recaptcha" type="submit" value="Send Request" data-sitekey=@Model.CaptchaKey data-callback="onSubmit" data-action="sumbit"/></div>
+                <div><input class="admin-button g-recaptcha loader" type="submit" value="Send Request" data-sitekey=@Model.CaptchaKey data-callback="onSubmit" data-action="sumbit"/></div>
             }
             else
             {
@@ -36,7 +36,7 @@
             }
         </form>
     </div>
-    <div class="upload-too-large hidden-popup">
+    <div class="upload-too-large hide-me">
         <p>Please limit your upload size to 20mb</p>
         <button type="button" class="upload-too-large-close admin-button">Got it</button>
     </div>
