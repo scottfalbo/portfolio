@@ -28,11 +28,5 @@ namespace Portfolio.Models.Interface
         public Task<Studio> GetStudio(int id);
         public Task UpdateStudio(Studio studio);
 
-        /// <summary>
-        /// Instagram API methods
-        /// </summary>
-        public Task GetInstagramFeed();
-        public Task RefreshAccessToken();
-        public Task<List<Instagram>> GetInstagrams();
     }
 }
