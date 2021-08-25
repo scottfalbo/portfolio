@@ -250,6 +250,47 @@ main {
     background: #fff;
 }
 
+/* ------------------------------- Booking Request */
+
+.booking-mainpage .left-col h2 {
+    font-size: 1.3em;
+    color:#54ec93;
+    font-family: 'Jura', sans-serif;
+    margin: 10px;
+}
+
+.request-image-upload input:hover::before {
+    border: 2px solid #f19f24;
+    color: #f19f24;
+}
+
+.request-upload {
+    color: #f19f24;
+}
+
+.request-image-upload input::before {
+    outline: none;
+    border: 2px solid #9fff3d;
+    content: 'Select Files';
+    border-radius: 5px;
+    background-color: #000;
+    color: #b6ff00;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.request-form div:nth-child(6) {
+    text-align: center;
+}
+
+.request-image-upload p {
+    text-align: center;
+    color:#00b94d;
+    font-family: 'Jura', sans-serif;
+    font-size: 1.1em;
+    padding: 5px;
+}
+
 /* ------------------------------------- Global Buttons */
 
 .site-button {

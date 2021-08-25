@@ -345,6 +345,31 @@ header {
     margin: 17px 6px;
 }
 
+/* ------------------------------- Booking Request */
+
+.request-image-upload input::-webkit-file-upload-button {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+}
+
+.request-upload {
+    height: 60px;
+    padding-top: 20px;
+    margin: 10px auto;
+}
+
+.request-image-upload input::before {
+    padding: 15px;
+    width: 100%;
+    height: 50px;
+}
+
+.request-form .site-button {
+    width: 200px;
+    margin: 10px auto;
+}
+
 /* -------------------------------- Global Buttons */
 
 .site-button {
@@ -492,6 +517,11 @@ header {
         grid-template-columns: 40% 60%;
         grid-template-rows: min-content 60px;
     }
+
+    .booking-mainpage {
+        grid-template-columns: 50% 50%;
+    }
+
     .left-col {
         grid-column: 1/2;
         grid-row: 1/2;

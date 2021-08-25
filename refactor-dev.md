@@ -30,7 +30,6 @@ Refactoring the overall structure of the site while adding new content and secti
   + Finished styling the art page and associated admin.  
   + Added a loading bar for async CRUD actions.
 + 8/24/2021
-    + 
-
+  + Scaffolded booking page.  Made contact verification popup, a file upload size check using jQuery, and added a loading bar to the form.
 
 [Back to README](README.md#refactor-development-log)
