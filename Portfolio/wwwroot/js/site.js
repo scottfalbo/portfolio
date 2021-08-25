@@ -27,14 +27,16 @@ $(function () {
 // Open confirmation window to delete a gallery image
 $(function () {
     $('.delete-gallery-image').click(function () {
-        $('.delete-image-confirm').removeClass('hide-me');
+        $(this).siblings('.delete-image-confirm')
+        .removeClass('hide-me');
     });
 });
 
 // Open confirmation window to delete a gallery
 $(function () {
     $('.delete-gallery').click(function () {
-        $('.delete-gallery-confirmation').removeClass('hide-me');
+        $(this).siblings('.delete-gallery-confirmation')
+            .removeClass('hide-me');
     });
 });
 
@@ -171,13 +173,6 @@ $(document).ready(function (){
     });
 });
 
-// $(function () {
-//     $('.site-nav-button').hover(function () {
-//         $(this).children('.mouse-over-tooltip').show();
-//     }, function () {
-//         $(this).children('.mouse-over-tooltip').hide();
-//     });
-// });
 
 $(document).on('mouseover', function(e) {
     $('.mouse-over-tooltip').css({

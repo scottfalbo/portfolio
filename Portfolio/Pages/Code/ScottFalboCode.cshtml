@@ -3,8 +3,8 @@
 @{
 }
 
-<div class="homepage-container">
-    <h1>Code</h1>
+<h1>Code</h1>
+<div class="homepage-container code-mainpage">
     <div class="left-col">
         <figure>
             <img class="selfie" src="@Model.HomePage.Selfie" alt="Photo of Scott Falbo" />
@@ -24,9 +24,6 @@
         <section class="mobile-menu">
             <partial name="SiteNavButtons/_MainPageNav" />
         </section>
-        <figure class="mainpage-art-mobile">
-            <img src="~/images/eye.png" />
-        </figure>
     </div>
     @if (User.Identity.IsAuthenticated)
     {
@@ -36,26 +33,26 @@
 
 @*<h2>&lt;Projects&gt;</h2>
 
-<div class="project-inner">
+    <div class="project-inner">
 
-    @foreach (var project in Model.ProjectList)
-    {
-        <article class="project-container">
-            <h3>@project.Title</h3>
-            <figure>
-                <img src="@project.SourceURL" alt="@project.AltText" />
-                <figcaption class="project-caption">@project.Description</figcaption>
-                <div class="project-link">
-                    <a href="@project.RepoLink" target="_blank">&lt;GitHub Repo&gt;</a>
-                </div>
-                @if (project.DeployedLink != null)
-                {
+        @foreach (var project in Model.ProjectList)
+        {
+            <article class="project-container">
+                <h3>@project.Title</h3>
+                <figure>
+                    <img src="@project.SourceURL" alt="@project.AltText" />
+                    <figcaption class="project-caption">@project.Description</figcaption>
                     <div class="project-link">
-                        <a href="@project.DeployedLink" target="_blank">&lt;Deployed Site&gt;</a>
+                        <a href="@project.RepoLink" target="_blank">&lt;GitHub Repo&gt;</a>
                     </div>
-                }
-            </figure>
-        </article>
-    }
-</div>*@
+                    @if (project.DeployedLink != null)
+                    {
+                        <div class="project-link">
+                            <a href="@project.DeployedLink" target="_blank">&lt;Deployed Site&gt;</a>
+                        </div>
+                    }
+                </figure>
+            </article>
+        }
+    </div>*@
 
