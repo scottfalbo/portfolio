@@ -194,7 +194,7 @@ header {
     text-align: right;
 }
 
-.gallery-admin-images .card-body > section:first-child > form label > p {
+.gallery-admin-images .card-body > section:first-child > form label > span {
     grid-column: 1/2;
     grid-row: 1/2;
     line-height: 30px;
@@ -314,6 +314,21 @@ header {
 .gallery-admin-images a>.delete-gallery-container {
     grid-column: 2/3;
     grid-row: 1/2;
+}
+
+.delete-graphic {
+    width: 1em;
+    height: 1em;
+}
+
+.delete-graphic > div {
+    width: 100%;
+    height: 2px;
+    margin-top: 40%;
+}
+
+.delete-gallery-container .delete-graphic {
+    margin: 30% 30%;
 }
 
 /* Confirmation popups */

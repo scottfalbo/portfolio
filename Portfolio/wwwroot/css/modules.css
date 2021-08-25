@@ -206,11 +206,25 @@ main {
     margin: 15px auto;
 }
 
+.gallery-admin-images .card-body > section:first-child > form label > span {
+    font-size: 1.2em;
+}
+
 .gallery-admin-images .delete-gallery, .delete-gallery-image {
     background: #000;
     border: 1px solid #f19f24;
     border-radius: 50%;
     color: #f19f24;
+}
+
+.delete-graphic {
+    border: 2px solid #f86c6c;
+    border-radius: 50%;
+}
+
+.delete-graphic > div {
+    background-color: #f86c6c;
+    transform: rotateY(0deg) rotate(45deg);
 }
 
 /* Confirmation popups */

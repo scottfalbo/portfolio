@@ -180,7 +180,7 @@
                                         </h5>
                                     </a>
                                     <div class="delete-gallery-container accordion-button delete-gallery">
-                                        <div>🚫</div>
+                                        <div><partial name="_DeleteGraphic" /></div>
                                     </div>
                                     <div class="delete-gallery-confirmation hide-me confirm-popup">
                                         <p>Delete @gallery.Title?</p>
@@ -200,7 +200,7 @@
                                                     <input type="text" name="title" value="@gallery.Title" placeholder="@gallery.Title" />
                                                     <div>
                                                         <label class="gallery-checkbox">
-                                                            <p>Display</p>
+                                                            <span>Display</span>
                                                             <input type="checkbox" asp-for="PageToggles.Display" checked="@(gallery.Display)">
                                                         </label>
                                                         <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
@@ -226,7 +226,7 @@
                                                 <div class="admin-image-thumb">
                                                     <div style="background-image: url(@image.Image.ThumbURL)"></div>
                                                 </div>
-                                                <button class="delete-gallery-image">🚫</button>
+                                                <button class="delete-gallery-image"><partial name="_DeleteGraphic" /></button>
                                                 <div class="delete-image-confirm hide-me confirm-popup">
                                                     <p>Delete @image.Image.Title?</p>
                                                     <form asp-page-handler="DeleteImage" method="post">
