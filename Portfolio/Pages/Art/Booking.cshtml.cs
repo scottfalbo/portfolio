@@ -10,6 +10,7 @@ using Portfolio.Email.Models;
 using Portfolio.Email.Models.Interface;
 using Portfolio.Models;
 using Portfolio.Models.Interface;
+using System.IO;
 
 namespace Portfolio.Pages.Art
 {
@@ -62,16 +63,25 @@ namespace Portfolio.Pages.Art
 
         /// <summary>
         /// Build Message object with user input and call SendGrid method.
+        /// Strips any white space from the filename before upload.
         /// </summary>
         /// <returns> Redirect </returns>
         public async Task OnPostSend(IFormFile[] files)
         {
             Uris images = new Uris();
+            
 
             foreach (var file in files)
             {
                 if (file != null)
-                    images.ImageUris.Add(new ImageUri(((await _upload.UploadImage(file)).Uri).ToString()));
+                {
+                    string filename = file.FileName.Replace(" ", String.Empty);
+                    using var stream = System.IO.File.Create(filename);
+                    await file.CopyToAsync(stream);
+                    stream.Position = 0;
+                    images.ImageUris.Add(new ImageUri(((await _upload.UploadImage(stream, filename, file.ContentType)).Uri).ToString()));
+                }
+
             }
             RequestForm message = new RequestForm()
             {
