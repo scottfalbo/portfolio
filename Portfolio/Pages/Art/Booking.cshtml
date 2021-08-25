@@ -21,10 +21,11 @@
 </div>
 <partial name="_LoadingBar" />
 
-<div class="@(Model.WasSent ? "" : "hide-me")" id="request-confirmation">
-    <div>
-        <p>Thank you! <br /> Your request has been sent</p>
-        <button id="email-confirm" class="admin-button">okily dokily</button>
+<div class="@(Model.WasSent ? "" : "hide-me") fullscreen" id="request-confirmation">
+    <div class="was-sent confirm-popup">
+        <p>Thank you!<br />Your request has been sent</p>
+        <button id="email-confirm" class="site-button">Back to Booking</button>
+        <a asp-page="/Art/ScottFalboArt"><div class="site-button">Back to Galleries</div></a>
     </div>
 </div>
 

@@ -370,6 +370,30 @@ header {
     margin: 10px auto;
 }
 
+.was-sent {
+    height: 260px;
+    text-align: center;
+}
+
+.was-sent .site-button {
+    width: 200px;
+}
+
+.was-sent > a > div {
+    margin: 20px auto;
+}
+
+.upload-too-large .confirm-popup {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.upload-too-large .confirm-popup .site-button {
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+}
+
 /* -------------------------------- Global Buttons */
 
 .site-button {

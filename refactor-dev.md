@@ -31,5 +31,6 @@ Refactoring the overall structure of the site while adding new content and secti
   + Added a loading bar for async CRUD actions.
 + 8/24/2021
   + Built out Booking page with a request form with image upload, loading bar, and confirmation popup.  The form also uses a jQuery function to check upload files and ensure they are less than 20mb total.
+  + Added code to strip any whitespace from the filename before being uploaded.
 
 [Back to README](README.md#refactor-development-log)

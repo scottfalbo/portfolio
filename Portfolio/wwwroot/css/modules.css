@@ -217,7 +217,7 @@ main {
 
 .confirm-popup {
     background: #000;
-    border: 1px solid #23ff36;
+    border: 1px solid #7cd384;
     border-radius: 20px;
     box-shadow: 1px 5px 3px #000;
     padding: 20px;
@@ -259,6 +259,14 @@ main {
     margin: 10px;
 }
 
+.booking-mainpage > .right-col > h3 {
+    text-align: center;
+    color:#54ec93;
+    font-family: 'Jura', sans-serif;
+    padding: 5px;
+    font-size: 1.1em;
+}
+
 .request-image-upload input:hover::before {
     border: 2px solid #f19f24;
     color: #f19f24;
@@ -289,6 +297,20 @@ main {
     font-family: 'Jura', sans-serif;
     font-size: 1.1em;
     padding: 5px;
+}
+
+.was-sent .site-button {
+    font-size: 1.1em;
+}
+
+.was-sent > a > div {
+    color: #f19f24;
+    line-height: 25px;
+}
+
+.upload-too-large .confirm-popup .site-button {
+    font-size: 1.2em;
+    line-height: 30px;
 }
 
 /* ------------------------------------- Global Buttons */
