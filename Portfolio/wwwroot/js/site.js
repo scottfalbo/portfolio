@@ -161,9 +161,37 @@ $(function () {
     });
 });
 
+// Nav button mouse over tooltip.
+$(document).ready(function (){
+    $('.site-nav-button').mouseenter(function () {
+        $(this).children('.mouse-over-tooltip').removeClass('hide-me');
+    });
+    $('.site-nav-button').mouseleave(function () {
+        $(this).children('.mouse-over-tooltip').addClass('hide-me');
+    });
+});
+
+// $(function () {
+//     $('.site-nav-button').hover(function () {
+//         $(this).children('.mouse-over-tooltip').show();
+//     }, function () {
+//         $(this).children('.mouse-over-tooltip').hide();
+//     });
+// });
+
+$(document).on('mouseover', function(e) {
+    $('.mouse-over-tooltip').css({
+        left: e.pageX,
+        top: e.pageY
+    });
+});
+
+
+
+
 // old code, saving until after refactor is complete
 
-
+//pagination stuff
 // function getCarouselIndex() {
 //     const index = ($('figure.active').index()) + 2;
 //     $('#limit').val(index);

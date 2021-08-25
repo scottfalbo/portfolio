@@ -114,7 +114,7 @@ namespace Portfolio.Pages
         /// </summary>
         public async Task<IActionResult> OnPostUpdateInstaFeed()
         {
-            await _adminContext.GetInstagramFeed();
+
             return Redirect("/Admin/SecretLair");
         }
 
@@ -123,7 +123,7 @@ namespace Portfolio.Pages
         /// </summary>
         public async Task<IActionResult> OnGetRefreshInstaToken()
         {
-            await _adminContext.RefreshAccessToken();
+
             return Redirect("/Admin/SecretLair");
         }
 

@@ -70,6 +70,20 @@ header {
     width: 60px;
 }
 
+.mouse-over-tooltip {
+    z-index: 25;
+    position: absolute;
+    min-width: fit-content;
+    width: 200px;
+    background-color: #000;
+    border-radius: 10px;
+    font-family: 'Jura', sans-serif;
+    font-size: 1.2em;
+    border: 1px solid #00ffea;
+    color: #83e2da;
+    padding: 10px;
+}
+
 /* ------------------------------------- Gallery Viewer */
 
 .image-gallery {
