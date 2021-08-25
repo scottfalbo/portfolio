@@ -27,6 +27,10 @@ Refactoring the overall structure of the site while adding new content and secti
     + `site.js -> openGallery(gallery)` uses a unique class id created from the galleries title to open only the selected gallery.
   + Used jQuery and a `MutationObserver` object to have an eye graphic open and close with gallery sections.
   + Added `CheckFileName` method to `UploadServices` to ensure there are no duplicate files names on image upload.  Uses gallery repeat popup as warning.
-
+  + Finished styling the art page and associated admin.  
+  + Added a loading bar for async CRUD actions.
++ 8/24/2021
+  + Built out Booking page with a request form with image upload, loading bar, and confirmation popup.  The form also uses a jQuery function to check upload files and ensure they are less than 20mb total.
+  + Added code to strip any whitespace from the filename before being uploaded.
 
 [Back to README](README.md#refactor-development-log)

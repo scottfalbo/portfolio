@@ -40,6 +40,7 @@ header {
     border: 1px solid #57ff7b;
     border-radius: 50%;
     height: 56px;
+    background: #000;
 }
 
 .art-menu .navbar-dark .navbar-toggler {
@@ -216,7 +217,7 @@ main {
 
 .confirm-popup {
     background: #000;
-    border: 1px solid #23ff36;
+    border: 1px solid #7cd384;
     border-radius: 20px;
     box-shadow: 1px 5px 3px #000;
     padding: 20px;
@@ -247,6 +248,69 @@ main {
 
 #loading-bar-inner>div {
     background: #fff;
+}
+
+/* ------------------------------- Booking Request */
+
+.booking-mainpage .left-col h2 {
+    font-size: 1.3em;
+    color:#54ec93;
+    font-family: 'Jura', sans-serif;
+    margin: 10px;
+}
+
+.booking-mainpage > .right-col > h3 {
+    text-align: center;
+    color:#54ec93;
+    font-family: 'Jura', sans-serif;
+    padding: 5px;
+    font-size: 1.1em;
+}
+
+.request-image-upload input:hover::before {
+    border: 2px solid #f19f24;
+    color: #f19f24;
+}
+
+.request-upload {
+    color: #f19f24;
+}
+
+.request-image-upload input::before {
+    outline: none;
+    border: 2px solid #9fff3d;
+    content: 'Select Files';
+    border-radius: 5px;
+    background-color: #000;
+    color: #b6ff00;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.request-form div:nth-child(6) {
+    text-align: center;
+}
+
+.request-image-upload p {
+    text-align: center;
+    color:#00b94d;
+    font-family: 'Jura', sans-serif;
+    font-size: 1.1em;
+    padding: 5px;
+}
+
+.was-sent .site-button {
+    font-size: 1.1em;
+}
+
+.was-sent > a > div {
+    color: #f19f24;
+    line-height: 25px;
+}
+
+.upload-too-large .confirm-popup .site-button {
+    font-size: 1.2em;
+    line-height: 30px;
 }
 
 /* ------------------------------------- Global Buttons */

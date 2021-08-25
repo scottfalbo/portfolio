@@ -3,22 +3,54 @@
 @{
 }
 
-<div>
-    <partial name="Art/_ArtMenu" />
-</div>
-<section class="booking-page">
-    <section>
-        <h2>Booking Info</h2>
+<partial name="Art/_ArtMenu" />
+
+<div class="homepage-container booking-mainpage">
+    <div class="left-col">
+        <h2>@Model.HomePage.Title</h2>
         <article class="intro">@Model.HomePage.Intro</article>
-    </section>
-    <div>
+    </div>
+    <div class="right-col">
         <h3>Contact Form</h3>
         <partial name="Art/_RequestForm" />
     </div>
-</section>
-<section class="@(Model.WasSent ? "show-confirmation":"hide-confirmation")" id="request-confirmation">
-    <div>
-        <p>Thank you! <br /> Your request has been sent</p>
-        <button id="email-confirm" class="admin-button">okily dokily</button>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <partial name="_PopupToggle" />
+    }
+</div>
+<partial name="_LoadingBar" />
+
+<div class="@(Model.WasSent ? "" : "hide-me") fullscreen" id="request-confirmation">
+    <div class="was-sent confirm-popup">
+        <p>Thank you!<br />Your request has been sent</p>
+        <button id="email-confirm" class="site-button">Back to Booking</button>
+        <a asp-page="/Art/ScottFalboArt"><div class="site-button">Back to Galleries</div></a>
     </div>
-</section>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="fullscreen popup-module-outer hide-me">
+        <div class="popup-module-inner">
+            <div class="admin-module">
+                <section>
+                    <form asp-page-handler="Edit" method="post">
+                        <div>
+                            <input type="text" asp-for="HomePage.Title" class="form-control" placeholder="@Model.HomePage.Title" value="@Model.HomePage.Title" />
+                        </div>
+                        <div>
+                            <textarea type="text" cols="45" rows="5" asp-for="HomePage.Intro" class="form-control" placeholder="@Model.HomePage.Intro"></textarea>
+                        </div>
+                        <div>
+                            <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
+                            <input type="hidden" asp-for="HomePage.Page" value="@Model.HomePage.Page" />
+                            <input class="site-button loader" type="submit" value="Update" />
+                        </div>
+                    </form>
+                </section>
+                <button class="module-close-button site-button">close</button>
+            </div>
+        </div>
+    </div>
+}

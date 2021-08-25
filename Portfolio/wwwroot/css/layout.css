@@ -345,6 +345,55 @@ header {
     margin: 17px 6px;
 }
 
+/* ------------------------------- Booking Request */
+
+.request-image-upload input::-webkit-file-upload-button {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+}
+
+.request-upload {
+    height: 60px;
+    padding-top: 20px;
+    margin: 10px auto;
+}
+
+.request-image-upload input::before {
+    padding: 15px;
+    width: 100%;
+    height: 50px;
+}
+
+.request-form .site-button {
+    width: 200px;
+    margin: 10px auto;
+}
+
+.was-sent {
+    height: 260px;
+    text-align: center;
+}
+
+.was-sent .site-button {
+    width: 200px;
+}
+
+.was-sent > a > div {
+    margin: 20px auto;
+}
+
+.upload-too-large .confirm-popup {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.upload-too-large .confirm-popup .site-button {
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+}
+
 /* -------------------------------- Global Buttons */
 
 .site-button {
@@ -492,6 +541,11 @@ header {
         grid-template-columns: 40% 60%;
         grid-template-rows: min-content 60px;
     }
+
+    .booking-mainpage {
+        grid-template-columns: 50% 50%;
+    }
+
     .left-col {
         grid-column: 1/2;
         grid-row: 1/2;
