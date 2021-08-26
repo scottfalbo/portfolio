@@ -28,6 +28,7 @@
     <div class="right-col">
         <article class="intro">@Model.HomePage.Intro</article>
         <section class="coding-projects gallery-display galleries">
+            <h2>Coding Projects</h2>
             <!-- Accordion wrapper -->
             <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                 @foreach (var project in Model.Projects)
@@ -50,7 +51,7 @@
                                 </a>
                             </div>
                             <!-- Card body -->
-                            <div id="@project.CollapseId" class="@(project.Order == 1 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@project.AccordionId" data-parent="#accordionEx">
+                            <div id="@project.CollapseId" class="collapse" role="tabpanel" aria-labelledby="@project.AccordionId" data-parent="#accordionEx">
                                 <div class="card-body">
                                     <section class="project-card">
                                         <article class="intro">@project.Description</article>
@@ -96,12 +97,12 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <div class="popup-toggle-button">
-                    <button class="module-open-button open-project-admin">° ° °</button>
+                    <button class="module-open-button open-gallery-admin">° ° °</button>
                 </div>
             }
         </section>
         <section class="mobile-menu">
-            <partial name="SiteNavButtons/_MainPageNav" />
+            <partial name="SiteNavButtons/_CodePageNav" />
         </section>
     </div>
     @if (User.Identity.IsAuthenticated)
@@ -109,4 +110,150 @@
         <partial name="_PopupToggle" />
     }
 </div>
+
+<partial name="_LoadingBar" />
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="fullscreen popup-module-outer hide-me">
+        <div class="popup-module-inner">
+            <div class="admin-module">
+                <section>
+                    <figure><img src="@Model.HomePage.Selfie" /></figure>
+                    <form asp-page-handler="UpdatePhoto" method="post" enctype="multipart/form-data">
+                        <label>
+                            <input name="file" type="file" class="file-selection-input" />
+                            <input type="submit" value="Update Image" class="site-button loader" />
+                            <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
+                            <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
+                        </label>
+                    </form>
+                </section>
+                <section>
+                    <form asp-page-handler="UpdatePage" method="post">
+                        <div>
+                            <input type="text" asp-for="HomePage.Title" class="form-control" placeholder="@Model.HomePage.Title" value="@Model.HomePage.Title" />
+                        </div>
+                        <div>
+                            <textarea type="text" cols="45" rows="5" asp-for="HomePage.Intro" class="form-control" placeholder="@Model.HomePage.Intro"></textarea>
+                        </div>
+                        <div>
+                            <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
+                            <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
+                            <input type="hidden" asp-for="HomePage.Page" value="@Model.HomePage.Page" />
+                            <input type="hidden" asp-for="HomePage.Selfie" value="@Model.HomePage.Selfie" />
+                            <input class="site-button loader" type="submit" value="Update" />
+                        </div>
+                        <button class="module-close-button site-button">close</button>
+                    </form>
+                </section>
+            </div>
+
+        </div>
+    </div>
+    <div class="fullscreen gallery-module-outer @(Model.PageToggles.ActiveProjectAdmin ? "" : "hide-me")">
+        <div class="popup-module-inner">
+            <div class="admin-module">
+                <section class="code-project-admin galleries">
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion" id="accordionExAdmin" role="tablist" aria-multiselectable="true">
+                        @foreach (var project in Model.Projects)
+                        {
+                            <!-- Accordion card -->
+                            <div class="card">
+                                <!-- Card header -->
+                                <div class="card-header" role="tab" id="@project.AdminAccordionId">
+                                    <a data-toggle="collapse" data-parent="#accordionExAdmin" href="#@project.AdminCollapseId" aria-expanded="true"
+                                       aria-controls="collapseOne1">
+                                        <h5 class="mb-0">
+                                            @project.Title <i class="fas fa-angle-down rotate-icon"></i>
+                                        </h5>
+                                    </a>
+                                    <div class="delete-gallery-container accordion-button delete-gallery">
+                                        <div><partial name="_DeleteGraphic" /></div>
+                                    </div>
+                                    <div class="delete-gallery-confirmation hide-me confirm-popup">
+                                        <p>Delete @project.Title?</p>
+                                        <form asp-page-handler="DeleteProject" method="post">
+                                            <input type="hidden" name="id" value="@project.Id" />
+                                            <input class="delete-confirmation site-button loader" type="submit" value="Confirm" />
+                                        </form>
+                                        <button class="cancel-confirmation site-button">Cancel</button>
+                                    </div>
+                                </div>
+                                <!-- Card body -->
+                                <div id="@project.AdminCollapseId" class="@(project.Order == Model.PageToggles.ActiveProjectId && !Model.PageToggles.StayCollapsed ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@project.AdminAccordionId"
+                                     data-parent="#accordionExAdmin">
+                                    <div class="card-body">
+                                        <form asp-page-handler="UpdateImage" method="post" enctype="multipart/form-data">
+                                            <div><img src=@project.ImageUrl /></div>
+                                            <label>
+                                                <input name="file" type="file" accept="image/*" class="file-selection-input" />
+                                                <input type="hidden" asp-for="PageToggles.ProjectId" value="@project.Id" />
+                                                <input type="hidden" asp-for="PageToggles.ActiveProjectId" value="@project.Order" />
+                                                <input type="hidden" asp-for="Project.Id" value="@project.Id" />
+                                                <input type="hidden" asp-for="Project.FileName" value="@project.FileName" />
+                                                <input type="submit" value="Update Image" class="loader site-button" />
+                                            </label>
+                                        </form>
+                                        <form asp-page-handler="UpdateProject" method="post" class="update-form">
+                                            <label>
+                                                Title:
+                                                <input type="text" asp-for="Project.Title" value="@project.Title" placeholder="@project.Title" />
+                                            </label>
+                                            <label>
+                                                Alt Text:
+                                                <input type="text" asp-for="Project.AltText" value="@project.AltText" placeholder="@project.AltText" />
+                                            </label>
+                                            <div>
+                                                <label class="gallery-checkbox">
+                                                    <span>Display</span>
+                                                    <input type="checkbox" asp-for="Project.Display" checked="@(project.Display)">
+                                                </label>
+                                            </div>
+                                            <label>
+                                                Description:
+                                                <textarea type="text" cols="45" rows="5" asp-for="Project.Description" class="form-control" placeholder="@project.Description"></textarea>
+                                            </label>
+                                            <label>
+                                                Technology Summary:
+                                                <textarea type="text" cols="45" rows="5" asp-for="Project.TechSummary" class="form-control" placeholder="@project.TechSummary"></textarea>
+                                            </label>
+                                            <label>
+                                                Technologies Used:
+                                            </label>
+                                            <label>
+                                                Deployed Link:
+                                                <input type="text" asp-for="Project.DeployedLink" value="@project.DeployedLink" placeholder="@project.DeployedLink" />
+                                            </label>
+                                            <label>
+                                                Repo Link:
+                                                <input type="text" asp-for="Project.RepoLink" value="@project.RepoLink" placeholder="@project.RepoLink" />
+                                            </label>
+                                            <input type="hidden" asp-for="Project.Id" value="@project.Id" />
+                                            <input type="submit" value="update" class="accordion-button loader site-button" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Accordion card -->
+                        }
+                    </div>
+                    <!-- Accordion wrapper -->
+                </section>
+                <section>
+                    <form asp-page-handler="NewProject" method="post">
+                        <input type="text" name="title" class="form-control" placeholder="new project" value="New Project" />
+                        <input class="site-button loader" type="submit" value="Add" />
+                    </form>
+                    <div class="repeat-gallery-title confirm-popup @(Model.PageToggles.RepeatProjectTitle ? "" : "hide-me")">
+                        <p>stops copies me</p>
+                        <button class="repeat-gallery-close site-button">okay</button>
+                    </div>
+                </section>
+                <button class="module-close-button site-button">close</button>
+            </div>
+        </div>
+    </div>
+}
 

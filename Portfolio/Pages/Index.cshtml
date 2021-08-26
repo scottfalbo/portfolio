@@ -45,7 +45,7 @@
                     <form asp-page-handler="UpdatePhoto" method="post" enctype="multipart/form-data">
                         <label>
                             <input name="file" type="file" class="file-selection-input"/>
-                            <input type="submit" value="Update Image" class="site-button"/>
+                            <input type="submit" value="Update Image" class="site-button loader"/>
                             <input type="hidden" asp-for="HomePage.Id" value="@Model.HomePage.Id" />
                             <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
                         </label>
@@ -64,7 +64,7 @@
                             <input type="hidden" asp-for="HomePage.FileName" value="@Model.HomePage.FileName" />
                             <input type="hidden" asp-for="HomePage.Page" value="@Model.HomePage.Page" />
                             <input type="hidden" asp-for="HomePage.Selfie" value="@Model.HomePage.Selfie" />
-                            <input class="site-button" type="submit" value="Update" />
+                            <input class="site-button loader" type="submit" value="Update" />
                         </div>
                         <button class="module-close-button site-button">close</button>
                     </form>

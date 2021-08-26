@@ -102,26 +102,6 @@ namespace Portfolio.Models.Interface.Services
         }
 
         /// <summary>
-        /// Upload an image and create a new project
-        /// </summary>
-        /// <param name="file"> input file </param>
-        /// <returns> no return </returns>
-        public async Task AddProjectImage(IFormFile file)
-        {
-            BlobClient blob = await UploadImage(file);
-
-            Project newProject = new Project()
-            {
-                Title = "new",
-                Description = "new project",
-                ImageUrl = blob.Uri.ToString(),
-                FileName = file.FileName,
-                Display = false
-            };
-            await _admin.CreateProject(newProject);
-        }
-
-        /// <summary>
         /// Upload and image to azure storage
         /// Create a new Tattoo object with new image and save to database
         /// </summary>

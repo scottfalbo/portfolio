@@ -29,19 +29,18 @@ namespace Portfolio.Models.Interfaces.Services
         /// </summary>
         /// <param name="project"> project object from form input </param>
         /// <returns> no return </returns>
-        public async Task CreateProject(Project project)
+        public async Task CreateProject(string title)
         {
             Project newProject = new Project()
             {
-                Title = project.Title,
-                ImageUrl = project.ImageUrl,
-                Description = project.Description,
-                RepoLink = project.RepoLink,
-                DeployedLink = project.DeployedLink,
-                Order = project.Order,
-                AltText = project.AltText,
-                FileName = project.FileName,
-                Display = project.Display
+                Title = title,
+                ImageUrl = "",
+                Description = "",
+                RepoLink = "",
+                DeployedLink = "",
+                Order = 0,
+                AltText = title,
+                Display = false
             };
 
             newProject = ProjectAccordionIds(newProject);

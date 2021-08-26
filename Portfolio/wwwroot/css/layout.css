@@ -159,6 +159,8 @@ header {
 
 /*  -------------------------------- Popup Admin Module */
 
+/* Art Galleries */
+
 .gallery-admin-images .card-body > section:first-child > form {
     display: grid;
     grid-template-columns: 100%;
@@ -219,6 +221,50 @@ header {
     line-height: 5px;
 }
 
+/* Coding Portfolio Admin */
+.code-project-admin .card-body {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: fit-content fit-content;
+    width: 98%;
+    margin: 20px auto;
+}
+
+.code-project-admin .card-body form:first-child {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.code-project-admin .card-body form:last-child {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+
+.code-project-admin .delete-gallery {
+    height: 40px;
+    width: 40px;
+}
+
+.code-project-admin .card .card-header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: 40px;
+}
+
+.code-project-admin.card .card-header a {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.code-project-admin a>.delete-gallery-container {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+/* ------------------------- */
+
 .fullscreen {
     position: fixed;
     top: 0px;
@@ -245,6 +291,7 @@ header {
 }
 
 .admin-module img {
+    width: 100%;
     max-width: 400px;
     max-height: 250px;
 }
@@ -434,6 +481,10 @@ header {
 
 /* --------------------------------- Coding Portfolio */
 
+.coding-projects > h2 {
+    margin-bottom: 15px;
+}
+
 .project-card > div:nth-child(2) {
     max-height: 300px;
     text-align: center;
@@ -476,7 +527,9 @@ header {
 
 .project-card .site-button {
     width: 100%;
-    margin: 10px 0;
+    max-width: 300px;
+    margin: 15px 0;
+    margin: 0 auto 10px auto;
 }
 /* -------------------------------- Global Buttons */
 

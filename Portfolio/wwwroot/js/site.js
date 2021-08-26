@@ -173,12 +173,16 @@ $(document).ready(function (){
     });
 });
 
-
 $(document).on('mouseover', function(e) {
     $('.mouse-over-tooltip').css({
         left: e.pageX,
         top: e.pageY
     });
+});
+
+// Update form reset
+$(document).ready(function () {
+    document.getElementsByClassName('update-form').reset();
 });
 
 //pagination stuff

@@ -206,11 +206,26 @@ main {
     margin: 15px auto;
 }
 
+/* Art Galleries */
+
 .gallery-admin-images .card-body > section:first-child > form label > span {
     font-size: 1.2em;
 }
 
 .gallery-admin-images .delete-gallery, .delete-gallery-image {
+    background: #000;
+    border: 1px solid #f19f24;
+    border-radius: 50%;
+    color: #f19f24;
+}
+
+/* Coding Portfolio */
+
+.code-project-admin .card-body > section:first-child > form label > span {
+    font-size: 1.2em;
+}
+
+.code-project-admin .delete-gallery, .delete-gallery-image {
     background: #000;
     border: 1px solid #f19f24;
     border-radius: 50%;
@@ -329,10 +344,16 @@ main {
 
 /* --------------------------------- Coding Portfolio */
 
+.coding-projects > h2 {
+    text-align: center;
+    color: #f19f24;
+    font-family: 'Jura', sans-serif;
+    font-size: 1.4em;
+}
+
 .project-card {
     background: #000;
     padding: 10px;
-    font-family: 'Jura', sans-serif;
 }
 
 .project-card .site-button {

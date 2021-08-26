@@ -32,6 +32,7 @@ namespace Portfolio.Pages.Art
         public async Task OnGet()
         {
             Galleries = await _art.GetGalleries();
+            Galleries.Reverse();
             HomePage = await _admin.GetHomePage("Tattoo");
             PageToggles = new PageToggles()
             {
