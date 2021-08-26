@@ -32,5 +32,10 @@ Refactoring the overall structure of the site while adding new content and secti
 + 8/24/2021
   + Built out Booking page with a request form with image upload, loading bar, and confirmation popup.  The form also uses a jQuery function to check upload files and ensure they are less than 20mb total.
   + Added code to strip any whitespace from the filename before being uploaded.
++ 8/25/2021
+  + Updated the `Project` model to include properties for accordion classes.
+  + Created and set a model for technology icons for use in the project portfolio.
+    + Created a Json file with a list of technology icons. Used the file to seed image paths into the database.
+  + Added an accordion display to the Code page and updated the model and view with the `Project` data.
 
 [Back to README](README.md#refactor-development-log)

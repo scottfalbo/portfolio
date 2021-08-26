@@ -142,7 +142,7 @@ header {
 .thumb-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: left;
     padding: 5px;
 }
 
@@ -432,6 +432,52 @@ header {
     margin-top: 20px;
 }
 
+/* --------------------------------- Coding Portfolio */
+
+.project-card > div:nth-child(2) {
+    max-height: 300px;
+    text-align: center;
+}
+
+.project-card div:nth-child(2) img {
+    width: inherit;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.project-card article {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.project-tech-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    margin: 10px;
+}
+
+.project-tech-container div {
+    height: 40px;
+}
+
+.project-tech-container div img {
+    width: inherit;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.project-card > div:nth-child(5) {
+    padding: 5px;
+    text-align: center;
+}
+
+.project-card .site-button {
+    width: 100%;
+    margin: 10px 0;
+}
 /* -------------------------------- Global Buttons */
 
 .site-button {
@@ -597,8 +643,6 @@ header {
         display: grid;
         grid-template-columns: 100%;
         grid-template-rows: min-content min-content;
-        padding: 5px;
-        width: 100%;
     }
     .left-col figure {
         grid-column: 1/2;

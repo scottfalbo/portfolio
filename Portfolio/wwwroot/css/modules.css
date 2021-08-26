@@ -227,10 +227,6 @@ main {
     transform: rotateY(0deg) rotate(45deg);
 }
 
-.delete-gallery-container .delete-graphic div {
-    
-}
-
 /* Confirmation popups */
 
 .confirm-popup {
@@ -330,6 +326,21 @@ main {
     font-size: 1.2em;
     line-height: 30px;
 }
+
+/* --------------------------------- Coding Portfolio */
+
+.project-card {
+    background: #000;
+    padding: 10px;
+    font-family: 'Jura', sans-serif;
+}
+
+.project-card .site-button {
+    font-size: 1.2em;
+    color:#1ccaff;
+    line-height: 25px;
+}
+
 
 /* ------------------------------------- Global Buttons */
 

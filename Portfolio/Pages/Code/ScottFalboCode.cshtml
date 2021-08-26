@@ -53,18 +53,37 @@
                             <div id="@project.CollapseId" class="@(project.Order == 1 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@project.AccordionId" data-parent="#accordionEx">
                                 <div class="card-body">
                                     <section class="project-card">
-                                        <h2>@project.Title</h2>
                                         <article class="intro">@project.Description</article>
-                                        <div style="background-image: url(@project.ImageUrl)"></div>
-                                        <article class="intro">@project.TechSummary</article>
+                                        <div>
+                                            <img src="@project.ImageUrl" alt="@project.AltText" />
+                                        </div>
                                         <div class="project-tech-container">
                                             @foreach (var icon in project.Technologies)
                                             {
-                                                <div style="background-image: url(@icon.Technology.LogoUrl)"></div>
+                                                <div>
+                                                    <img src="@icon.Technology.LogoUrl" alt="@icon.Technology.Title" />
+                                                </div>
                                             }
                                         </div>
-                                        <a href="@project.DeployedLink" target="_blank">@project.DeployedLink</a>
-                                        <a href="@project.RepoLink" target="_blank">@project.RepoLink</a>
+                                        <article class="intro">@project.TechSummary</article>
+                                        <div>
+                                            @if (project.DeployedLink != null)
+                                            {
+                                                <a href="@project.DeployedLink" target="_blank">
+                                                    <div class="site-button">
+                                                        &lt; Deployed Link &gt;
+                                                    </div>
+                                                </a>
+                                            }
+                                            @if (project.RepoLink != null)
+                                            {
+                                                <a href="@project.RepoLink" target="_blank">
+                                                    <div class="site-button">
+                                                        &lt; Repo Link &gt;
+                                                    </div>
+                                                </a>
+                                            }
+                                        </div>
                                     </section>
                                 </div>
                             </div>
