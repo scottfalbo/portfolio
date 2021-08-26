@@ -17,7 +17,46 @@
 
     <div class="right-col">
         <article class="intro">@Model.HomePage.Intro</article>
+        <section class="coding-projects">
+            <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                @foreach (var project in Model.Projects)
+                {
+                    @if (project.Display)
+                    {
 
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <!-- Card header -->
+                            <div class="card-header" role="tab" id="@project.AccordionId">
+                                <a data-toggle="collapse" data-parent="#accordionEx" href="#@project.CollapseId" aria-expanded="true"
+                                   aria-controls="collapseOne1" class="eye-check">
+                                    <h5 class="mb-0">
+                                        @project.Title <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                    <div class="gallery-header-eye">
+                                        <div class="gallery-eye @($"{project.CollapseId}_eye") closed-gallery-eye"></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Card body -->
+                            <div id="@project.CollapseId" class="@(project.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@project.AccordionId" data-parent="#accordionEx">
+                                <div class="card-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion card -->
+                    }
+                }
+            </div>
+            <!-- Accordion wrapper -->
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="popup-toggle-button">
+                    <button class="module-open-button open-project-admin">° ° °</button>
+                </div>
+            }
+        </section>
         <section class="mobile-menu">
             <partial name="SiteNavButtons/_MainPageNav" />
         </section>
@@ -27,30 +66,4 @@
         <partial name="_PopupToggle" />
     }
 </div>
-
-
-@*<h2>&lt;Projects&gt;</h2>
-
-    <div class="project-inner">
-
-        @foreach (var project in Model.ProjectList)
-        {
-            <article class="project-container">
-                <h3>@project.Title</h3>
-                <figure>
-                    <img src="@project.SourceURL" alt="@project.AltText" />
-                    <figcaption class="project-caption">@project.Description</figcaption>
-                    <div class="project-link">
-                        <a href="@project.RepoLink" target="_blank">&lt;GitHub Repo&gt;</a>
-                    </div>
-                    @if (project.DeployedLink != null)
-                    {
-                        <div class="project-link">
-                            <a href="@project.DeployedLink" target="_blank">&lt;Deployed Site&gt;</a>
-                        </div>
-                    }
-                </figure>
-            </article>
-        }
-    </div>*@
 

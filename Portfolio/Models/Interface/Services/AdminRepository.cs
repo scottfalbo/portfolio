@@ -76,18 +76,26 @@ namespace Portfolio.Models.Interfaces.Services
         {
             return await _context.Projects
                 .Where(x => x.Id == id)
+                .Include(z => z.Technologies)
+                .ThenInclude(n => n.Technology)
                 .Select(y => new Project
                 {
                     Id = y.Id,
                     Title = y.Title,
                     ImageUrl = y.ImageUrl,
                     Description = y.Description,
+                    TechSummary = y.TechSummary,
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
                     AltText = y.AltText,
                     Order = y.Order,
                     FileName = y.FileName,
-                    Display = y.Display
+                    Display = y.Display,
+                    AccordionId = y.AccordionId,
+                    CollapseId = y.CollapseId,
+                    AdminAccordionId = y.AdminAccordionId,
+                    AdminCollapseId = y.AdminCollapseId,
+                    Technologies = y.Technologies
                 })
                 .FirstOrDefaultAsync();
         }
@@ -99,18 +107,26 @@ namespace Portfolio.Models.Interfaces.Services
         public async Task<List<Project>> GetProjects()
         {
             return await _context.Projects
-                .Select(x => new Project
+                .Include(z => z.Technologies)
+                .ThenInclude(n => n.Technology)
+                .Select(y => new Project
                 {
-                    Id = x.Id,
-                    Title = x.Title,
-                    ImageUrl = x.ImageUrl,
-                    Description = x.Description,
-                    RepoLink = x.RepoLink,
-                    DeployedLink = x.DeployedLink,
-                    AltText = x.AltText,
-                    Order = x.Order,
-                    FileName = x.FileName,
-                    Display = x.Display
+                    Id = y.Id,
+                    Title = y.Title,
+                    ImageUrl = y.ImageUrl,
+                    Description = y.Description,
+                    TechSummary = y.TechSummary,
+                    RepoLink = y.RepoLink,
+                    DeployedLink = y.DeployedLink,
+                    AltText = y.AltText,
+                    Order = y.Order,
+                    FileName = y.FileName,
+                    Display = y.Display,
+                    AccordionId = y.AccordionId,
+                    CollapseId = y.CollapseId,
+                    AdminAccordionId = y.AdminAccordionId,
+                    AdminCollapseId = y.AdminCollapseId,
+                    Technologies = y.Technologies
                 })
                 .ToListAsync();
         }
