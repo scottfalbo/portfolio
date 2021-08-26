@@ -59,7 +59,7 @@ namespace Portfolio.Pages.Admin
                 Id = Project.Id,
                 Title = Project.Title,
                 Order = Project.Order,
-                SourceURL = Project.SourceURL,
+                ImageUrl = Project.ImageUrl,
                 AltText = Project.AltText,
                 Description = Project.Description,
                 RepoLink = Project.RepoLink,

@@ -227,6 +227,10 @@ main {
     transform: rotateY(0deg) rotate(45deg);
 }
 
+.delete-gallery-container .delete-graphic div {
+    
+}
+
 /* Confirmation popups */
 
 .confirm-popup {

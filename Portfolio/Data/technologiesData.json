@@ -1,0 +1,209 @@
+{
+  "technologies": [
+    {
+      "id": "1",
+      "Title": "C#",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/cSharp.png?raw=true"
+    },
+    {
+      "id": "2",
+      "Title": "JavaScript",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/javascript.png?raw=true"
+    },
+    {
+      "id": "3",
+      "Title": "JavaScript Alt",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/javascript.png?raw=true"
+    },
+    {
+      "id": "4",
+      "Title": "Python",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/python.png?raw=true"
+    },
+    {
+      "id": "5",
+      "Title": "Java",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/java.png?raw=true,"
+    },
+    {
+      "id": "6",
+      "Title": "CSS",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/css.png?raw=true,"
+    },
+    {
+      "id": "7",
+      "Title": "HTML",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/html.png?raw=true"
+    },
+    {
+      "id": "8",
+      "Title": "Git",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/git.png?raw=true"
+    },
+    {
+      "id": "9",
+      "Title": "GitHub",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/github.png?raw=true"
+    },
+    {
+      "id": "10",
+      "Title": "GitHub Invert",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/github-light.png?raw=true"
+    },
+    {
+      "id": "11",
+      "Title": "Visual Studio",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/visual_studio.png?raw=true"
+    },
+    {
+      "id": "12",
+      "Title": "Visual Studio Code",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/vscode.png?raw=true"
+    },
+    {
+      "id": "13",
+      "Title": ".Net Core",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/dotnetcore.png?raw=true"
+    },
+    {
+      "id": "14",
+      "Title": "SignalR",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/signalR.png?raw=true"
+    },
+    {
+      "id": "15",
+      "Title": "Unity",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/unity.png?raw=true"
+    },
+    {
+      "id": "16",
+      "Title": "React",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/react.png?raw=true"
+    },
+    {
+      "id": "17",
+      "Title": "jQuery",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/jQuery.png?raw=true"
+    },
+    {
+      "id": "18",
+      "Title": "Node.js",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/nodejs.png?raw=true"
+    },
+    {
+      "id": "19",
+      "Title": "Bootstrap",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/bootstrap.png?raw=true"
+    },
+    {
+      "id": "20",
+      "Title": "Azure",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azure.png?raw=true"
+    },
+    {
+      "id": "21",
+      "Title": "Azure SQL",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azure_sql.png?raw=true"
+    },
+    {
+      "id": "22",
+      "Title": "Azure Key Vault",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/key_vault.png?raw=true"
+    },
+    {
+      "id": "23",
+      "Title": "Azure Blob Storage",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azureBlob.png?raw=true"
+    },
+    {
+      "id": "24",
+      "Title": "Django",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/django.png?raw=true"
+    },
+    {
+      "id": "25",
+      "Title": "Twilio",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/twilio.png?raw=true"
+    },
+    {
+      "id": "26",
+      "Title": "Twilio Sendgrid",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/sendgrid.png?raw=true"
+    },
+    {
+      "id": "27",
+      "Title": "Amazon Web Services",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/aws.png?raw=true"
+    },
+    {
+      "id": "28",
+      "Title": "Heroku",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/heroku.png?raw=true"
+    },
+    {
+      "id": "29",
+      "Title": "Vercel",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/vercel.png?raw=true"
+    },
+    {
+      "id": "30",
+      "Title": "Netlify",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/netlify.png?raw=true"
+    },
+    {
+      "id": "31",
+      "Title": "Mongo",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/mongo.png?raw=true"
+    },
+    {
+      "id": "32",
+      "Title": "Photon",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/photon.png?raw=true"
+    },
+    {
+      "id": "33",
+      "Title": "PostgreSQL",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/postgres.png?raw=true"
+    },
+    {
+      "id": "34",
+      "Title": "Postman",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/postman.png?raw=true"
+    },
+    {
+      "id": "35",
+      "Title": "Xamarian",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/xamarin.png?raw=true"
+    },
+    {
+      "id": "36",
+      "Title": "Ruby on Rails",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/xamarin.png?raw=true"
+    },
+    {
+      "id": "37",
+      "Title": "Adobe Photoshop",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/photoshop.png?raw=true"
+    },
+    {
+      "id": "38",
+      "Title": "Adobe Illustrator",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/Ai.png?raw=true"
+    },
+    {
+      "id": "39",
+      "Title": "Facebook Dev Tools",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/facebook_dev.png?raw=true"
+    },
+    {
+      "id": "40",
+      "Title": "Raspberry Pi",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/raspberrypi.png?raw=true"
+    },
+    {
+      "id": "41",
+      "Title": "FL Studio",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/flStudio.png?raw=true"
+    }
+  ]
+}

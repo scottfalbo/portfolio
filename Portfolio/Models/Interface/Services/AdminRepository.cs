@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Portfolio.Models.Interfaces.Services
@@ -33,7 +34,7 @@ namespace Portfolio.Models.Interfaces.Services
             Project newProject = new Project()
             {
                 Title = project.Title,
-                SourceURL = project.SourceURL,
+                ImageUrl = project.ImageUrl,
                 Description = project.Description,
                 RepoLink = project.RepoLink,
                 DeployedLink = project.DeployedLink,
@@ -42,8 +43,28 @@ namespace Portfolio.Models.Interfaces.Services
                 FileName = project.FileName,
                 Display = project.Display
             };
+
+            newProject = ProjectAccordionIds(newProject);
+
             _context.Entry(newProject).State = EntityState.Added;
             await _context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Helper method to normalize the input title and use it for class identification with bootstrap accordion.
+        /// </summary>
+        /// <param name="project"> new project object </param>
+        /// <returns> updated project object </returns>
+        private Project ProjectAccordionIds(Project project)
+        {
+            string str = (Regex.Replace(project.Title, @"\s+", String.Empty)).ToLower();
+
+            project.AccordionId = str;
+            project.CollapseId = $"{str}{project.Id}";
+            project.AdminAccordionId = $"{str}admin";
+            project.AdminCollapseId = $"{str}{project.Id}admin";
+
+            return project;
         }
 
         /// <summary>
@@ -59,7 +80,7 @@ namespace Portfolio.Models.Interfaces.Services
                 {
                     Id = y.Id,
                     Title = y.Title,
-                    SourceURL = y.SourceURL,
+                    ImageUrl = y.ImageUrl,
                     Description = y.Description,
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
@@ -82,7 +103,7 @@ namespace Portfolio.Models.Interfaces.Services
                 {
                     Id = x.Id,
                     Title = x.Title,
-                    SourceURL = x.SourceURL,
+                    ImageUrl = x.ImageUrl,
                     Description = x.Description,
                     RepoLink = x.RepoLink,
                     DeployedLink = x.DeployedLink,

@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Portfolio.Auth.Models;
 using Portfolio.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +22,7 @@ namespace Portfolio.Data
         public DbSet<Studio> Studio { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<GalleryImage> GalleryImage { get; set; }
+        public DbSet<Technology> Technologies { get; set; }
 
         public IConfiguration Configuration { get; }
 
@@ -35,6 +38,7 @@ namespace Portfolio.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<GalleryImage>().HasKey(x => new { x.GalleryId, x.ImageId });
+            modelBuilder.Entity<ProjectTechnology>().HasKey(x => new { x.ProjectId, x.TechnologyId });
 
             //SeedRole(modelBuilder, "admin", "create", "read", "update", "delete");
 
@@ -190,6 +194,76 @@ namespace Portfolio.Data
                 );
             }
 
+            string path = @"Data/technologiesData.json";
+            TechnologiesList techList = JsonConvert.DeserializeObject<TechnologiesList>(File.ReadAllText(path));
+
+            foreach(Technology tech in techList.technologies)
+            {
+                modelBuilder.Entity<Technology>().HasData(
+                    new Technology
+                    {
+                        Id = tech.Id,
+                        Title = tech.Title,
+                        LogoUrl = tech.LogoUrl
+                    }
+                );
+            }
+
+            modelBuilder.Entity<Project>().HasData(
+                    new Project
+                    {
+                        Id = 1,
+                        Title = "Project One",
+                        ImageUrl = "https://via.placeholder.com/400x300",
+                        AltText = "project image",
+                        Description = "It does some things",
+                        TechSummary = "I used these things",
+                        RepoLink = "https://github.com/scottfalbo",
+                        DeployedLink = "https://scottfalbo.com",
+                        Order = 1,
+                        FileName = "project-one.jpg",
+                        Display = true,
+                        AccordionId = "projectone",
+                        CollapseId = "projectone1",
+                        AdminAccordionId = "projectoneadmin",
+                        AdminCollapseId = "projectone1admin"
+                    },
+                    new Project 
+                    {
+                        Id = 2,
+                        Title = "Project Two",
+                        ImageUrl = "https://via.placeholder.com/400x300",
+                        AltText = "project image",
+                        Description = "It does some things",
+                        TechSummary = "I used these things",
+                        RepoLink = "https://github.com/scottfalbo",
+                        DeployedLink = "https://scottfalbo.com",
+                        Order = 1,
+                        FileName = "project-two.jpg",
+                        Display = true,
+                        AccordionId = "projecttwo",
+                        CollapseId = "projecttwo2",
+                        AdminAccordionId = "projecttwoadmin",
+                        AdminCollapseId = "projecttwo2admin"
+                    }
+                );
+
+            for (int i = 1; i < 4; i++)
+            {
+                modelBuilder.Entity<ProjectTechnology>().HasData(
+                    new ProjectTechnology
+                    {
+                        ProjectId = 1,
+                        TechnologyId = i
+                    },
+                    new ProjectTechnology
+                    {
+                        ProjectId = 2,
+                        TechnologyId = i 
+                    }
+                );
+            }
+
         }
 
         private int id = 1;
@@ -214,5 +288,10 @@ namespace Portfolio.Data
                });
             modelBuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
         }
+    }
+
+    public class TechnologiesList
+    {
+        public List<Technology> technologies { get; set; }
     }
 }

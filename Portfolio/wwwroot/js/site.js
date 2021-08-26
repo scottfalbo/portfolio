@@ -181,18 +181,17 @@ $(document).on('mouseover', function(e) {
     });
 });
 
-
-
-
-// old code, saving until after refactor is complete
-
 //pagination stuff
-// function getCarouselIndex() {
-//     const index = ($('figure.active').index()) + 2;
-//     $('#limit').val(index);
-//     console.log(index);
-// }
+function getCarouselIndex() {
+    const index = ($('figure.active').index()) + 2;
+    $('#limit').val(index);
+    console.log(index);
+}
 
+
+
+
+//------------------------ Google Map API stuff
 
 // //https://developers.google.com/maps/documentation/javascript/examples/style-array
 // //Google maps API callback function

@@ -114,7 +114,7 @@ namespace Portfolio.Models.Interface.Services
             {
                 Title = "new",
                 Description = "new project",
-                SourceURL = blob.Uri.ToString(),
+                ImageUrl = blob.Uri.ToString(),
                 FileName = file.FileName,
                 Display = false
             };
@@ -206,7 +206,7 @@ namespace Portfolio.Models.Interface.Services
         {
             Project project = await _context.Projects.FindAsync(id);
             BlobClient blob = await UploadImage(file);
-            project.SourceURL = blob.Uri.ToString();
+            project.ImageUrl = blob.Uri.ToString();
             project.FileName = file.FileName;
             await _admin.UpdateProject(project);
         }
