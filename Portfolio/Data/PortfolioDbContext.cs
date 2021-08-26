@@ -128,7 +128,7 @@ namespace Portfolio.Data
                     Title = "Gallery One",
                     AccordionId = "galleryone",
                     Display = true,
-                    Order = 0,
+                    Order = 1,
                     CollapseId = "galleryone1",
                     AdminAccordionId = "galleryoneadmin",
                     AdminCollapseId = "galleryone1admin"
@@ -139,7 +139,7 @@ namespace Portfolio.Data
                     Title = "Gallery Two",
                     AccordionId = "gallerytwo",
                     Display = true,
-                    Order = 1,
+                    Order = 2,
                     CollapseId = "gallerytwo2",
                     AdminAccordionId = "gallerytwoadmin",
                     AdminCollapseId = "gallerytwo2admin"
@@ -150,7 +150,7 @@ namespace Portfolio.Data
                     Title = "Gallery Three",
                     AccordionId = "gallerythree",
                     Display = true,
-                    Order = 2,
+                    Order = 3,
                     CollapseId = "gallerythree3",
                     AdminAccordionId = "gallerythreeadmin",
                     AdminCollapseId = "gallerythree3admin"
@@ -238,7 +238,7 @@ namespace Portfolio.Data
                         TechSummary = "I used these things",
                         RepoLink = "https://github.com/scottfalbo",
                         DeployedLink = "https://scottfalbo.com",
-                        Order = 1,
+                        Order = 2,
                         FileName = "project-two.jpg",
                         Display = true,
                         AccordionId = "projecttwo",

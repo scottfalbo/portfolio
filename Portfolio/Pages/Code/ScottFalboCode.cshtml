@@ -1,7 +1,17 @@
 ﻿@page
 @model Portfolio.Pages.Code.ScottFalboCodeModel
+
 @{
+    List<string> projects = new List<string>();
+    foreach (var project in Model.Projects)
+        projects.Add(project.CollapseId);
+    var list = Json.Serialize(projects);
 }
+<script>
+    $(document).ready(function () {
+        galleryList = @list;
+    });
+</script>
 
 <h1>Code</h1>
 <div class="homepage-container code-mainpage">
@@ -17,7 +27,8 @@
 
     <div class="right-col">
         <article class="intro">@Model.HomePage.Intro</article>
-        <section class="coding-projects">
+        <section class="coding-projects gallery-display galleries">
+            <!-- Accordion wrapper -->
             <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                 @foreach (var project in Model.Projects)
                 {
@@ -39,9 +50,9 @@
                                 </a>
                             </div>
                             <!-- Card body -->
-                            <div id="@project.CollapseId" class="@(project.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@project.AccordionId" data-parent="#accordionEx">
+                            <div id="@project.CollapseId" class="@(project.Order == 1 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@project.AccordionId" data-parent="#accordionEx">
                                 <div class="card-body">
-                                    
+                                    project stuff
                                 </div>
                             </div>
                         </div>
