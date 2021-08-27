@@ -297,10 +297,10 @@
                     </div>
                     <!-- Accordion wrapper -->
                 </section>
-                <section>
+                <section class="create-new-gallery">
                     <form asp-page-handler="NewProject" method="post">
                         <input type="text" name="title" class="form-control" placeholder="new project" value="New Project" />
-                        <input class="site-button loader" type="submit" value="Add" />
+                        <input class="add-gallery loader" type="submit" value="&#10133;" />
                     </form>
                     <div class="repeat-gallery-title confirm-popup @(Model.PageToggles.RepeatProjectTitle ? "" : "hide-me")">
                         <p>stops copies me</p>

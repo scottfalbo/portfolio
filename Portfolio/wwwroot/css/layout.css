@@ -225,7 +225,7 @@ header {
 .code-project-admin .card-body {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: fit-content fit-content fit-content;
+    grid-template-rows: min-content min-content min-content;
     width: 98%;
     margin: 20px auto;
 }
@@ -251,6 +251,29 @@ header {
     width: 40px;
 }
 
+.add-gallery {
+    height: 40px;
+    width: 40px;
+}
+
+.create-new-gallery > form {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: min-content;
+    margin: 10px 10px;
+}
+
+.create-new-gallery > form > input:first-child {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    width: 95%;
+}
+
+.create-new-gallery > form > input.add-gallery.loader {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
 .code-project-admin .card .card-header {
     width: 100%;
     display: grid;
@@ -268,7 +291,51 @@ header {
     grid-row: 1/2;
 }
 
+.admin-module .code-project-admin .update-form > label > input {
+    width: 95%;
+    height: 40px;
+    margin: 10px auto;
+}
+
+.code-project-admin .gallery-checkbox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content;
+}
+
+.code-project-admin .gallery-checkbox > span {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    text-align: right;
+    font-size: 1.2em;
+    line-height: 35px;
+    padding-right: 10px;
+}
+
+.code-project-admin .gallery-checkbox > input {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    width: 20px;
+    margin: 10px 15px;
+    height: 20px;
+    width: 20px;
+}
+
+
 /* Technology Dropdown */
+
+.technologies-admin-container {
+    margin-bottom: 20px;
+}
+
+.technologies-menu-button {
+    font-size: 1.2em;
+    line-height: 25px;
+}
+
+.technologies-menu-button > p > span {
+    float: right;
+}
 
 div.technologies-menu-button {
     width: 90%;
@@ -355,9 +422,9 @@ div.technologies-menu-button {
     display: block;
 }
 
-.admin-module section:first-child label input:first-child {
+/* .admin-module section:first-child label input:first-child {
     height: 60px;
-}
+} */
 
 .popup-module-inner input {
     margin: 8px;

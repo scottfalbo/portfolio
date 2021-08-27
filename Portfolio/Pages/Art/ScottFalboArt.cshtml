@@ -248,10 +248,10 @@
                     </div>
                     <!-- Accordion wrapper -->
                 </section>
-                <section>
+                <section class="create-new-gallery">
                     <form asp-page-handler="NewGallery" method="post">
                         <input type="text" name="title" class="form-control" placeholder="new gallery" value="New Gallery" />
-                        <input class="site-button" type="submit" value="Add" />
+                        <input class="add-gallery loader" type="submit" value="&#10133;" />
                     </form>
                     <div class="repeat-gallery-title confirm-popup @(Model.PageToggles.RepeatGalleryTitle ? "" : "hide-me")">
                         <p>stops copies me</p>

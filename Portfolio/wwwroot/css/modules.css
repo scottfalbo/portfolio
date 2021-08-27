@@ -240,6 +240,13 @@ main {
     border-radius: 50%;
 }
 
+input.add-gallery.loader {
+    background: #000;
+    border: 1px solid #26ff55;
+    border-radius: 50%;
+    color: #26ff55;
+}
+
 .delete-graphic > div {
     background-color: #f86c6c;
     transform: rotateY(0deg) rotate(45deg);
