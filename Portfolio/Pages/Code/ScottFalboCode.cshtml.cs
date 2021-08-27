@@ -19,12 +19,14 @@ namespace Portfolio.Pages.Code
         public IAdmin _admin;
         public IUploadService _upload;
         private readonly PortfolioDbContext _context;
+        public IArtAdmin _art;
 
-        public ScottFalboCodeModel(IAdmin admin, IUploadService upload, PortfolioDbContext context)
+        public ScottFalboCodeModel(IAdmin admin, IUploadService upload, PortfolioDbContext context, IArtAdmin art)
         {
             _admin = admin;
             _upload = upload;
             _context = context;
+            _art = art;
         }
 
         public List<Project> Projects { get; set; }
@@ -132,7 +134,16 @@ namespace Portfolio.Pages.Code
 
         public async Task OnPostDeleteImage()
         {
-            // page toggle id binds
+            await _admin.RemoveImageFromProject(PageToggles.ProjectId, PageToggles.ImageId);
+            await _art.DeleteImage(PageToggles.ImageId);
+
+            PageToggles.ActiveProjectAdmin = true;
+
+            Projects = await _admin.GetProjects();
+            Projects.Reverse();
+            HomePage = await _admin.GetHomePage("Code");
+
+            Redirect("/Code/ScottFalboCode");
         }
 
         public async Task<IActionResult> OnPostUpdateProject()
