@@ -37,5 +37,9 @@ Refactoring the overall structure of the site while adding new content and secti
   + Created and set a model for technology icons for use in the project portfolio.
     + Created a Json file with a list of technology icons. Used the file to seed image paths into the database.
   + Added an accordion display to the Code page and updated the model and view with the `Project` data.
++ 08/27/2021
+  + Added a carousel display to the projects portfolio and subsequent admin UI.  
+  + Updated `Project` and `Image` models and created a `ProjectImage` join table to add images to a project.
+  + Added methods to `AdminRepository` to add and remove images and technologies from projects.  Made method to retrieve the list of technologies from database.
 
 [Back to README](README.md#refactor-development-log)
