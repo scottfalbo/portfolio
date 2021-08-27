@@ -57,7 +57,7 @@
     },
     {
       "id": "12",
-      "Title": "Visual Studio Code",
+      "Title": "VS Code",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/vscode.png?raw=true"
     },
     {
@@ -112,7 +112,7 @@
     },
     {
       "id": "23",
-      "Title": "Azure Blob Storage",
+      "Title": "Azure Storage",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azureBlob.png?raw=true"
     },
     {
@@ -132,7 +132,7 @@
     },
     {
       "id": "27",
-      "Title": "Amazon Web Services",
+      "Title": "AWS",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/aws.png?raw=true"
     },
     {
@@ -177,8 +177,8 @@
     },
     {
       "id": "36",
-      "Title": "Ruby on Rails",
-      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/xamarin.png?raw=true"
+      "Title": "Ruby",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/ruby.png?raw=true"
     },
     {
       "id": "37",
@@ -192,7 +192,7 @@
     },
     {
       "id": "39",
-      "Title": "Facebook Dev Tools",
+      "Title": "Facebook Dev",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/facebook_dev.png?raw=true"
     },
     {

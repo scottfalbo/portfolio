@@ -366,6 +366,8 @@ main {
 }
 
 
+
+
 /* ------------------------------------- Global Buttons */
 
 .site-button {
@@ -376,6 +378,7 @@ main {
     border-radius: 15px;
     box-shadow: 2px 3px 3px #000;
     font-family: 'Jura', sans-serif;
+    cursor: pointer;
 }
 
 .admin-module input.file-selection-input::before {

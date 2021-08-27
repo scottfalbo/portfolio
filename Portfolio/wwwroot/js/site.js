@@ -180,6 +180,17 @@ $(document).on('mouseover', function(e) {
     });
 });
 
+$(document).ready(function (){
+    console.log('what what');
+    $('.technology-dropdown').slideToggle();
+});
+
+$(function() {
+    $('.technologies-menu-button').click(function() {
+        $('.technology-dropdown').slideToggle();
+    });
+});
+
 //pagination stuff
 // function getCarouselIndex() {
 //     const index = ($('figure.active').index()) + 2;
