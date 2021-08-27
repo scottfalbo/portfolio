@@ -78,9 +78,12 @@
                                         <div class="project-tech-container">
                                             @foreach (var icon in project.Technologies)
                                             {
-                                                <div>
-                                                    <img src="@icon.Technology.LogoUrl" alt="@icon.Technology.Title" />
-                                                </div>
+                                                if (icon.Technology.Display)
+                                                {
+                                                    <div>
+                                                        <img src="@icon.Technology.LogoUrl" alt="@icon.Technology.Title" />
+                                                    </div>
+                                                }
                                             }
                                         </div>
                                         <article class="intro">@project.TechSummary</article>
@@ -259,15 +262,19 @@
                                                     <p>Technologies Used <span>&#9660</span></p>
                                                 </div>
                                                 <ul class="technology-dropdown">
-                                                    @foreach (var tech in Model.Technologies)
-                                                    {
-                                                        <li>
-                                                            <label class="tech-list-container">
-                                                                <img src="@tech.LogoUrl" />
-                                                                <span>@tech.Title</span>
-                                                                <input type="checkbox" name="Selected" value="@tech" />
-                                                            </label>
-                                                        </li>
+                                                    @{
+                                                        int index = 0;
+                                                        foreach (var tech in project.Technologies)
+                                                        {
+                                                            <li>
+                                                                <label class="tech-list-container">
+                                                                    <img src="@tech.Technology.LogoUrl" />
+                                                                    <span>@tech.Technology.Title</span>
+                                                                    <input type="checkbox" name="isChecked" value="@index" checked="@tech.Technology.Display"/>
+                                                                </label>
+                                                            </li>
+                                                            index++;
+                                                        }
                                                     }
                                                 </ul>
                                             </div>

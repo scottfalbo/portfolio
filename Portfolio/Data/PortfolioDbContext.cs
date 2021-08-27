@@ -207,7 +207,8 @@ namespace Portfolio.Data
                     {
                         Id = tech.Id,
                         Title = tech.Title,
-                        LogoUrl = tech.LogoUrl
+                        LogoUrl = tech.LogoUrl,
+                        Display = false
                     }
                 );
             }
@@ -247,18 +248,18 @@ namespace Portfolio.Data
                     }
                 );
 
-            for (int i = 1; i < 4; i++)
+            foreach (Technology tech in techList.technologies)
             {
                 modelBuilder.Entity<ProjectTechnology>().HasData(
                     new ProjectTechnology
                     {
                         ProjectId = 1,
-                        TechnologyId = i
+                        TechnologyId = tech.Id
                     },
                     new ProjectTechnology
                     {
                         ProjectId = 2,
-                        TechnologyId = i 
+                        TechnologyId = tech.Id
                     }
                 );
             }

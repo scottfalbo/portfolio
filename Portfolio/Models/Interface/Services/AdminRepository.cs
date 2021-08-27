@@ -48,6 +48,10 @@ namespace Portfolio.Models.Interfaces.Services
 
             _context.Entry(newProject).State = EntityState.Added;
             await _context.SaveChangesAsync();
+
+            List<Technology> techlist = await GetTechnologies();
+            foreach (var tech in techlist)
+                await AddTechToProject(newProject.Id, tech.Id);
         }
 
         /// <summary>

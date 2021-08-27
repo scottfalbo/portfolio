@@ -29,14 +29,13 @@ namespace Portfolio.Pages.Code
             _art = art;
         }
 
+        [BindProperty]
         public List<Project> Projects { get; set; }
         public HomePage HomePage { get; set; }
         [BindProperty]
         public PageToggles PageToggles { get; set; }
         [BindProperty]
         public Project Project { get; set; }
-        public List<Technology> Technologies { get; set; }
-        public List<Technology> Selected { get; set; }
 
 
         public async Task OnGet()
@@ -44,10 +43,7 @@ namespace Portfolio.Pages.Code
             try
             {
                 Project = new Project();
-                Projects = await _admin.GetProjects();
-                Projects.Reverse();
-                HomePage = await _admin.GetHomePage("Code");
-                Technologies = await _admin.GetTechnologies();
+                await Refresh();
 
                 PageToggles = new PageToggles()
                 {
@@ -76,10 +72,7 @@ namespace Portfolio.Pages.Code
                 await _upload.UpdateSelfie(file, homepage.Id);
             }
 
-            Projects = await _admin.GetProjects();
-            Projects.Reverse();
-            HomePage = await _admin.GetHomePage("Code");
-            Technologies = await _admin.GetTechnologies();
+            await Refresh();
 
             return Redirect("/Code/ScottFalboCode");
         }
@@ -104,10 +97,7 @@ namespace Portfolio.Pages.Code
             };
             await _admin.UpdateHomePage(updatedPage);
 
-            Projects = await _admin.GetProjects();
-            Projects.Reverse();
-            HomePage = await _admin.GetHomePage("Code");
-            Technologies = await _admin.GetTechnologies();
+            await Refresh();
 
             return Redirect("/Code/ScottFalboCode");
         }
@@ -134,10 +124,7 @@ namespace Portfolio.Pages.Code
             PageToggles.ActiveProjectAdmin = true;
             PageToggles.StayCollapsed = true;
 
-            Projects = await _admin.GetProjects();
-            Projects.Reverse();
-            HomePage = await _admin.GetHomePage("Code");
-            Technologies = await _admin.GetTechnologies();
+            await Refresh();
 
             Redirect("/Code/ScottFalboCode");
         }
@@ -149,15 +136,12 @@ namespace Portfolio.Pages.Code
 
             PageToggles.ActiveProjectAdmin = true;
 
-            Projects = await _admin.GetProjects();
-            Projects.Reverse();
-            HomePage = await _admin.GetHomePage("Code");
-            Technologies = await _admin.GetTechnologies();
+            await Refresh();
 
             Redirect("/Code/ScottFalboCode");
         }
 
-        public async Task<IActionResult> OnPostUpdateProject()
+        public async Task<IActionResult> OnPostUpdateProject(int[] isChecked)
         {
             if (Project.Description == null)
                 Project.Description = (await _admin.GetProject(Project.Id)).Description;
@@ -170,9 +154,14 @@ namespace Portfolio.Pages.Code
             project.Description = Project.Description;
             project.TechSummary = Project.TechSummary;
             project.Display = Project.Display;
-            // add icons here
             project.DeployedLink = Project.DeployedLink;
             project.RepoLink = Project.RepoLink;
+
+            for (int i = 0; i < project.Technologies.Count; i++)
+            {
+                if (isChecked.Contains(i))
+                    project.Technologies[i].Technology.Display = true;
+            }
 
             await _admin.UpdateProject(project);
 
@@ -190,10 +179,7 @@ namespace Portfolio.Pages.Code
             PageToggles.ActiveProjectAdmin = true;
             PageToggles.StayCollapsed = true;
 
-            Projects = await _admin.GetProjects();
-            Projects.Reverse();
-            HomePage = await _admin.GetHomePage("Code");
-            Technologies = await _admin.GetTechnologies();
+            await Refresh();
 
             Redirect("/Code/ScottFalboCode");
         }
@@ -205,12 +191,16 @@ namespace Portfolio.Pages.Code
             PageToggles.ActiveProjectAdmin = true;
             PageToggles.StayCollapsed = true;
 
+            await Refresh();
+
+            Redirect("/Code/ScottFalboCode");
+        }
+
+        private async Task Refresh()
+        {
             Projects = await _admin.GetProjects();
             Projects.Reverse();
             HomePage = await _admin.GetHomePage("Code");
-            Technologies = await _admin.GetTechnologies();
-
-            Redirect("/Code/ScottFalboCode");
         }
     }
 

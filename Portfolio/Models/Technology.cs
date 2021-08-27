@@ -9,6 +9,7 @@ namespace Portfolio.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public bool Display { get; set; }
         public string LogoUrl { get; set; }
         public List<ProjectTechnology> ProjectTechnology { get; set; }
     }
