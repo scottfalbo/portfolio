@@ -255,6 +255,12 @@
                                             </label>
                                             <label>
                                                 Technologies Used:
+                                                @foreach(var tech in project.Technologies)
+                                                {
+                                                    <label> @tech.Technology.Title
+                                                        <input type="checkbox" name="Selected" value="@tech.Technology" />
+                                                    </label>
+                                                }
                                             </label>
                                             <label>
                                                 Deployed Link:

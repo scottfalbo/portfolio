@@ -17,11 +17,13 @@ namespace Portfolio.Models.Interfaces.Services
     {
         private readonly PortfolioDbContext _context;
         public IConfiguration Configuration { get; }
+        public IArtAdmin _art;
 
-        public AdminRepository(PortfolioDbContext context, IConfiguration config)
+        public AdminRepository(PortfolioDbContext context, IConfiguration config, IArtAdmin art)
         {
             _context = context;
             Configuration = config;
+            _art = art;
         }
 
         /// <summary>
@@ -46,6 +48,24 @@ namespace Portfolio.Models.Interfaces.Services
 
             _context.Entry(newProject).State = EntityState.Added;
             await _context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Checks for duplicate project names on creation.
+        /// </summary>
+        /// <param name="title"> string title input </param>
+        /// <returns> true if repeat </returns>
+        public async Task<bool> CheckProjectTitle(string title)
+        {
+            Project project = await _context.Projects
+                .Where(x => x.Title == title)
+                .Select(y => new Project
+                {
+                    Id = y.Id,
+                    Title = y.Title
+                }).FirstOrDefaultAsync();
+
+            return project != null;
         }
 
         /// <summary>
@@ -152,8 +172,14 @@ namespace Portfolio.Models.Interfaces.Services
         {
             Project project = await _context.Projects.FindAsync(id);
 
-            // Add a loop here to delete all files
-            //await DeleteBlobImage(project.FileName);
+            if (project.ProjectImages != null)
+            {
+                foreach (var image in project.ProjectImages)
+                {
+                    await RemoveImageFromProject(id, image.Image.Id);
+                    await _art.DeleteImage(image.Image.Id);
+                }
+            }
 
             _context.Entry(project).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
@@ -277,6 +303,55 @@ namespace Portfolio.Models.Interfaces.Services
         public async Task UpdateStudio(Studio studio)
         {
             _context.Entry(studio).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Retrieve my list of technology icons from the database
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Technology>> GetTechnologies()
+        {
+            return await _context.Technologies
+                .Select(x => new Technology
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    LogoUrl = x.LogoUrl
+                }).ToListAsync();
+        }
+
+        /// <summary>
+        /// Add a technology to a project.
+        /// </summary>
+        /// <param name="projectId"> int project id </param>
+        /// <param name="techId"> int tech id </param>
+        public async Task AddTechToProject(int projectId, int techId)
+        {
+            ProjectTechnology newTech = new ProjectTechnology()
+            {
+                ProjectId = projectId,
+                TechnologyId = techId
+            };
+            _context.Entry(newTech).State = EntityState.Added;
+            await _context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Remove a technology form a project.
+        /// </summary>
+        /// <param name="projectId"> int project id </param>
+        /// <param name="techId"> int tech id </param>
+        public async Task RemoveTechFromProject(int projectId, int techId)
+        {
+            ProjectTechnology tech = await _context.ProjectTechnologies
+                .Where(x => x.ProjectId == projectId && x.TechnologyId == techId)
+                .Select(y => new ProjectTechnology
+                {
+                    ProjectId = y.ProjectId,
+                    TechnologyId = y.TechnologyId
+                }).FirstOrDefaultAsync();
+            _context.Entry(tech).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
 

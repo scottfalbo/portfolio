@@ -18,6 +18,7 @@ namespace Portfolio.Models.Interface
         public Task DeleteProject(int id);
         public Task AddImageToProject(int projectId, int imageId);
         public Task RemoveImageFromProject(int projectId, int imageId);
+        public Task<bool> CheckProjectTitle(string project);
         public Task DeleteBlobImage(string fileName);
 
         /// <summary>
@@ -29,6 +30,10 @@ namespace Portfolio.Models.Interface
         /// Studio Page CRUD
         public Task<Studio> GetStudio(int id);
         public Task UpdateStudio(Studio studio);
+
+        public Task<List<Technology>> GetTechnologies();
+        public Task AddTechToProject(int projectId, int techId);
+        public Task RemoveTechFromProject(int projectId, int techId);
 
     }
 }

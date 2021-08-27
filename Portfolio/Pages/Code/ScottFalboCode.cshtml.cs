@@ -35,6 +35,8 @@ namespace Portfolio.Pages.Code
         public PageToggles PageToggles { get; set; }
         [BindProperty]
         public Project Project { get; set; }
+        public List<Technology> Technologies { get; set; }
+        public List<Technology> Selected { get; set; }
 
 
         public async Task OnGet()
@@ -45,6 +47,7 @@ namespace Portfolio.Pages.Code
                 Projects = await _admin.GetProjects();
                 Projects.Reverse();
                 HomePage = await _admin.GetHomePage("Code");
+                Technologies = await _admin.GetTechnologies();
 
                 PageToggles = new PageToggles()
                 {
@@ -76,6 +79,7 @@ namespace Portfolio.Pages.Code
             Projects = await _admin.GetProjects();
             Projects.Reverse();
             HomePage = await _admin.GetHomePage("Code");
+            Technologies = await _admin.GetTechnologies();
 
             return Redirect("/Code/ScottFalboCode");
         }
@@ -99,7 +103,12 @@ namespace Portfolio.Pages.Code
                 Intro = homepage.Intro
             };
             await _admin.UpdateHomePage(updatedPage);
+
+            Projects = await _admin.GetProjects();
+            Projects.Reverse();
             HomePage = await _admin.GetHomePage("Code");
+            Technologies = await _admin.GetTechnologies();
+
             return Redirect("/Code/ScottFalboCode");
         }
 
@@ -128,6 +137,7 @@ namespace Portfolio.Pages.Code
             Projects = await _admin.GetProjects();
             Projects.Reverse();
             HomePage = await _admin.GetHomePage("Code");
+            Technologies = await _admin.GetTechnologies();
 
             Redirect("/Code/ScottFalboCode");
         }
@@ -142,6 +152,7 @@ namespace Portfolio.Pages.Code
             Projects = await _admin.GetProjects();
             Projects.Reverse();
             HomePage = await _admin.GetHomePage("Code");
+            Technologies = await _admin.GetTechnologies();
 
             Redirect("/Code/ScottFalboCode");
         }
@@ -170,7 +181,11 @@ namespace Portfolio.Pages.Code
 
         public async Task OnPostNewProject(string title)
         {
-            await _admin.CreateProject(title);
+            if (!await _admin.CheckProjectTitle(title))
+                await _admin.CreateProject(title);
+            else
+                PageToggles.RepeatProjectTitle = true;
+
 
             PageToggles.ActiveProjectAdmin = true;
             PageToggles.StayCollapsed = true;
@@ -178,12 +193,23 @@ namespace Portfolio.Pages.Code
             Projects = await _admin.GetProjects();
             Projects.Reverse();
             HomePage = await _admin.GetHomePage("Code");
+            Technologies = await _admin.GetTechnologies();
 
             Redirect("/Code/ScottFalboCode");
         }
 
         public async Task OnPostDeleteProject(int id)
         {
+            await _admin.DeleteProject(id);
+
+            PageToggles.ActiveProjectAdmin = true;
+            PageToggles.StayCollapsed = true;
+
+            Projects = await _admin.GetProjects();
+            Projects.Reverse();
+            HomePage = await _admin.GetHomePage("Code");
+            Technologies = await _admin.GetTechnologies();
+
             Redirect("/Code/ScottFalboCode");
         }
     }

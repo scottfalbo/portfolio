@@ -24,6 +24,7 @@ namespace Portfolio.Data
         public DbSet<GalleryImage> GalleryImage { get; set; }
         public DbSet<Technology> Technologies { get; set; }
         public DbSet<ProjectImage> ProjectImages { get; set; }
+        public DbSet<ProjectTechnology> ProjectTechnologies { get; set; }
 
         public IConfiguration Configuration { get; }
 
