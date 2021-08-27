@@ -31,8 +31,7 @@ namespace Portfolio.Pages.Art
 
         public async Task OnGet()
         {
-            Galleries = await _art.GetGalleries();
-            HomePage = await _admin.GetHomePage("Tattoo");
+            await Refresh();
             PageToggles = new PageToggles()
             {
                 StayCollapsed = true
@@ -105,8 +104,7 @@ namespace Portfolio.Pages.Art
 
             PageToggles.ActiveGalleryAdmin = true;
 
-            Galleries = await _art.GetGalleries();
-            HomePage = await _admin.GetHomePage("Tattoo");
+            await Refresh();
 
             Redirect("/Art/ScottFalboArt");
         }
@@ -123,8 +121,7 @@ namespace Portfolio.Pages.Art
 
             PageToggles.ActiveGalleryAdmin = true;
 
-            Galleries = await _art.GetGalleries();
-            HomePage = await _admin.GetHomePage("Tattoo");
+            await Refresh();
 
             Redirect("/Art/ScottFalboArt");
         }
@@ -144,8 +141,7 @@ namespace Portfolio.Pages.Art
             else
                 PageToggles.RepeatGalleryTitle = true;
 
-            Galleries = await _art.GetGalleries();
-            HomePage = await _admin.GetHomePage("Tattoo");
+            await Refresh();
 
             Redirect("/Art/ScottFalboArt");
         }
@@ -161,8 +157,7 @@ namespace Portfolio.Pages.Art
             PageToggles.ActiveGalleryAdmin = true;
             PageToggles.StayCollapsed = true;
 
-            Galleries = await _art.GetGalleries();
-            HomePage = await _admin.GetHomePage("Tattoo");
+            await Refresh();
 
             Redirect("/Art/ScottFalboArt");
         }
@@ -184,14 +179,17 @@ namespace Portfolio.Pages.Art
             
             gallery.Display = PageToggles.Display;
             await _art.UpdateGallery(gallery);
-            
-            Galleries = await _art.GetGalleries();
-            HomePage = await _admin.GetHomePage("Tattoo");
+
+            await Refresh();
 
             Redirect("/Art/ScottFalboArt");
         }
 
-        private 
+        private async Task Refresh()
+        {
+            Galleries = await _art.GetGalleries();
+            HomePage = await _admin.GetHomePage("Tattoo");
+        }
     }
 
     /// <summary>

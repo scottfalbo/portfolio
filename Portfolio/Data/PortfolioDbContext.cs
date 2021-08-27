@@ -25,6 +25,7 @@ namespace Portfolio.Data
         public DbSet<Technology> Technologies { get; set; }
         public DbSet<ProjectImage> ProjectImages { get; set; }
         public DbSet<ProjectTechnology> ProjectTechnologies { get; set; }
+        public DbSet<HomePageTechnology> HomePageTechnologies { get; set; }
 
         public IConfiguration Configuration { get; }
 
@@ -42,6 +43,7 @@ namespace Portfolio.Data
             modelBuilder.Entity<GalleryImage>().HasKey(x => new { x.GalleryId, x.ImageId });
             modelBuilder.Entity<ProjectTechnology>().HasKey(x => new { x.ProjectId, x.TechnologyId });
             modelBuilder.Entity<ProjectImage>().HasKey(x => new { x.ProjectId, x.ImageId });
+            modelBuilder.Entity<HomePageTechnology>().HasKey(x => new { x.HomePageId, x.TechnologyId });
 
             //SeedRole(modelBuilder, "admin", "create", "read", "update", "delete");
 
@@ -207,6 +209,7 @@ namespace Portfolio.Data
                     {
                         Id = tech.Id,
                         Title = tech.Title,
+                        Type = tech.Type,
                         LogoUrl = tech.LogoUrl,
                     }
                 );
@@ -258,6 +261,13 @@ namespace Portfolio.Data
                     new ProjectTechnology
                     {
                         ProjectId = 2,
+                        TechnologyId = tech.Id
+                    }
+                );
+                modelBuilder.Entity<HomePageTechnology>().HasData(
+                    new HomePageTechnology
+                    { 
+                        HomePageId = 3,
                         TechnologyId = tech.Id
                     }
                 );

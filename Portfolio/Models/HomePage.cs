@@ -13,5 +13,6 @@ namespace Portfolio.Models
         public string Intro { get; set; }
         public string Selfie { get; set; }
         public string FileName { get; set; }
+        public List<HomePageTechnology> Technologies { get; set; }
     }
 }
