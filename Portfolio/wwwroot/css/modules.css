@@ -145,6 +145,9 @@ main {
     padding: .25em .1em;
 }
 
+.accordion-button {
+    cursor: pointer;
+}
 
 .galleries {
     padding: 5px;

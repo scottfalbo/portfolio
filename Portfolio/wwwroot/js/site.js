@@ -180,17 +180,12 @@ $(document).on('mouseover', function(e) {
     });
 });
 
-// Update form reset
-$(document).ready(function () {
-    document.getElementsByClassName('update-form').reset();
-});
-
 //pagination stuff
-function getCarouselIndex() {
-    const index = ($('figure.active').index()) + 2;
-    $('#limit').val(index);
-    console.log(index);
-}
+// function getCarouselIndex() {
+//     const index = ($('figure.active').index()) + 2;
+//     $('#limit').val(index);
+//     console.log(index);
+// }
 
 
 

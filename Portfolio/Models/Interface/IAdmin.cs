@@ -16,6 +16,8 @@ namespace Portfolio.Models.Interface
         public Task<List<Project>> GetProjects();
         public Task UpdateProject(Project project);
         public Task DeleteProject(int id);
+        public Task AddImageToProject(int projectId, int imageId);
+        public Task RemoveImageFromProject(int projectId, int imageId);
         public Task DeleteBlobImage(string fileName);
 
         /// <summary>

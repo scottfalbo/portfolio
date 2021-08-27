@@ -34,7 +34,6 @@ namespace Portfolio.Models.Interfaces.Services
             Project newProject = new Project()
             {
                 Title = title,
-                ImageUrl = "",
                 Description = "",
                 RepoLink = "",
                 DeployedLink = "",
@@ -76,25 +75,26 @@ namespace Portfolio.Models.Interfaces.Services
             return await _context.Projects
                 .Where(x => x.Id == id)
                 .Include(z => z.Technologies)
-                .ThenInclude(n => n.Technology)
+                .ThenInclude(a => a.Technology)
+                .Include(b => b.ProjectImages)
+                .ThenInclude(c => c.Image)
                 .Select(y => new Project
                 {
                     Id = y.Id,
                     Title = y.Title,
-                    ImageUrl = y.ImageUrl,
                     Description = y.Description,
                     TechSummary = y.TechSummary,
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
                     AltText = y.AltText,
                     Order = y.Order,
-                    FileName = y.FileName,
                     Display = y.Display,
                     AccordionId = y.AccordionId,
                     CollapseId = y.CollapseId,
                     AdminAccordionId = y.AdminAccordionId,
                     AdminCollapseId = y.AdminCollapseId,
-                    Technologies = y.Technologies
+                    Technologies = y.Technologies,
+                    ProjectImages = y.ProjectImages
                 })
                 .FirstOrDefaultAsync();
         }
@@ -106,26 +106,27 @@ namespace Portfolio.Models.Interfaces.Services
         public async Task<List<Project>> GetProjects()
         {
             return await _context.Projects
-                .Include(z => z.Technologies)
-                .ThenInclude(n => n.Technology)
+                .Include(x => x.Technologies)
+                .ThenInclude(a => a.Technology)
+                .Include(b => b.ProjectImages)
+                .ThenInclude(c => c.Image)
                 .Select(y => new Project
                 {
                     Id = y.Id,
                     Title = y.Title,
-                    ImageUrl = y.ImageUrl,
                     Description = y.Description,
                     TechSummary = y.TechSummary,
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
                     AltText = y.AltText,
                     Order = y.Order,
-                    FileName = y.FileName,
                     Display = y.Display,
                     AccordionId = y.AccordionId,
                     CollapseId = y.CollapseId,
                     AdminAccordionId = y.AdminAccordionId,
                     AdminCollapseId = y.AdminCollapseId,
-                    Technologies = y.Technologies
+                    Technologies = y.Technologies,
+                    ProjectImages = y.ProjectImages
                 })
                 .ToListAsync();
         }
@@ -151,10 +152,20 @@ namespace Portfolio.Models.Interfaces.Services
         {
             Project project = await _context.Projects.FindAsync(id);
 
-            await DeleteBlobImage(project.FileName);
+            // Add a loop here to delete all files
+            //await DeleteBlobImage(project.FileName);
 
             _context.Entry(project).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
+        }
+
+        public async Task AddImageToProject(int projectId, int imageId)
+        {
+
+        }
+        public async Task RemoveImageFromProject(int projectId, int imageId)
+        {
+
         }
 
         /// <summary>

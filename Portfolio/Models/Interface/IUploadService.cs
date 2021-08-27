@@ -16,8 +16,8 @@ namespace Portfolio.Models.Interface
         public Task<bool> CheckFileName(IFormFile file);
 
         public Task<Image> AddArtImage(IFormFile file);
+        public Task<Image> AddProjectImage(IFormFile file);
 
-        public Task UpdateProjectImage(IFormFile file, int id);
 
         public Task UpdateSelfie(IFormFile file, int id);
     }

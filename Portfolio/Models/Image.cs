@@ -10,12 +10,14 @@ namespace Portfolio.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string AltText { get; set; }
         public string ImageURL { get; set; }
         public string FileName { get; set; }
         public string ThumbURL { get; set; }
         public string ThumbFileName { get; set; }
         public int Order { get; set; }
         public List<GalleryImage> GalleryImage { get; set; }
+        public List<ProjectImage> ProjectImage { get; set; }
         
     }
 }

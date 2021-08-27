@@ -56,7 +56,7 @@
                                     <section class="project-card">
                                         <article class="intro">@project.Description</article>
                                         <div>
-                                            <img src="@project.ImageUrl" alt="@project.AltText" />
+                                            @* loop here for images *@
                                         </div>
                                         <div class="project-tech-container">
                                             @foreach (var icon in project.Technologies)
@@ -185,7 +185,7 @@
                                 <div id="@project.AdminCollapseId" class="@(project.Order == Model.PageToggles.ActiveProjectId && !Model.PageToggles.StayCollapsed ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@project.AdminAccordionId"
                                      data-parent="#accordionExAdmin">
                                     <div class="card-body">
-                                        <form asp-page-handler="UpdateImage" method="post" enctype="multipart/form-data">
+                                        @*<form asp-page-handler="UpdateImage" method="post" enctype="multipart/form-data">
                                             <div><img src=@project.ImageUrl /></div>
                                             <label>
                                                 <input name="file" type="file" accept="image/*" class="file-selection-input" />
@@ -195,7 +195,7 @@
                                                 <input type="hidden" asp-for="Project.FileName" value="@project.FileName" />
                                                 <input type="submit" value="Update Image" class="loader site-button" />
                                             </label>
-                                        </form>
+                                        </form>*@
                                         <form asp-page-handler="UpdateProject" method="post" class="update-form">
                                             <label>
                                                 Title:
@@ -214,6 +214,7 @@
                                             <label>
                                                 Description:
                                                 <textarea type="text" cols="45" rows="5" asp-for="Project.Description" class="form-control" placeholder="@project.Description"></textarea>
+                                                <textarea type="text" cols="45" rows="5" asp-for="HomePage.Intro" class="form-control" placeholder="@Model.HomePage.Intro"></textarea>
                                             </label>
                                             <label>
                                                 Technology Summary:

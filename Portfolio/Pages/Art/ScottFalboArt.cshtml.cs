@@ -91,14 +91,16 @@ namespace Portfolio.Pages.Art
             foreach (var file in files)
             {
                 if (file != null)
-                if (await _upload.CheckFileName(file))
                 {
-                    image = await _upload.AddArtImage(file);
-                    await _art.AddImageToGallery(PageToggles.GalleryId, image.Id);
-                }
-                else
-                {
-                    PageToggles.RepeatGalleryTitle = true;
+                    if (await _upload.CheckFileName(file))
+                    {
+                        image = await _upload.AddArtImage(file);
+                        await _art.AddImageToGallery(PageToggles.GalleryId, image.Id);
+                    }
+                    else
+                    {
+                        PageToggles.RepeatGalleryTitle = true;
+                    }
                 }
             }
 

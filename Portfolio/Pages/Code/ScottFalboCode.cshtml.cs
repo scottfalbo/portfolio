@@ -105,11 +105,8 @@ namespace Portfolio.Pages.Code
         {
             if (file != null)
             {
-                if (Project.FileName != null)
-                {
-                    await _admin.DeleteBlobImage(Project.FileName);
-                }
-                await _upload.UpdateProjectImage(file, Project.Id);
+                //add to blob/database
+                //add to project
             }
 
             PageToggles.ActiveProjectAdmin = true;
