@@ -45,7 +45,6 @@ namespace PortfolioTests
             Project newProject = new Project()
             {
                 Title = project.Title,
-                ImageUrl = project.ImageUrl,
                 Description = project.Description,
                 RepoLink = project.RepoLink,
                 DeployedLink = project.DeployedLink,
@@ -63,7 +62,6 @@ namespace PortfolioTests
                 .Select(y => new Project
                 {
                     Title = y.Title,
-                    ImageUrl = y.ImageUrl,
                     Description = y.Description,
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
