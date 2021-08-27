@@ -208,7 +208,6 @@ namespace Portfolio.Data
                         Id = tech.Id,
                         Title = tech.Title,
                         LogoUrl = tech.LogoUrl,
-                        Display = false
                     }
                 );
             }

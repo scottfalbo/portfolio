@@ -78,7 +78,7 @@
                                         <div class="project-tech-container">
                                             @foreach (var icon in project.Technologies)
                                             {
-                                                if (icon.Technology.Display)
+                                                if (icon.Display)
                                                 {
                                                     <div>
                                                         <img src="@icon.Technology.LogoUrl" alt="@icon.Technology.Title" />
@@ -270,7 +270,7 @@
                                                                 <label class="tech-list-container">
                                                                     <img src="@tech.Technology.LogoUrl" />
                                                                     <span>@tech.Technology.Title</span>
-                                                                    <input type="checkbox" name="isChecked" value="@index" checked="@tech.Technology.Display"/>
+                                                                    <input type="checkbox" name="isChecked" value="@index" checked="@tech.Display"/>
                                                                 </label>
                                                             </li>
                                                             index++;

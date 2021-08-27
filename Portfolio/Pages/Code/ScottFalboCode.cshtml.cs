@@ -160,7 +160,9 @@ namespace Portfolio.Pages.Code
             for (int i = 0; i < project.Technologies.Count; i++)
             {
                 if (isChecked.Contains(i))
-                    project.Technologies[i].Technology.Display = true;
+                    project.Technologies[i].Display = true;
+                else
+                    project.Technologies[i].Display = false;
             }
 
             await _admin.UpdateProject(project);
