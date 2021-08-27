@@ -23,6 +23,7 @@ namespace Portfolio.Data
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<GalleryImage> GalleryImage { get; set; }
         public DbSet<Technology> Technologies { get; set; }
+        public DbSet<ProjectImage> ProjectImages { get; set; }
 
         public IConfiguration Configuration { get; }
 
@@ -39,6 +40,7 @@ namespace Portfolio.Data
 
             modelBuilder.Entity<GalleryImage>().HasKey(x => new { x.GalleryId, x.ImageId });
             modelBuilder.Entity<ProjectTechnology>().HasKey(x => new { x.ProjectId, x.TechnologyId });
+            modelBuilder.Entity<ProjectImage>().HasKey(x => new { x.ProjectId, x.ImageId });
 
             //SeedRole(modelBuilder, "admin", "create", "read", "update", "delete");
 
@@ -214,14 +216,12 @@ namespace Portfolio.Data
                     {
                         Id = 1,
                         Title = "Project One",
-                        ImageUrl = "https://via.placeholder.com/400x300",
                         AltText = "project image",
                         Description = "It does some things",
                         TechSummary = "I used these things",
                         RepoLink = "https://github.com/scottfalbo",
                         DeployedLink = "https://scottfalbo.com",
                         Order = 1,
-                        FileName = "project-one.jpg",
                         Display = true,
                         AccordionId = "projectone",
                         CollapseId = "projectone1",
@@ -232,14 +232,12 @@ namespace Portfolio.Data
                     {
                         Id = 2,
                         Title = "Project Two",
-                        ImageUrl = "https://via.placeholder.com/400x300",
                         AltText = "project image",
                         Description = "It does some things",
                         TechSummary = "I used these things",
                         RepoLink = "https://github.com/scottfalbo",
                         DeployedLink = "https://scottfalbo.com",
                         Order = 2,
-                        FileName = "project-two.jpg",
                         Display = true,
                         AccordionId = "projecttwo",
                         CollapseId = "projecttwo2",

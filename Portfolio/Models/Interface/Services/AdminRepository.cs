@@ -159,13 +159,38 @@ namespace Portfolio.Models.Interfaces.Services
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Adds an image to a project by adding a ProjectImage join table record.
+        /// </summary>
+        /// <param name="projectId"> int project id</param>
+        /// <param name="imageId"> int image id </param>
         public async Task AddImageToProject(int projectId, int imageId)
         {
-
+            ProjectImage projectImage = new ProjectImage()
+            {
+                ProjectId = projectId,
+                ImageId = imageId
+            };
+            _context.Entry(projectImage).State = EntityState.Added;
+            await _context.SaveChangesAsync();
         }
+
+        /// <summary>
+        /// Removes an image from a project by deleting the ProjectImage join table record.
+        /// </summary>
+        /// <param name="projectId"> int project id</param>
+        /// <param name="imageId"> int image id </param>
         public async Task RemoveImageFromProject(int projectId, int imageId)
         {
-
+            ProjectImage image = await _context.ProjectImages
+                .Where(x => x.ProjectId == projectId && x.ImageId == imageId)
+                .Select(y => new ProjectImage
+                {
+                    ProjectId = y.ProjectId,
+                    ImageId = y.ImageId
+                }).FirstOrDefaultAsync();
+            _context.Entry(image).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
         }
 
         /// <summary>

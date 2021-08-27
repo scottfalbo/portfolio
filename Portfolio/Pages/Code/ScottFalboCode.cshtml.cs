@@ -101,12 +101,23 @@ namespace Portfolio.Pages.Code
             return Redirect("/Code/ScottFalboCode");
         }
 
-        public async Task OnPostUpdateImage(IFormFile file, Project project)
+        public async Task OnPostAddImages(IFormFile[] files)
         {
-            if (file != null)
+            Image image = new Image();
+            foreach (var file in files)
             {
-                //add to blob/database
-                //add to project
+                if (file != null)
+                {
+                    if (await _upload.CheckFileName(file))
+                    {
+                        image = await _upload.AddProjectImage(file);
+                        await _admin.AddImageToProject(PageToggles.ProjectId, image.Id);
+                    }
+                    else
+                    {
+                        PageToggles.RepeatProjectTitle = true;
+                    }
+                }
             }
 
             PageToggles.ActiveProjectAdmin = true;
@@ -117,6 +128,11 @@ namespace Portfolio.Pages.Code
             HomePage = await _admin.GetHomePage("Code");
 
             Redirect("/Code/ScottFalboCode");
+        }
+
+        public async Task OnPostDeleteImage()
+        {
+            // page toggle id binds
         }
 
         public async Task<IActionResult> OnPostUpdateProject()
@@ -168,6 +184,8 @@ namespace Portfolio.Pages.Code
     {
         // project id from form
         public int ProjectId { get; set; }
+        // Image id from form
+        public int ImageId { get; set; }
         // bool from form used to toggle project display
         public bool Display { get; set; }
         // bool that is toggled to keep admin window open on refresh
