@@ -288,34 +288,6 @@ namespace Portfolio.Models.Interfaces.Services
         }
 
         /// <summary>
-        /// Get studio data from DB
-        /// </summary>
-        /// <param name="id"> studio id </param>
-        /// <returns> Studio object </returns>
-        public async Task<Studio> GetStudio(int id)
-        {
-            return await _context.Studio
-               .Where(x => x.Id == id)
-               .Select(y => new Studio
-               {
-                   Id = y.Id,
-                   Intro = y.Intro,
-                   Policies = y.Policies,
-                   Aftercare = y.Aftercare
-               }).FirstOrDefaultAsync();
-        }
-
-        /// <summary>
-        /// Update studio data in database
-        /// </summary>
-        /// <param name="studio"> Studio object </param>
-        public async Task UpdateStudio(Studio studio)
-        {
-            _context.Entry(studio).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        }
-
-        /// <summary>
         /// Retrieve my list of technology icons from the database
         /// </summary>
         /// <returns></returns>

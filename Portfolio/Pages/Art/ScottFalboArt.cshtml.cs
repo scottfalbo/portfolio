@@ -101,11 +101,8 @@ namespace Portfolio.Pages.Art
                     }
                 }
             }
-
             PageToggles.ActiveGalleryAdmin = true;
-
             await Refresh();
-
             Redirect("/Art/ScottFalboArt");
         }
 
@@ -118,11 +115,8 @@ namespace Portfolio.Pages.Art
         {
             await _art.RemoveImageFromGallery(PageToggles.GalleryId, PageToggles.ImageId);
             await _art.DeleteImage(PageToggles.ImageId);
-
             PageToggles.ActiveGalleryAdmin = true;
-
             await Refresh();
-
             Redirect("/Art/ScottFalboArt");
         }
 
@@ -142,7 +136,6 @@ namespace Portfolio.Pages.Art
                 PageToggles.RepeatGalleryTitle = true;
 
             await Refresh();
-
             Redirect("/Art/ScottFalboArt");
         }
 
@@ -153,12 +146,9 @@ namespace Portfolio.Pages.Art
         public async Task OnPostDeleteGallery(int id)
         {
             await _art.DeleteGallery(id);
-
             PageToggles.ActiveGalleryAdmin = true;
             PageToggles.StayCollapsed = true;
-
             await Refresh();
-
             Redirect("/Art/ScottFalboArt");
         }
 
@@ -179,12 +169,13 @@ namespace Portfolio.Pages.Art
             
             gallery.Display = PageToggles.Display;
             await _art.UpdateGallery(gallery);
-
             await Refresh();
-
             Redirect("/Art/ScottFalboArt");
         }
 
+        /// <summary>
+        /// Helper method to asssign class properties on task Redirect.
+        /// </summary>
         private async Task Refresh()
         {
             Galleries = await _art.GetGalleries();

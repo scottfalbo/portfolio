@@ -41,5 +41,8 @@ Refactoring the overall structure of the site while adding new content and secti
   + Added a carousel display to the projects portfolio and subsequent admin UI.  
   + Updated `Project` and `Image` models and created a `ProjectImage` join table to add images to a project.
   + Added methods to `AdminRepository` to add and remove images and technologies from projects.  Made method to retrieve the list of technologies from database.
+  + Added a `HomePageProjects` join table and put a list of technologies on the code main page.  Updated the `ProjectTechnology` class with have a display prop.
+  + Built a drop down menu of `<select>` elements to toggle display of technologies on and off for code main page and projects.  The drop down toggle is handled with jQuery.
+  
 
 [Back to README](README.md#refactor-development-log)
