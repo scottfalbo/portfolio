@@ -372,7 +372,10 @@ input.add-gallery.loader {
     line-height: 25px;
 }
 
-
+.code-project-admin label {
+    font-family: 'Jura', sans-serif;
+    color: rgb(45, 255, 56);
+}
 
 
 /* ------------------------------------- Global Buttons */
@@ -480,7 +483,6 @@ footer p {
     color: rgba(255, 187, 0, 0.4);
 }
 
-i.fas.fa-angle-down.rotate-icon {}
 
 /* ------------------------------------ Break Points */
 
@@ -494,7 +496,7 @@ i.fas.fa-angle-down.rotate-icon {}
 
 @media screen and (min-width: 769px) {
     .right-col {
-        padding: 20px;
+        padding: 30px;
     }
     .right-col .intro {
         margin-bottom: 20px;

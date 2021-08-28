@@ -243,6 +243,8 @@ namespace Portfolio.Models.Interfaces.Services
         {
             return await _context.HomePage
                 .Where(x => x.Page == page)
+                .Include(a => a.Technologies)
+                .ThenInclude(b => b.Technology)
                 .Select(y => new HomePage
                 {
                     Id = y.Id,
@@ -250,7 +252,8 @@ namespace Portfolio.Models.Interfaces.Services
                     Title = y.Title,
                     Intro = y.Intro,
                     Selfie = y.Selfie,
-                    FileName = y.FileName
+                    FileName = y.FileName,
+                    Technologies = y.Technologies
                 }).FirstOrDefaultAsync();
         }
 
@@ -261,6 +264,8 @@ namespace Portfolio.Models.Interfaces.Services
         public async Task<List<HomePage>> GetHomePages()
         {
             return await _context.HomePage
+                .Include(a => a.Technologies)
+                .ThenInclude(b => b.Technology)
                 .Select(x => new HomePage
                 {
                     Id = x.Id,

@@ -357,6 +357,13 @@ div.technologies-menu-button {
     width: 100%;
 }
 
+.tech-list-container span {
+    font-family: 'Jura', sans-serif;
+    color: rgb(45, 255, 56);
+    text-align: left;
+    line-height: 35px;
+}
+
 .technology-dropdown .tech-list-container img {
     grid-column: 1/2;
     grid-row: 1/2;
@@ -373,6 +380,7 @@ div.technologies-menu-button {
 .tech-list-container input {
     grid-column: 3/4;
     grid-row: 1/2;
+    margin: 10px;
 }
 
 
@@ -644,6 +652,24 @@ div.technologies-menu-button {
     margin: 15px 0;
     margin: 0 auto 10px auto;
 }
+
+.codepage-technology > div:first-child {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.codepage-technology .codepage-technology-icon {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    margin: 5px;
+}
+
+.codepage-technology .codepage-technology-icon img {
+    height: 40px;
+}
+
 /* -------------------------------- Global Buttons */
 
 .site-button {
@@ -717,7 +743,7 @@ div.technologies-menu-button {
 /*  mobile: 320-480, tablet: 481-768 */
 
 @media screen and (max-width: 768px) {
-    .desktop-menu {
+    .desktop-menu, .desktop-menu .page-nav, .desktop-menu .page-nav ul {
         visibility: hidden;
         height: 0px;
     }
@@ -769,7 +795,13 @@ div.technologies-menu-button {
         max-height: 100vh;
         object-fit: contain;
     }
+    .left-col .code-tech-desktop {
+        visibility: hidden;
+        display: none;
+        height: 0px;
+    }
 }
+
 
 /* Laptop | Small Screen | IPad pro */
 
@@ -788,7 +820,7 @@ div.technologies-menu-button {
     }
     .homepage-container {
         display: grid;
-        grid-template-columns: 30% 70%;
+        grid-template-columns: 260px 1fr;
         grid-template-rows: min-content 60px;
     }
 
@@ -801,7 +833,7 @@ div.technologies-menu-button {
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: min-content min-content;
+        grid-template-rows: min-content min-content min-content;
     }
     .right-col {
         grid-column: 2/3;
@@ -814,9 +846,13 @@ div.technologies-menu-button {
         grid-column: 1/2;
         grid-row: 1/2;
     }
-    .left-col>section {
+    .left-col> .desktop-menu {
         grid-column: 1/2;
         grid-row: 2/3;
+    }
+    .left-col> .code-tech-dekstop{
+        grid-column: 1/2;
+        grid-row: 3/4;
     }
     .right-col .intro {
         grid-column: 1/2;
@@ -845,6 +881,12 @@ div.technologies-menu-button {
         background-color: rgba(0, 0, 0, .8);
         max-height: inherit;
         width: inherit;
+    }
+
+    .right-col .code-tech-mobile {
+        visibility: hidden;
+        display: none;
+        height: 0px;
     }
 }
 

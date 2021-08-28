@@ -198,6 +198,23 @@ namespace Portfolio.Pages.Code
             Redirect("/Code/ScottFalboCode");
         }
 
+        public async Task<IActionResult> OnPostUpdateTechnologies(int[] isChecked)
+        {
+            HomePage page = await _admin.GetHomePage("Code");
+
+            for (int i = 0; i < page.Technologies.Count; i++)
+            {
+                if (isChecked.Contains(i))
+                    page.Technologies[i].Display = true;
+                else
+                    page.Technologies[i].Display = false;
+            }
+
+            await _admin.UpdateHomePage(page);
+
+            return Redirect("/Code/ScottFalboCode"); ;
+        }
+
         private async Task Refresh()
         {
             Projects = await _admin.GetProjects();

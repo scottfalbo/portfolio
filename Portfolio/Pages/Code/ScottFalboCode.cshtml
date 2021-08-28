@@ -24,6 +24,9 @@
         <section class="desktop-menu">
             <partial name="SiteNavButtons/_CodePageNav" />
         </section>
+        <div class="code-tech-desktop">
+            <partial name="Code/_Technologies" />
+        </div>
     </div>
 
     <div class="right-col">
@@ -124,6 +127,9 @@
         <section class="mobile-menu">
             <partial name="SiteNavButtons/_CodePageNav" />
         </section>
+        <div class="code-tech-mobile">
+            <partial name="Code/_Technologies" />
+        </div>
     </div>
     @if (User.Identity.IsAuthenticated)
     {
@@ -171,7 +177,7 @@
 
         </div>
     </div>
-    <div class="fullscreen gallery-module-outer @(Model.PageToggles.ActiveProjectAdmin ? "" : "")">
+    <div class="fullscreen gallery-module-outer @(Model.PageToggles.ActiveProjectAdmin ? "" : "hide-me")">
         <div class="popup-module-inner">
             <div class="admin-module">
                 <section class="code-project-admin galleries">
