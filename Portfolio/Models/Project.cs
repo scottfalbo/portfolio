@@ -10,7 +10,6 @@ namespace Portfolio.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string AltText { get; set; }
         public string Description { get; set; }
         public string TechSummary { get; set; }
         public string RepoLink { get; set; }

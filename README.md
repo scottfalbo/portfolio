@@ -1,7 +1,5 @@
 # scottfalbo.com
 
-## Live Deployment
-
 ## [scottfalbo.com](https://scottfalbo.com)
 
 version 2.0.0
@@ -97,6 +95,10 @@ There is more information about the languages, technologies, tools, and site arc
 ---
 
 ## Architecture
+
+### Entity Relationship Diagram
+
+![ERD](/assets/erd.png)
 
 ---
 
