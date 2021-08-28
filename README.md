@@ -1,170 +1,110 @@
-<img src="./assets/git_title.png">
+# scottfalbo.com
 
-# [www.scottfalbo.com](https://www.scottfalbo.com)
+## Live Deployment
 
-version 1.0.0
+## [scottfalbo.com](https://scottfalbo.com)
 
-
+version 2.0.0
 
 ## About the Project
 
-This is my personal portfolio page for both coding projects and artwork.  It is a .NET Core application built in Visual Studio with C# and deployed on Azure.
+Portfolio website for my software development projects and artwork.  It is a .Net Core app built in Visual Studio with C# and deployed on Azure.  All of the sites front facing data, including text fields and portfolios, are handled with a built in admin GUI available on each page when authenticated.
 
-The galleries, as well as text areas, are all stored in an AzureSQL Database.  All areas of the site can be updated via an admin dashboard with full CRUD actions.  
+There is more information about the languages, technologies, tools, and site architecture below.
 
-Gallery images are stored in an Azure Blob, all uploading and removal are handled via the admin dashboard.
-
-All of the site contact forms utilize SendGrid.  The toggle controls to show and hide forms are handled by jQuery.
-
-My current Instagram feed is displayed on the Art Page using the FaceBook Developers Instagram API.
-
-All API keys, access tokens and other site secrets are stored in an Azure Key Vault.
+<!-- add site photo here -->
 
 ---
 
 ## Technologies
 
-<table border>
-  <tr align=center>
-    <td width=80>
-      <img src = "./assets/cSharp.png" height=50> 
-    </td>
-    <td width=80>
-      <img src = "./assets/dotnetcore.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/visualStudio.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/azure.png" height=50>
-    </td>
-  </tr>
+<table>
     <tr>
-    <td align=center>
-      C#
-    </td>
-    <td align=center>
-      .NET Core
-    </td>
-    <td align=center>
-      Visual Studio
-    </td>
-    <td align=center>
-      Azure
-    </td>
-  </tr>
-  <tr align=center>
-    <td width=80>
-      <img src = "./assets/html.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/css.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/bootstrap.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/github-light.png" height=50>
-    </td>
-  </tr>
+        <td>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/dotnetcore.png?raw=true" height=40>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/cSharp.png?raw=true" height=40>
+        </td>
+        <td>
+            This is a .Net Core project written in C# using Razor pages.  Login and authentication is handled by Microsoft Identity.
+        </td>
+    </tr>
     <tr>
-    <td align=center>
-      HTML 5
-    </td>
-    <td align=center>
-      CSS3
-    </td>
-    <td align=center>
-      Bootstrap
-    </td>
-    <td align=center>
-      GitHub
-    </td>
-  </tr>
-  </tr>
-  <tr align=center>
-    <td width=80>
-      <img src = "./assets/azure_sql.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/azureBlob.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/key_vault.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/facebook_dev.png" height=50>
-    </td>
-  </tr>
+        <td>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/html.png?raw=true" height=40>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/css.png?raw=true" height=40>
+        </td>
+        <td>
+            Front end built and styled with HTML5 markup and CSS3 style.
+        </td>
+    </tr>
     <tr>
-    <td align=center>
-      AzureSQL
-    </td>
-    <td align=center>
-      Azure Blob
-    </td>
-    <td align=center>
-      Azure Key Vault
-    </td>
-    <td align=center>
-      Facebook Dev
-    </td>
-  </tr>
-  <tr align=center>
-    <td width=80>
-      <img src = "./assets/sendgrid.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/jQuery.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/vscode.png" height=50>
-    </td>
-    <td width=80>
-      <img src = "./assets/photoshop.png" height=50>
-    </td>
-  </tr>
+        <td>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/javascript.png?raw=true" height=40>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/jQuery.png?raw=true" height=40>
+        </td>
+        <td>
+            Using JavaScript and jQuery for browser side user interactions.
+        </td>
+    </tr>
     <tr>
-    <td align=center>
-      SendGrid
-    </td>
-    <td align=center>
-      jQuery
-    </td>
-    <td align=center>
-      Visual Studio Code
-    </td>
-    <td align=center>
-      Adobe Photoshop
-    </td>
-  </tr>
+        <td>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azure.png?raw=true" height=40>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azure_sql.png?raw=true" height=40>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/key_vault.png?raw=true" height=40>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azureBlob.png?raw=true" height=40>
+        </td>
+        <td>
+            The website is deployed on Azure.  It using AzureSQL for the database, an Azure Key Vault for storing keys and other secret data, and an Azure Storage Blob for storing uploaded images.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/bootstrap.png?raw=true" height=40>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/sendgrid.png?raw=true" height=40>
+        </td>
+        <td>
+            I used Bootstrap for the main navigation drop down menus and breakpoint, the collapsing accordion galleries, and the carousel image viewers. The request form on the Art/Booking page uses Twilio SendGrid to email the form.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/git.png?raw=true" height=40>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/github-light.png?raw=true" height=40>
+        </td>
+        <td>
+            Git and GitHub used for version control.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/visual_studio.png?raw=true" height=40>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/vscode.png?raw=true" height=40>
+        </td>
+        <td>
+            C# and HTML written in Visual Studio.  JavaScript, CSS and, Markdown written in VS Code.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/photoshop.png?raw=true" height=40>
+        </td>
+        <td>
+            Image assets created and/or edited with Adobe Photoshop.
+        </td>
+    </tr>
 </table>
+
+---
+
+## Architecture
 
 ---
 
 ## Change Log
 
-+ 06/20/2021
-  + **version 1.0.0**
-    + Initial deployment of full site
-+ 06/21/2021
-  + Fixed a handful of style issues across the site.
-  + Used jQuery ajax to call a method to see if the user is authenticated. If user is not logged in the secret entrance appears.  If the user is logged in the secret lair appear.  That's what I call my dashboard.
-+ 06/23/2021
-  + Added screaming Ethel favicon.
-+ 07/10/2021
-  + Added an image upload input to the request form.
-    + Updated SendGridTemplate object to include the URIs of the uploaded images.
-  + Changed all image upload inputs to accept multiple files.
-    + Added a jQuery function to enforce a max upload size of 20mbs.
-  + Added Google reCaptcha to all contact forms.
-    + [Implementation docs](https://developers.google.com/recaptcha/docs/v3)
-  + 7/29/2021
-    + Started complete refactor.
++ ### [Refactor Development Log v2.0](refactor-dev.md)
 
-+ ### [Refactor Development Log](refactor-dev.md)
-
-+ ### [Development Log](development.md#development-log)
++ ### [Original Development Log v1.0](development.md#development-log)
 
 ---
 
@@ -179,7 +119,6 @@ All API keys, access tokens and other site secrets are stored in an Azure Key Va
 
 ## Acknowledgements
 
-+ [Bootstrap Carousel](https://getbootstrap.com/docs/4.0/components/carousel/)
++ [Bootstrap](https://getbootstrap.com/)
 + [json2csharp](https://json2csharp.com/)
 + [Microsoft Docs](https://docs.microsoft.com/en-us/)
-+ [Google Maps dark mode script](https://developers.google.com/maps/documentation/javascript/examples/style-array)
