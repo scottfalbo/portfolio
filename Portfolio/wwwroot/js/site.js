@@ -28,7 +28,7 @@ $(function () {
 $(function () {
     $('.delete-gallery-image').click(function () {
         $(this).siblings('.delete-image-confirm')
-        .removeClass('hide-me');
+            .removeClass('hide-me');
     });
 });
 
@@ -140,7 +140,7 @@ $(function () {
         let uploadSize = 0;
         let files = e.currentTarget.files;
         Array.from(files).forEach((file) => {
-            uploadSize += (file.size/1000000);
+            uploadSize += (file.size / 1000000);
         });
         if (uploadSize > 20) {
             $('.request-upload').val('');
@@ -164,7 +164,7 @@ $(function () {
 });
 
 // Nav button mouse over tooltip.
-$(document).ready(function (){
+$(document).ready(function () {
     $('.site-nav-button').mouseenter(function () {
         $(this).children('.mouse-over-tooltip').removeClass('hide-me');
     });
@@ -173,20 +173,20 @@ $(document).ready(function (){
     });
 });
 
-$(document).on('mouseover', function(e) {
+$(document).on('mouseover', function (e) {
     $('.mouse-over-tooltip').css({
         left: e.pageX,
         top: e.pageY
     });
 });
 
-$(document).ready(function (){
+$(document).ready(function () {
     console.log('what what');
     $('.technology-dropdown').slideToggle();
 });
 
-$(function() {
-    $('.technologies-menu-button').click(function() {
+$(function () {
+    $('.technologies-menu-button').click(function () {
         $('.technology-dropdown').slideToggle();
     });
 });

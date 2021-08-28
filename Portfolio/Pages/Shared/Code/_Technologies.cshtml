@@ -1,15 +1,28 @@
 ﻿<section class="codepage-technology">
-    <div>
-        @foreach (var tech in Model.HomePage.Technologies)
-        {
-            if (tech.Display)
+        <h3>Languages</h3>
+        <div>
+            @foreach (var tech in Model.HomePage.Technologies)
             {
-                <figure class="codepage-technology-icon">
-                    <img src="@tech.Technology.LogoUrl" alt="@tech.Technology.Title" />
-                </figure>
+                if (tech.Display && tech.Technology.Type == "Language")
+                {
+                    <figure class="codepage-technology-icon">
+                        <img src="@tech.Technology.LogoUrl" alt="@tech.Technology.Title" />
+                    </figure>
+                }
             }
-        }
-    </div>
+        </div>
+        <h3>Tools &amp; Technologies</h3>
+        <div>
+            @foreach (var tech in Model.HomePage.Technologies)
+            {
+                if (tech.Display && tech.Technology.Type == "Tech")
+                {
+                    <figure class="codepage-technology-icon">
+                        <img src="@tech.Technology.LogoUrl" alt="@tech.Technology.Title" />
+                    </figure>
+                }
+            }
+        </div>
     @if (User.Identity.IsAuthenticated)
     {
         <form asp-page-handler="UpdateTechnologies" method="post" class="update-form">

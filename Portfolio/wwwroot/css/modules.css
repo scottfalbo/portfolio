@@ -211,7 +211,7 @@ main {
 
 /* Art Galleries */
 
-.gallery-admin-images .card-body > section:first-child > form label > span {
+.gallery-admin-images .card-body>section:first-child>form label>span {
     font-size: 1.2em;
 }
 
@@ -224,7 +224,7 @@ main {
 
 /* Coding Portfolio */
 
-.code-project-admin .card-body > section:first-child > form label > span {
+.code-project-admin .card-body>section:first-child>form label>span {
     font-size: 1.2em;
 }
 
@@ -247,7 +247,7 @@ input.add-gallery.loader {
     color: #26ff55;
 }
 
-.delete-graphic > div {
+.delete-graphic>div {
     background-color: #f86c6c;
     transform: rotateY(0deg) rotate(45deg);
 }
@@ -293,14 +293,14 @@ input.add-gallery.loader {
 
 .booking-mainpage .left-col h2 {
     font-size: 1.3em;
-    color:#54ec93;
+    color: #54ec93;
     font-family: 'Jura', sans-serif;
     margin: 10px;
 }
 
-.booking-mainpage > .right-col > h3 {
+.booking-mainpage>.right-col>h3 {
     text-align: center;
-    color:#54ec93;
+    color: #54ec93;
     font-family: 'Jura', sans-serif;
     padding: 5px;
     font-size: 1.1em;
@@ -332,7 +332,7 @@ input.add-gallery.loader {
 
 .request-image-upload p {
     text-align: center;
-    color:#00b94d;
+    color: #00b94d;
     font-family: 'Jura', sans-serif;
     font-size: 1.1em;
     padding: 5px;
@@ -342,7 +342,7 @@ input.add-gallery.loader {
     font-size: 1.1em;
 }
 
-.was-sent > a > div {
+.was-sent>a>div {
     color: #f19f24;
     line-height: 25px;
 }
@@ -354,7 +354,7 @@ input.add-gallery.loader {
 
 /* --------------------------------- Coding Portfolio */
 
-.coding-projects > h2 {
+.coding-projects>h2 {
     text-align: center;
     color: #f19f24;
     font-family: 'Jura', sans-serif;
@@ -368,7 +368,7 @@ input.add-gallery.loader {
 
 .project-card .site-button {
     font-size: 1.2em;
-    color:#1ccaff;
+    color: #1ccaff;
     line-height: 25px;
 }
 
@@ -377,6 +377,20 @@ input.add-gallery.loader {
     color: rgb(45, 255, 56);
 }
 
+.codepage-technology h3 {
+    text-align: center;
+    color:rgb(64, 255, 230);
+    font-size: 1.3em;
+    font-family: 'Jura', sans-serif;
+    padding: 10px 0;
+    background: #1c1f1c;
+    border-radius: 15px;
+}
+
+.codepage-technology .site-button {
+    color: #f19f24;
+    border: 1px solid #f19f24;
+}
 
 /* ------------------------------------- Global Buttons */
 
@@ -416,7 +430,7 @@ input.add-gallery.loader {
     line-height: 50px;
 }
 
-.gallery-admin-images .card-body > section:nth-child(2) > form label {
+.gallery-admin-images .card-body>section:nth-child(2)>form label {
     background: #000;
 }
 
@@ -482,7 +496,6 @@ footer p {
     text-align: center;
     color: rgba(255, 187, 0, 0.4);
 }
-
 
 /* ------------------------------------ Break Points */
 
