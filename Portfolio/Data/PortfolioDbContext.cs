@@ -19,7 +19,6 @@ namespace Portfolio.Data
         public DbSet<Image> Images { get; set; }
         public DbSet<HomePage> HomePage { get; set; }
         public DbSet<Instagram> Instragrams { get; set; }
-        public DbSet<Studio> Studio { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<GalleryImage> GalleryImage { get; set; }
         public DbSet<Technology> Technologies { get; set; }
@@ -114,15 +113,6 @@ namespace Portfolio.Data
                     Intro = "Booking information",
                     Selfie = "",
                     FileName = ""
-                });
-            
-            modelBuilder.Entity<Studio>().HasData(
-                new Studio
-                {
-                    Id = 1,
-                    Intro ="Studio Arcanum \nSeattle Wa",
-                    Policies = "....",
-                    Aftercare = "...."
                 });
 
             /// Gallery seeds

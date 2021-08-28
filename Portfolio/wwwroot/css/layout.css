@@ -34,6 +34,10 @@ header {
     width: 100%;
 }
 
+main > h1 {
+    height: 46px;
+}
+
 /* -------------------------------------- Main */
 
 .selfie {
@@ -426,10 +430,6 @@ div.technologies-menu-button {
     display: block;
 }
 
-/* .admin-module section:first-child label input:first-child {
-    height: 60px;
-} */
-
 .popup-module-inner input {
     margin: 8px;
 }
@@ -597,6 +597,10 @@ div.technologies-menu-button {
     margin-top: 20px;
 }
 
+.request-form > div {
+    margin: 10px auto;
+}
+
 /* --------------------------------- Coding Portfolio */
 
 .coding-projects>h2 {
@@ -688,7 +692,39 @@ div.technologies-menu-button {
     height: 50px;
 }
 
+/* ---------------------------- Login Page */
 
+.login-form {
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.login-form img {
+    width: 100%;
+}
+
+.login-form form div {
+    margin: 10px auto;
+}
+
+.login-form form div:nth-child(1) input, .login-form form div:nth-child(2) input {
+    margin: 10px auto;
+    width: 100%;
+    height: 40px;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Jura', sans-serif;
+    font-size: 1.3em;
+}
+
+.login-form form div:nth-child(3) input {
+    font-family: 'Jura', sans-serif;
+    font-size: 1.3em;
+    position: relative;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
 
 /* --------------------------------------- Footer */
 

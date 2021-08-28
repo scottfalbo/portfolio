@@ -27,10 +27,11 @@ namespace Portfolio.Models.Interface
         public Task<HomePage> GetHomePage(string page);
         public Task<List<HomePage>> GetHomePages();
         public Task UpdateHomePage(HomePage homepage);
-        /// Studio Page CRUD
-        public Task<Studio> GetStudio(int id);
-        public Task UpdateStudio(Studio studio);
 
+
+        /// <summary>
+        /// Technology icons CRUD
+        /// </summary>
         public Task<List<Technology>> GetTechnologies();
         public Task AddTechToProject(int projectId, int techId);
         public Task RemoveTechFromProject(int projectId, int techId);
