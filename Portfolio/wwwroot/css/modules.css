@@ -177,11 +177,6 @@ main {
     text-align: right;
 }
 
-.gallery-display a>.gallery-header-eye>.gallery-eye {
-    border: 1px solid #00c6d4;
-    border-radius: 50%;
-}
-
 .galleries .card-body {
     background-color: #131313;
     padding: .2em;
@@ -196,11 +191,15 @@ main {
 }
 
 .closed-gallery-eye {
-    background: rgb(64, 255, 230);
+    background-image: url('../images/gallery_eye.png');
+    background-size: contain;
+    border: 1px solid #18f7ff;
+    border-radius: 50%;
+    opacity: .3;
 }
 
 .open-gallery-eye {
-    background: rgb(0, 248, 83);
+    opacity: 1;
 }
 
 /*  -------------------------------- Popup Admin Module */
