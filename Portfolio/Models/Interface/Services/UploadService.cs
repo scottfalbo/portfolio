@@ -55,28 +55,6 @@ namespace Portfolio.Models.Interface.Services
         }
 
         /// <summary>
-        /// Helper method to see if a file name already exists on upload. 
-        /// </summary>
-        /// <param name="file"> IFormFile from input form </param>
-        /// <returns> true if doesn't exist </returns>
-        public async Task<bool> CheckFileName(IFormFile file)
-        {
-            var fileCheck = await _context.Images
-                .Where(x => x.FileName == file.FileName)
-                .Select(y => new Image
-                {
-                    Id = y.Id,
-                    Title = y.Title,
-                    ImageURL = y.ImageURL,
-                    FileName = y.FileName,
-                    ThumbURL = y.ThumbURL,
-                    ThumbFileName = y.ThumbFileName,
-                    Order = y.Order
-                }).FirstOrDefaultAsync();
-            return fileCheck == null;
-        }
-
-        /// <summary>
         /// Overload method for uploading resized images that are already Streams
         /// </summary>
         /// <param name="file"> IFormFile file </param>
@@ -102,30 +80,33 @@ namespace Portfolio.Models.Interface.Services
         }
 
         /// <summary>
-        /// Upload an image and create a new project
+        /// Helper method to see if a file name already exists on upload. 
         /// </summary>
-        /// <param name="file"> input file </param>
-        /// <returns> no return </returns>
-        public async Task AddProjectImage(IFormFile file)
+        /// <param name="file"> IFormFile from input form </param>
+        /// <returns> true if doesn't exist </returns>
+        public async Task<bool> CheckFileName(IFormFile file)
         {
-            BlobClient blob = await UploadImage(file);
-
-            Project newProject = new Project()
-            {
-                Title = "new",
-                Description = "new project",
-                SourceURL = blob.Uri.ToString(),
-                FileName = file.FileName,
-                Display = false
-            };
-            await _admin.CreateProject(newProject);
+            var fileCheck = await _context.Images
+                .Where(x => x.FileName == file.FileName)
+                .Select(y => new Image
+                {
+                    Id = y.Id,
+                    Title = y.Title,
+                    ImageURL = y.ImageURL,
+                    FileName = y.FileName,
+                    ThumbURL = y.ThumbURL,
+                    ThumbFileName = y.ThumbFileName,
+                    Order = y.Order
+                }).FirstOrDefaultAsync();
+            return fileCheck == null;
         }
 
         /// <summary>
-        /// Upload and image to azure storage
-        /// Create a new Tattoo object with new image and save to database
+        /// Resizes the gallery image and creates a second thumbnail file.
+        /// Both images are uploaded to the blob and the returned Uri assigned to the object.
         /// </summary>
-        /// <param name="file"> input file </param>
+        /// <param name="file"> IFormFile from form input </param>
+        /// <returns> new Image object </returns>
         public async Task<Image> AddArtImage(IFormFile file)
         {
             Stream stream = ResizeImage(file, 1900);
@@ -140,6 +121,28 @@ namespace Portfolio.Models.Interface.Services
                 FileName = file.FileName,
                 ThumbURL = thumb.Uri.ToString(),
                 ThumbFileName = $"{file.FileName}_thumb",
+                Order = 0
+            };
+            return await _artAdmin.CreateImage(image);
+        }
+
+        /// <summary>
+        /// Resizes the project portfolio image and uploads to the blob.
+        /// Assigns the returned Uri to the object.
+        /// </summary>
+        /// <param name="file"> IFormFile from form input </param>
+        /// <returns> new Image object </returns>
+        public async Task<Image> AddProjectImage(IFormFile file)
+        {
+            Stream stream = ResizeImage(file, 300);
+            BlobClient blob = await UploadImage(stream, file.FileName, file.ContentType);
+
+            Image image = new Image()
+            {
+                ImageURL = blob.Uri.ToString(),
+                FileName = file.FileName,
+                ThumbURL = "",
+                ThumbFileName = "",
                 Order = 0
             };
             return await _artAdmin.CreateImage(image);
@@ -194,21 +197,6 @@ namespace Portfolio.Models.Interface.Services
             float ratio = (float)height / (float)n;
             int newWidth = Convert.ToInt32((float)width / ratio);
             return newWidth;
-        }
-
-        /// <summary>
-        /// Updates a projects sourceURL to newly uploaded image
-        /// </summary>
-        /// <param name="file"> input file </param>
-        /// <param name="id"> project id </param>
-        /// <returns> no return </returns>
-        public async Task UpdateProjectImage(IFormFile file, int id)
-        {
-            Project project = await _context.Projects.FindAsync(id);
-            BlobClient blob = await UploadImage(file);
-            project.SourceURL = blob.Uri.ToString();
-            project.FileName = file.FileName;
-            await _admin.UpdateProject(project);
         }
 
         /// <summary>

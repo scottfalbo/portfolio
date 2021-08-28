@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Portfolio.Auth.Models;
 using Portfolio.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +22,10 @@ namespace Portfolio.Data
         public DbSet<Studio> Studio { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<GalleryImage> GalleryImage { get; set; }
+        public DbSet<Technology> Technologies { get; set; }
+        public DbSet<ProjectImage> ProjectImages { get; set; }
+        public DbSet<ProjectTechnology> ProjectTechnologies { get; set; }
+        public DbSet<HomePageTechnology> HomePageTechnologies { get; set; }
 
         public IConfiguration Configuration { get; }
 
@@ -35,6 +41,9 @@ namespace Portfolio.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<GalleryImage>().HasKey(x => new { x.GalleryId, x.ImageId });
+            modelBuilder.Entity<ProjectTechnology>().HasKey(x => new { x.ProjectId, x.TechnologyId });
+            modelBuilder.Entity<ProjectImage>().HasKey(x => new { x.ProjectId, x.ImageId });
+            modelBuilder.Entity<HomePageTechnology>().HasKey(x => new { x.HomePageId, x.TechnologyId });
 
             //SeedRole(modelBuilder, "admin", "create", "read", "update", "delete");
 
@@ -124,7 +133,7 @@ namespace Portfolio.Data
                     Title = "Gallery One",
                     AccordionId = "galleryone",
                     Display = true,
-                    Order = 0,
+                    Order = 1,
                     CollapseId = "galleryone1",
                     AdminAccordionId = "galleryoneadmin",
                     AdminCollapseId = "galleryone1admin"
@@ -135,7 +144,7 @@ namespace Portfolio.Data
                     Title = "Gallery Two",
                     AccordionId = "gallerytwo",
                     Display = true,
-                    Order = 1,
+                    Order = 2,
                     CollapseId = "gallerytwo2",
                     AdminAccordionId = "gallerytwoadmin",
                     AdminCollapseId = "gallerytwo2admin"
@@ -146,7 +155,7 @@ namespace Portfolio.Data
                     Title = "Gallery Three",
                     AccordionId = "gallerythree",
                     Display = true,
-                    Order = 2,
+                    Order = 3,
                     CollapseId = "gallerythree3",
                     AdminAccordionId = "gallerythreeadmin",
                     AdminCollapseId = "gallerythree3admin"
@@ -190,6 +199,80 @@ namespace Portfolio.Data
                 );
             }
 
+            string path = @"Data/technologiesData.json";
+            TechnologiesList techList = JsonConvert.DeserializeObject<TechnologiesList>(File.ReadAllText(path));
+
+            foreach(Technology tech in techList.technologies)
+            {
+                modelBuilder.Entity<Technology>().HasData(
+                    new Technology
+                    {
+                        Id = tech.Id,
+                        Title = tech.Title,
+                        Type = tech.Type,
+                        LogoUrl = tech.LogoUrl,
+                    }
+                );
+            }
+
+            modelBuilder.Entity<Project>().HasData(
+                    new Project
+                    {
+                        Id = 1,
+                        Title = "Project One",
+                        AltText = "project image",
+                        Description = "It does some things",
+                        TechSummary = "I used these things",
+                        RepoLink = "https://github.com/scottfalbo",
+                        DeployedLink = "https://scottfalbo.com",
+                        Order = 1,
+                        Display = true,
+                        AccordionId = "projectone",
+                        CollapseId = "projectone1",
+                        AdminAccordionId = "projectoneadmin",
+                        AdminCollapseId = "projectone1admin"
+                    },
+                    new Project 
+                    {
+                        Id = 2,
+                        Title = "Project Two",
+                        AltText = "project image",
+                        Description = "It does some things",
+                        TechSummary = "I used these things",
+                        RepoLink = "https://github.com/scottfalbo",
+                        DeployedLink = "https://scottfalbo.com",
+                        Order = 2,
+                        Display = true,
+                        AccordionId = "projecttwo",
+                        CollapseId = "projecttwo2",
+                        AdminAccordionId = "projecttwoadmin",
+                        AdminCollapseId = "projecttwo2admin"
+                    }
+                );
+
+            foreach (Technology tech in techList.technologies)
+            {
+                modelBuilder.Entity<ProjectTechnology>().HasData(
+                    new ProjectTechnology
+                    {
+                        ProjectId = 1,
+                        TechnologyId = tech.Id
+                    },
+                    new ProjectTechnology
+                    {
+                        ProjectId = 2,
+                        TechnologyId = tech.Id
+                    }
+                );
+                modelBuilder.Entity<HomePageTechnology>().HasData(
+                    new HomePageTechnology
+                    { 
+                        HomePageId = 3,
+                        TechnologyId = tech.Id
+                    }
+                );
+            }
+
         }
 
         private int id = 1;
@@ -214,5 +297,10 @@ namespace Portfolio.Data
                });
             modelBuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
         }
+    }
+
+    public class TechnologiesList
+    {
+        public List<Technology> technologies { get; set; }
     }
 }

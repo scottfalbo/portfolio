@@ -70,6 +70,20 @@ header {
     width: 60px;
 }
 
+.mouse-over-tooltip {
+    z-index: 25;
+    position: absolute;
+    min-width: fit-content;
+    width: 200px;
+    background-color: #000;
+    border-radius: 10px;
+    font-family: 'Jura', sans-serif;
+    font-size: 1.2em;
+    border: 1px solid #00ffea;
+    color: #83e2da;
+    padding: 10px;
+}
+
 /* ------------------------------------- Gallery Viewer */
 
 .image-gallery {
@@ -128,7 +142,7 @@ header {
 .thumb-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: left;
     padding: 5px;
 }
 
@@ -145,7 +159,9 @@ header {
 
 /*  -------------------------------- Popup Admin Module */
 
-.gallery-admin-images .card-body > section:first-child > form {
+/* Art Galleries */
+
+.gallery-admin-images .card-body>section:first-child>form {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 40px 30px;
@@ -153,7 +169,7 @@ header {
     margin: 20px auto;
 }
 
-.gallery-admin-images .card-body > section:first-child > form input:first-child {
+.gallery-admin-images .card-body>section:first-child>form input:first-child {
     grid-column: 1/2;
     grid-row: 1/2;
     height: 40px;
@@ -161,7 +177,7 @@ header {
     margin: auto;
 }
 
-.gallery-admin-images .card-body > section:first-child > form > div {
+.gallery-admin-images .card-body>section:first-child>form>div {
     grid-column: 1/2;
     grid-row: 2/3;
     display: grid;
@@ -171,7 +187,7 @@ header {
     width: 100%;
 }
 
-.gallery-admin-images .card-body > section:first-child > form label {
+.gallery-admin-images .card-body>section:first-child>form label {
     grid-column: 1/2;
     grid-row: 1/2;
     display: grid;
@@ -180,13 +196,13 @@ header {
     text-align: right;
 }
 
-.gallery-admin-images .card-body > section:first-child > form label > p {
+.gallery-admin-images .card-body>section:first-child>form label>span {
     grid-column: 1/2;
     grid-row: 1/2;
     line-height: 30px;
 }
 
-.gallery-admin-images .card-body > section:first-child > form label > input {
+.gallery-admin-images .card-body>section:first-child>form label>input {
     grid-column: 2/3;
     grid-row: 1/2;
     height: 20px;
@@ -195,8 +211,7 @@ header {
     margin: auto;
 }
 
-
-.gallery-admin-images .card-body > section:first-child > form input.loader {
+.gallery-admin-images .card-body>section:first-child>form input.loader {
     grid-column: 2/3;
     grid-row: 1/2;
     width: 100px;
@@ -204,6 +219,169 @@ header {
     margin: auto;
     line-height: 5px;
 }
+
+/* Coding Portfolio Admin */
+
+.code-project-admin .card-body {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: min-content min-content min-content;
+    width: 98%;
+    margin: 20px auto;
+}
+
+.code-project-admin .card-body form:first-child {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.code-project-admin .card-body>section:nth-child(2) {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+.code-project-admin .card-body form:last-child {
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+
+.code-project-admin .delete-gallery {
+    height: 40px;
+    width: 40px;
+}
+
+.add-gallery {
+    height: 40px;
+    width: 40px;
+}
+
+.create-new-gallery>form {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: min-content;
+    margin: 10px 10px;
+}
+
+.create-new-gallery>form>input:first-child {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    width: 95%;
+}
+
+.create-new-gallery>form>input.add-gallery.loader {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.code-project-admin .card .card-header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: 40px;
+}
+
+.code-project-admin.card .card-header a {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.code-project-admin a>.delete-gallery-container {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.admin-module .code-project-admin .update-form>label>input {
+    width: 95%;
+    height: 40px;
+    margin: 10px auto;
+}
+
+.code-project-admin .gallery-checkbox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content;
+}
+
+.code-project-admin .gallery-checkbox>span {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    text-align: right;
+    font-size: 1.2em;
+    line-height: 35px;
+    padding-right: 10px;
+}
+
+.code-project-admin .gallery-checkbox>input {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    width: 20px;
+    margin: 10px 15px;
+    height: 20px;
+    width: 20px;
+}
+
+/* Technology Dropdown */
+
+.technologies-admin-container {
+    margin-bottom: 20px;
+}
+
+.technologies-menu-button {
+    font-size: 1.2em;
+    line-height: 25px;
+}
+
+.technologies-menu-button>p>span {
+    float: right;
+}
+
+div.technologies-menu-button {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.technology-dropdown {
+    height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.tech-list-container {
+    display: grid;
+    grid-template-columns: 60px 1fr 40px;
+    grid-template-rows: 40px;
+    margin: 3px auto;
+    width: 100%;
+}
+
+.tech-list-container span {
+    font-family: 'Jura', sans-serif;
+    color: rgb(45, 255, 56);
+    text-align: left;
+    line-height: 35px;
+}
+
+.technology-dropdown .tech-list-container img {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    max-height: 100%;
+    width: 30px;
+    contain: content;
+}
+
+.tech-list-container span {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.tech-list-container input {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    margin: 10px;
+}
+
+/* ------------------------- */
 
 .fullscreen {
     position: fixed;
@@ -231,6 +409,7 @@ header {
 }
 
 .admin-module img {
+    width: 100%;
     max-width: 400px;
     max-height: 250px;
 }
@@ -247,9 +426,9 @@ header {
     display: block;
 }
 
-.admin-module section:first-child label input:first-child {
+/* .admin-module section:first-child label input:first-child {
     height: 60px;
-}
+} */
 
 .popup-module-inner input {
     margin: 8px;
@@ -261,10 +440,18 @@ header {
 }
 
 .admin-image-thumb {
-    width: min-content;
-    min-height: min-content;
+    width: 80px;
+    height: 80px;
     position: relative;
     margin: 5px;
+}
+
+.admin-image-thumb>div {
+    width: 80px;
+    height: 80px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .delete-gallery-image {
@@ -294,6 +481,21 @@ header {
     grid-row: 1/2;
 }
 
+.delete-graphic {
+    width: 1em;
+    height: 1em;
+}
+
+.delete-graphic>div {
+    width: 100%;
+    height: 2px;
+    margin-top: 40%;
+}
+
+.delete-gallery-container .delete-graphic {
+    margin: 30% 30%;
+}
+
 /* Confirmation popups */
 
 .confirm-popup {
@@ -302,7 +504,8 @@ header {
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 230px;
+    min-height: 230px;
+    height: fit-content;
     width: 300px;
 }
 
@@ -379,7 +582,7 @@ header {
     width: 200px;
 }
 
-.was-sent > a > div {
+.was-sent>a>div {
     margin: 20px auto;
 }
 
@@ -392,6 +595,79 @@ header {
     width: 200px;
     height: 60px;
     margin-top: 20px;
+}
+
+/* --------------------------------- Coding Portfolio */
+
+.coding-projects>h2 {
+    margin-bottom: 15px;
+}
+
+.project-card>div:nth-child(2) .carousel-inner {
+    height: 300px;
+}
+
+.project-card div:nth-child(2) .carousel-item img {
+    max-width: 100%;
+    height: 300px;
+    object-fit: contain;
+    margin: auto;
+}
+
+.project-card article {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.project-tech-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    margin: 10px;
+}
+
+.project-tech-container div {
+    height: 40px;
+}
+
+.project-tech-container div img {
+    width: inherit;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.project-card>div:nth-child(5) {
+    padding: 5px;
+    text-align: center;
+}
+
+.project-card .site-button {
+    width: 100%;
+    max-width: 300px;
+    margin: 15px 0;
+    margin: 0 auto 10px auto;
+}
+
+.codepage-technology > div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.codepage-technology .codepage-technology-icon {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    margin: 5px;
+}
+
+.codepage-technology .codepage-technology-icon img {
+    height: 40px;
+}
+
+.codepage-technology h3 {
+    margin: 10px auto;
 }
 
 /* -------------------------------- Global Buttons */
@@ -412,11 +688,9 @@ header {
     height: 50px;
 }
 
-/* --------------------------------------- Footer */
 
-.footer-line {
-    /* position: relative; */
-}
+
+/* --------------------------------------- Footer */
 
 .footer-line div {
     position: relative;
@@ -467,7 +741,7 @@ header {
 /*  mobile: 320-480, tablet: 481-768 */
 
 @media screen and (max-width: 768px) {
-    .desktop-menu {
+    .desktop-menu, .desktop-menu .page-nav, .desktop-menu .page-nav ul {
         visibility: hidden;
         height: 0px;
     }
@@ -519,6 +793,11 @@ header {
         max-height: 100vh;
         object-fit: contain;
     }
+    .left-col .code-tech-desktop {
+        visibility: hidden;
+        display: none;
+        height: 0px;
+    }
 }
 
 /* Laptop | Small Screen | IPad pro */
@@ -538,20 +817,18 @@ header {
     }
     .homepage-container {
         display: grid;
-        grid-template-columns: 40% 60%;
+        grid-template-columns: 280px 1fr;
         grid-template-rows: min-content 60px;
     }
-
     .booking-mainpage {
         grid-template-columns: 50% 50%;
     }
-
     .left-col {
         grid-column: 1/2;
         grid-row: 1/2;
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: min-content min-content;
+        grid-template-rows: min-content min-content min-content;
     }
     .right-col {
         grid-column: 2/3;
@@ -564,9 +841,13 @@ header {
         grid-column: 1/2;
         grid-row: 1/2;
     }
-    .left-col>section {
+    .left-col>.desktop-menu {
         grid-column: 1/2;
         grid-row: 2/3;
+    }
+    .left-col>.code-tech-dekstop {
+        grid-column: 1/2;
+        grid-row: 3/4;
     }
     .right-col .intro {
         grid-column: 1/2;
@@ -595,6 +876,11 @@ header {
         background-color: rgba(0, 0, 0, .8);
         max-height: inherit;
         width: inherit;
+    }
+    .right-col .code-tech-mobile {
+        visibility: hidden;
+        display: none;
+        height: 0px;
     }
 }
 

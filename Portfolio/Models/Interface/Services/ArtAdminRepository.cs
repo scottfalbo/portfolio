@@ -231,11 +231,16 @@ namespace Portfolio.Models.Interface.Services
         {
             Gallery gallery = await GetGallery(id);
             List<int> imageIds = new List<int>();
-            foreach (GalleryImage image in gallery.GalleryImages)
+
+            if(gallery.GalleryImages != null)
             {
-                imageIds.Add(image.ImageId);
-                await RemoveImageFromGallery(id, image.ImageId);
+                foreach (GalleryImage image in gallery.GalleryImages)
+                {
+                    imageIds.Add(image.ImageId);
+                    await RemoveImageFromGallery(id, image.ImageId);
+                }
             }
+
             foreach (int image in imageIds)
                 await DeleteImage(image);
             _context.Entry(gallery).State = EntityState.Deleted;

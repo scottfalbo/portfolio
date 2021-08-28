@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Portfolio.Models.Interfaces.Services
@@ -16,11 +17,13 @@ namespace Portfolio.Models.Interfaces.Services
     {
         private readonly PortfolioDbContext _context;
         public IConfiguration Configuration { get; }
+        public IArtAdmin _art;
 
-        public AdminRepository(PortfolioDbContext context, IConfiguration config)
+        public AdminRepository(PortfolioDbContext context, IConfiguration config, IArtAdmin art)
         {
             _context = context;
             Configuration = config;
+            _art = art;
         }
 
         /// <summary>
@@ -28,22 +31,62 @@ namespace Portfolio.Models.Interfaces.Services
         /// </summary>
         /// <param name="project"> project object from form input </param>
         /// <returns> no return </returns>
-        public async Task CreateProject(Project project)
+        public async Task CreateProject(string title)
         {
             Project newProject = new Project()
             {
-                Title = project.Title,
-                SourceURL = project.SourceURL,
-                Description = project.Description,
-                RepoLink = project.RepoLink,
-                DeployedLink = project.DeployedLink,
-                Order = project.Order,
-                AltText = project.AltText,
-                FileName = project.FileName,
-                Display = project.Display
+                Title = title,
+                Description = "",
+                RepoLink = "",
+                DeployedLink = "",
+                Order = 0,
+                AltText = title,
+                Display = false
             };
+
+            newProject = ProjectAccordionIds(newProject);
+
             _context.Entry(newProject).State = EntityState.Added;
             await _context.SaveChangesAsync();
+
+            List<Technology> techlist = await GetTechnologies();
+            foreach (var tech in techlist)
+                await AddTechToProject(newProject.Id, tech.Id);
+        }
+
+        /// <summary>
+        /// Checks for duplicate project names on creation.
+        /// </summary>
+        /// <param name="title"> string title input </param>
+        /// <returns> true if repeat </returns>
+        public async Task<bool> CheckProjectTitle(string title)
+        {
+            Project project = await _context.Projects
+                .Where(x => x.Title == title)
+                .Select(y => new Project
+                {
+                    Id = y.Id,
+                    Title = y.Title
+                }).FirstOrDefaultAsync();
+
+            return project != null;
+        }
+
+        /// <summary>
+        /// Helper method to normalize the input title and use it for class identification with bootstrap accordion.
+        /// </summary>
+        /// <param name="project"> new project object </param>
+        /// <returns> updated project object </returns>
+        private Project ProjectAccordionIds(Project project)
+        {
+            string str = (Regex.Replace(project.Title, @"\s+", String.Empty)).ToLower();
+
+            project.AccordionId = str;
+            project.CollapseId = $"{str}{project.Id}";
+            project.AdminAccordionId = $"{str}admin";
+            project.AdminCollapseId = $"{str}{project.Id}admin";
+
+            return project;
         }
 
         /// <summary>
@@ -55,18 +98,27 @@ namespace Portfolio.Models.Interfaces.Services
         {
             return await _context.Projects
                 .Where(x => x.Id == id)
+                .Include(z => z.Technologies)
+                .ThenInclude(a => a.Technology)
+                .Include(b => b.ProjectImages)
+                .ThenInclude(c => c.Image)
                 .Select(y => new Project
                 {
                     Id = y.Id,
                     Title = y.Title,
-                    SourceURL = y.SourceURL,
                     Description = y.Description,
+                    TechSummary = y.TechSummary,
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
                     AltText = y.AltText,
                     Order = y.Order,
-                    FileName = y.FileName,
-                    Display = y.Display
+                    Display = y.Display,
+                    AccordionId = y.AccordionId,
+                    CollapseId = y.CollapseId,
+                    AdminAccordionId = y.AdminAccordionId,
+                    AdminCollapseId = y.AdminCollapseId,
+                    Technologies = y.Technologies,
+                    ProjectImages = y.ProjectImages
                 })
                 .FirstOrDefaultAsync();
         }
@@ -78,18 +130,27 @@ namespace Portfolio.Models.Interfaces.Services
         public async Task<List<Project>> GetProjects()
         {
             return await _context.Projects
-                .Select(x => new Project
+                .Include(x => x.Technologies)
+                .ThenInclude(a => a.Technology)
+                .Include(b => b.ProjectImages)
+                .ThenInclude(c => c.Image)
+                .Select(y => new Project
                 {
-                    Id = x.Id,
-                    Title = x.Title,
-                    SourceURL = x.SourceURL,
-                    Description = x.Description,
-                    RepoLink = x.RepoLink,
-                    DeployedLink = x.DeployedLink,
-                    AltText = x.AltText,
-                    Order = x.Order,
-                    FileName = x.FileName,
-                    Display = x.Display
+                    Id = y.Id,
+                    Title = y.Title,
+                    Description = y.Description,
+                    TechSummary = y.TechSummary,
+                    RepoLink = y.RepoLink,
+                    DeployedLink = y.DeployedLink,
+                    AltText = y.AltText,
+                    Order = y.Order,
+                    Display = y.Display,
+                    AccordionId = y.AccordionId,
+                    CollapseId = y.CollapseId,
+                    AdminAccordionId = y.AdminAccordionId,
+                    AdminCollapseId = y.AdminCollapseId,
+                    Technologies = y.Technologies,
+                    ProjectImages = y.ProjectImages
                 })
                 .ToListAsync();
         }
@@ -115,9 +176,50 @@ namespace Portfolio.Models.Interfaces.Services
         {
             Project project = await _context.Projects.FindAsync(id);
 
-            await DeleteBlobImage(project.FileName);
+            if (project.ProjectImages != null)
+            {
+                foreach (var image in project.ProjectImages)
+                {
+                    await RemoveImageFromProject(id, image.Image.Id);
+                    await _art.DeleteImage(image.Image.Id);
+                }
+            }
 
             _context.Entry(project).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Adds an image to a project by adding a ProjectImage join table record.
+        /// </summary>
+        /// <param name="projectId"> int project id</param>
+        /// <param name="imageId"> int image id </param>
+        public async Task AddImageToProject(int projectId, int imageId)
+        {
+            ProjectImage projectImage = new ProjectImage()
+            {
+                ProjectId = projectId,
+                ImageId = imageId
+            };
+            _context.Entry(projectImage).State = EntityState.Added;
+            await _context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Removes an image from a project by deleting the ProjectImage join table record.
+        /// </summary>
+        /// <param name="projectId"> int project id</param>
+        /// <param name="imageId"> int image id </param>
+        public async Task RemoveImageFromProject(int projectId, int imageId)
+        {
+            ProjectImage image = await _context.ProjectImages
+                .Where(x => x.ProjectId == projectId && x.ImageId == imageId)
+                .Select(y => new ProjectImage
+                {
+                    ProjectId = y.ProjectId,
+                    ImageId = y.ImageId
+                }).FirstOrDefaultAsync();
+            _context.Entry(image).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
 
@@ -141,6 +243,8 @@ namespace Portfolio.Models.Interfaces.Services
         {
             return await _context.HomePage
                 .Where(x => x.Page == page)
+                .Include(a => a.Technologies)
+                .ThenInclude(b => b.Technology)
                 .Select(y => new HomePage
                 {
                     Id = y.Id,
@@ -148,7 +252,8 @@ namespace Portfolio.Models.Interfaces.Services
                     Title = y.Title,
                     Intro = y.Intro,
                     Selfie = y.Selfie,
-                    FileName = y.FileName
+                    FileName = y.FileName,
+                    Technologies = y.Technologies
                 }).FirstOrDefaultAsync();
         }
 
@@ -159,6 +264,8 @@ namespace Portfolio.Models.Interfaces.Services
         public async Task<List<HomePage>> GetHomePages()
         {
             return await _context.HomePage
+                .Include(a => a.Technologies)
+                .ThenInclude(b => b.Technology)
                 .Select(x => new HomePage
                 {
                     Id = x.Id,
@@ -208,145 +315,54 @@ namespace Portfolio.Models.Interfaces.Services
             await _context.SaveChangesAsync();
         }
 
-        /// --------------- Instagram API
         /// <summary>
-        /// Makes a request to the Instagram api.  First retrieves a list of recent post ids.
-        /// Calls a helper method to loop through ids and request media data for each.
-        /// Call another helper to Instantiate Instagram objects and add to database.
+        /// Retrieve my list of technology icons from the database
         /// </summary>
         /// <returns></returns>
-        public async Task GetInstagramFeed()
+        public async Task<List<Technology>> GetTechnologies()
         {
-            string userId = Configuration["UserId"];
-            string accessToken = Configuration["AccessToken"];
-
-            using var client = new HttpClient();
-            string uri = $"https://graph.instagram.com/{userId}/media?access_token={accessToken}&count=10";
-            var content = await client.GetAsync(uri);
-
-            Root readImages = new Root();
-            if (content.IsSuccessStatusCode.Equals(true))
-                readImages = await content.Content.ReadAsAsync<Root>();
-
-            await GetInstagramMedia(readImages);
-        }
-
-        /// <summary>
-        /// Helper method to loop through media ids and request urls for each.
-        /// </summary>
-        /// <param name="imageIds"> Root object from user API call </param>
-        public async Task GetInstagramMedia(Root imageIds)
-        {
-            string accessToken = Configuration["AccessToken"];
-            List<InstaMedia> image_urls = new List<InstaMedia>();
-            imageIds.data.RemoveRange(12, 13);
-
-            foreach (var image in imageIds.data)
-            {
-                using var client = new HttpClient();
-                string uri = $"https://graph.instagram.com/{image.id}?access_token={accessToken}&fields=media_url,media_type";
-                var content = await client.GetAsync(uri);
-
-                if (content.IsSuccessStatusCode.Equals(true))
-                {
-                    InstaMedia mediaContent = await content.Content.ReadAsAsync<InstaMedia>();
-                    image_urls.Add(mediaContent);
-                }
-            }
-            await UpdateInstagramDB(image_urls);
-        }
-
-        /// <summary>
-        /// Remove all old content from database and add current feed data.
-        /// </summary>
-        /// <param name="image_urls"> List of media_urls </param>
-        public async Task UpdateInstagramDB(List<InstaMedia> image_urls)
-        {
-            await DeleteInstagrams();
-            foreach(var image in image_urls)
-            {
-                Instagram newInsta = new Instagram 
-                { 
-                    ImageURL = image.media_url
-                };
-                _context.Entry(newInsta).State = EntityState.Added;
-                await _context.SaveChangesAsync();
-            }
-        }
-
-        /// <summary>
-        /// Return a list of all Instagram objects in database.
-        /// </summary>
-        /// <returns> List<Instagram> </returns>
-        public async Task<List<Instagram>> GetInstagrams()
-        {
-            return await _context.Instragrams
-                .Select(x => new Instagram
+            return await _context.Technologies
+                .Select(x => new Technology
                 {
                     Id = x.Id,
-                    ImageURL = x.ImageURL
-                })
-                .ToListAsync();
+                    Title = x.Title,
+                    LogoUrl = x.LogoUrl
+                }).ToListAsync();
         }
 
         /// <summary>
-        /// Delete all instagram objects in the database to refresh feed.
+        /// Add a technology to a project.
         /// </summary>
-        public async Task DeleteInstagrams()
+        /// <param name="projectId"> int project id </param>
+        /// <param name="techId"> int tech id </param>
+        public async Task AddTechToProject(int projectId, int techId)
         {
-            List<Instagram> insta = await GetInstagrams();
-            foreach(var item in insta)
+            ProjectTechnology newTech = new ProjectTechnology()
             {
-                _context.Entry(item).State = EntityState.Deleted;
-                await _context.SaveChangesAsync();
-            }
+                ProjectId = projectId,
+                TechnologyId = techId
+            };
+            _context.Entry(newTech).State = EntityState.Added;
+            await _context.SaveChangesAsync();
         }
 
         /// <summary>
-        /// Refresh access token, expires every 60 days.
+        /// Remove a technology form a project.
         /// </summary>
-        /// <returns></returns>
-        public async Task RefreshAccessToken()
+        /// <param name="projectId"> int project id </param>
+        /// <param name="techId"> int tech id </param>
+        public async Task RemoveTechFromProject(int projectId, int techId)
         {
-            string accessToken = Configuration["AccessToken"];
-
-            using var client = new HttpClient();
-            string uri = $"https://graph.instagram.com/refresh_access_token?access_token={accessToken}&grant_type=ig_refresh_token";
-            await client.GetAsync(uri);
+            ProjectTechnology tech = await _context.ProjectTechnologies
+                .Where(x => x.ProjectId == projectId && x.TechnologyId == techId)
+                .Select(y => new ProjectTechnology
+                {
+                    ProjectId = y.ProjectId,
+                    TechnologyId = y.TechnologyId
+                }).FirstOrDefaultAsync();
+            _context.Entry(tech).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
         }
-    }
 
-    /// <summary>
-    /// Constructor classes for the Instragram API result objects
-    /// Generated by https://json2csharp.com/
-    /// </summary>
-    public class Datum
-    {
-        public string id { get; set; }
-    }
-
-    public class Cursors
-    {
-        public string before { get; set; }
-        public string after { get; set; }
-    }
-
-    public class Paging
-    {
-        public Cursors cursors { get; set; }
-        public string next { get; set; }
-    }
-
-    public class Root
-    {
-        public List<Datum> data { get; set; }
-        public Paging paging { get; set; }
-    }
-
-    public class InstaMedia
-    {
-        public string media_url { get; set; }
-        public string media_type { get; set; }
-        public string id { get; set; }
     }
 }

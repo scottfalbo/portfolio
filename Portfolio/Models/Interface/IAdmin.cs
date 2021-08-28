@@ -11,11 +11,14 @@ namespace Portfolio.Models.Interface
         /// <summary>
         /// Projects portfolio CRUD
         /// </summary>
-        public Task CreateProject(Project project);
+        public Task CreateProject(string title);
         public Task<Project> GetProject(int id);
         public Task<List<Project>> GetProjects();
         public Task UpdateProject(Project project);
         public Task DeleteProject(int id);
+        public Task AddImageToProject(int projectId, int imageId);
+        public Task RemoveImageFromProject(int projectId, int imageId);
+        public Task<bool> CheckProjectTitle(string project);
         public Task DeleteBlobImage(string fileName);
 
         /// <summary>
@@ -28,11 +31,9 @@ namespace Portfolio.Models.Interface
         public Task<Studio> GetStudio(int id);
         public Task UpdateStudio(Studio studio);
 
-        /// <summary>
-        /// Instagram API methods
-        /// </summary>
-        public Task GetInstagramFeed();
-        public Task RefreshAccessToken();
-        public Task<List<Instagram>> GetInstagrams();
+        public Task<List<Technology>> GetTechnologies();
+        public Task AddTechToProject(int projectId, int techId);
+        public Task RemoveTechFromProject(int projectId, int techId);
+
     }
 }

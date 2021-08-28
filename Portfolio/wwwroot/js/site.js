@@ -27,14 +27,16 @@ $(function () {
 // Open confirmation window to delete a gallery image
 $(function () {
     $('.delete-gallery-image').click(function () {
-        $('.delete-image-confirm').removeClass('hide-me');
+        $(this).siblings('.delete-image-confirm')
+            .removeClass('hide-me');
     });
 });
 
 // Open confirmation window to delete a gallery
 $(function () {
     $('.delete-gallery').click(function () {
-        $('.delete-gallery-confirmation').removeClass('hide-me');
+        $(this).siblings('.delete-gallery-confirmation')
+            .removeClass('hide-me');
     });
 });
 
@@ -138,7 +140,7 @@ $(function () {
         let uploadSize = 0;
         let files = e.currentTarget.files;
         Array.from(files).forEach((file) => {
-            uploadSize += (file.size/1000000);
+            uploadSize += (file.size / 1000000);
         });
         if (uploadSize > 20) {
             $('.request-upload').val('');
@@ -161,15 +163,45 @@ $(function () {
     });
 });
 
-// old code, saving until after refactor is complete
+// Nav button mouse over tooltip.
+$(document).ready(function () {
+    $('.site-nav-button').mouseenter(function () {
+        $(this).children('.mouse-over-tooltip').removeClass('hide-me');
+    });
+    $('.site-nav-button').mouseleave(function () {
+        $(this).children('.mouse-over-tooltip').addClass('hide-me');
+    });
+});
 
+$(document).on('mouseover', function (e) {
+    $('.mouse-over-tooltip').css({
+        left: e.pageX,
+        top: e.pageY
+    });
+});
 
+$(document).ready(function () {
+    console.log('what what');
+    $('.technology-dropdown').slideToggle();
+});
+
+$(function () {
+    $('.technologies-menu-button').click(function () {
+        $('.technology-dropdown').slideToggle();
+    });
+});
+
+//pagination stuff
 // function getCarouselIndex() {
 //     const index = ($('figure.active').index()) + 2;
 //     $('#limit').val(index);
 //     console.log(index);
 // }
 
+
+
+
+//------------------------ Google Map API stuff
 
 // //https://developers.google.com/maps/documentation/javascript/examples/style-array
 // //Google maps API callback function

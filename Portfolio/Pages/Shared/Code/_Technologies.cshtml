@@ -1,0 +1,53 @@
+﻿<section class="codepage-technology">
+        <h3>Languages</h3>
+        <div>
+            @foreach (var tech in Model.HomePage.Technologies)
+            {
+                if (tech.Display && tech.Technology.Type == "Language")
+                {
+                    <figure class="codepage-technology-icon">
+                        <img src="@tech.Technology.LogoUrl" alt="@tech.Technology.Title" />
+                    </figure>
+                }
+            }
+        </div>
+        <h3>Tools &amp; Technologies</h3>
+        <div>
+            @foreach (var tech in Model.HomePage.Technologies)
+            {
+                if (tech.Display && tech.Technology.Type == "Tech")
+                {
+                    <figure class="codepage-technology-icon">
+                        <img src="@tech.Technology.LogoUrl" alt="@tech.Technology.Title" />
+                    </figure>
+                }
+            }
+        </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form asp-page-handler="UpdateTechnologies" method="post" class="update-form">
+            <div class="technologies-admin-container">
+                <div class="site-button technologies-menu-button">
+                    <p>Technologies<span>&#9660</span></p>
+                </div>
+                <ul class="technology-dropdown">
+                    @{
+                        int index = 0;
+                        foreach (var tech in Model.HomePage.Technologies)
+                        {
+                            <li>
+                                <label class="tech-list-container">
+                                    <img src="@tech.Technology.LogoUrl" />
+                                    <span>@tech.Technology.Title</span>
+                                    <input type="checkbox" name="isChecked" value="@index" checked="@tech.Display" />
+                                </label>
+                            </li>
+                            index++;
+                        }
+                    }
+                </ul>
+            </div>
+            <input type="submit" value="update" class="accordion-button loader site-button" />
+        </form>
+    }
+</section>

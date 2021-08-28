@@ -13,7 +13,6 @@
 <script>
     $(document).ready(function () {
         galleryList = @list;
-        console.log(galleryList);
     });
 </script>
 
@@ -60,7 +59,7 @@
                                 </a>
                             </div>
                             <!-- Card body -->
-                            <div id="@gallery.CollapseId" class="@(gallery.Order == 0 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AccordionId" data-parent="#accordionEx">
+                            <div id="@gallery.CollapseId" class="@(gallery.Order == 1 ? "collapse show" : "collapse")" role="tabpanel" aria-labelledby="@gallery.AccordionId" data-parent="#accordionEx">
                                 <div class="card-body">
                                     <section id="@($"{gallery.CollapseId}-control")" class="carousel slide" data-ride="carousel" data-interval="0">
                                         <section class="image-thumbs">
@@ -180,18 +179,16 @@
                                             @gallery.Title <i class="fas fa-angle-down rotate-icon"></i>
                                         </h5>
                                     </a>
-                                    <div class="delete-gallery-container">
-                                        <button class="accordion-button delete-gallery">✖</button>
+                                    <div class="delete-gallery-container accordion-button delete-gallery">
+                                        <div><partial name="_DeleteGraphic" /></div>
                                     </div>
-                                    <div>
-                                        <div class="delete-gallery-confirmation hide-me confirm-popup">
-                                            <p>Delete the thing?</p>
-                                            <form asp-page-handler="DeleteGallery" method="post">
-                                                <input type="hidden" name="id" value="@gallery.Id" />
-                                                <input class="delete-confirmation site-button" type="submit" value="Confirm" />
-                                            </form>
-                                            <button class="cancel-confirmation site-button">Cancel</button>
-                                        </div>
+                                    <div class="delete-gallery-confirmation hide-me confirm-popup">
+                                        <p>Delete @gallery.Title?</p>
+                                        <form asp-page-handler="DeleteGallery" method="post">
+                                            <input type="hidden" name="id" value="@gallery.Id" />
+                                            <input class="delete-confirmation site-button loader" type="submit" value="Confirm" />
+                                        </form>
+                                        <button class="cancel-confirmation site-button">Cancel</button>
                                     </div>
                                 </div>
                                 <!-- Card body -->
@@ -203,7 +200,7 @@
                                                     <input type="text" name="title" value="@gallery.Title" placeholder="@gallery.Title" />
                                                     <div>
                                                         <label class="gallery-checkbox">
-                                                            <p>Display</p>
+                                                            <span>Display</span>
                                                             <input type="checkbox" asp-for="PageToggles.Display" checked="@(gallery.Display)">
                                                         </label>
                                                         <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
@@ -225,12 +222,13 @@
                                         <section class="thumb-container">
                                             @foreach (var image in gallery.GalleryImages)
                                             {
+                                            <div>
                                                 <div class="admin-image-thumb">
-                                                    <img src="@image.Image.ThumbURL" />
-                                                    <button class="delete-gallery-image">✖</button>
+                                                    <div style="background-image: url(@image.Image.ThumbURL)"></div>
                                                 </div>
+                                                <button class="delete-gallery-image"><partial name="_DeleteGraphic" /></button>
                                                 <div class="delete-image-confirm hide-me confirm-popup">
-                                                    <p>Delete the thing?</p>
+                                                    <p>Delete @image.Image.Title?</p>
                                                     <form asp-page-handler="DeleteImage" method="post">
                                                         <input type="hidden" asp-for="PageToggles.ImageId" value="@image.Image.Id" />
                                                         <input type="hidden" asp-for="PageToggles.GalleryId" value="@gallery.Id" />
@@ -239,6 +237,7 @@
                                                     </form>
                                                     <button class="cancel-confirmation site-button">Cancel</button>
                                                 </div>
+                                            </div>
                                             }
                                         </section>
                                     </div>
@@ -249,10 +248,10 @@
                     </div>
                     <!-- Accordion wrapper -->
                 </section>
-                <section>
+                <section class="create-new-gallery">
                     <form asp-page-handler="NewGallery" method="post">
                         <input type="text" name="title" class="form-control" placeholder="new gallery" value="New Gallery" />
-                        <input class="site-button" type="submit" value="Add" />
+                        <input class="add-gallery loader" type="submit" value="&#10133;" />
                     </form>
                     <div class="repeat-gallery-title confirm-popup @(Model.PageToggles.RepeatGalleryTitle ? "" : "hide-me")">
                         <p>stops copies me</p>
