@@ -295,8 +295,15 @@ input.add-gallery.loader {
     background: #000;
 }
 
-#loading-bar-inner>div {
-    background: #fff;
+#loading-bar-inner > div {
+    background: #000;
+    text-align: center;
+}
+
+#loading-bar-inner > div > img {
+    height: 25px;
+    width: 100%;
+
 }
 
 /* ------------------------------- Booking Request */
