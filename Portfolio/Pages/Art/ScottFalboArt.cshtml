@@ -66,11 +66,11 @@
                                             <div class="thumb-container">
                                                 @foreach (var image in gallery.GalleryImages)
                                                 {
-                                                    <a href="@($"#{gallery.CollapseId}-control")" role="button" data-slide-to="@gallery.GalleryImages.IndexOf(image)" class="gallery-toggle" data-gallery-id="@($"{gallery.AccordionId}-gallery")" onclick="openGallery(this)">
-                                                        <figure>
-                                                            <img src="@image.Image.ThumbURL" alt="@image.Image.Title" />
-                                                        </figure>
-                                                    </a>
+                                                <a href="@($"#{gallery.CollapseId}-control")" role="button" data-slide-to="@gallery.GalleryImages.IndexOf(image)" class="gallery-toggle" data-gallery-id="@($"{gallery.AccordionId}-gallery")" onclick="openGallery(this)">
+                                                    <div class="gallery-thumbnail">
+                                                        <div style="background-image: url(@image.Image.ImageURL)"></div>
+                                                    </div>
+                                                </a>
                                                 }
                                             </div>
                                         </section>

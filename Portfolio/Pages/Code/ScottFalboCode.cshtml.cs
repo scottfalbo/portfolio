@@ -71,9 +71,7 @@ namespace Portfolio.Pages.Code
                 }
                 await _upload.UpdateSelfie(file, homepage.Id);
             }
-
             await Refresh();
-
             return Redirect("/Code/ScottFalboCode");
         }
 
@@ -96,12 +94,14 @@ namespace Portfolio.Pages.Code
                 Intro = homepage.Intro
             };
             await _admin.UpdateHomePage(updatedPage);
-
             await Refresh();
-
             return Redirect("/Code/ScottFalboCode");
         }
 
+        /// <summary>
+        /// Adds images to a project with ProjectImage join table.
+        /// </summary>
+        /// <param name="files"> files from form </param>
         public async Task OnPostAddImages(IFormFile[] files)
         {
             Image image = new Image();
@@ -120,15 +120,16 @@ namespace Portfolio.Pages.Code
                     }
                 }
             }
-
             PageToggles.ActiveProjectAdmin = true;
             PageToggles.StayCollapsed = true;
-
             await Refresh();
-
             Redirect("/Code/ScottFalboCode");
         }
 
+        /// <summary>
+        /// Removes an image from a project and deletes the Image and ProjectImage records.
+        /// Using BindProperties from view.
+        /// </summary>
         public async Task OnPostDeleteImage()
         {
             await _admin.RemoveImageFromProject(PageToggles.ProjectId, PageToggles.ImageId);
@@ -141,6 +142,10 @@ namespace Portfolio.Pages.Code
             Redirect("/Code/ScottFalboCode");
         }
 
+        /// <summary>
+        /// Updates the project record with new data from form.
+        /// </summary>
+        /// <param name="isChecked"> bool[] of selected technologies </param>
         public async Task<IActionResult> OnPostUpdateProject(int[] isChecked)
         {
             if (Project.Description == null)
@@ -164,12 +169,14 @@ namespace Portfolio.Pages.Code
                 else
                     project.Technologies[i].Display = false;
             }
-
             await _admin.UpdateProject(project);
-
             return Redirect("/Code/ScottFalboCode");
         }
 
+        /// <summary>
+        /// Creates a new project.  _admin methods create accordion classes and attaches technology list.
+        /// </summary>
+        /// <param name="title"> string project title from form </param>
         public async Task OnPostNewProject(string title)
         {
             if (!await _admin.CheckProjectTitle(title))
@@ -177,27 +184,29 @@ namespace Portfolio.Pages.Code
             else
                 PageToggles.RepeatProjectTitle = true;
 
-
             PageToggles.ActiveProjectAdmin = true;
             PageToggles.StayCollapsed = true;
-
             await Refresh();
-
             Redirect("/Code/ScottFalboCode");
         }
 
+        /// <summary>
+        /// Deletes a project and removes all associated records from database.
+        /// </summary>
+        /// <param name="id"> project id </param>
         public async Task OnPostDeleteProject(int id)
         {
             await _admin.DeleteProject(id);
-
             PageToggles.ActiveProjectAdmin = true;
             PageToggles.StayCollapsed = true;
-
             await Refresh();
-
             Redirect("/Code/ScottFalboCode");
         }
 
+        /// <summary>
+        /// Updates the list of technologies displayed on the code page from selection input.
+        /// </summary>
+        /// <param name="isChecked"> bool[] of selected technologies </param>
         public async Task<IActionResult> OnPostUpdateTechnologies(int[] isChecked)
         {
             HomePage page = await _admin.GetHomePage("Code");
@@ -209,12 +218,13 @@ namespace Portfolio.Pages.Code
                 else
                     page.Technologies[i].Display = false;
             }
-
             await _admin.UpdateHomePage(page);
-
             return Redirect("/Code/ScottFalboCode"); ;
         }
 
+        /// <summary>
+        /// Helper method to assign class properties on task Redirect.
+        /// </summary>
         private async Task Refresh()
         {
             Projects = await _admin.GetProjects();
