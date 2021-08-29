@@ -53,8 +53,10 @@ header {
 }
 
 .page-title {
-    background: url("https://via.placeholder.com/60");
+    background: #202020;
+    border-radius: 10px;
     background-size: cover;
+    padding: 0 10px;
 }
 
 .page-title img {
@@ -479,18 +481,12 @@ footer {
     z-index: 2;
     border: 1px solid #23ff36;
     border-radius: 50%;
-    background-color: black;
+    background-color: #000;
 }
 
 .footer-line div {
     background-color: #23ff36;
     opacity: .6;
-}
-
-.footer-line img {
-    border: 1px solid #23ff36;
-    border-radius: 50%;
-    background-color: black;
 }
 
 .footer nav {
