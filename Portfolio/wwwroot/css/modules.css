@@ -80,6 +80,10 @@ header ul a>p:hover {
     color: #cbf7ff;
 }
 
+.art-menu p.menu-button.leave-page-link {
+    line-height: 33px;
+}
+
 main > h1 {
     border-radius: 10px;
     background: #202020;
@@ -452,6 +456,17 @@ input.add-gallery.loader {
     background: #000;
 }
 
+.leave-page .popup-module-inner {
+    background-color: #0f0f0f;
+    text-align: center;
+}
+
+.leave-page .popup-module-inner p {
+    font-family: 'Jura', sans-serif;
+    color: rgb(65, 207, 250);
+    font-size: 1.2em;
+}
+
 /* ------------------------------------- Footer */
 
 footer {
@@ -499,7 +514,7 @@ footer {
 }
 
 .footer ul li {
-    color: rgb(64, 255, 230);
+    color: #007BFF;
     opacity: .9;
     padding: 5px 0;
 }
@@ -508,6 +523,12 @@ footer p {
     text-align: center;
     color: rgba(255, 187, 0, 0.4);
 }
+
+footer a.leave-page-link, a:not([href]):not([tabindex]) {
+    color: #007BFF;
+    cursor: pointer;
+}
+
 
 /* ------------------------------------ Break Points */
 

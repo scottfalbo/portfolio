@@ -695,6 +695,22 @@ div.technologies-menu-button {
     height: 50px;
 }
 
+.leave-page .popup-module-inner {
+    width: 95%;
+    max-width: 400px;
+    height: min-content;
+    margin-top: 30px;
+}
+
+.leave-page .popup-module-inner p {
+    margin: 20px 0;
+}
+
+.leave-page .site-button {
+    width: 200px;
+    line-height: 30px;
+}
+
 /* ---------------------------- Login Page */
 
 .login-form {
