@@ -31,7 +31,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td width=50>
+        <td width=70>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/html.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/css.png?raw=true" height=40>
         </td>
@@ -40,7 +40,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td width=50>
+        <td width=70>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/javascript.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/jQuery.png?raw=true" height=40>
         </td>
@@ -49,7 +49,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td width=50>
+        <td width=70>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azure.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azure_sql.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/key_vault.png?raw=true" height=40>
@@ -60,7 +60,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td width=50>
+        <td width=70>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/bootstrap.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/sendgrid.png?raw=true" height=40>
         </td>
@@ -69,7 +69,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td width=50>
+        <td width=70>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/git.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/github-light.png?raw=true" height=40>
         </td>
@@ -78,7 +78,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td width=50>
+        <td width=70>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/visual_studio.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/vscode.png?raw=true" height=40>
         </td>
@@ -87,7 +87,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td width=50>
+        <td width=70>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/photoshop.png?raw=true" height=40>
         </td>
         <td>
@@ -103,6 +103,16 @@ There is more information about the languages, technologies, tools, and site arc
 ### Entity Relationship Diagram
 
 ![ERD](/assets/erd.png)
+
+## Domain Models
+
+### Index Admin: Update Image
+
+![index update model](/assets/index_photo_update_model.jpg)
+
+### Index Admin: Update Page
+
+![index update model](/assets/index_update_model.jpg)
 
 ---
 
