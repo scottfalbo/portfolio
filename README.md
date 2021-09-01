@@ -2,9 +2,13 @@
 
 ## [scottfalbo.com](https://scottfalbo.com)
 
-version 2.0.0
+version 1.0.0
 
 ## About the Project
+
+*Version 2 currently in production.*
+
+[Refactor Development Log v2.0](refactor-dev.md)
 
 Portfolio website for my software development projects and artwork.  It is a .Net Core app built in Visual Studio with C# and deployed on Azure.  All of the sites front facing data, including text fields and portfolios, are handled with a built in admin GUI available on each page when authenticated.
 
@@ -18,7 +22,7 @@ There is more information about the languages, technologies, tools, and site arc
 
 <table>
     <tr>
-        <td>
+        <td width=50>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/dotnetcore.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/cSharp.png?raw=true" height=40>
         </td>
@@ -27,7 +31,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td>
+        <td width=50>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/html.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/css.png?raw=true" height=40>
         </td>
@@ -36,7 +40,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td>
+        <td width=50>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/javascript.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/jQuery.png?raw=true" height=40>
         </td>
@@ -45,7 +49,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td>
+        <td width=50>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azure.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azure_sql.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/key_vault.png?raw=true" height=40>
@@ -56,7 +60,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td>
+        <td width=50>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/bootstrap.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/sendgrid.png?raw=true" height=40>
         </td>
@@ -65,7 +69,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td>
+        <td width=50>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/git.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/github-light.png?raw=true" height=40>
         </td>
@@ -74,7 +78,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td>
+        <td width=50>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/visual_studio.png?raw=true" height=40>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/vscode.png?raw=true" height=40>
         </td>
@@ -83,7 +87,7 @@ There is more information about the languages, technologies, tools, and site arc
         </td>
     </tr>
     <tr>
-        <td>
+        <td width=50>
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/photoshop.png?raw=true" height=40>
         </td>
         <td>
