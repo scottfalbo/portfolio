@@ -141,7 +141,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="fullscreen popup-module-outer hide-me">
+    <div class="fullscreen popup-module-outer outer-admin hide-me">
         <div class="popup-module-inner">
             <div class="admin-module">
                 <section>
@@ -246,8 +246,6 @@
                                                 <input type="text" asp-for="Project.Title" value="@project.Title" placeholder="@project.Title" />
                                             </label>
                                             <label>
-                                                Alt Text:
-                                                <input type="text" asp-for="Project.AltText" value="@project.AltText" placeholder="@project.AltText" />
                                             </label>
                                             <div>
                                                 <label class="gallery-checkbox">

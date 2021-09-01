@@ -40,7 +40,6 @@ namespace Portfolio.Models.Interfaces.Services
                 RepoLink = "",
                 DeployedLink = "",
                 Order = 0,
-                AltText = title,
                 Display = false
             };
 
@@ -110,7 +109,6 @@ namespace Portfolio.Models.Interfaces.Services
                     TechSummary = y.TechSummary,
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
-                    AltText = y.AltText,
                     Order = y.Order,
                     Display = y.Display,
                     AccordionId = y.AccordionId,
@@ -142,7 +140,6 @@ namespace Portfolio.Models.Interfaces.Services
                     TechSummary = y.TechSummary,
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
-                    AltText = y.AltText,
                     Order = y.Order,
                     Display = y.Display,
                     AccordionId = y.AccordionId,

@@ -155,7 +155,6 @@ namespace Portfolio.Pages.Code
 
             Project project = await _context.Projects.FindAsync(Project.Id);
             project.Title = Project.Title;
-            project.AltText = Project.AltText;
             project.Description = Project.Description;
             project.TechSummary = Project.TechSummary;
             project.Display = Project.Display;

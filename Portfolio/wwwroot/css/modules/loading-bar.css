@@ -1,129 +1,189 @@
 @keyframes loading-bar-1 {
-    16% {
-        background: #fff;
+    10% {
+        opacity: 1;
     }
-    33% {
-        background: rgb(134, 134, 134);
+    20% {
+        opacity: .8;
     }
-    49% {
-        background: rgb(51, 51, 51);
+    30% {
+        opacity: .6;
     }
-    66% {
-        background: #000;
+    40% {
+        opacity: .4;
     }
-    82% {
-        background: #000;
+    50% {
+        opacity:  .2;
     }
-    99% {
-        background: rgb(134, 134, 134);
+    60% {
+        opacity: 0;
+    }
+    70% {
+        opacity: .2;
+    }
+    80% {
+        opacity: .4;
+    }
+    90% {
+        opacity: .6;
+    }
+    100% {
+        opacity: .8;
     }
 }
 
 @keyframes loading-bar-2 {
-    16% {
-        background: rgb(134, 134, 134);
+    10% {
+        opacity: .8;
     }
-    33% {
-        background: #fff;
+    20% {
+        opacity: 1;
     }
-    49% {
-        background: rgb(134, 134, 134);
+    30% {
+        opacity: .8;
     }
-    66% {
-        background: rgb(51, 51, 51);
+    40% {
+        opacity: .6;
     }
-    82% {
-        background: #000;
+    50% {
+        opacity:  .4;
     }
-    99% {
-        background: #000;
+    60% {
+        opacity: .2;
+    }
+    70% {
+        opacity: 0;
+    }
+    80% {
+        opacity: .2;
+    }
+    90% {
+        opacity: .4;
+    }
+    100% {
+        opacity: .6;
     }
 }
 
 @keyframes loading-bar-3 {
-    16% {
-        background: rgb(51, 51, 51);
+    10% {
+        opacity: .6;
     }
-    33% {
-        background: rgb(134, 134, 134);
+    20% {
+        opacity: .8;
     }
-    49% {
-        background: #fff;
+    30% {
+        opacity: 1;
     }
-    66% {
-        background: rgb(134, 134, 134);
+    40% {
+        opacity: .8;
     }
-    82% {
-        background: rgb(51, 51, 51);
+    50% {
+        opacity:  .6;
     }
-    99% {
-        background: #000;
+    60% {
+        opacity: .4;
+    }
+    70% {
+        opacity: .2;
+    }
+    80% {
+        opacity: 0;
+    }
+    90% {
+        opacity: .2;
+    }
+    100% {
+        opacity: .4;
     }
 }
 
 @keyframes loading-bar-4 {
-    16% {
-        background: #000;
+    10% {
+        opacity: .4;
     }
-    33% {
-        background: rgb(51, 51, 51);
+    20% {
+        opacity: .6;
     }
-    49% {
-        background: rgb(134, 134, 134);
+    30% {
+        opacity: .8;
     }
-    66% {
-        background: #fff;
+    40% {
+        opacity: 1;
     }
-    82% {
-        background: rgb(134, 134, 134);
+    50% {
+        opacity:  .8;
     }
-    99% {
-        background: rgb(51, 51, 51);
+    60% {
+        opacity: .6;
+    }
+    70% {
+        opacity: .4;
+    }
+    80% {
+        opacity: .2;
+    }
+    90% {
+        opacity: 0;
+    }
+    100% {
+        opacity: .2;
     }
 }
 
 @keyframes loading-bar-5 {
-    16% {
-        background: #000;
+    10% {
+        opacity: .2;
     }
-    33% {
-        background: #000;
+    20% {
+        opacity: .4;
     }
-    49% {
-        background: rgb(51, 51, 51);
+    30% {
+        opacity: .6;
     }
-    66% {
-        background: rgb(134, 134, 134);
+    40% {
+        opacity: .8;
     }
-    82% {
-        background: #fff;
+    50% {
+        opacity:  1;
     }
-    99% {
-        background: rgb(134, 134, 134);
+    60% {
+        opacity: .8;
+    }
+    70% {
+        opacity: .6;
+    }
+    80% {
+        opacity: .4;
+    }
+    90% {
+        opacity: .2;
+    }
+    100% {
+        opacity: 0;
     }
 }
 
-#loading-bar-inner div:nth-child(1) {
-    background: rgb(134, 134, 134);
-    animation: loading-bar-1 .9s infinite;
+#loading-bar-inner div:nth-child(1) img {
+    opacity: 1;
+    animation: loading-bar-1 1.5s infinite;
 }
 
-#loading-bar-inner div:nth-child(2) {
-    background: #000;
-    animation: loading-bar-2 .9s infinite;
+#loading-bar-inner div:nth-child(2) img {
+    opacity: .8;
+    animation: loading-bar-2 1.5s infinite;
 }
 
-#loading-bar-inner div:nth-child(3) {
-    background: #000;
-    animation: loading-bar-3 .9s infinite;
+#loading-bar-inner div:nth-child(3) img {
+    opacity: .6;
+    animation: loading-bar-3 1.5s infinite;
 }
 
-#loading-bar-inner div:nth-child(4) {
-    background: rgb(51, 51, 51);
-    animation: loading-bar-4 .9s infinite;
+#loading-bar-inner div:nth-child(4) img {
+    opacity: .4;
+    animation: loading-bar-4 1.5s infinite;
 }
 
-#loading-bar-inner div:nth-child(5) {
-    background: rgb(134, 134, 134);
-    animation: loading-bar-5 .9s infinite;
+#loading-bar-inner div:nth-child(5) img {
+    opacity: .2;
+    animation: loading-bar-5 1.5s infinite;
 }

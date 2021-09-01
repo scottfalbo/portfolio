@@ -53,8 +53,10 @@ header {
 }
 
 .page-title {
-    background: url("https://via.placeholder.com/60");
+    background: #202020;
+    border-radius: 10px;
     background-size: cover;
+    padding: 0 10px;
 }
 
 .page-title img {
@@ -76,6 +78,10 @@ header ul a>p {
 
 header ul a>p:hover {
     color: #cbf7ff;
+}
+
+.art-menu p.menu-button.leave-page-link {
+    line-height: 33px;
 }
 
 main > h1 {
@@ -177,11 +183,6 @@ main {
     text-align: right;
 }
 
-.gallery-display a>.gallery-header-eye>.gallery-eye {
-    border: 1px solid #00c6d4;
-    border-radius: 50%;
-}
-
 .galleries .card-body {
     background-color: #131313;
     padding: .2em;
@@ -196,11 +197,15 @@ main {
 }
 
 .closed-gallery-eye {
-    background: rgb(64, 255, 230);
+    background-image: url('../images/gallery_eye.png');
+    background-size: contain;
+    border: 1px solid #18f7ff;
+    border-radius: 50%;
+    opacity: .3;
 }
 
 .open-gallery-eye {
-    background: rgb(0, 248, 83);
+    opacity: 1;
 }
 
 /*  -------------------------------- Popup Admin Module */
@@ -295,8 +300,15 @@ input.add-gallery.loader {
     background: #000;
 }
 
-#loading-bar-inner>div {
-    background: #fff;
+#loading-bar-inner > div {
+    background: #000;
+    text-align: center;
+}
+
+#loading-bar-inner > div > img {
+    height: 25px;
+    width: 100%;
+
 }
 
 /* ------------------------------- Booking Request */
@@ -444,6 +456,22 @@ input.add-gallery.loader {
     background: #000;
 }
 
+.leave-page .popup-module-inner {
+    background-color: #0f0f0f;
+    text-align: center;
+}
+
+.leave-page .popup-module-inner p {
+    font-family: 'Jura', sans-serif;
+    color: rgb(65, 207, 250);
+    font-size: 1.2em;
+}
+
+.leave-page .site-button {
+    width: 200px;
+    line-height: 30px;
+}
+
 /* ------------------------------------- Footer */
 
 footer {
@@ -473,18 +501,12 @@ footer {
     z-index: 2;
     border: 1px solid #23ff36;
     border-radius: 50%;
-    background-color: black;
+    background-color: #000;
 }
 
 .footer-line div {
     background-color: #23ff36;
     opacity: .6;
-}
-
-.footer-line img {
-    border: 1px solid #23ff36;
-    border-radius: 50%;
-    background-color: black;
 }
 
 .footer nav {
@@ -497,7 +519,7 @@ footer {
 }
 
 .footer ul li {
-    color: rgb(64, 255, 230);
+    color: #007BFF;
     opacity: .9;
     padding: 5px 0;
 }
@@ -506,6 +528,12 @@ footer p {
     text-align: center;
     color: rgba(255, 187, 0, 0.4);
 }
+
+footer a.leave-page-link, a:not([href]):not([tabindex]) {
+    color: #007BFF;
+    cursor: pointer;
+}
+
 
 /* ------------------------------------ Break Points */
 

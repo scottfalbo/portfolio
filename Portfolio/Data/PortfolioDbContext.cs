@@ -18,7 +18,6 @@ namespace Portfolio.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<HomePage> HomePage { get; set; }
-        public DbSet<Instagram> Instragrams { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<GalleryImage> GalleryImage { get; set; }
         public DbSet<Technology> Technologies { get; set; }
@@ -210,7 +209,6 @@ namespace Portfolio.Data
                     {
                         Id = 1,
                         Title = "Project One",
-                        AltText = "project image",
                         Description = "It does some things",
                         TechSummary = "I used these things",
                         RepoLink = "https://github.com/scottfalbo",
@@ -226,7 +224,6 @@ namespace Portfolio.Data
                     {
                         Id = 2,
                         Title = "Project Two",
-                        AltText = "project image",
                         Description = "It does some things",
                         TechSummary = "I used these things",
                         RepoLink = "https://github.com/scottfalbo",
