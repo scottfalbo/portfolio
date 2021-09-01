@@ -911,9 +911,10 @@ div.technologies-menu-button {
     .right-col .mainpage-art-desktop {
         grid-column: 1/2;
         grid-row: 2/3;
+        text-align: center;
     }
     .right-col img {
-        width: 100%;
+        height: 300px;
     }
     .homepage-container>.popup-toggle-button {
         grid-column: 2/3;

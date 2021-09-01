@@ -467,6 +467,11 @@ input.add-gallery.loader {
     font-size: 1.2em;
 }
 
+.leave-page .site-button {
+    width: 200px;
+    line-height: 30px;
+}
+
 /* ------------------------------------- Footer */
 
 footer {

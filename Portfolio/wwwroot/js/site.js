@@ -3,7 +3,7 @@
 // Open button for admin popup modules. 
 $(function () {
     $('.open-admin').click(function () {
-        $('.popup-module-outer').removeClass('hide-me');
+        $('.outer-admin').removeClass('hide-me');
     });
 });
 
@@ -191,7 +191,8 @@ $(function () {
 
 // Leave page popup for studio arcanum links
 $(function () {
-    $('.leave-page-link').click(function() {
+    $('.leave-page-link').click(function(event) {
+        event.stopPropagation();
         $('.leave-page').removeClass('hide-me');
     });
 });
