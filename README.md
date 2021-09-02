@@ -98,21 +98,46 @@ There is more information about the languages, technologies, tools, and site arc
 
 ---
 
-## Architecture
-
-### Entity Relationship Diagram
+## Entity Relationship Diagram
 
 ![ERD](/assets/erd.png)
 
+---
+
 ## Domain Models
 
-### Index Admin: Update Image
+Each page on the site has it's own popup admin GUI, visible to authenticated users, that controls the CRUD actions for its content.
+
+### Index Admin
+
+The index page admin controls the home page's profile image, title, and intro paragraph.  
+
+#### Update Image
 
 ![index update model](/assets/index_photo_update_model.jpg)
 
-### Index Admin: Update Page
+#### Update Page
 
 ![index update model](/assets/index_update_model.jpg)
+
+### Code Page Admin
+
+The code page has three separate admin panels.  One for the basic page information, which is the same pattern as the index admin.  The second is an admin GUI with a dropdown `<select>` menu containing a broad list of languages and technologies.  The selected icons appear on the page.  
+The third GUI is what controls the portfolio section of the page.  It has CRUD actions to create, update, and delete projects, as well as add and remove images from projects.
+
+#### Add Project
+
+The add project form takes in a new project title.  Because the title will be used for class names to control the Bootstrap accordion dropdown they need to be unique.  The `CheckProjectTitle` method validates the input.  When the project is created the title is normalized and used to assign several class names for use with dropdowns.  The project is saved to the database with the title and classnames.  Then a list of technologies is attached to the project for display in portfolio view.
+
+![index update model](/assets/code_project_add.jpg)
+
+#### Delete Project
+
+The delete project form sends the project Id to the model. First the join table records for the ProjectImages are removed. Then the respective Image records are removed and the file is deleted from blob storage. Lastly the ProjectTechnology records are removed and then the Project record.
+
+![index update model](/assets/code_project_delete.jpg)
+
+### Art Page Admin
 
 ---
 
@@ -136,5 +161,5 @@ There is more information about the languages, technologies, tools, and site arc
 ## Acknowledgements
 
 + [Bootstrap](https://getbootstrap.com/)
-+ [json2csharp](https://json2csharp.com/)
 + [Microsoft Docs](https://docs.microsoft.com/en-us/)
++ Google and Stack Overflow
