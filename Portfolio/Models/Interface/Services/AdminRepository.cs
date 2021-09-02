@@ -180,6 +180,8 @@ namespace Portfolio.Models.Interfaces.Services
                     await RemoveImageFromProject(id, image.Image.Id);
                     await _art.DeleteImage(image.Image.Id);
                 }
+                foreach (var tech in project.Technologies)
+                    await RemoveTechFromProject(id, tech.Technology.Id);
             }
 
             _context.Entry(project).State = EntityState.Deleted;
