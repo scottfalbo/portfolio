@@ -153,6 +153,7 @@ namespace Portfolio.Pages.Code
             project.Display = Project.Display;
             project.DeployedLink = Project.DeployedLink;
             project.RepoLink = Project.RepoLink;
+            project.Technologies = (await _admin.GetProject(Project.Id)).Technologies;
 
             for (int i = 0; i < project.Technologies.Count; i++)
             {

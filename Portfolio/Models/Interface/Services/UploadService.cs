@@ -145,7 +145,7 @@ namespace Portfolio.Models.Interface.Services
         /// <returns> new Image object </returns>
         public async Task<Image> AddProjectImage(IFormFile file)
         {
-            Stream stream = ResizeImage(file, 300);
+            Stream stream = ResizeImage(file, 400);
             BlobClient blob = await UploadImage(stream, file.FileName, file.ContentType);
 
             Image image = new Image()

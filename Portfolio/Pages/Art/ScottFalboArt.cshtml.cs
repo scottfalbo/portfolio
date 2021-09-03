@@ -172,6 +172,15 @@ namespace Portfolio.Pages.Art
         private async Task Refresh()
         {
             Galleries = await _art.GetGalleries();
+
+            // Reverses the image galleries so the most recently added displays first.
+            foreach (Gallery gallery in Galleries)
+            {
+                GalleryImage[] images = gallery.GalleryImages.ToArray();
+                Array.Reverse(images);
+                List<GalleryImage> reversedImages = images.ToList<GalleryImage>();
+                gallery.GalleryImages = reversedImages;
+            }
             HomePage = await _admin.GetHomePage("Tattoo");
         }
     }
