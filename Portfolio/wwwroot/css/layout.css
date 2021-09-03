@@ -913,7 +913,7 @@ div.technologies-menu-button {
         grid-row: 2/3;
         text-align: center;
     }
-    .right-col img {
+    .right-col img.selfie {
         height: 300px;
     }
     .homepage-container>.popup-toggle-button {
