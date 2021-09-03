@@ -6,9 +6,9 @@ version 1.0.0
 
 ## About the Project
 
-*Version 2 currently in production.*
+*Version 2.0.0 currently in production.*
 
-[Refactor Development Log v2.0](refactor-dev.md)
+[Refactor Development Log v2.0.0](refactor-dev.md)
 
 Portfolio website for my software development projects and artwork.  It is a .Net Core app built in Visual Studio with C# and deployed on Azure.  All of the sites front facing data, including text fields and portfolios, are handled with a built in admin GUI available on each page when authenticated.
 
@@ -144,7 +144,13 @@ The delete project form sends the project Id to the model. First the join table 
 
 ### Art Page Admin
 
+The art page has an admin for the general page content just like the index and code page. The galleries have their own GUI that can add and remove galleries, similar to adding and removing projects from the code page, and add and remove images from galleries.  
 
+#### Add Images
+
+The add images form sends an array of IFormFiles to the AddImages handler. Each image resized for gallery view and a copy is made and resized for thumbnail view.  Both file names have the white space stripped and the date and time attached to ensure a unique name in the blob.  Once stored in the blob the filename and blob.uris are used to create and save an Image in the database. Then the image is added to the gallery with an `ImageGallery` join table and the page is refreshed.
+
+![index update model](/assets/gallery_add_image.jpg)
 
 ---
 

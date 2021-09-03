@@ -45,5 +45,7 @@ Refactoring the overall structure of the site while adding new content and secti
   + Built a drop down menu of `<select>` elements to toggle display of technologies on and off for code main page and projects.  The drop down toggle is handled with jQuery.
 + 09/01/2021
   + Added a method to the `UploadServices` that uses regex to add the date and time to the end of a file name to ensure they are unique.
++ 09/02/2021
+  + Expanded the unique filename to the thumbnails and fixed a regex issue that was removing unintended characters.
 
 [Back to README](README.md#refactor-development-log)

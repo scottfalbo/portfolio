@@ -93,6 +93,7 @@ namespace Portfolio.Models.Interface.Services
             string fileType = Regex.Match(file, pattern).ToString();
 
             file = Regex.Replace(file, $@"\b.{fileType}\b", "");
+            file = file.Replace(" ", String.Empty);
             return file + $"{timeStamp}.{fileType}";
         }
 
@@ -123,14 +124,17 @@ namespace Portfolio.Models.Interface.Services
             return await _artAdmin.CreateImage(image);
         }
 
+        /// <summary>
+        /// Helper method to insert "_thumb" before the file extension
+        /// </summary>
+        /// <param name="file"> string filename </param>
+        /// <returns> string filename + _thumb </returns>
         private string ThumbNailFileName(string file)
         {
             string pattern = @"[^.]+$";
             string fileType = Regex.Match(file, pattern).ToString();
-
-
             string thumb = Regex.Replace(file, $@"\b.{fileType}\b", "");
-            return thumb + $"_thumb.{fileType}";
+            return $"{thumb}_thumb.{fileType}";
         }
 
         /// <summary>

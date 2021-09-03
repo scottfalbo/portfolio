@@ -34,7 +34,7 @@ header {
     width: 100%;
 }
 
-main > h1 {
+main>h1 {
     height: 46px;
 }
 
@@ -600,7 +600,7 @@ div.technologies-menu-button {
     margin-top: 20px;
 }
 
-.request-form > div {
+.request-form>div {
     margin: 10px auto;
 }
 
@@ -656,7 +656,7 @@ div.technologies-menu-button {
     margin: 0 auto 10px auto;
 }
 
-.codepage-technology > div {
+.codepage-technology>div {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;

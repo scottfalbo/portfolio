@@ -40,7 +40,6 @@ namespace Portfolio.Models.Interface.Services
             };
             _context.Entry(newImage).State = EntityState.Added;
             await _context.SaveChangesAsync();
-
             return newImage;
         }
 
