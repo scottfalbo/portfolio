@@ -3,7 +3,7 @@
     {
       "id": "1",
       "Title": "C#",
-      "Type" : "Language",
+      "Type": "Language",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/cSharp.png?raw=true"
     },
     {
@@ -44,99 +44,99 @@
     },
     {
       "id": "8",
-      "Title": "Git",
-      "Type": "Tech",
-      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/git.png?raw=true"
-    },
-    {
-      "id": "9",
-      "Title": "GitHub",
-      "Type": "Tech",
-      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/github.png?raw=true"
-    },
-    {
-      "id": "10",
-      "Title": "GitHub Invert",
-      "Type": "Tech",
-      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/github-light.png?raw=true"
-    },
-    {
-      "id": "11",
-      "Title": "Visual Studio",
-      "Type": "Tech",
-      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/visual_studio.png?raw=true"
-    },
-    {
-      "id": "12",
-      "Title": "VS Code",
-      "Type": "Tech",
-      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/vscode.png?raw=true"
-    },
-    {
-      "id": "13",
       "Title": ".Net Core",
       "Type": "Tech",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/dotnetcore.png?raw=true"
     },
     {
-      "id": "14",
-      "Title": "SignalR",
-      "Type": "Tech",
-      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/signalR.png?raw=true"
-    },
-    {
-      "id": "15",
-      "Title": "Unity",
-      "Type": "Tech",
-      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/unity.png?raw=true"
-    },
-    {
-      "id": "16",
+      "id": "9",
       "Title": "React",
       "Type": "Tech",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/react.png?raw=true"
     },
     {
-      "id": "17",
+      "id": "10",
       "Title": "jQuery",
       "Type": "Tech",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/jQuery.png?raw=true"
     },
     {
-      "id": "18",
-      "Title": "Node.js",
-      "Type": "Tech",
-      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/nodejs.png?raw=true"
-    },
-    {
-      "id": "19",
-      "Title": "Bootstrap",
-      "Type": "Tech",
-      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/bootstrap.png?raw=true"
-    },
-    {
-      "id": "20",
+      "id": "11",
       "Title": "Azure",
       "Type": "Tech",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azure.png?raw=true"
     },
     {
-      "id": "21",
+      "id": "12",
       "Title": "Azure SQL",
       "Type": "Tech",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azure_sql.png?raw=true"
     },
     {
-      "id": "22",
+      "id": "13",
       "Title": "Azure Key Vault",
       "Type": "Tech",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/key_vault.png?raw=true"
     },
     {
-      "id": "23",
+      "id": "14",
       "Title": "Azure Storage",
       "Type": "Tech",
       "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azureBlob.png?raw=true"
+    },
+    {
+      "id": "15",
+      "Title": "Node.js",
+      "Type": "Tech",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/nodejs.png?raw=true"
+    },
+    {
+      "id": "16",
+      "Title": "Bootstrap",
+      "Type": "Tech",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/bootstrap.png?raw=true"
+    },
+    {
+      "id": "17",
+      "Title": "SignalR",
+      "Type": "Tech",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/signalR.png?raw=true"
+    },
+    {
+      "id": "18",
+      "Title": "Unity",
+      "Type": "Tech",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/unity.png?raw=true"
+    },
+    {
+      "id": "19",
+      "Title": "Git",
+      "Type": "Tech",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/git.png?raw=true"
+    },
+    {
+      "id": "20",
+      "Title": "GitHub",
+      "Type": "Tech",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/github.png?raw=true"
+    },
+    {
+      "id": "21",
+      "Title": "GitHub Invert",
+      "Type": "Tech",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/github-light.png?raw=true"
+    },
+    {
+      "id": "22",
+      "Title": "Visual Studio",
+      "Type": "Tech",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/visual_studio.png?raw=true"
+    },
+    {
+      "id": "23",
+      "Title": "VS Code",
+      "Type": "Tech",
+      "LogoUrl": "https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/vscode.png?raw=true"
     },
     {
       "id": "24",
