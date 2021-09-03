@@ -4,10 +4,23 @@
 
 version 1.0.0
 
+---
+
++ **Contents**
+  + [About the Project](#about-the-project)
+  + [Technologies](#technologies)
+  + [Entity Relationship Diagram](#entity-relationship-diagram)
+  + [Domain Models](#domain-models)
+  + [Change Log](#change-log)
+  + [Contact](#contact)
+  + [Acknowledgements](#acknowledgements)
+
+---
+
 ## About the Project
 
 *Version 2.0.0 currently in production.*
-The current live site is the previous version.
+The current live site is the previous version. This readme reflects the in progress dev build.
 
 [Refactor Development Log v2.0.0](refactor-dev.md)
 
@@ -118,6 +131,7 @@ Each page on the site has it's own popup admin GUI, visible to authenticated use
 
 The index page admin controls the home page's profile image, title, and intro paragraph.  
 
+*Index admin screenshot*
 ![index admin screenshot](/assets/screenshots/index_admin.jpg)
 
 #### Update Image
@@ -140,6 +154,7 @@ The code page has three separate admin panels.  One for the basic page informati
 The third GUI is what controls the portfolio section of the page.  It has CRUD actions to create, update, and delete projects, as well as add and remove images from projects.
 I've included domain models for the add and remove projects methods. The general page admin is same as the index page. The add and remove image methods will be detailed below under the Art Page section.
 
+*Project admin screenshot*
 ![project admin screenshot](/assets/screenshots/project_admin.jpg)
 
 #### Add Project
@@ -160,6 +175,7 @@ The delete project form sends the project Id to the model. First the join table 
 
 The art page has an admin for the general page content just like the index and code page. The galleries have their own GUI that can add and remove galleries, similar to adding and removing projects from the code page, and add and remove images from galleries.  
 
+*Gallery admin screenshot*
 ![gallery admin screenshot](/assets/screenshots/gallery_admin.jpg)
 
 #### Add Images
