@@ -92,7 +92,7 @@
                                         </div>
                                         <article class="intro">@project.TechSummary</article>
                                         <div>
-                                            @if (project.DeployedLink != null)
+                                            @if (project.DeployedLink != "")
                                             {
                                                 <a href="@project.DeployedLink" target="_blank">
                                                     <div class="site-button">

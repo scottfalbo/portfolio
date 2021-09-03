@@ -49,7 +49,6 @@ namespace PortfolioTests
                 RepoLink = project.RepoLink,
                 DeployedLink = project.DeployedLink,
                 Order = project.Order,
-                AltText = project.AltText
             };
             _db.Entry(newProject).State = EntityState.Added;
             await _db.SaveChangesAsync();
@@ -65,7 +64,6 @@ namespace PortfolioTests
                     Description = y.Description,
                     RepoLink = y.RepoLink,
                     DeployedLink = y.DeployedLink,
-                    AltText = y.AltText,
                     Order = y.Order
                 })
                 .FirstOrDefaultAsync();

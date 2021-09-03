@@ -45,7 +45,7 @@ namespace Portfolio.Data
 
             //SeedRole(modelBuilder, "admin", "create", "read", "update", "delete");
 
-            string id = "a18be8c0-aa67-4af8-bd17-00bd6346e575";
+            string id = Configuration["AdminUserId"];
 
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
             {
@@ -82,27 +82,27 @@ namespace Portfolio.Data
                     Id = 1,
                     Page = "Home",
                     Title = "Software Developer | Artist",
-                    Intro = "Software developer and artist in Seattle.",
-                    Selfie = "",
-                    FileName = "code-selfie.png"
+                    Intro = "Hello, and thanks for visiting my portfolio site!  For my software development portfolio please visit the Code section.  For my tattoo and drawing portfolios please visit the Art section.",
+                    Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie932021115101.png",
+                    FileName = "code-selfie932021115101.png"
                 },
                 new HomePage
                 {
                     Id = 2,
                     Page = "Tattoo",
                     Title = "Tattoo Artist | Studio Arcanum",
-                    Intro = "I do tattoos some times",
-                    Selfie = "",
-                    FileName = "code-selfie.png"
+                    Intro = "Hello, thanks for checking out my art page.  I make tattoos and art at Studio Arcanum in the Fremont neighborhood of Seattle.  ",
+                    Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie932021115403.png",
+                    FileName = "code-selfie932021115403.png"
                 },
                 new HomePage
                 {
                     Id = 3,
                     Page = "Code",
                     Title = "Software Developer | C# .NET",
-                    Intro = "I write code better than bios, coming soon...",
-                    Selfie = "",
-                    FileName = "code-selfie.png"
+                    Intro = "Hello, thanks for checking out my portfolio. I'm a huge gamer nerd that loves coding.  Learning a new language or technology to solve a problem domain is basically studying mystic tongues to scribe spells.  HttpRequest, more like Neo-Electrical Telekinesis.  Writing code is wizardry, and who doesn't want to be a wizard?  As a long - time MMO end game raider and puzzler, I enjoy solving problems and organizing solutions.I find great satisfaction in laying out repository patterns in .NET or figuring out entity relations for a database.  When everything works out it's like beating a level of a game.  If things don't work out it's a learning experience until they do. While I enjoy puzzling and problem - solving I'm also a career artist with a passion for visual creation.  With a firm understanding of composition and color theory, I enjoy seeing projects through the full-stack process.",
+                    Selfie = "https://falboportfoliostorage.blob.core.windows.net/images/code-selfie932021115248.png",
+                    FileName = "code-selfie932021115248.png"
                 },
                 new HomePage
                 {
@@ -119,79 +119,98 @@ namespace Portfolio.Data
                 new Gallery
                 { 
                     Id = 1,
-                    Title = "Gallery One",
-                    AccordionId = "galleryone",
+                    Title = "Tattoos",
+                    AccordionId = "tattoos",
                     Display = true,
                     Order = 1,
-                    CollapseId = "galleryone1",
-                    AdminAccordionId = "galleryoneadmin",
-                    AdminCollapseId = "galleryone1admin"
+                    CollapseId = "tattoos1",
+                    AdminAccordionId = "tattoosadmin",
+                    AdminCollapseId = "tattoos1admin"
                 },
                 new Gallery
                 {
                     Id = 2,
-                    Title = "Gallery Two",
-                    AccordionId = "gallerytwo",
+                    Title = "Drawings",
+                    AccordionId = "drawings",
                     Display = true,
                     Order = 2,
-                    CollapseId = "gallerytwo2",
-                    AdminAccordionId = "gallerytwoadmin",
-                    AdminCollapseId = "gallerytwo2admin"
-                },
-                new Gallery
-                {
-                    Id = 3,
-                    Title = "Gallery Three",
-                    AccordionId = "gallerythree",
-                    Display = true,
-                    Order = 3,
-                    CollapseId = "gallerythree3",
-                    AdminAccordionId = "gallerythreeadmin",
-                    AdminCollapseId = "gallerythree3admin"
+                    CollapseId = "drawings2",
+                    AdminAccordionId = "drawingsadmin",
+                    AdminCollapseId = "drawings2admin"
                 }
             );
 
-            /// Image seeds
-            for (int i = 1; i < 37; i++)
-            {
-                modelBuilder.Entity<Image>().HasData(
-                    new Image
-                    {
-                        Id = i,
-                        Title = $"testimage{i}",
-                        ImageURL = "https://via.placeholder.com/700",
-                        ThumbURL = "https://via.placeholder.com/80",
-                        ThumbFileName = "blank_thumb",
-                        FileName = "blank",
-                        Order = i
-                    });
-            }
+            // initial gallery image seeds here
 
-            for (int i = 1; i < 13; i++)
-            {
-                modelBuilder.Entity<GalleryImage>().HasData(
-                    new GalleryImage
+            modelBuilder.Entity<Project>().HasData(
+                    new Project
                     {
-                        GalleryId = 1,
-                        ImageId = i
+                        Id = 1,
+                        Title = "Small Boi: Unity Game",
+                        Description = "It does some things",
+                        TechSummary = "I used these things",
+                        RepoLink = "https://github.com/AmeiliaAndTheSmallBois/SmallBoi",
+                        DeployedLink = "",
+                        Order = 4,
+                        Display = true,
+                        AccordionId = "smallboyunitygame",
+                        CollapseId = "smallboyunitygame1",
+                        AdminAccordionId = "smallboyunitygameadmin",
+                        AdminCollapseId = "smallboyunitygame1admin"
                     },
-                    new GalleryImage
+                    new Project 
                     {
-                        GalleryId = 2,
-                        ImageId = i+12
+                        Id = 2,
+                        Title = "LiteBerry Pi",
+                        Description = "It does some things",
+                        TechSummary = "I used these things",
+                        RepoLink = "https://github.com/Lite-Berry-pi/Lite-Berry-Pi",
+                        DeployedLink = "",
+                        Order = 3,
+                        Display = true,
+                        AccordionId = "liteberrypi",
+                        CollapseId = "liteberrypi2",
+                        AdminAccordionId = "liteberrypiadmin",
+                        AdminCollapseId = "liteberrypi2admin"
                     },
-                    new GalleryImage
+                    new Project
                     {
-                        GalleryId = 3,
-                        ImageId = i+24
+                        Id = 3,
+                        Title = "React Minesweeper",
+                        Description = "It does some things",
+                        TechSummary = "I used these things",
+                        RepoLink = "https://github.com/scottfalbo/react-minesweeper-v2",
+                        DeployedLink = "https://scottfalbo.github.io/react-minesweeper-v2/",
+                        Order = 2,
+                        Display = true,
+                        AccordionId = "reactminesweeper",
+                        CollapseId = "reactminesweeper3",
+                        AdminAccordionId = "reactminesweeperadmin",
+                        AdminCollapseId = "reactminesweeper3admin"
+                    },
+                    new Project
+                    {
+                        Id = 4,
+                        Title = "scottfalbo.com",
+                        Description = "this",
+                        TechSummary = "I used these things",
+                        RepoLink = "https://github.com/scottfalbo",
+                        DeployedLink = "",
+                        Order = 1,
+                        Display = true,
+                        AccordionId = "scottfalbocom",
+                        CollapseId = "scottfalbocom4",
+                        AdminAccordionId = "scottfalbocomadmin",
+                        AdminCollapseId = "scottfalbocom4admin"
                     }
                 );
-            }
+
+            // Add project images here
 
             string path = @"Data/technologiesData.json";
             TechnologiesList techList = JsonConvert.DeserializeObject<TechnologiesList>(File.ReadAllText(path));
 
-            foreach(Technology tech in techList.technologies)
+            foreach (Technology tech in techList.technologies)
             {
                 modelBuilder.Entity<Technology>().HasData(
                     new Technology
@@ -203,39 +222,6 @@ namespace Portfolio.Data
                     }
                 );
             }
-
-            modelBuilder.Entity<Project>().HasData(
-                    new Project
-                    {
-                        Id = 1,
-                        Title = "Project One",
-                        Description = "It does some things",
-                        TechSummary = "I used these things",
-                        RepoLink = "https://github.com/scottfalbo",
-                        DeployedLink = "https://scottfalbo.com",
-                        Order = 1,
-                        Display = true,
-                        AccordionId = "projectone",
-                        CollapseId = "projectone1",
-                        AdminAccordionId = "projectoneadmin",
-                        AdminCollapseId = "projectone1admin"
-                    },
-                    new Project 
-                    {
-                        Id = 2,
-                        Title = "Project Two",
-                        Description = "It does some things",
-                        TechSummary = "I used these things",
-                        RepoLink = "https://github.com/scottfalbo",
-                        DeployedLink = "https://scottfalbo.com",
-                        Order = 2,
-                        Display = true,
-                        AccordionId = "projecttwo",
-                        CollapseId = "projecttwo2",
-                        AdminAccordionId = "projecttwoadmin",
-                        AdminCollapseId = "projecttwo2admin"
-                    }
-                );
 
             foreach (Technology tech in techList.technologies)
             {
@@ -249,8 +235,19 @@ namespace Portfolio.Data
                     {
                         ProjectId = 2,
                         TechnologyId = tech.Id
+                    },
+                    new ProjectTechnology
+                    {
+                        ProjectId = 3,
+                        TechnologyId = tech.Id
+                    },
+                    new ProjectTechnology
+                    {
+                        ProjectId = 4,
+                        TechnologyId = tech.Id
                     }
                 );
+                
                 modelBuilder.Entity<HomePageTechnology>().HasData(
                     new HomePageTechnology
                     { 
@@ -259,30 +256,6 @@ namespace Portfolio.Data
                     }
                 );
             }
-
-        }
-
-        private int id = 1;
-        private void SeedRole(ModelBuilder modelBuilder, string roleName, params string[] permissions)
-        {
-            var role = new IdentityRole
-            {
-                Id = roleName.ToLower(),
-                Name = roleName,
-                NormalizedName = roleName.ToUpper(),
-                ConcurrencyStamp = Guid.Empty.ToString()
-            };
-            modelBuilder.Entity<IdentityRole>().HasData(role);
-
-            var roleClaims = permissions.Select(permission =>
-               new IdentityRoleClaim<string>
-               {
-                   Id = id++,
-                   RoleId = role.Id,
-                   ClaimType = "permissions",
-                   ClaimValue = permission
-               });
-            modelBuilder.Entity<IdentityRoleClaim<string>>().HasData(roleClaims);
         }
     }
 

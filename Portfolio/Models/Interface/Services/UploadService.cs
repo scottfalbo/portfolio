@@ -218,7 +218,10 @@ namespace Portfolio.Models.Interface.Services
         public async Task UpdateSelfie(IFormFile file, int id)
         {
             HomePage homepage = await _context.HomePage.FindAsync(id);
-            BlobClient blob = await UploadImage(file);
+
+            Stream stream = ResizeImage(file, 400);
+            BlobClient blob = await UploadImage(stream, file.FileName, file.ContentType);
+
             homepage.Selfie = blob.Uri.ToString();
             homepage.FileName = file.FileName;
             await _admin.UpdateHomePage(homepage);
