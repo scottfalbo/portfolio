@@ -6,9 +6,10 @@ version 1.0.0
 
 ## About the Project
 
-*Version 2 currently in production.*
+*Version 2.0.0 currently in production.*
+The current live site is the previous version.
 
-[Refactor Development Log v2.0](refactor-dev.md)
+[Refactor Development Log v2.0.0](refactor-dev.md)
 
 Portfolio website for my software development projects and artwork.  It is a .Net Core app built in Visual Studio with C# and deployed on Azure.  All of the sites front facing data, including text fields and portfolios, are handled with a built in admin GUI available on each page when authenticated.
 
@@ -100,6 +101,11 @@ There is more information about the languages, technologies, tools, and site arc
 
 ## Entity Relationship Diagram
 
++ `HomePage` 1:many `HomePageTechnology` many:1 `Technology`
++ `Project` 1:many `ProjectTechnology` many:1 `Technology`
++ `Project` 1:many `ProjectImage` many:1 Image`
++ `Gallery` 1:many `GalleryImage` many:1 `Image`
+
 ![ERD](/assets/erd.png)
 
 ---
@@ -112,40 +118,69 @@ Each page on the site has it's own popup admin GUI, visible to authenticated use
 
 The index page admin controls the home page's profile image, title, and intro paragraph.  
 
+![index admin screenshot](/assets/screenshots/index_admin.jpg)
+
 #### Update Image
+
+This form updates the profile photos on each page. It removes the previous file from the blob, uploads the new one, and creates a new record in the database.
 
 ![index update model](/assets/index_photo_update_model.jpg)
 
 #### Update Page
 
+This form updates the general information on each page.
+
 ![index update model](/assets/index_update_model.jpg)
+
+---
 
 ### Code Page Admin
 
 The code page has three separate admin panels.  One for the basic page information, which is the same pattern as the index admin.  The second is an admin GUI with a dropdown `<select>` menu containing a broad list of languages and technologies.  The selected icons appear on the page.  
 The third GUI is what controls the portfolio section of the page.  It has CRUD actions to create, update, and delete projects, as well as add and remove images from projects.
+I've included domain models for the add and remove projects methods. The general page admin is same as the index page. The add and remove image methods will be detailed below under the Art Page section.
+
+![project admin screenshot](/assets/screenshots/project_admin.jpg)
 
 #### Add Project
 
 The add project form takes in a new project title.  Because the title will be used for class names to control the Bootstrap accordion dropdown they need to be unique.  The `CheckProjectTitle` method validates the input.  When the project is created the title is normalized and used to assign several class names for use with dropdowns.  The project is saved to the database with the title and classnames.  Then a list of technologies is attached to the project for display in portfolio view.
 
-![index update model](/assets/code_project_add.jpg)
+![add project model](/assets/code_project_add.jpg)
 
 #### Delete Project
 
 The delete project form sends the project Id to the model. First the join table records for the ProjectImages are removed. Then the respective Image records are removed and the file is deleted from blob storage. Lastly the ProjectTechnology records are removed and then the Project record.
 
-![index update model](/assets/code_project_delete.jpg)
+![delete project model](/assets/code_project_delete.jpg)
+
+---
 
 ### Art Page Admin
+
+The art page has an admin for the general page content just like the index and code page. The galleries have their own GUI that can add and remove galleries, similar to adding and removing projects from the code page, and add and remove images from galleries.  
+
+![gallery admin screenshot](/assets/screenshots/gallery_admin.jpg)
+
+#### Add Images
+
+The add images form sends an array of IFormFiles to the AddImages handler. Each image resized for gallery view and a copy is made and resized for thumbnail view.  Both file names have the white space stripped and the date and time attached to ensure a unique name in the blob.  Once stored in the blob the filename and blob.uris are used to create and save an Image in the database. Then the image is added to the gallery with an `ImageGallery` join table and the page is refreshed.
+
+![add image model](/assets/gallery_add_image.jpg)
+
+#### Delete Image
+
+The delete image form removes the image from the gallery by deleting the `GalleryImage` join table record.  Then the image and thumbnail are removed from the blob by filename.  And finally the image record is removed from the database.
+
+![delete image model](/assets/gallery_delete_image.jpg)
 
 ---
 
 ## Change Log
 
-+ ### [Refactor Development Log v2.0](refactor-dev.md)
++ [Refactor Development Log v2.0](refactor-dev.md)
 
-+ ### [Original Development Log v1.0](development.md#development-log)
++ [Original Development Log v1.0](development.md#development-log)
 
 ---
 

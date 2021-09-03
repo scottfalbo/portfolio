@@ -84,7 +84,7 @@ header ul a>p:hover {
     line-height: 33px;
 }
 
-main > h1 {
+main>h1 {
     border-radius: 10px;
     background: #202020;
     color: #18f7ff;
@@ -300,15 +300,14 @@ input.add-gallery.loader {
     background: #000;
 }
 
-#loading-bar-inner > div {
+#loading-bar-inner>div {
     background: #000;
     text-align: center;
 }
 
-#loading-bar-inner > div > img {
+#loading-bar-inner>div>img {
     height: 25px;
     width: 100%;
-
 }
 
 /* ------------------------------- Booking Request */
@@ -401,7 +400,7 @@ input.add-gallery.loader {
 
 .codepage-technology h3 {
     text-align: center;
-    color:rgb(64, 255, 230);
+    color: rgb(64, 255, 230);
     font-size: 1.3em;
     font-family: 'Jura', sans-serif;
     padding: 10px 0;
@@ -533,7 +532,6 @@ footer a.leave-page-link, a:not([href]):not([tabindex]) {
     color: #007BFF;
     cursor: pointer;
 }
-
 
 /* ------------------------------------ Break Points */
 

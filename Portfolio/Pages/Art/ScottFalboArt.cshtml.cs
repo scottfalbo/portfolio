@@ -90,15 +90,8 @@ namespace Portfolio.Pages.Art
             {
                 if (file != null)
                 {
-                    if (await _upload.CheckFileName(file))
-                    {
-                        image = await _upload.AddArtImage(file);
-                        await _art.AddImageToGallery(PageToggles.GalleryId, image.Id);
-                    }
-                    else
-                    {
-                        PageToggles.RepeatGalleryTitle = true;
-                    }
+                    image = await _upload.AddArtImage(file);
+                    await _art.AddImageToGallery(PageToggles.GalleryId, image.Id);
                 }
             }
             PageToggles.ActiveGalleryAdmin = true;

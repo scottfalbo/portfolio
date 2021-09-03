@@ -10,6 +10,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Portfolio.Models.Interface.Services
 {
@@ -62,10 +63,10 @@ namespace Portfolio.Models.Interface.Services
         /// <returns> BlobClient blob </returns>
         public async Task<BlobClient> UploadImage(Stream stream, string filename, string contentType)
         {
+            filename = AugmentFileName(filename);
             BlobContainerClient container = new BlobContainerClient(Configuration["ImageBlob"], "images");
 
             await container.CreateIfNotExistsAsync();
-
             BlobClient blob = container.GetBlobClient(filename);
 
             BlobUploadOptions options = new BlobUploadOptions()
@@ -75,30 +76,25 @@ namespace Portfolio.Models.Interface.Services
 
             if (!blob.Exists())
                 await blob.UploadAsync(stream, options);
-
             return blob;
         }
 
         /// <summary>
-        /// Helper method to see if a file name already exists on upload. 
+        /// Helper method that adds the time and date to the end of the filename to ensure it is unique.
         /// </summary>
-        /// <param name="file"> IFormFile from input form </param>
-        /// <returns> true if doesn't exist </returns>
-        public async Task<bool> CheckFileName(IFormFile file)
+        /// <param name="file"> string filename </param>
+        /// <returns> augmented filename </returns>
+        private string AugmentFileName(string file)
         {
-            var fileCheck = await _context.Images
-                .Where(x => x.FileName == file.FileName)
-                .Select(y => new Image
-                {
-                    Id = y.Id,
-                    Title = y.Title,
-                    ImageURL = y.ImageURL,
-                    FileName = y.FileName,
-                    ThumbURL = y.ThumbURL,
-                    ThumbFileName = y.ThumbFileName,
-                    Order = y.Order
-                }).FirstOrDefaultAsync();
-            return fileCheck == null;
+            string timeStamp = DateTime.Now.ToString();
+            timeStamp = Regex.Replace(timeStamp, "[^0-9]", "");
+
+            string pattern = @"[^.]+$";
+            string fileType = Regex.Match(file, pattern).ToString();
+
+            file = Regex.Replace(file, $@"\b.{fileType}\b", "");
+            file = file.Replace(" ", String.Empty);
+            return file + $"{timeStamp}.{fileType}";
         }
 
         /// <summary>
@@ -112,18 +108,33 @@ namespace Portfolio.Models.Interface.Services
             Stream stream = ResizeImage(file, 1900);
             BlobClient blob = await UploadImage(stream, file.FileName, file.ContentType);
 
+            string thumbFile = ThumbNailFileName(file.FileName);
+
             Stream thumbStream = ResizeImage(file, 100);
-            BlobClient thumb = await UploadImage(thumbStream, $"{file.FileName}_thumb", file.ContentType);
+            BlobClient thumb = await UploadImage(thumbStream, thumbFile, file.ContentType);
 
             Image image = new Image()
             {
                 ImageURL = blob.Uri.ToString(),
                 FileName = file.FileName,
                 ThumbURL = thumb.Uri.ToString(),
-                ThumbFileName = $"{file.FileName}_thumb",
+                ThumbFileName = thumbFile,
                 Order = 0
             };
             return await _artAdmin.CreateImage(image);
+        }
+
+        /// <summary>
+        /// Helper method to insert "_thumb" before the file extension
+        /// </summary>
+        /// <param name="file"> string filename </param>
+        /// <returns> string filename + _thumb </returns>
+        private string ThumbNailFileName(string file)
+        {
+            string pattern = @"[^.]+$";
+            string fileType = Regex.Match(file, pattern).ToString();
+            string thumb = Regex.Replace(file, $@"\b.{fileType}\b", "");
+            return $"{thumb}_thumb.{fileType}";
         }
 
         /// <summary>

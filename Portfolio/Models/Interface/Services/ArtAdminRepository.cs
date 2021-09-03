@@ -40,7 +40,6 @@ namespace Portfolio.Models.Interface.Services
             };
             _context.Entry(newImage).State = EntityState.Added;
             await _context.SaveChangesAsync();
-
             return newImage;
         }
 
@@ -104,6 +103,7 @@ namespace Portfolio.Models.Interface.Services
         {
             Image image = await _context.Images.FindAsync(id);
 
+            await DeleteBlobImage(image.ThumbFileName);
             await DeleteBlobImage(image.FileName);
 
             _context.Entry(image).State = EntityState.Deleted;

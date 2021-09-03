@@ -13,7 +13,6 @@ namespace Portfolio.Models.Interface
     {
         public Task<BlobClient> UploadImage(IFormFile file);
         public Task<BlobClient> UploadImage(Stream stream, string filename, string contentType);
-        public Task<bool> CheckFileName(IFormFile file);
 
         public Task<Image> AddArtImage(IFormFile file);
         public Task<Image> AddProjectImage(IFormFile file);
