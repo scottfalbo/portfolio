@@ -109,15 +109,8 @@ namespace Portfolio.Pages.Code
             {
                 if (file != null)
                 {
-                    if (await _upload.CheckFileName(file))
-                    {
-                        image = await _upload.AddProjectImage(file);
-                        await _admin.AddImageToProject(PageToggles.ProjectId, image.Id);
-                    }
-                    else
-                    {
-                        PageToggles.RepeatProjectTitle = true;
-                    }
+                    image = await _upload.AddProjectImage(file);
+                    await _admin.AddImageToProject(PageToggles.ProjectId, image.Id);
                 }
             }
             PageToggles.ActiveProjectAdmin = true;

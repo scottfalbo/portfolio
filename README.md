@@ -120,10 +120,13 @@ The index page admin controls the home page's profile image, title, and intro pa
 
 ![index update model](/assets/index_update_model.jpg)
 
+---
+
 ### Code Page Admin
 
 The code page has three separate admin panels.  One for the basic page information, which is the same pattern as the index admin.  The second is an admin GUI with a dropdown `<select>` menu containing a broad list of languages and technologies.  The selected icons appear on the page.  
 The third GUI is what controls the portfolio section of the page.  It has CRUD actions to create, update, and delete projects, as well as add and remove images from projects.
+I've included domain models for the add and remove projects methods. The general page admin is same as the index page. The add and remove image methods will be detailed below under the Art Page section.
 
 #### Add Project
 
@@ -137,15 +140,19 @@ The delete project form sends the project Id to the model. First the join table 
 
 ![index update model](/assets/code_project_delete.jpg)
 
+---
+
 ### Art Page Admin
+
+
 
 ---
 
 ## Change Log
 
-+ ### [Refactor Development Log v2.0](refactor-dev.md)
++ [Refactor Development Log v2.0](refactor-dev.md)
 
-+ ### [Original Development Log v1.0](development.md#development-log)
++ [Original Development Log v1.0](development.md#development-log)
 
 ---
 
