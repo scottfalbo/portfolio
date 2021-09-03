@@ -1,6 +1,6 @@
 # scottfalbo.com
 
-## [scottfalbo.com](https://scottfalbo.com)
+Deployed on Azure at [scottfalbo.com](https://scottfalbo.com)
 
 version 1.0.0
 
@@ -28,7 +28,7 @@ Portfolio website for my software development projects and artwork.  It is a .Ne
 
 There is more information about the languages, technologies, tools, and site architecture below.
 
-<!-- add site photo here -->
+![index page screenshot](/assets/screenshots/index.jpg)
 
 ---
 
@@ -116,7 +116,7 @@ There is more information about the languages, technologies, tools, and site arc
 
 + `HomePage` 1:many `HomePageTechnology` many:1 `Technology`
 + `Project` 1:many `ProjectTechnology` many:1 `Technology`
-+ `Project` 1:many `ProjectImage` many:1 Image`
++ `Project` 1:many `ProjectImage` many:1 `Image`
 + `Gallery` 1:many `GalleryImage` many:1 `Image`
 
 ![ERD](/assets/erd.png)
@@ -132,6 +132,7 @@ Each page on the site has it's own popup admin GUI, visible to authenticated use
 The index page admin controls the home page's profile image, title, and intro paragraph.  
 
 *Index admin screenshot*
+
 ![index admin screenshot](/assets/screenshots/index_admin.jpg)
 
 #### Update Image
@@ -155,6 +156,7 @@ The third GUI is what controls the portfolio section of the page.  It has CRUD a
 I've included domain models for the add and remove projects methods. The general page admin is same as the index page. The add and remove image methods will be detailed below under the Art Page section.
 
 *Project admin screenshot*
+
 ![project admin screenshot](/assets/screenshots/project_admin.jpg)
 
 #### Add Project
@@ -176,6 +178,7 @@ The delete project form sends the project Id to the model. First the join table 
 The art page has an admin for the general page content just like the index and code page. The galleries have their own GUI that can add and remove galleries, similar to adding and removing projects from the code page, and add and remove images from galleries.  
 
 *Gallery admin screenshot*
+
 ![gallery admin screenshot](/assets/screenshots/gallery_admin.jpg)
 
 #### Add Images

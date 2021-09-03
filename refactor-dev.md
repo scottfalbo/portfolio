@@ -1,5 +1,7 @@
 # Refactor Development Log
 
+[Back to README](README.md#change-log)
+
 Refactoring the overall structure of the site while adding new content and sections.
 
 + 7/29/2021
@@ -48,4 +50,4 @@ Refactoring the overall structure of the site while adding new content and secti
 + 09/02/2021
   + Expanded the unique filename to the thumbnails and fixed a regex issue that was removing unintended characters.
 
-[Back to README](README.md#refactor-development-log)
+[Back to README](README.md#change-log)

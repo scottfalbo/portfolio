@@ -1,6 +1,6 @@
 # Development Log
 
-[Back to README](README.md#development-log)
+[Back to README](README.md#change-log)
 
 + 03/25/2021
   + Started initial scaffolding and view layouts.
@@ -119,4 +119,4 @@
     + Dialed in CSS here and there.  
     + Updated seed data for deployment
 
-[Back to README](README.md#development-log)
+[Back to README](README.md#change-log)
