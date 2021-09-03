@@ -101,7 +101,10 @@ There is more information about the languages, technologies, tools, and site arc
 
 ## Entity Relationship Diagram
 
-
++ `HomePage` 1:many `HomePageTechnology` many:1 `Technology`
++ `Project` 1:many `ProjectTechnology` many:1 `Technology`
++ `Project` 1:many `ProjectImage` many:1 Image`
++ `Gallery` 1:many `GalleryImage` many:1 `Image`
 
 ![ERD](/assets/erd.png)
 
@@ -117,9 +120,13 @@ The index page admin controls the home page's profile image, title, and intro pa
 
 #### Update Image
 
+This form updates the profile photos on each page. It removes the previous file from the blob, uploads the new one, and creates a new record in the database.
+
 ![index update model](/assets/index_photo_update_model.jpg)
 
 #### Update Page
+
+This form updates the general information on each page.
 
 ![index update model](/assets/index_update_model.jpg)
 
@@ -154,6 +161,12 @@ The art page has an admin for the general page content just like the index and c
 The add images form sends an array of IFormFiles to the AddImages handler. Each image resized for gallery view and a copy is made and resized for thumbnail view.  Both file names have the white space stripped and the date and time attached to ensure a unique name in the blob.  Once stored in the blob the filename and blob.uris are used to create and save an Image in the database. Then the image is added to the gallery with an `ImageGallery` join table and the page is refreshed.
 
 ![index update model](/assets/gallery_add_image.jpg)
+
+#### Delete Image
+
+The delete image form removes the image from the gallery by deleting the `GalleryImage` join table record.  Then the image and thumbnail are removed from the blob by filename.  And finally the image record is removed from the database.
+
+![index update model](/assets/gallery_delete_image.jpg)
 
 ---
 
