@@ -7,6 +7,7 @@ version 1.0.0
 ## About the Project
 
 *Version 2.0.0 currently in production.*
+The current live site is the previous version.
 
 [Refactor Development Log v2.0.0](refactor-dev.md)
 
@@ -99,6 +100,8 @@ There is more information about the languages, technologies, tools, and site arc
 ---
 
 ## Entity Relationship Diagram
+
+
 
 ![ERD](/assets/erd.png)
 

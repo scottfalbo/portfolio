@@ -103,6 +103,7 @@ namespace Portfolio.Models.Interface.Services
         {
             Image image = await _context.Images.FindAsync(id);
 
+            await DeleteBlobImage(image.ThumbFileName);
             await DeleteBlobImage(image.FileName);
 
             _context.Entry(image).State = EntityState.Deleted;
