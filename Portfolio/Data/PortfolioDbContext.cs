@@ -114,50 +114,7 @@ namespace Portfolio.Data
                     FileName = ""
                 });
 
-            /// Gallery seeds
-            modelBuilder.Entity<Gallery>().HasData(
-                new Gallery
-                { 
-                    Id = 1,
-                    Title = "Tattoos",
-                    AccordionId = "tattoos",
-                    Display = true,
-                    Order = 1,
-                    CollapseId = "tattoos1",
-                    AdminAccordionId = "tattoosadmin",
-                    AdminCollapseId = "tattoos1admin"
-                },
-                new Gallery
-                {
-                    Id = 2,
-                    Title = "Drawings",
-                    AccordionId = "drawings",
-                    Display = true,
-                    Order = 2,
-                    CollapseId = "drawings2",
-                    AdminAccordionId = "drawingsadmin",
-                    AdminCollapseId = "drawings2admin"
-                }
-            );
-
-            // initial gallery image seeds here
-
             modelBuilder.Entity<Project>().HasData(
-                    new Project
-                    {
-                        Id = 1,
-                        Title = "Small Boi: Unity Game",
-                        Description = "It does some things",
-                        TechSummary = "I used these things",
-                        RepoLink = "https://github.com/AmeiliaAndTheSmallBois/SmallBoi",
-                        DeployedLink = "",
-                        Order = 4,
-                        Display = true,
-                        AccordionId = "smallboyunitygame",
-                        CollapseId = "smallboyunitygame1",
-                        AdminAccordionId = "smallboyunitygameadmin",
-                        AdminCollapseId = "smallboyunitygame1admin"
-                    },
                     new Project 
                     {
                         Id = 2,
