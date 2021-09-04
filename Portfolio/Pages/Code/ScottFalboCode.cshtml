@@ -48,13 +48,14 @@
                                     <h5 class="mb-0">
                                         @project.Title <i class="fas fa-angle-down rotate-icon"></i>
                                     </h5>
+
                                     <div class="gallery-header-eye">
                                         <div class="gallery-eye @($"{project.CollapseId}_eye") closed-gallery-eye"></div>
                                     </div>
                                 </a>
                             </div>
                             <!-- Card body -->
-                            <div id="@project.CollapseId" class="collapse" role="tabpanel" aria-labelledby="@project.AccordionId" data-parent="#accordionEx">
+                            <div id="@project.CollapseId" class="collapse " role="tabpanel" aria-labelledby="@project.AccordionId" data-parent="#accordionEx">
                                 <div class="card-body">
                                     <section class="project-card">
                                         <article class="intro">@project.Description</article>
@@ -91,7 +92,7 @@
                                         </div>
                                         <article class="intro">@project.TechSummary</article>
                                         <div>
-                                            @if (project.DeployedLink != null)
+                                            @if (project.DeployedLink != "")
                                             {
                                                 <a href="@project.DeployedLink" target="_blank">
                                                     <div class="site-button">
@@ -274,7 +275,7 @@
                                                                 <label class="tech-list-container">
                                                                     <img src="@tech.Technology.LogoUrl" />
                                                                     <span>@tech.Technology.Title</span>
-                                                                    <input type="checkbox" name="isChecked" value="@index" checked="@tech.Display"/>
+                                                                    <input type="checkbox" name="isChecked" value="@index" checked="@tech.Display" />
                                                                 </label>
                                                             </li>
                                                             index++;
@@ -291,6 +292,7 @@
                                                 <input type="text" asp-for="Project.RepoLink" value="@project.RepoLink" placeholder="@project.RepoLink" />
                                             </label>
                                             <input type="hidden" asp-for="Project.Id" value="@project.Id" />
+                                            <input type="hidden" asp-for="Project.Technologies" value="@project.Technologies" />
                                             <input type="submit" value="update" class="accordion-button loader site-button" />
                                         </form>
                                     </div>

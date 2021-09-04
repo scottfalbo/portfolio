@@ -49,5 +49,8 @@ Refactoring the overall structure of the site while adding new content and secti
   + Added a method to the `UploadServices` that uses regex to add the date and time to the end of a file name to ensure they are unique.
 + 09/02/2021
   + Expanded the unique filename to the thumbnails and fixed a regex issue that was removing unintended characters.
++ 09/03/2101
+  + Added code to the art page `Refresh()` method that reverses the order of the image in the galleries so the most recently uploaded show first.
+  + Updated seed data for basic projects and intro sections for deployment.
 
 [Back to README](README.md#change-log)

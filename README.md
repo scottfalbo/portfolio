@@ -50,7 +50,7 @@ There is more information about the languages, technologies, tools, and site arc
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/css.png?raw=true" height=40>
         </td>
         <td>
-            Front end built and styled with HTML5 markup and CSS3 style.
+            Front end built and styled with HTML5 markup and CSS3 style. The site is fully responsive with mobile/tablet and laptop/desktop break points.
         </td>
     </tr>
     <tr>
