@@ -117,7 +117,7 @@ namespace Portfolio.Data
             modelBuilder.Entity<Project>().HasData(
                     new Project 
                     {
-                        Id = 2,
+                        Id = 1,
                         Title = "LiteBerry Pi",
                         Description = "It does some things",
                         TechSummary = "I used these things",
@@ -126,13 +126,13 @@ namespace Portfolio.Data
                         Order = 3,
                         Display = true,
                         AccordionId = "liteberrypi",
-                        CollapseId = "liteberrypi2",
+                        CollapseId = "liteberrypi1",
                         AdminAccordionId = "liteberrypiadmin",
-                        AdminCollapseId = "liteberrypi2admin"
+                        AdminCollapseId = "liteberrypi1admin"
                     },
                     new Project
                     {
-                        Id = 3,
+                        Id = 2,
                         Title = "React Minesweeper",
                         Description = "It does some things",
                         TechSummary = "I used these things",
@@ -141,13 +141,13 @@ namespace Portfolio.Data
                         Order = 2,
                         Display = true,
                         AccordionId = "reactminesweeper",
-                        CollapseId = "reactminesweeper3",
+                        CollapseId = "reactminesweeper2",
                         AdminAccordionId = "reactminesweeperadmin",
-                        AdminCollapseId = "reactminesweeper3admin"
+                        AdminCollapseId = "reactminesweeper2admin"
                     },
                     new Project
                     {
-                        Id = 4,
+                        Id = 3,
                         Title = "scottfalbo.com",
                         Description = "this",
                         TechSummary = "I used these things",
@@ -156,9 +156,9 @@ namespace Portfolio.Data
                         Order = 1,
                         Display = true,
                         AccordionId = "scottfalbocom",
-                        CollapseId = "scottfalbocom4",
+                        CollapseId = "scottfalbocom3",
                         AdminAccordionId = "scottfalbocomadmin",
-                        AdminCollapseId = "scottfalbocom4admin"
+                        AdminCollapseId = "scottfalbocom3admin"
                     }
                 );
 
@@ -196,11 +196,6 @@ namespace Portfolio.Data
                     new ProjectTechnology
                     {
                         ProjectId = 3,
-                        TechnologyId = tech.Id
-                    },
-                    new ProjectTechnology
-                    {
-                        ProjectId = 4,
                         TechnologyId = tech.Id
                     }
                 );

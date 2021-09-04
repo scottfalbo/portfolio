@@ -2,7 +2,7 @@
 
 Deployed on Azure at [scottfalbo.com](https://scottfalbo.com)
 
-version 1.0.0
+version 2.0.0
 
 ---
 
@@ -18,11 +18,6 @@ version 1.0.0
 ---
 
 ## About the Project
-
-*Version 2.0.0 currently in production.*
-The current live site is the previous version. This readme reflects the in progress dev build.
-
-[Refactor Development Log v2.0.0](refactor-dev.md)
 
 Portfolio website for my software development projects and artwork.  It is a .Net Core app built in Visual Studio with C# and deployed on Azure.  All of the sites front facing data, including text fields and portfolios, are handled with a built in admin GUI available on each page when authenticated.
 

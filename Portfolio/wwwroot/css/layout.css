@@ -611,7 +611,7 @@ div.technologies-menu-button {
 }
 
 .project-card>div:nth-child(2) .carousel-inner {
-    height: 300px;
+    height: fit-content;
 }
 
 .project-card div:nth-child(2) .carousel-item img {
