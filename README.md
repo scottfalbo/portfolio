@@ -54,7 +54,7 @@ There is more information about the languages, technologies, tools, and site arc
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/jQuery.png?raw=true" height=40>
         </td>
         <td>
-            Using JavaScript and jQuery for browser side user interactions.
+            JavaScript and jQuery are used for browser side user interactions.
         </td>
     </tr>
     <tr>
@@ -65,7 +65,7 @@ There is more information about the languages, technologies, tools, and site arc
             <img src="https://github.com/scottfalbo/shared-readme-assets/blob/main/assets/azureBlob.png?raw=true" height=40>
         </td>
         <td>
-            The website is deployed on Azure.  It using AzureSQL for the database, an Azure Key Vault for storing keys and other secret data, and an Azure Storage Blob for storing uploaded images.
+            The website is deployed on Azure, using AzureSQL for the database, an Azure Key Vault for storing keys and other secret data, and an Azure Storage Blob for storing uploaded images.
         </td>
     </tr>
     <tr>
@@ -178,7 +178,7 @@ The art page has an admin for the general page content just like the index and c
 
 #### Add Images
 
-The add images form sends an array of IFormFiles to the AddImages handler. Each image resized for gallery view and a copy is made and resized for thumbnail view.  Both file names have the white space stripped and the date and time attached to ensure a unique name in the blob.  Once stored in the blob the filename and blob.uris are used to create and save an Image in the database. Then the image is added to the gallery with an `ImageGallery` join table and the page is refreshed.
+The add images form sends an array of IFormFiles to the AddImages handler. Each image is resized for gallery view and a copy is made and resized for thumbnail view.  Both file names have the white space stripped and the date and time attached to ensure a unique name in the blob.  Once stored in the blob the filename and blob.uris are used to create and save an Image in the database. Then the image is added to the gallery with an `ImageGallery` join table and the page is refreshed.
 
 ![add image model](/assets/gallery_add_image.jpg)
 
