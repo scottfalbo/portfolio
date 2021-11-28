@@ -192,6 +192,8 @@ The delete image form removes the image from the gallery by deleting the `Galler
 
 ## Change Log
 
++ Removed the Booking page from the Art section of the site.
+
 + [Refactor Development Log v2.0](refactor-dev.md)
 
 + [Original Development Log v1.0](development.md#development-log)
