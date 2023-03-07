@@ -1,6 +1,6 @@
 # scottfalbo.com
 
-Deployed on Azure at [scottfalbo.com](https://scottfalbo.com)
+No longer live.
 
 version 2.0.0
 
@@ -203,7 +203,6 @@ The delete image form removes the image from the gallery by deleting the `Galler
 ## Contact
 
 + Email: Scottfalboart@gmail.com
-+ [scottfalbo.com](https://www.scottfalbo.com)
 + [GitHub](https://github.com/scottfalbo)
 + [LinkedIn](https://www.linkedin.com/in/scott-falbo/)
 
